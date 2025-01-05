@@ -1,0 +1,17 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /*overflow-y: scroll;*/
+  font-family: 'poppins', Sans-Serif;
+  color: var(--blackthemefc);
+  /* Prevents any scrolling issues */
+}
+.MainHeader {
+  color: springgreen;
+  font-size: 3em;
+  text-align: center;
+}
