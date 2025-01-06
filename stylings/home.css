@@ -15,3 +15,13 @@ body, html {
   font-size: 3em;
   text-align: center;
 }
+.addiv {
+  height: 60px;
+  width: 90%;
+  background-color: grey;
+  justify-self: center;
+  align-content: center
+}
+.adp {
+  text-align: center;
+}
