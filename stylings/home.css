@@ -11,17 +11,96 @@ body, html {
   /* Prevents any scrolling issues */
 }
 .MainHeader {
+  transform: translate(-50%, -50%);
+  left: 50%;
+  margin-top: 80px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
   color: springgreen;
   font-size: 3em;
-  text-align: center;
+  align-self: center;
 }
 .addiv {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
   height: 60px;
   width: 90%;
   background-color: grey;
   justify-self: center;
-  align-content: center
+  align-content: center;
+  margin-top: 145px;
 }
 .adp {
   text-align: center;
+}
+.topp {
+  position: absolute;
+  margin-top: 380px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+}
+/*.mainimg {
+  display: flex;
+  user-select: none;
+  position: relative;
+}*/
+.starting {
+  transform: translate(-50%, -50%);
+  left: 50%;
+  position: absolute;
+  background-color: springgreen;
+  border: none;
+  height: 35px;
+  width: 130px;
+  border-radius: 15px;
+  user-select: none;
+  cursor: pointer;
+  margin-top: 218px;
+}
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  height: 100vh;
+  /* Ensures the container takes the full height of the viewport */
+}
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  /* Adjust the height of the image container */
+}
+
+.mainimg {
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Ensures the image covers the container without distortion */
+}
+
+.image-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
+}
+@media (max-width: 800px) {
+  .getstarted {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+ .topp {
+   margin-top: 300px;
+   font-size: 2em;
+ }
 }
