@@ -27,10 +27,12 @@ body, html {
   position: absolute;
   height: 60px;
   width: 90%;
-  background-color: grey;
+  background: transparent;
   justify-self: center;
   align-content: center;
   margin-top: 145px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 2);
 }
 .adp {
   text-align: center;
@@ -56,11 +58,19 @@ body, html {
   background-color: springgreen;
   border: none;
   height: 35px;
+  color: white;
   width: 130px;
   border-radius: 15px;
   user-select: none;
   cursor: pointer;
   margin-top: 218px;
+  transition: all 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 2);
+}
+.starting:hover {
+  font-weight: bold;
+  height: 45px;
+  width: 150px;
 }
 .container {
   position: relative;
