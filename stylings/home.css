@@ -41,12 +41,14 @@ body, html {
 }
 .topp {
   position: absolute;
-  margin-top: 380px;
-  transform: translate(-50%, -50%);
-  left: 50%;
+  margin-top: 320px;
+  /*transform: translate(-50%, -50%);
+  left: 50%;*/
   color: white;
   font-weight: bold;
   font-size: 3em;
+  text-align: center;
+  width: 100%;
 }
 /*.mainimg {
   display: flex;
@@ -160,7 +162,7 @@ body, html {
  .topp {
    margin-top: 300px;
    font-size: 2em;
-   width: 335px;
+   width: 100%;
  }
  .fixtopp::after {
    height: 3px;
