@@ -173,11 +173,23 @@ body, html {
 
 #f4 {
   color: purple;
+  margin-bottom: 55px;
 }
 
 .features {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+.features::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #f5f5ff 100%);
 }
 
 .features div {
@@ -243,6 +255,17 @@ body, html {
   padding: 84px 90px 144px 100px;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+#faq::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
 }
 
 .faq-heading {
@@ -353,6 +376,130 @@ body, html {
   max-height: 0px;
   overflow: hidden;
   transition: all ease 0.5s;
+}
+
+.socials-container {
+  height: 320px;
+  width: 100%;
+  position: relative;
+}
+
+.socials-h2 {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.socials-container ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50%);
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.socials-youtube {
+  margin-left: 0;
+}
+
+.socials-container ul li {
+  list-style: none;
+  /*margin: 0 50px;*/
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.socials-container ul li a .fa-brands, .socials-container ul li a .bx {
+  font-size: 20px;
+  color: #262626;
+  line-height: 40px;
+  transition: .5s;
+  user-select: none;
+}
+
+.socials-container ul li a {
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  text-align: center;
+  transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(0,0);
+  transition: .5s;
+  box-shadow: -20px 20px 10px rgba(0,0,0,.5);
+}
+
+.socials-container ul li a::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  height: 100%;
+  width: 20px;
+  background: #b1b1b1;
+  transition: .5s;
+  transform: rotate(0deg) skewY(-45deg);
+}
+
+.socials-container ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: -10px;
+  height: 20px;
+  width: 100%;
+  background: #b1b1b1;
+  transition: .5s;
+  transform: rotate(0deg) skewX(-45deg);
+}
+
+.socials-container ul li a:hover {
+  transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(20px,-20px);
+  box-shadow: -50px 50px 50px rgba(0,0,0,.5);
+}
+
+.socials-container ul li:hover .fa-brands, .socials-container ul li:hover .bx {
+  color: #fff;
+}
+
+.socials-container ul li:hover:nth-child(1) a {
+  background: red;
+}
+
+.socials-container ul li:hover:nth-child(1) a::before {
+  background: #B30000;
+}
+
+.socials-container ul li:hover:nth-child(1) a::after {
+  background: #870000;
+}
+
+.socials-container ul li:hover:nth-child(2) a {
+  background: black;
+}
+
+.socials-container ul li:hover:nth-child(2) a::before {
+  background: #272727;
+}
+
+.socials-container ul li:hover:hover:nth-child(2) a::after {
+  background: #1C1C1C;
+}
+
+.socials-container ul li:hover:nth-child(3) a {
+  background: #5865F2;
+}
+
+.socials-container ul li:hover:nth-child(3) a::before {
+  background: #4B5AFF;
+}
+
+.socials-container ul li:hover:nth-child(3) a::after {
+  background: #3C4CFF;
 }
 
 @media (max-width: 800px) {
