@@ -9,6 +9,7 @@ body, html {
   font-family: 'poppins', Sans-Serif;
   color: var(--blackthemefc);
   /* Prevents any scrolling issues */
+  box-sizing: border-box;
 }
 .MainHeader {
   transform: translate(-50%, -50%);
@@ -378,7 +379,7 @@ body, html {
   transition: all ease 0.5s;
 }
 
-.socials-container {
+.socials-special {
   height: 320px;
   width: 100%;
   position: relative;
@@ -392,11 +393,11 @@ body, html {
   user-select: none;
 }
 
-.socials-container ul {
+#socials-special ul {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate( -50%, -50%);
+  /*top: 50%;*/
+  /*left: 50%;*/
+  /*transform: translate( -50%, -50%);*/
   margin: 0;
   padding: 0;
   display: flex;
@@ -406,26 +407,26 @@ body, html {
   margin-left: 0;
 }
 
-.socials-container ul li {
+#socials-special ul li {
   list-style: none;
   /*margin: 0 50px;*/
-  margin-right: 50px;
-  margin-left: 50px;
+  margin-right: 25px;
+  margin-left: 25px;
 }
 
-.socials-container ul li a .fa-brands, .socials-container ul li a .bx {
-  font-size: 20px;
+.footer-container #socials-special ul li a .fa-brands, .footer-container #socials-special ul li a .bx {
+  font-size: 10px;
   color: #262626;
-  line-height: 40px;
+  line-height: 20px;
   transition: .5s;
   user-select: none;
 }
 
-.socials-container ul li a {
+.footer-container #socials-special ul li a {
   position: absolute;
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   background: #fff;
   text-align: center;
   transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(0,0);
@@ -433,73 +434,187 @@ body, html {
   box-shadow: -20px 20px 10px rgba(0,0,0,.5);
 }
 
-.socials-container ul li a::before {
+.footer-container #socials-special ul li a::before {
   content: '';
   position: absolute;
-  top: 10px;
-  left: -20px;
+  top: 5px;
+  left: -10px;
   height: 100%;
-  width: 20px;
+  width: 10px;
   background: #b1b1b1;
   transition: .5s;
   transform: rotate(0deg) skewY(-45deg);
 }
 
-.socials-container ul li a::after {
+.footer-container #socials-special ul li a::after {
   content: '';
   position: absolute;
-  bottom: -20px;
-  left: -10px;
-  height: 20px;
+  bottom: -10px;
+  left: -5px;
+  height: 10px;
   width: 100%;
   background: #b1b1b1;
   transition: .5s;
   transform: rotate(0deg) skewX(-45deg);
 }
 
-.socials-container ul li a:hover {
+.footer-container #socials-special ul li a:hover {
   transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(20px,-20px);
   box-shadow: -50px 50px 50px rgba(0,0,0,.5);
 }
 
-.socials-container ul li:hover .fa-brands, .socials-container ul li:hover .bx {
+.footer-container #socials-special ul li:hover .fa-brands, .footer-container #socials-special ul li:hover .bx {
   color: #fff;
 }
 
-.socials-container ul li:hover:nth-child(1) a {
+.footer-container #socials-special ul li:hover:nth-child(1) a {
   background: red;
 }
 
-.socials-container ul li:hover:nth-child(1) a::before {
+.footer-container #socials-special ul li:hover:nth-child(1) a::before {
   background: #B30000;
 }
 
-.socials-container ul li:hover:nth-child(1) a::after {
+.footer-container #socials-special ul li:hover:nth-child(1) a::after {
   background: #870000;
 }
 
-.socials-container ul li:hover:nth-child(2) a {
+.footer-container #socials-special ul li:hover:nth-child(2) a {
   background: black;
 }
 
-.socials-container ul li:hover:nth-child(2) a::before {
+.footer-container #socials-special ul li:hover:nth-child(2) a::before {
   background: #272727;
 }
 
-.socials-container ul li:hover:hover:nth-child(2) a::after {
+.footer-container #socials-special ul li:hover:hover:nth-child(2) a::after {
   background: #1C1C1C;
 }
 
-.socials-container ul li:hover:nth-child(3) a {
+.footer-container #socials-special ul li:hover:nth-child(3) a {
   background: #5865F2;
 }
 
-.socials-container ul li:hover:nth-child(3) a::before {
+.footer-container #socials-special ul li:hover:nth-child(3) a::before {
   background: #4B5AFF;
 }
 
-.socials-container ul li:hover:nth-child(3) a::after {
+.footer-container #socials-special ul li:hover:nth-child(3) a::after {
   background: #3C4CFF;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(to right, #00093c, #2d0b00);
+  padding: 100px 0 30px;
+  margin-top: 1000px;
+  border-top-left-radius: 125px;
+  font-size: 13px;
+  color: #fff;
+  line-height: 20px;
+}
+
+.row {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.col {
+  flex-basis: 25%;
+  padding: 10px;
+}
+
+.col:nth-child(2), .col:nth-child(3) {
+  flex-basis: 15%;
+}
+
+.flogo {
+  width: 80px;
+  margin-bottom: 30px;
+}
+
+.fcol2bold {
+  font-weight: 700;
+}
+
+.footer-container {
+  position: relative;
+  margin-top: 500px;
+}
+
+.col h3 {
+  width: fit-content;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.email-id {
+  width: fit-content;
+  border-bottom: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.footer-container ul li {
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.footer-container ul {
+  padding: 0;
+}
+
+.footer-container ul li a {
+  text-decoration: none;
+  color: #fff;
+  margin-left: 0;
+}
+
+.footer-container hr {
+  width: 90%;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  margin: 20px auto;
+}
+
+.copyright {
+  text-align: center;
+}
+
+.underline {
+  width: 100%;
+  height: 5px;
+  background: #767676;
+  border-radius: 3px;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  overflow: hidden;
+}
+
+.underline span {
+  width: 15px;
+  height: 100%;
+  background: #fff;
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  animation: moving 2s linear infinite;
+}
+
+@keyframes moving {
+  0% {
+    left: -20px;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 @media (max-width: 800px) {
@@ -530,4 +645,22 @@ body, html {
  /*.faq-box-container {
    margin-right: 70px;
  }*/
+ .footer-container hr {
+   margin: 35px auto;
+ }
+ footer {
+   bottom: unset;
+   margin-top: 0;
+ }
+ .footer-container {
+   margin-top: 0;
+ }
+ .col {
+  flex-basis: 100%;
 }
+
+ .col:nth-child(2), .col:nth-child(3) {
+  flex-basis: 100%;
+ } 
+} 
+
