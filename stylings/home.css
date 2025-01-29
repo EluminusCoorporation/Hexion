@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -11,6 +12,7 @@ body, html {
   /* Prevents any scrolling issues */
   box-sizing: border-box;
 }
+
 .MainHeader {
   transform: translate(-50%, -50%);
   left: 50%;
@@ -24,6 +26,7 @@ body, html {
   background: linear-gradient(to right, #88FFCB, #00FF8F);
   -webkit-background-clip: text;
 }
+
 .addiv {
   left: 50%;
   transform: translate(-50%, -50%);
@@ -37,9 +40,11 @@ body, html {
   backdrop-filter: blur(5px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 2);
 }
+
 .adp {
   text-align: center;
 }
+
 .topp {
   position: absolute;
   margin-top: 320px;
@@ -51,6 +56,7 @@ body, html {
   text-align: center;
   width: 100%;
 }
+
 /*.mainimg {
   display: flex;
   user-select: none;
@@ -72,11 +78,13 @@ body, html {
   transition: all 0.3s;
   box-shadow: 0 0 10px rgba(0, 0, 0, 2);
 }
+
 .starting:hover {
   font-weight: bold;
   height: 45px;
   width: 150px;
 }
+
 .logoimg {
   height: 50px;
   width: 50px;
@@ -87,6 +95,7 @@ body, html {
   border-radius: 50%;
   border: 3px solid white;
 }
+
 .container {
   position: relative;
   width: 100%;
@@ -95,6 +104,7 @@ body, html {
   height: 100vh;
   /* Ensures the container takes the full height of the viewport */
 }
+
 .image-wrapper {
   position: relative;
   width: 100%;
@@ -119,6 +129,7 @@ body, html {
   height: 20%;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
 }
+
 .fixtopp {
   color: transparent;
   position: relative;
@@ -126,6 +137,7 @@ body, html {
   -webkit-background-clip: text;
   text-decoration: underline;
 }
+
 .fixtopp::after {
   content: "";
   position: absolute;
@@ -136,30 +148,39 @@ body, html {
   border-radius: 10px;
   background: linear-gradient(to right, #7CFFCD, #00FF9E);
 }
+
 #f2::before {
   background-image: conic-gradient(orange 0deg, transparent 60deg, transparent 180deg, orange 180deg, transparent 240deg);
 }
+
 #f2 {
   color: orange;
 }
+
 #f2:hover::after {
   background-color: orange;
 }
+
 #f2:hover {
   color: white;
 }
+
 #f3 {
   color: indianred;
 }
+
 #f3:hover::after {
   background-color: indianred;
 }
+
 #f3:hover {
   color: white;
 }
+
 #f3::before {
   background-image: conic-gradient(indianred 0deg, transparent 60deg, transparent 180deg, indianred 180deg, transparent 240deg);
 }
+
 #f4:hover::after {
   background-color: purple;
 }
@@ -210,7 +231,8 @@ body, html {
   text-align: center;
 }
 
-.features div::before, .features div::after {
+.features div::before,
+.features div::after {
   content: '';
   position: absolute;
 }
@@ -236,17 +258,21 @@ body, html {
 .features div:hover::before {
   animation-play-state: paused;
 }
+
 .features div:hover::after {
   background-color: springgreen;
 }
+
 .features div:hover {
   color: white;
 }
+
 @keyframes spin {
   to {
     transform: rotateZ(-360deg);
   }
 }
+
 .features div i {
   font-size: 6.5em;
 }
@@ -338,7 +364,8 @@ body, html {
   margin-left: auto;
 }
 
-.faq-box-icon::before, .faq-box-icon::after {
+.faq-box-icon::before,
+.faq-box-icon::after {
   background: #3b2a82;
   content: '';
   position: absolute;
@@ -414,7 +441,8 @@ body, html {
   margin-left: 25px;
 }
 
-.footer-container #socials-special ul li a .fa-brands, .footer-container #socials-special ul li a .bx {
+.footer-container #socials-special ul li a .fa-brands,
+.footer-container #socials-special ul li a .bx {
   font-size: 10px;
   color: #262626;
   line-height: 20px;
@@ -429,9 +457,9 @@ body, html {
   height: 20px;
   background: #fff;
   text-align: center;
-  transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(0,0);
+  transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(0, 0);
   transition: .5s;
-  box-shadow: -20px 20px 10px rgba(0,0,0,.5);
+  box-shadow: -20px 20px 10px rgba(0, 0, 0, .5);
 }
 
 .footer-container #socials-special ul li a::before {
@@ -459,11 +487,12 @@ body, html {
 }
 
 .footer-container #socials-special ul li a:hover {
-  transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(20px,-20px);
-  box-shadow: -50px 50px 50px rgba(0,0,0,.5);
+  transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(20px, -20px);
+  box-shadow: -50px 50px 50px rgba(0, 0, 0, .5);
 }
 
-.footer-container #socials-special ul li:hover .fa-brands, .footer-container #socials-special ul li:hover .bx {
+.footer-container #socials-special ul li:hover .fa-brands,
+.footer-container #socials-special ul li:hover .bx {
   color: #fff;
 }
 
@@ -530,7 +559,8 @@ footer {
   padding: 10px;
 }
 
-.col:nth-child(2), .col:nth-child(3) {
+.col:nth-child(2),
+.col:nth-child(3) {
   flex-basis: 15%;
 }
 
@@ -612,6 +642,7 @@ footer {
   0% {
     left: -20px;
   }
+
   100% {
     left: 100%;
   }
@@ -622,45 +653,54 @@ footer {
     font-size: 14px;
     padding: 8px 16px;
   }
- .topp {
-   margin-top: 300px;
-   font-size: 2em;
-   width: 100%;
- }
- .fixtopp::after {
-   height: 3px;
- }
- .features {
-   display: grid;
-   grid-template-columns: 1fr;
- }
- #faq {
-   padding: 84px 90px 144px 0px;
-   padding-right: auto;
- }
- .faq-content {
-   padding-left: 46px;
-   grid-template-columns: 1fr;
- }
- /*.faq-box-container {
+
+  .topp {
+    margin-top: 300px;
+    font-size: 2em;
+    width: 100%;
+  }
+
+  .fixtopp::after {
+    height: 3px;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  #faq {
+    padding: 84px 90px 144px 0px;
+    padding-right: auto;
+  }
+
+  .faq-content {
+    padding-left: 46px;
+    grid-template-columns: 1fr;
+  }
+
+  /*.faq-box-container {
    margin-right: 70px;
  }*/
- .footer-container hr {
-   margin: 35px auto;
- }
- footer {
-   bottom: unset;
-   margin-top: 0;
- }
- .footer-container {
-   margin-top: 0;
- }
- .col {
-  flex-basis: 100%;
+  .footer-container hr {
+    margin: 35px auto;
+  }
+
+  footer {
+    bottom: unset;
+    margin-top: 0;
+  }
+
+  .footer-container {
+    margin-top: 0;
+  }
+
+  .col {
+    flex-basis: 100%;
+  }
+
+  .col:nth-child(2),
+  .col:nth-child(3) {
+    flex-basis: 100%;
+  }
 }
-
- .col:nth-child(2), .col:nth-child(3) {
-  flex-basis: 100%;
- } 
-} 
-
