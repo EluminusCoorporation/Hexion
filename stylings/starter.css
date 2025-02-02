@@ -64,10 +64,10 @@ html {
   right: -5px;
   bottom: -5px;*/
   border-radius: 50%;
-  background: conic-gradient(#007bff, transparent 70%);
+  background: conic-gradient(transparent 30%, #007bff);
   inset: -50%;
   z-index: -2;
-  animation: spin 1s linear infinite;
+  animation: loading-spin 1s linear infinite;
 }
 
 .loader::after {
@@ -82,12 +82,12 @@ html {
   /*transition: all 0.35s linear;*/
 }
 
-@keyframes spin {
-  0% {
+@keyframes loading-spin {
+  from {
     transform: rotate(0deg);
   }
 
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
@@ -559,22 +559,11 @@ html {
   transition: all ease 0.5s;
 }
 
-.faq-special {
-  /*margin-bottom: 50px;*/
-}
 
 .socials-special {
   height: 320px;
   width: 100%;
   position: relative;
-}
-
-.socials-h2 {
-  text-align: center;
-  text-decoration: underline;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  user-select: none;
 }
 
 #socials-special ul {
