@@ -145,6 +145,193 @@ html {
   margin-bottom: 0;
 }
 
+.logo-hexion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid black;
+}
+
+.brandname {
+  color: springgreen;
+}
+
+.navigate {
+  transform: translate(-50%, -50%);
+  left: 50%;
+  position: relative;
+  background: linear-gradient(to right, #53FF9B, #12FF75);
+  width: 80%;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  z-index: 2;
+  flex-wrap: wrap;
+}
+
+.navigate ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.navigate ul li {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  cursor: pointer;
+}
+
+.navigate ul li i {
+  font-size: 30px;
+  height: 30px;
+  margin: auto 0;
+  margin-right: 10px;
+  border-radius: 50%;
+  color: white;
+  transition: 0.2s ease-in-out;
+  padding: 10px;
+}
+
+.navigate ul li .home {
+  background: white;
+  color: springgreen;
+}
+
+.navigate ul li i:hover {
+  color: white;
+  background: transparent;
+  border: 1px solid white;
+  transform: translateY(-3px);
+}
+
+.navigate ul li p {
+  color: white;
+  position: relative;
+  text-align: center;
+  padding: 0 20px 0 0;
+}
+
+.navigate ul li a {
+  text-decoration: none;
+}
+
+.homeH2 {
+  background: linear-gradient(to right, transparent 5%, springgreen, transparent 95%);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.homeI {
+  font-size: 1.3em;
+  padding-right: 5px;
+  margin: 0;
+}
+
+.toolboxes-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  display: flex;
+}
+
+.toolboxes-container .tool {
+  width: 80%;
+  height: 150px;
+  background: whitesmoke;
+  box-shadow: 14px 14px 60px rgba(59, 42, 130, 0, 0.06);
+  color: springgreen; 
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 25px;
+  flex-direction: column;
+  border: 1px solid springgreen;
+  position: relative;
+}
+
+.toolboxes-container .tool i {
+  font-size: 2em;
+}
+
+.toolboxes-container .tool h3 {
+  font-size: 2em;
+  display: flex;
+  margin: 0 !important;
+
+}
+
+.toolboxes-container .tool button {
+  border: none;
+  background-color: springgreen;
+  color: white;
+  border-radius: 25px;
+  width: 190px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.8s ease, color 0.8s ease, border 0.8s ease;
+  user-select: none;
+  margin-top: 30px;
+  font-size: 1em;
+}
+.toolboxes-container .tool button i {
+  font-size: 1em;
+  margin-right: 8px;
+  transition: transform 0.5s ease;
+}
+
+.toolboxes-container .tool button:hover {
+  background-color: white;
+  color: springgreen;
+  border: 1px solid springgreen;
+}
+
+.toolboxes-container .tool button:hover .button-icon {
+  transform: rotate(-45deg);
+}
+
+.toolboxes-container .tool .bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 67px;
+  width: 67px;
+  background-color: #E9E9E9;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 50%;
+}
+
+.toolboxes-container .tool .top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 58.4px;
+  width: 58.4px;
+  background-color: #E9E9E9;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 50%;
+}
+
+.i-h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent !important;
+}
+
 .socials-special {
   height: 320px;
   width: 100%;
@@ -456,5 +643,21 @@ footer {
   .col:nth-child(2),
   .col:nth-child(3) {
     flex-basis: 100%;
+  }
+
+  .navigate ul li i {
+    margin: 0 auto;
+    padding: 10px;
+    /*margin-right: 20px;*/
+    cursor: pointer;
+  }
+  .navigate ul li .special-i-3 {
+    /*padding: 0;*/
+  }
+  .navigate ul li p {
+    display: none;
+  }
+  .toolboxes-container {
+    grid-template-columns: 1fr;
   }
 }

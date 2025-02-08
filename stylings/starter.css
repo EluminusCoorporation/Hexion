@@ -196,7 +196,7 @@ html {
   position: relative;
 }*/
 .starting {
-  transform: translate(-50%, -50%);
+  transform: translate( -50%, -50%);
   left: 50%;
   position: absolute;
   background-color: transparent;
@@ -218,7 +218,8 @@ html {
   height: 35px;
   width: 130px;
   background-color: springgreen;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 2);
+  transform: translate( -50%, -80%);
 }
 
 .logoimg {
