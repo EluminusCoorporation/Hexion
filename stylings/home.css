@@ -173,7 +173,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 25px;
+  margin-top: 60px;
   z-index: 2;
   flex-wrap: wrap;
 }
