@@ -243,8 +243,7 @@ html {
 .toolboxes-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  display: flex;
+  place-items: center;
 }
 
 .toolboxes-container .tool {
@@ -252,15 +251,15 @@ html {
   height: 150px;
   background: whitesmoke;
   box-shadow: 14px 14px 60px rgba(59, 42, 130, 0, 0.06);
-  color: springgreen; 
   border-radius: 10px;
-  display: flex;
   align-items: center;
+  display: flex;
   padding: 10px;
   margin-bottom: 25px;
   flex-direction: column;
   border: 1px solid springgreen;
   position: relative;
+  margin-bottom: 150px;
 }
 
 .toolboxes-container .tool i {
@@ -271,12 +270,11 @@ html {
   font-size: 2em;
   display: flex;
   margin: 0 !important;
-
+  padding-right: 25px;
 }
 
 .toolboxes-container .tool button {
   border: none;
-  background-color: springgreen;
   color: white;
   border-radius: 25px;
   width: 190px;
@@ -286,6 +284,46 @@ html {
   user-select: none;
   margin-top: 30px;
   font-size: 1em;
+  overflow: hidden;
+}
+
+.tool1 {
+  color: springgreen;
+}
+.tool1 button {
+  background-color: springgreen;
+}
+.tool1 button:hover {
+  color: springgreen;
+}
+
+.tool2 {
+  color: lawngreen;
+}
+.tool2 button {
+  background: lawngreen;
+}
+.tool2 button:hover {
+  color: lawngreen;
+}
+.tool3 {
+  color: orange;
+}
+.tool3 button {
+  background: orange;
+}
+.tool3 button:hover {
+  color: orange;
+}
+
+.tool4 {
+  color: orangered;
+}
+.tool4 button {
+  background: orangered;
+}
+.tool4 button:hover {
+  color: orangered;
 }
 .toolboxes-container .tool button i {
   font-size: 1em;
@@ -295,7 +333,6 @@ html {
 
 .toolboxes-container .tool button:hover {
   background-color: white;
-  color: springgreen;
   border: 1px solid springgreen;
 }
 
@@ -303,6 +340,17 @@ html {
   transform: rotate(-45deg);
 }
 
+#button-icon {
+  transition: all 0.5s;
+}
+
+#button-text.active {
+  display: none;
+}
+
+#button-icon.active {
+  font-size: 1.5em;
+}
 .toolboxes-container .tool .bottom-left {
   position: absolute;
   bottom: 0;
