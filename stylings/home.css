@@ -191,40 +191,36 @@ html {
   flex-shrink: 1;
   flex-basis: auto;
   cursor: pointer;
-}
-
-.navigate ul li i {
-  font-size: 30px;
-  height: 30px;
-  margin: auto 0;
-  margin-right: 10px;
-  border-radius: 50%;
-  color: white;
-  transition: 0.2s ease-in-out;
-  padding: 10px;
-}
-
-.navigate ul li .home {
-  background: white;
-  color: springgreen;
-}
-
-.navigate ul li i:hover {
-  color: white;
-  background: transparent;
-  border: 1px solid white;
-  transform: translateY(-3px);
+  position: relative;
 }
 
 .navigate ul li p {
-  color: white;
   position: relative;
   text-align: center;
   padding: 0 20px 0 0;
 }
 
-.navigate ul li a {
-  text-decoration: none;
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  /* Positions tooltip above */
+  left: 50%;
+  transform: translateX(-50%);
+  background: mediumspringgreen;
+  color: white;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: visible;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+li:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
 }
 
 .homeH2 {
@@ -244,6 +240,7 @@ html {
   display: grid;
   grid-template-columns: 1fr 1fr;
   place-items: center;
+  gap: 25px;
 }
 
 .toolboxes-container .tool {
@@ -255,11 +252,14 @@ html {
   align-items: center;
   display: flex;
   padding: 10px;
-  margin-bottom: 25px;
   flex-direction: column;
   border: 1px solid springgreen;
   position: relative;
-  margin-bottom: 150px;
+}
+
+.tool3,
+.tool4 {
+  margin-bottom: 125px;
 }
 
 .toolboxes-container .tool i {
@@ -290,9 +290,11 @@ html {
 .tool1 {
   color: springgreen;
 }
+
 .tool1 button {
   background-color: springgreen;
 }
+
 .tool1 button:hover {
   color: springgreen;
 }
@@ -300,18 +302,23 @@ html {
 .tool2 {
   color: lawngreen;
 }
+
 .tool2 button {
   background: lawngreen;
 }
+
 .tool2 button:hover {
   color: lawngreen;
 }
+
 .tool3 {
   color: orange;
 }
+
 .tool3 button {
   background: orange;
 }
+
 .tool3 button:hover {
   color: orange;
 }
@@ -319,12 +326,15 @@ html {
 .tool4 {
   color: orangered;
 }
+
 .tool4 button {
   background: orangered;
 }
+
 .tool4 button:hover {
   color: orangered;
 }
+
 .toolboxes-container .tool button i {
   font-size: 1em;
   margin-right: 8px;
@@ -351,6 +361,7 @@ html {
 #button-icon.active {
   font-size: 1.5em;
 }
+
 .toolboxes-container .tool .bottom-left {
   position: absolute;
   bottom: 0;
@@ -670,7 +681,61 @@ footer {
   }
 }
 
+@media (min-width: 800px) {
+  .navigate ul li a {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    background-color: springgreen;
+    color: white;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 25px;
+    transition: 0.2s ease-in-out;
+  }
+
+  .navigate ul li a i {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .navigate ul li a:hover {
+    color: white;
+    background: transparent;
+    border: 1px solid white;
+    transform: translateY(-3px);
+  }
+
+  .navigate ul li .dhome {
+    background: white;
+    color: springgreen;
+  }
+}
+
 @media (max-width: 800px) {
+  .navigate ul li i {
+    font-size: 30px;
+    height: 30px;
+    margin-right: 10px !important;
+    border-radius: 50%;
+    color: white;
+    transition: 0.2s ease-in-out;
+    padding: 10px;
+  }
+
+  .navigate ul li i:hover {
+    color: white;
+    background: transparent;
+    border: 1px solid white;
+    transform: translateY(-3px);
+  }
+  .navigate ul li .mhome {
+  background: white;
+  color: springgreen;
+  }
+
   .footer-container hr {
     margin: 35px auto;
   }
@@ -699,13 +764,21 @@ footer {
     /*margin-right: 20px;*/
     cursor: pointer;
   }
+
   .navigate ul li .special-i-3 {
     /*padding: 0;*/
   }
+
   .navigate ul li p {
     display: none;
   }
+
   .toolboxes-container {
     grid-template-columns: 1fr;
+  }
+
+  .tool3,
+  .tool4 {
+    margin-bottom: 10px;
   }
 }
