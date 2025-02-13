@@ -119,13 +119,13 @@ html {
 }
 
 .addiv {
-  position: absolute;
+  position: relative;
   height: 60px;
   width: 90%;
   background: transparent;
   place-content: center;
   left: 50%;
-  margin-top: 145px;
+  margin-top: 25px;
   transform: translate(-50%, -50%);
   /*justify-self: center;
   align-content: center;*/
@@ -137,7 +137,9 @@ html {
 .addiv p {
   text-align: center;
 }
-
+.ad3 {
+  margin-top: 40px;
+}
 .ad4 {
   position: relative;
   z-index: 1;
@@ -173,7 +175,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 30px;
   z-index: 2;
   flex-wrap: wrap;
 }
@@ -257,8 +259,8 @@ li:hover .tooltip {
   position: relative;
 }
 
-.tool3,
-.tool4 {
+.tool5,
+.tool6 {
   margin-bottom: 125px;
 }
 
@@ -335,6 +337,32 @@ li:hover .tooltip {
   color: orangered;
 }
 
+.tool5 {
+  color: indianred;
+}
+
+.tool5 button {
+  margin-top: 5px !important;
+  margin-left: 15px !important;
+  background: indianred;
+}
+
+.tool5 button:hover {
+  color: indianred;
+}
+.tool6 {
+  color: purple;
+}
+
+.tool6 button {
+  margin-top: 5px !important;
+  margin-left: 15px !important;
+  background: purple;
+}
+
+.tool6 button:hover {
+  color: purple;
+}
 .toolboxes-container .tool button i {
   font-size: 1em;
   margin-right: 8px;
@@ -777,8 +805,8 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .tool3,
-  .tool4 {
+  .tool5,
+  .tool6 {
     margin-bottom: 10px;
   }
 }
