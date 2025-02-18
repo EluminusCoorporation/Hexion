@@ -118,39 +118,6 @@ html {
   visibility: hidden;
 }
 
-.addiv {
-  position: relative;
-  height: 60px;
-  width: 90%;
-  background: transparent;
-  place-content: center;
-  left: 50%;
-  margin-top: 25px;
-  transform: translate(-50%, -50%);
-  /*justify-self: center;
-  align-content: center;*/
-  /*margin-top: 145px;*/
-  backdrop-filter: blur(5px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 2);
-}
-
-.addiv p {
-  text-align: center;
-}
-
-.ad3 {
-  z-index: 2;
-  margin-top: 0;
-  margin-bottom: 600px !important;
-}
-
-.ad4 {
-  position: relative;
-  z-index: 1;
-  margin-top: 130px;
-  margin-bottom: 0;
-}
-
 .logo-hexion {
   display: flex;
   align-items: center;
@@ -229,6 +196,33 @@ li:hover .tooltip {
   visibility: visible;
 }
 
+.addiv {
+  position: relative;
+  height: 60px;
+  width: 90%;
+  background: transparent;
+  place-content: center;
+  left: 50%;
+  margin-top: 25px;
+  transform: translate(-50%, -50%);
+  /*justify-self: center;
+  align-content: center;*/
+  /*margin-top: 145px;*/
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 2);
+}
+
+.addiv p {
+  text-align: center;
+}
+
+.ad4 {
+  position: relative;
+  z-index: 1;
+  margin-top: 130px;
+  margin-bottom: 0;
+}
+
 .homeH2 {
   background: linear-gradient(to right, transparent 5%, springgreen, transparent 95%);
   color: white;
@@ -242,187 +236,155 @@ li:hover .tooltip {
   margin: 0;
 }
 
-.toolboxes-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-  gap: 25px;
-}
-
-.toolboxes-container .tool {
-  width: 80%;
-  height: 150px;
-  background: whitesmoke;
-  box-shadow: 14px 14px 60px rgba(59, 42, 130, 0, 0.06);
-  border-radius: 10px;
-  align-items: center;
+.donation-div {
   display: flex;
-  padding: 10px;
+  background: linear-gradient(to bottom, #f5f5ff 75%, transparent);
+  border-top-right-radius: 200px;
   flex-direction: column;
-  border: 1px solid springgreen;
+  padding: 60px;
+  color: black;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  user-select: none;
   position: relative;
 }
 
-.tool5,
-.tool6 {
-  margin-bottom: 125px;
-}
-
-.toolboxes-container .tool i {
-  font-size: 2em;
-}
-
-.toolboxes-container .tool h3 {
-  font-size: 2em;
+.donation-menu-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  margin: 0 !important;
-  padding-right: 25px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out, background 0.6s ease-in-out;
+  z-index: 9998;
 }
 
-.toolboxes-container .tool button {
-  border: none;
+/* The popup itself */
+.donation-menu {
+  background: transparent;
+  padding: 20px;
+  display: flex;
+  width: 270px;
+  height: 450px;
+  border-radius: 10px;
+  transform: scale(0);
+  transition: transform 0.5s ease-out, backdrop-filter 0.7s ease-out;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid white;
+  flex-direction: column;
+  isolation: isolate;
   color: white;
-  border-radius: 25px;
-  width: 190px;
+  border-top-right-radius: 0 !important;
+}
+
+.donation-menu h2 {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.donation-menu .input {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin: 30px 0;
+  display: flex;
+  justify-content: center; 
+}
+
+.input input {
+  width: 80%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: white;
+  padding: 5px 20px 5px 20px;
+}
+
+.input input::placeholder {
+  color: white;
+}
+
+.input i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.close-btn {
+  position: absolute;
+  width: 40px;
   height: 40px;
-  cursor: pointer;
-  transition: background-color 0.8s ease, color 0.8s ease, border 0.8s ease;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  justify-self: right;
+  top: 0;
+  right: 0;
   user-select: none;
-  margin-top: 30px;
-  font-size: 1em;
-  overflow: hidden;
-}
-
-.tool1 {
-  color: springgreen;
-}
-
-.tool1 button {
-  background-color: springgreen;
-}
-
-.tool1 button:hover {
-  color: springgreen;
-}
-
-.tool2 {
-  color: lawngreen;
-}
-
-.tool2 button {
-  background: lawngreen;
-}
-
-.tool2 button:hover {
-  color: lawngreen;
-}
-
-.tool3 {
-  color: orange;
-}
-
-.tool3 button {
-  background: orange;
-}
-
-.tool3 button:hover {
-  color: orange;
-}
-
-.tool4 {
-  color: orangered;
-}
-
-.tool4 button {
-  background: orangered;
-}
-
-.tool4 button:hover {
-  color: orangered;
-}
-
-.tool5 {
-  color: indianred;
-}
-
-.tool5 button {
-  margin-top: 5px !important;
-  margin-left: 15px !important;
-  background: indianred;
-}
-
-.tool5 button:hover {
-  color: indianred;
-}
-
-.tool6 {
-  color: purple;
-}
-
-.tool6 button {
-  margin-top: 5px !important;
-  margin-left: 15px !important;
-  background: purple;
-}
-
-.tool6 button:hover {
-  color: purple;
-}
-
-.toolboxes-container .tool button i {
-  font-size: 1em;
-  margin-right: 8px;
-  transition: transform 0.5s ease;
-}
-
-.toolboxes-container .tool button:hover {
-  background-color: white;
-  border: 1px solid springgreen;
-}
-
-.toolboxes-container .tool button:hover .button-icon {
-  transform: rotate(-45deg);
-}
-
-#button-icon {
-  transition: all 0.5s;
-}
-
-#button-text.active {
-  display: none;
-}
-
-#button-icon.active {
+  cursor: pointer;
   font-size: 1.5em;
 }
 
-.toolboxes-container .tool .bottom-left {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 67px;
-  width: 67px;
-  background-color: #E9E9E9;
-  border-bottom-left-radius: 10px;
-  border-top-right-radius: 50%;
+/* When popup is active */
+.donation-menu-div.active {
+  opacity: 1;
+  visibility: visible;
+  background: rgba(0, 0, 0, 0.3);
+  /* Dark overlay */
 }
 
-.toolboxes-container .tool .top-right {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 58.4px;
-  width: 58.4px;
-  background-color: #E9E9E9;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 50%;
+.donation-menu.active {
+  transform: scale(1);
+  backdrop-filter: blur(5px);
+  /* Animates from small to full size */
 }
 
-.i-h3 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: transparent !important;
+.donation-btn {
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  width: 150px;
+  border-radius: 100px;
+  color: white;
+  background: orange;
+  font-weight: 500;
+  transition: all 0.5s;
+  margin-top: 30px;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.donation-div p {
+  margin: 0;
+}
+
+.donation-div h3 {
+  text-decoration: underline;
+  font-size: 1em;
+}
+
+.donation-btn:hover {
+  background: white;
+  color: orange;
+  border: 1px solid orange;
 }
 
 .socials-special {
@@ -545,11 +507,10 @@ li:hover .tooltip {
 
 footer {
   width: 100%;
-  position: absolute;
+  position: relative;
   bottom: 0;
   background: linear-gradient(to right, #00093c, #2d0b00);
   padding: 100px 0 30px;
-  margin-top: 1000px;
   border-top-left-radius: 125px;
   font-size: 13px;
   color: #fff;
@@ -591,7 +552,6 @@ footer {
 
 .footer-container {
   position: relative;
-  margin-top: 500px;
 }
 
 .col h3 {
@@ -802,19 +762,5 @@ footer {
 
   .navigate ul li p {
     display: none;
-  }
-
-  .toolboxes-container {
-    grid-template-columns: 1fr;
-  }
-
-  .tool5,
-  .tool6 {
-    margin-bottom: 10px !important;
-  }
-
-  .ad3 {
-    margin-top: 40px !important;
-    margin-bottom: 20px !important;
   }
 }
