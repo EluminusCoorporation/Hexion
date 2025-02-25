@@ -260,7 +260,7 @@ li:hover .tooltip {
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out, background 0.6s ease-in-out;
+  transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out, background 0.6s ease-in-out, backdrop-filter 0.6s ease-in-out;
   z-index: 9998;
 }
 
@@ -273,17 +273,19 @@ li:hover .tooltip {
   height: 450px;
   border-radius: 10px;
   transform: scale(0);
-  transition: transform 0.5s ease-out, backdrop-filter 0.7s ease-out;
+  transition: transform 0.5s ease-out;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   border: 1px solid white;
   flex-direction: column;
   isolation: isolate;
   color: white;
   border-top-right-radius: 0 !important;
+  background-color: whitesmoke;
 }
 
 .donation-menu h2 {
   font-size: 2em;
+  color: black;
   text-align: center;
   margin-top: 5px;
 }
@@ -303,7 +305,7 @@ li:hover .tooltip {
   background: transparent;
   border: none;
   outline: none;
-  border: 2px solid rgba(255, 255, 255, 2);
+  border: 2px solid black;
   border-radius: 40px;
   font-size: 16px;
   color: white;
@@ -311,7 +313,7 @@ li:hover .tooltip {
 }
 
 .input input::placeholder {
-  color: white;
+  color: black;
 }
 
 .input i {
@@ -344,13 +346,12 @@ li:hover .tooltip {
 .donation-menu-div.active {
   opacity: 1;
   visibility: visible;
-  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   /* Dark overlay */
 }
 
 .donation-menu.active {
   transform: scale(1);
-  backdrop-filter: blur(5px);
   /* Animates from small to full size */
 }
 
@@ -365,6 +366,11 @@ li:hover .tooltip {
   font-weight: 500;
   transition: all 0.5s;
   margin-top: 30px;
+  transition: all 0.5s;
+}
+
+.donation-btn:hover {
+  transform: scale(0.9);
 }
 
 .no-scroll {

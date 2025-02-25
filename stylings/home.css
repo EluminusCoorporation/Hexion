@@ -286,7 +286,7 @@ li:hover .tooltip {
   width: 190px;
   height: 40px;
   cursor: pointer;
-  transition: background-color 0.8s ease, color 0.8s ease, border 0.8s ease;
+  transition: background-color 0.8s ease, color 0.8s ease, border 0.8s ease, transform 0.2s ease;
   user-select: none;
   margin-top: 30px;
   font-size: 1em;
@@ -302,6 +302,7 @@ li:hover .tooltip {
 }
 
 .tool1 button:hover {
+  transform: scale(0.8);
   color: springgreen;
 }
 
@@ -314,6 +315,7 @@ li:hover .tooltip {
 }
 
 .tool2 button:hover {
+  transform: scale(0.8);
   color: lawngreen;
 }
 
@@ -326,6 +328,7 @@ li:hover .tooltip {
 }
 
 .tool3 button:hover {
+  transform: scale(0.8);
   color: orange;
 }
 
@@ -338,6 +341,7 @@ li:hover .tooltip {
 }
 
 .tool4 button:hover {
+  transform: scale(0.8);
   color: orangered;
 }
 
@@ -352,6 +356,7 @@ li:hover .tooltip {
 }
 
 .tool5 button:hover {
+  transform: scale(0.8);
   color: indianred;
 }
 
@@ -366,6 +371,7 @@ li:hover .tooltip {
 }
 
 .tool6 button:hover {
+  transform: scale(0.8);
   color: purple;
 }
 
