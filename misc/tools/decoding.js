@@ -67,94 +67,86 @@ resultsBtn.addEventListener('click', function() {
   
   function encodingText(name, text) {
     if (name === "UTF-8 (recommended)") {
-      let encoder = new TextEncoder();
-      let data = encoder.encode(text);
-      resultsInput.value = data
+      function decodeUTF8(byteArray) {
+        const decoder = new TextDecoder("utf-8"); // Create a UTF-8 decoder
+        return decoder.decode(new Uint8Array(byteArray)); // Convert byte array to string
+      }
+      const byteArray = text.split(',').map(Number);
+      resultsInput.value = (decodeUTF8(byteArray))
     };
     if (name === "UTF-16") {
-      function encodeUTF16(str) {
-        let encoder = new TextEncoder('utf-16le'); // Little-endian UTF-16
-        return encoder.encode(str);
+      function decodeUTF16(byteArray) {
+        const decoder = new TextDecoder("utf-16"); // Create a UTF-16 decoder
+        return decoder.decode(new Uint8Array(byteArray)); // Convert byte array to string
       }
-      
-      let utf16Encoded = encodeUTF16(text);
-      resultsInput.value = utf16Encoded // Uint8Array with UTF-16 bytes
+      const byteArray = text.split(',').map(Number);
+      resultsInput.value = (decodeUTF16(byteArray)) // Uint8Array with UTF-16 bytes
     }
     if (name === "UTF-32") {
-      function encodeUTF32(str) {
-        let utf32Array = [];
-        
-        for (let char of str) {
-          let codePoint = char.codePointAt(0); // Get Unicode code point
-          utf32Array.push(
-            (codePoint >> 24) & 0xFF, // First byte
-            (codePoint >> 16) & 0xFF, // Second byte
-            (codePoint >> 8) & 0xFF, // Third byte
-            codePoint & 0xFF // Fourth byte
-          );
+      function decodeUTF32(byteArray) {
+        let decodedString = '';
+        for (let i = 0; i < byteArray.length; i += 4) {
+          // Combine 4 bytes into a single UTF-32 code point
+          let codePoint = (byteArray[i] << 24) | (byteArray[i + 1] << 16) |
+            (byteArray[i + 2] << 8) | byteArray[i + 3];
+          decodedString += String.fromCodePoint(codePoint);
         }
-        
-        return new Uint8Array(utf32Array);
+        return decodedString;
       }
       
-      let utf32Encoded = encodeUTF32(text);
-      resultsInput.value = utf32Encoded // Uint8Array with UTF-32 bytes 
+      // Example UTF-32 encoded byte array for "Hello"
+      
+      const byteArray = text.split(',').map(Number);
+      resultsInput.value = (decodeUTF32(byteArray))
     }
     if (name === "Base 64") {
-      let encodedText = btoa(text);
-      resultsInput.value = encodedText
+      function decodeBase64(base64String) {
+        return atob(base64String);
+      }
+      resultsInput.value = (decodeBase64(text))
     }
     if (name === "ASCII") {
-      function encodeASCII(text) {
-        return text.split('').map(char => char.charCodeAt(0)); // Convert each character to ASCII code
+      function decodeASCII(byteArray) {
+        return byteArray.map(code => String.fromCharCode(code)).join('');
       }
-      
-      // Example Usage:
-      let encodedASCII = encodeASCII(text);
-      resultsInput.value = encodedASCII // [72, 101, 108, 108, 111]
+      const byteArray = text.split(',').map(Number);
+      resultsInput.value = (decodeASCII(byteArray)); // Output: "Hello"
     }
     if (name === "EXTENDED ASCII") {
-      function encodeExtendedASCII(text) {
-        return text.split('').map(char => char.charCodeAt(0)); // Same as ASCII but supports 0–255 range
+      function decodeExtendedASCII(byteArray) {
+        return byteArray.map(code => String.fromCharCode(code)).join('');
       }
-      
-      function decodeExtendedASCII(asciiArray) {
-        return asciiArray.map(code => String.fromCharCode(code)).join('');
-      }
-      let extendedEncoded = encodeExtendedASCII(text);
-      resultsInput.value = extendedEncoded
+      const byteArray = text.split(',').map(Number);
+      console.log(decodeExtendedASCII(byteArray)); // Output: "éxñ"
+      resultsInput.value = (decodeExtendedASCII(byteArray)); // Output: "éxñ"
     }
     if (name === "Binary") {
-      function encodeBinary(text) {
-        return text.split('')
-          .map(char => char.charCodeAt(0).toString(2).padStart(8, '0')) // Convert to binary (8-bit)
-          .join(' '); // Separate binary values with a space
+      function binaryToText(binaryStr) {
+        return binaryStr.split(',') // Split binary by spaces
+          .map(bin => String.fromCharCode(parseInt(bin, 2))) // Convert each binary to a character
+          .join(''); // Join the characters into a string
       }
-      
-      // Example Usage:
-      let binaryEncoded = encodeBinary(text);
-      resultsInput.value = binaryEncoded // "01001000 01101001"
-      
+      resultsInput.value = (binaryToText(text)); // Output: "Hello"
     }
     
     if (name === "Shift Jis") {
-      function encodeToShiftJIS(text) {
-        const encoder = new TextEncoder("shift-jis");
-        return encoder.encode(text);
+      function decodeFromShiftJIS(byteArray) {
+        const decoder = new TextDecoder("shift-jis");
+        return decoder.decode(new Uint8Array(byteArray));
       }
-      
-      // Example usage
-      const encodedShiftJIS = encodeToShiftJIS(text);
-      resultsInput.value = encodedShiftJIS
+      const byteArray = text.split(',').map(Number);
+      const decodedShiftJIS = decodeFromShiftJIS(byteArray);
+      resultsInput.value = decodedShiftJIS;
     }
     
     if (name === "ISO 8859-1") {
-      // Encode a string to ISO-8859-1
-      function encodeToISO88591(text) {
-        return new TextEncoder("iso-8859-1").encode(text);
+      function decodeFromISO88591(bytes) {
+        const encodedTextiso = new Uint8Array(bytes); // Your existing encoded data
+        const finalTextiso = encodedTextiso.buffer // Outputs: ArrayBuffer
+        return new TextDecoder("iso-8859-1").decode(finalTextiso);
       }
-      let encodediso = encodeToISO88591(text);
-      resultsInput.value = encodediso
+      const byteArray = text.split(',').map(Number);
+      resultsInput.value = (decodeFromISO88591(byteArray)); // "Hello, World!"
     }
     
     if (name === "Morse Code") {
@@ -200,10 +192,12 @@ resultsBtn.addEventListener('click', function() {
       
       const reverseMorseCodeMap = Object.fromEntries(Object.entries(morseCodeMap).map(([k, v]) => [v, k]));
       
-      function encodeToMorse(text) {
-        return text.toUpperCase().split('').map(char => morseCodeMap[char] || "").join(' ');
+      function decodeFromMorse(morseCode) {
+        return morseCode.split(' ').map(code => reverseMorseCodeMap[code] || "").join('');
       }
-      resultsInput.value = (encodeToMorse(text))
+      
+      // Example usage
+      resultsInput.value = (decodeFromMorse(text));
     }
     
     return
@@ -214,7 +208,6 @@ resultsBtn.addEventListener('click', function() {
   encodingText(name, text);
 });
 
-document.addEventListener('DOMContentLoaded', function() {
   const togglecopy = document.getElementById('tcopy');
   var resultsInput = document.getElementById('results');
   var copyText = resultsInput.value;
@@ -227,4 +220,3 @@ document.addEventListener('DOMContentLoaded', function() {
       togglePassword.classList.toggle('bx-copy')
     }, 2000);
   });
-});

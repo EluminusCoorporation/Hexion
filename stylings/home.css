@@ -295,6 +295,7 @@ li:hover .tooltip {
 
 .tool1 {
   color: springgreen;
+  box-shadow: 0px 0px 10px 3px springgreen;
 }
 
 .tool1 button {
@@ -307,6 +308,7 @@ li:hover .tooltip {
 }
 
 .tool2 {
+  box-shadow: 0px 0px 10px 3px lawngreen;
   color: lawngreen;
 }
 
@@ -320,6 +322,7 @@ li:hover .tooltip {
 }
 
 .tool3 {
+  box-shadow: 0px 0px 10px 3px orange;
   color: orange;
 }
 
@@ -333,6 +336,7 @@ li:hover .tooltip {
 }
 
 .tool4 {
+  box-shadow: 0px 0px 10px 3px orangered;
   color: orangered;
 }
 
@@ -346,6 +350,7 @@ li:hover .tooltip {
 }
 
 .tool5 {
+  box-shadow: 0px 0px 10px 3px indianred;
   color: indianred;
 }
 
@@ -361,6 +366,7 @@ li:hover .tooltip {
 }
 
 .tool6 {
+  box-shadow: 0px 0px 10px 3px purple;
   color: purple;
 }
 

@@ -297,6 +297,7 @@ html {
 }
 
 #f2:hover {
+  box-shadow: 0px 0px 10px 3px orange;
   color: white;
 }
 
@@ -309,6 +310,7 @@ html {
 }
 
 #f3:hover {
+  box-shadow: 0px 0px 10px 3px indianred;
   color: white;
 }
 
@@ -321,6 +323,7 @@ html {
 }
 
 #f4:hover {
+  box-shadow: 0px 0px 10px 3px purple;
   color: white;
 }
 
@@ -403,6 +406,7 @@ html {
 }
 
 #f1:hover {
+  box-shadow: 0px 0px 10px 3px springgreen;
   color: white;
 }
 
