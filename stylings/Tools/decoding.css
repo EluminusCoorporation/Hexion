@@ -130,10 +130,12 @@ html {
   height: 50px;
   border-radius: 50%;
   border: 3px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 3);
 }
 
 .brandname {
   color: springgreen;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 3);
 }
 
 .navigate {
@@ -149,6 +151,7 @@ html {
   margin-top: 30px;
   z-index: 2;
   flex-wrap: wrap;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 3);
 }
 
 .navigate ul {
@@ -225,7 +228,7 @@ li:hover .tooltip {
 }
 
 .homeH2 {
-  background: linear-gradient(to right, transparent 5%, orange, transparent 95%);
+  background: linear-gradient(to right, transparent 5%, lawngreen, transparent 95%);
   color: white;
   text-align: center;
   padding: 20px;
@@ -375,6 +378,10 @@ li:hover .tooltip {
   transition: all 0.5s;
 }
 
+.results-div i:hover {
+  background: #A5A5A5;
+}
+
 .tooltip-temp {
   
 }
@@ -408,7 +415,7 @@ li:hover .tooltip {
   min-height: 200px;
   margin: 0 auto;
   padding: 25px;
-  box-shadow: 0px 0px 10px 3px orange;
+  box-shadow: 0px 0px 10px 3px lawngreen;
 }
 
 .results-btn-div {
@@ -421,7 +428,7 @@ li:hover .tooltip {
   height: 50px;
   border-radius: 25px;
   border: none;
-  background-color: orange;
+  background-color: lawngreen;
   color: white;
   font-size: 1em;
   font-weight: bold;
