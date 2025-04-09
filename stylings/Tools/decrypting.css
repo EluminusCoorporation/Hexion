@@ -134,8 +134,8 @@ html {
 }
 
 .brandname {
-  text-shadow: 0 0 10px rgba(0, 0, 0, 3);
   color: springgreen;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 3);
 }
 
 .navigate {
@@ -151,6 +151,7 @@ html {
   margin-top: 30px;
   z-index: 2;
   flex-wrap: wrap;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 3);
 }
 
 .navigate ul {
@@ -191,6 +192,7 @@ html {
   opacity: 0;
   visibility: visible;
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  z-index: 100;
 }
 
 li:hover .tooltip {
@@ -226,7 +228,7 @@ li:hover .tooltip {
 }
 
 .homeH2 {
-  background: linear-gradient(to right, transparent 5%, springgreen, transparent 95%);
+  background: linear-gradient(to right, transparent 5%, orangered, transparent 95%);
   color: white;
   text-align: center;
   padding: 20px;
@@ -339,7 +341,8 @@ li:hover .tooltip {
   align-self: center;
 }
 
-.ttc, .results{
+.ttc,
+.results {
   border-radius: 15px;
   width: 268px;
   display: flex;
@@ -353,7 +356,8 @@ li:hover .tooltip {
   position: relative;
 }
 
-.ttc::placeholder, .results::placeholder{
+.ttc::placeholder,
+.results::placeholder {
   color: #B4B4B4;
   font-weight: bold;
   padding-left: 5px;
@@ -378,6 +382,15 @@ li:hover .tooltip {
   background: #A5A5A5;
 }
 
+.tooltip-temp {
+  
+}
+
+.tooltip-temp:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
 .flexbox-results {
   display: none;
   justify-content: center;
@@ -393,7 +406,7 @@ li:hover .tooltip {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate( -50%, -50%);
+  transform: translate(-50%, -50%);
   width: 250px;
   resize: none;
   display: flex;
@@ -402,7 +415,7 @@ li:hover .tooltip {
   min-height: 200px;
   margin: 0 auto;
   padding: 25px;
-  box-shadow: 0px 0px 10px 3px springgreen;
+  box-shadow: 0px 0px 10px 3px orangered;
 }
 
 .results-btn-div {
@@ -415,7 +428,7 @@ li:hover .tooltip {
   height: 50px;
   border-radius: 25px;
   border: none;
-  background-color: springgreen;
+  background-color: orangered;
   color: white;
   font-size: 1em;
   font-weight: bold;

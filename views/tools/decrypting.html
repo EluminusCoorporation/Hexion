@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  </link>
+  <link rel="website icon" href="assets/home/logo.png">
+  <link rel="stylesheet" href="/stylings/Tools/decrypting.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/0c750fa2a7.js" crossorigin="anonymous"></script>
+  <title>Decoding(Tool)</title>
+</head>
+
+<body>
+  <div class="container">
+    <div id="preloader">
+      <div class="loader"></div>
+    </div>
+    <div class="logo-hexion">
+      <img src="/assets/home/logo.png" class="logo" />
+      <h1 class="brandname">Hexion</h1>
+    </div>
+    <div class="addiv ad1">
+      <p class="adp">Ad space here</p>
+    </div>
+    <nav class="navigate">
+      <ul>
+        <li>
+          <a href="#"><i class='bx bx-home-alt'></i>
+            <p>Home</p>
+          </a>
+          <div class="tooltip" id="tooltip">Home</div>
+        </li>
+        <li>
+          <a href="donation.html">
+            <i class='bx bxs-gift'></i>
+            <p>Donation</p>
+          </a>
+          <div class="tooltip" id="tooltip">Donations</div>
+        </li>
+        <li>
+          <a href="aboutus.html">
+            <i class='bx bx-clipboard'></i>
+            <p>About Us</p>
+          </a>
+          <div class="tooltip" id="tooltip">About us</div>
+        </li>
+        <li>
+          <a href="additional.html">
+            <i class='bx bxl-graphql special-i-3'></i>
+            <p>Additional</p>
+          </a>
+          <div class="tooltip" id="tooltip">Additional</div>
+        </li>
+      </ul>
+    </nav>
+    <div class="addiv ad1">
+      <p class="adp">Ad space here</p>
+    </div>
+    <h2 class="homeH2"><i class='bx bx-cube-alt homeI'></i>Decrypting(Tool) </h2>
+    <div id="errorDiv">
+      <i class='bx bx-error'></i>
+      <div class="linefordiv"></div>
+      <p id="errorText"></p>
+    </div>
+    <div class="dropdown-container" id="dropDownMenu">
+      <div class="head-i">
+        <h3 class="dropdown-text" id="dropdown-text">Format Selector</>
+          <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+      </div>
+      <div class="dropdown-content" id="dropDownContent">
+        <p class="select-item">Base64 (recommended)</p>
+        <p class="select-item">ROT13</p>
+        <p class="select-item">Caesar Cipher</p>
+        <p class="select-item">Atbash Cipher</p>
+        <p class="select-item">Morse Code</p>
+        <p class="select-item">Binary Encoding</p>
+        <p class="select-item">Hexadecimal Encoding</p>
+        <p class="select-item">Rail Fence Cipher</p>
+        <p class="select-item">Vigenère Cipher</p>
+        <p class="select-item">Affine Cipher</p>
+      </div>
+    </div>
+    <input type="text" name="textToConvert" id="ttc" placeholder="Text" class="ttc" />
+    <div class="flexbox-results" id="resultsDiv">
+      <div class="results-div">
+        <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Results"></textarea>
+        <div class="tooltip-container">
+          <div class="tooltip-temp">
+            <i class='bx bx-copy' id="tcopy"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="results-btn-div">
+      <button class="results-button" id="results-btn">Decrypt!</button>
+    </div>
+    <div class="footer-container">
+      <footer>
+        <div class="row">
+          <div class="col">
+            <img src="/assets/home/logo.png" class="flogo" />
+            <p>Our website is has various tools for developers our website mainly forcuses on helping developers make their coding journey easier we provide many tools as decoding, encoding, encrypting, decrypting, error debugging and various other small and big tools for developers.</p>
+          </div>
+          <div class="col">
+            <h3><i class="bx bx-phone"></i>Contacts<div class="underline"><span></span></div>
+            </h3>
+            <p>You can use the following contacts to contact us for<tag class="fcol2bold">only important purposes or if it is told to you</tag> is the only time you are allowed to contact us or you can use the discord for general support.</p>
+            <h3 class="contact-ids">eluminusco@gmail.com </h3>
+            <h3 class="contact-ids">91+ 8097045648</h3>
+          </div>
+          <div class="col col3">
+            <h3><i class="bx bx-link"></i>Links<div class="underline"><span></span></div>
+            </h3>
+            <ul>
+              <li>
+                <div>
+                  <a href="home.html">
+                    <p>Home</p>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div><a href="donation.html">
+                    <p>Donations</p>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div><a href="aboutus.html">
+                    <p>About us</p>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div><a href="tos.html">
+                    <p>Terms of service</p>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div><a href="policyp.html">
+                    <p>Privacy policy</p>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col" id="socials-special">
+            <h3><i class='bx bxl-facebook'></i>Socials<div class="underline"><span></span></div>
+            </h3>
+            <ul>
+              <li>
+                <a href="https://youtube.com/@eluminusco?si=bhN1j5SXSNjZdehg"><i class='bx bxl-youtube socials-youtube' aria-hidden="true"></i></a>
+              </li>
+              <li>
+                <a href="https://github.com/EluminusCo"><i class='bx bxl-github' aria-hidden="true"></i>
+              </li></a>
+              <li>
+                <a href="https://discord.gg/M9dgZfzyGN"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
+              </li>
+            </ul>
+            <div class="addiv ad4">
+              <p class="adp">Ad space here</p>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <p class="copyright">&copy; 2026 EluminusCo All Rights Reserved</p>
+      </footer>
+    </div>
+  </div>
+  <script src="/misc/effects/loading.js"></script>
+  <script src="/misc/effects/drop-down-menu.js"></script>
+  <script src="/misc/tools/decrypting.js">
+  </script>
+</body>
+
+</html>
