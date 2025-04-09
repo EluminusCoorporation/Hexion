@@ -5,6 +5,8 @@ var selectItem = document.getElementsByClassName('select-item');
 var resultsBtn = document.getElementById('results-btn');
 var textEncode = document.getElementById('ttc')
 
+let errorTimeout;
+
 function setError(message) {
   var errorText = document.getElementById('errorText');
   var errorDiv = document.getElementById('errorDiv');
@@ -13,10 +15,13 @@ function setError(message) {
   if (errorText.textContent === "") {
     errorDiv.style.display = "none"
   }
-  setTimeout(function() {
-    errorDiv.style.display = "none";
-    errorText.textContent = ""
-  }, 7000); // 2000ms = 2 seconds
+  clearTimeout(errorTimeout);
+  
+  // Start a new timeout
+  errorTimeout = setTimeout(() => {
+    errorDiv.style.display = 'none';
+    errorText.textContent = '';
+  }, 7000);
 }
 
 dropDownMenu.addEventListener('click', function() {
@@ -65,7 +70,7 @@ resultsBtn.addEventListener('click', function() {
     return
   };
   
-
+  
   function encryptingText(name, text, key = 3) {
     let data = ""
     if (name === "Base64 (recommended)") {

@@ -5,6 +5,8 @@ var selectItem = document.getElementsByClassName('select-item');
 var resultsBtn = document.getElementById('results-btn');
 var textEncode = document.getElementById('ttc')
 
+let errorTimeout;
+
 function setError(message) {
   var errorText = document.getElementById('errorText');
   var errorDiv = document.getElementById('errorDiv');
@@ -13,10 +15,13 @@ function setError(message) {
   if (errorText.textContent === "") {
     errorDiv.style.display = "none"
   }
-  setTimeout(function() {
-    errorDiv.style.display = "none";
-    errorText.textContent = ""
-  }, 7000); // 2000ms = 2 seconds
+  clearTimeout(errorTimeout);
+  
+  // Start a new timeout
+  errorTimeout = setTimeout(() => {
+    errorDiv.style.display = 'none';
+    errorText.textContent = '';
+  }, 7000);
 }
 
 dropDownMenu.addEventListener('click', function() {
@@ -217,18 +222,18 @@ resultsBtn.addEventListener('click', function() {
 document.addEventListener('DOMContentLoaded', function() {
   const togglecopy = document.getElementById('tcopy');
   var resultsInput = document.getElementById('results');
-
+  
   togglecopy.addEventListener('click', function() {
     const copyText = resultsInput.value; // Get the latest value on click
-
+    
     // Copy text to clipboard with error handling
     navigator.clipboard.writeText(copyText).then(() => {
       console.log("Copied:", copyText);
-
+      
       // Toggle the icon
       this.classList.toggle('bx-copy');
       this.classList.toggle('bx-check');
-
+      
       // Store reference to button for setTimeout
       const btn = this;
       setTimeout(() => {
