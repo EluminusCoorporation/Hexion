@@ -277,6 +277,7 @@ li:hover .tooltip {
   display: flex;
   margin: 0 !important;
   padding-right: 25px;
+  z-index: 2;
 }
 
 .toolboxes-container .tool button {
