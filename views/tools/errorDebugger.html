@@ -101,7 +101,14 @@
         <p class="select-item">Morse Code</p>
       </div>
     </div>
-    <input type="text" name="textToConvert" id="ttc" placeholder="Text" class="ttc" />
+    <div class="buttonWrapper">
+      <button class="dualbtn dbtn1" id="dbtn1">File mode</button>
+      <button class="dualbtn dbtn2" id="dbtn2">Text mode</button>
+    </div>
+    <input type="text" name="textToConvert" id="textmodetxt" placeholder="Text" class="ttc" />
+    <div class="uploadWrapper" id="uploadbtn">
+      <button class="uploadbtn">Upload File</button>
+    </div>
     <div class="flexbox-results" id="resultsDiv">
       <div class="results-div">
         <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Results"></textarea>

@@ -24,6 +24,31 @@ function setError(message) {
   }, 7000);
 }
 
+const dBtn1 = document.getElementById('dbtn1')
+const dBtn2 = document.getElementById('dbtn2')
+const uploadbtn = document.getElementById('uploadbtn')
+const textinput = document.getElementById('textmodetxt')
+dbtn1.addEventListener('click', function() {
+  dbtn2.style.backgroundColor = "white" 
+  dbtn2.style.color = "black"
+  
+  dbtn1.style.backgroundColor = "indianred"
+  dbtn1.style.color = "white"
+  
+  textinput.style.display = "none"
+  uploadbtn.style.display = "flex"
+})
+
+dbtn2.addEventListener('click', function() {
+  dbtn1.style.backgroundColor = "white" 
+  dbtn1.style.color = "black"
+  
+  dbtn2.style.backgroundColor = "indianred"
+  dbtn2.style.color = "white"
+  
+  uploadbtn.style.display = "none"
+  textinput.style.display = "flex"
+})
 dropDownMenu.addEventListener('click', function() {
   dropDownContent.classList.toggle("active");
   dropDownIcon.classList.toggle("active");

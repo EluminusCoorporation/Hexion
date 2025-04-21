@@ -323,6 +323,64 @@ li:hover .tooltip {
   background-color: grey;
 }
 
+.buttonWrapper {
+  display: flex;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  justify-self: center;
+  border: 1.6px solid indianred;
+  border-radius: 10px;
+}
+
+.dualbtn {
+  font-weight: bold;
+  width: 147px;
+  height: 42.3px;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+#textmodetxt {
+  display: none;
+}
+
+.uploadWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.uploadbtn {
+  width: 180px;
+  height: 40px;
+  position: relative;
+  border-radius: 25px;
+  border: none;
+  background-color: white;
+  color: indianred;
+  border: 1.5px solid indianred;
+  font-size: 1em;
+  font-weight: bold;
+  outline: none;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.dbtn1 {
+  color: white;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: indianred;
+}
+
+.dbtn2 {
+  color: black;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: white; 
+}
+
 #errorDiv {
   background-color: red;
   height: 60px;
@@ -358,7 +416,6 @@ li:hover .tooltip {
 .results {
   border-radius: 15px;
   width: 268px;
-  display: flex;
   justify-self: center;
   padding: 15px;
   border: 1px solid #B4B4B4;
