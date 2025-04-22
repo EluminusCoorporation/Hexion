@@ -24,17 +24,31 @@ function setError(message) {
   }, 7000);
 }
 
-const dBtn1 = document.getElementById('dbtn1')
-const dBtn2 = document.getElementById('dbtn2')
+const dBtn1 = document.getElementById('dbtn1');
+const dBtn2 = document.getElementById('dbtn2');
+const buttons = document.querySelectorAll('.dualbtn');
 const uploadbtn = document.getElementById('uploadbtn')
 const textinput = document.getElementById('textmodetxt')
-dbtn1.addEventListener('click', function() {
+const btnindicator = document.getElementById('btnIndicator')
+
+buttons.forEach((btn, index) => {
+  dBtn1.classList.add('special')
+  btn.addEventListener('click', () => {
+    btnindicator.style.left = index === 0 ? '0%' : '50%';
+    buttons.forEach(b => b.classList.remove('active'));
+    buttons.forEach(b => b.classList.remove('special'));
+    btn.classList.add('active')
+  });
+});
+
+/*dbtn1.addEventListener('click', function() {
   dbtn2.style.backgroundColor = "white" 
   dbtn2.style.color = "black"
   
   dbtn1.style.backgroundColor = "indianred"
   dbtn1.style.color = "white"
   
+  btnindicator.style.left = index === 0 ? '0%' : '50%';
   textinput.style.display = "none"
   uploadbtn.style.display = "flex"
 })
@@ -45,10 +59,10 @@ dbtn2.addEventListener('click', function() {
   
   dbtn2.style.backgroundColor = "indianred"
   dbtn2.style.color = "white"
-  
+  btnindicator.style.left = index === 0 ? '0%' : '50%';
   uploadbtn.style.display = "none"
   textinput.style.display = "flex"
-})
+})*/
 dropDownMenu.addEventListener('click', function() {
   dropDownContent.classList.toggle("active");
   dropDownIcon.classList.toggle("active");

@@ -324,12 +324,28 @@ li:hover .tooltip {
 }
 
 .buttonWrapper {
+  position: relative;
   display: flex;
   margin-top: 25px;
   margin-bottom: 25px;
   justify-self: center;
   border: 1.6px solid indianred;
   border-radius: 10px;
+  overflow: hidden !important;
+}
+
+.buttonIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: indianred;
+  border-radius: 8px;
+  z-index: 1;
+  margin: 0;
+  transition: left 0.2s ease;
+  overflow: hidden;
 }
 
 .dualbtn {
@@ -339,7 +355,11 @@ li:hover .tooltip {
   padding: 15px;
   border-radius: 8px;
   border: none;
+  outline: none;
+  z-index: 2;
   cursor: pointer;
+  background-color: transparent;
+  margin: 0;
 }
 
 #textmodetxt {
@@ -368,17 +388,27 @@ li:hover .tooltip {
 }
 
 .dbtn1 {
-  color: white;
+  color: black;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  background-color: indianred;
 }
 
 .dbtn2 {
   color: black;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  background-color: white; 
+}
+
+.dbtn1.special {
+  color: white;
+}
+
+.dbtn1.active {
+  color: white;
+}
+
+.dbtn2.active {
+  color: white;
 }
 
 #errorDiv {
