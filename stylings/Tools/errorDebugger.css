@@ -411,6 +411,105 @@ li:hover .tooltip {
   color: white;
 }
 
+.uploadMenu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out, background 0.6s ease-in-out, backdrop-filter 0.6s ease-in-out;
+  z-index: 9998;
+}
+
+.uploadMenu {
+  background: transparent;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  display: flex;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  transform: scale(0);
+  transition: transform 0.5s ease-out;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid white;
+  flex-direction: column;
+  isolation: isolate;
+  color: white;
+  border-top-right-radius: 0 !important;
+  background-color: whitesmoke;
+}
+
+.close-btn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  justify-self: right;
+  top: 0;
+  right: 0;
+  user-select: none;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+.uploadMenu-container.active {
+  opacity: 1;
+  visibility: visible;
+  backdrop-filter: blur(5px);
+}
+
+.uploadMenu.active {
+  transform: scale(2);
+}
+
+.uploadMenu input {
+  display: none;
+}
+
+.divLabelSpan {
+  width: 84%;
+  height: 84%;
+  position: relative;
+  border: 2px dashed #999;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.labelUpload {
+  width: auto;
+  height: auto;
+  text-align: center;
+  color: #42445A;
+  font-weight: bold;
+}
+
+.dragicon {
+  font-size: 7em;
+  color: #42445A;
+  align-self: center;
+  text-align: center;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
 #errorDiv {
   background-color: red;
   height: 60px;
@@ -467,10 +566,10 @@ li:hover .tooltip {
   position: absolute;
   display: flex;
   top: 10px;
-  color: black;
+  color: white;
   right: 10px;
   font-size: 1em;
-  z-index: 600;
+  z-index: 3;
   cursor: pointer;
   padding: 5px;
   border-radius: 50%;
@@ -483,30 +582,114 @@ li:hover .tooltip {
 }
 
 .flexbox-results {
-  display: none;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
 }
 
 .results-div {
+  width: 465px;
   position: relative;
   display: inline-block;
   justify-content: center;
+  background-color: #26262C;
+  padding: 80px 25px 25px 25px;
+  border-radius: 15px 15px 0 0;
+}
+
+.ball-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 8px;
+  margin-left: 35px;
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.ball {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.redball {
+  background-color: red;
+}
+
+.yellowball {
+  background-color: #FFF500;
+}
+
+.greenball {
+  background-color: green;
+}
+
+.flexbox-lineNums {
+  position: relative;
+  font-family: monospace;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.line-numbers {
+  position: absolute;
+  top: -25px;
+  left: 9.5px;
+  display: inline-block;
+  white-space: pre-wrap;
+  font-weight: bold;
+  z-index: 2;
+  margin-top: 21px;
+  padding: 5px;
+  text-align: left;
+  user-select: none;
+  color: #888;
+  line-height: 1.2;
+  white-space: pre;
+  height: 100%;
+  overflow-y: hidden;
 }
 
 .results {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 250px;
+  width: 263px;
+  height: 314px;
+  line-height: 1.2;
   resize: none;
+  color: white;
+  background-color: #26262C;
   display: flex;
+  flex: 1;
   position: relative;
   justify-self: center;
-  min-height: 200px;
   margin: 0 auto;
-  padding: 25px;
-  box-shadow: 0px 0px 10px 3px indianred;
+  padding: 0 5px 0 25px;
+  border: unset;
+}
+
+.line-numbers,
+.results {
+  font-size: 14px;
+}
+
+.error-scroll {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  border-radius: 0 0 15px 15px;
+  background-color: #2D2D34;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-scroll p {
+  margin: 0 !important;
 }
 
 .results-btn-div {
@@ -857,6 +1040,10 @@ footer {
 
 
 @media (max-width: 800px) {
+  .results-div {
+    width: 265px;
+  }
+  
   .navigate ul li i {
     font-size: 30px;
     height: 30px;
@@ -910,5 +1097,9 @@ footer {
   
   .navigate ul li p {
     display: none;
+  }
+  
+  .uploadMenu.active {
+    transform: scale(1);
   }
 }

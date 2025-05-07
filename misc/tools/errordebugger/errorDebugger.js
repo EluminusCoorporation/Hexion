@@ -30,39 +30,64 @@ const buttons = document.querySelectorAll('.dualbtn');
 const uploadbtn = document.getElementById('uploadbtn')
 const textinput = document.getElementById('textmodetxt')
 const btnindicator = document.getElementById('btnIndicator')
+const uploadWrapper = document.getElementById('uploadWrapper')
 
 buttons.forEach((btn, index) => {
   dBtn1.classList.add('special')
   btn.addEventListener('click', () => {
+    if (btn.classList.contains('active')) return;  
     btnindicator.style.left = index === 0 ? '0%' : '50%';
     buttons.forEach(b => b.classList.remove('active'));
     buttons.forEach(b => b.classList.remove('special'));
+    if (index === 0) {
+      uploadWrapper.style.display = "flex"
+      textinput.style.display = "none"
+    }
+    else {
+      textinput.style.display = "flex"
+      uploadWrapper.style.display = "none"
+    }
     btn.classList.add('active')
   });
 });
 
-/*dbtn1.addEventListener('click', function() {
-  dbtn2.style.backgroundColor = "white" 
-  dbtn2.style.color = "black"
-  
-  dbtn1.style.backgroundColor = "indianred"
-  dbtn1.style.color = "white"
-  
-  btnindicator.style.left = index === 0 ? '0%' : '50%';
-  textinput.style.display = "none"
-  uploadbtn.style.display = "flex"
+const uploadContainer = document.getElementById('uploadMenuC')
+const container = document.getElementById('container')
+const uploadMenu = document.getElementById('uploadMenu')
+
+uploadbtn.addEventListener('click', function() {
+  uploadContainer.classList.add('active')
+  document.body.classList.add('no-scroll');
+  uploadMenu.classList.add('active')
 })
 
-dbtn2.addEventListener('click', function() {
-  dbtn1.style.backgroundColor = "white" 
-  dbtn1.style.color = "black"
-  
-  dbtn2.style.backgroundColor = "indianred"
-  dbtn2.style.color = "white"
-  btnindicator.style.left = index === 0 ? '0%' : '50%';
-  uploadbtn.style.display = "none"
-  textinput.style.display = "flex"
-})*/
+const textarea = document.getElementById('results');
+const lineNumbers = document.getElementById('lineNums');
+
+function updateLineNumbers() {
+  const lines = textarea.value.split('\n').length;
+  if (lines === 16) {
+    lineNumbers.style.transform = "unset"
+  }
+  if (lines === 17) {
+    lineNumbers.style.transform = "translateY(-4px)";
+  };
+  if (lines === 18) {
+    lineNumbers.style.transform = "translateY(-20px)"
+  };
+  if (lines === 19) {
+    lineNumbers.style.transform = "translateY(-33px)"
+  }
+  lineNumbers.textContent = Array.from({ length: lines }, (_, i) => i + 1).join('\n');
+  textarea.addEventListener('scroll', () => {
+    lineNumbers.scrollTop = textarea.scrollTop; // Sync line numbers' scroll position with textarea
+  });
+}
+
+textarea.addEventListener('input', updateLineNumbers);
+// Initialize
+updateLineNumbers();
+
 dropDownMenu.addEventListener('click', function() {
   dropDownContent.classList.toggle("active");
   dropDownIcon.classList.toggle("active");
@@ -287,3 +312,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+const closeBtn = document.getElementById('close-btn');
+closeBtn.addEventListener('click', () => {
+  uploadContainer.classList.remove('active');
+  uploadMenu.classList.remove('active');
+  document.body.classList.remove('no-scroll');
+})
