@@ -35,7 +35,7 @@ const uploadWrapper = document.getElementById('uploadWrapper')
 buttons.forEach((btn, index) => {
   dBtn1.classList.add('special')
   btn.addEventListener('click', () => {
-    if (btn.classList.contains('active')) return;  
+    if (btn.classList.contains('active')) return;
     btnindicator.style.left = index === 0 ? '0%' : '50%';
     buttons.forEach(b => b.classList.remove('active'));
     buttons.forEach(b => b.classList.remove('special'));
@@ -94,18 +94,13 @@ dropDownMenu.addEventListener('click', function() {
   var i;
   for (i = 0; i < selectItem.length; i++) {
     selectItem[i].addEventListener('click', function() {
-      function setNameOfDD(message) {
-        // Access the element by its ID
-        var itemSelect = document.getElementById('dropdown-text');
-        const itemSpecial = document.getElementById('textWrapper')
-        // Set the text content to the error message
-        itemSelect.style.color = "black"
-        itemSelect.innerHTML = message;
-        itemSpecial.style.transform = "translate( 0, -14px)"
-        return
-      }
       name = this.innerHTML // Logs each <p> text content
-      setNameOfDD(name);
+      var itemSelect = document.getElementById('dropdown-text');
+      const itemSpecial = document.getElementById('textWrapper')
+      // Set the text content to the error message
+      itemSelect.style.color = "black"
+      itemSelect.innerHTML = name;
+      itemSpecial.style.transform = "translate( 0, -14px)"
       return
     });
   }

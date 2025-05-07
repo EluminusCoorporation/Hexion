@@ -30,16 +30,11 @@ dropDownMenu.addEventListener('click', function() {
   var i;
   for (i = 0; i < selectItem.length; i++) {
     selectItem[i].addEventListener('click', function() {
-      function setNameOfDD(message) {
-        // Access the element by its ID
-        var itemSelect = document.getElementById('dropdown-text');
-        // Set the text content to the error message
-        itemSelect.style.color = "black"
-        itemSelect.textContent = message;
-        return
-      }
       name = this.textContent // Logs each <p> text content
-      setNameOfDD(name);
+      var itemSelect = document.getElementById('dropdown-text');
+      // Set the text content to the error message
+      itemSelect.style.color = "black"
+      itemSelect.textContent = name;
       return
     });
   }
@@ -73,8 +68,7 @@ resultsBtn.addEventListener('click', function() {
   function encodingText(name, text) {
     if (name === "UTF-8 (recommended)") {
       let encoder = new TextEncoder();
-      let data = encoder.encode(text);
-      resultsInput.value = data
+      var encodedtext = encoder.encode(text);
     };
     if (name === "UTF-16") {
       function encodeUTF16(str) {
@@ -82,8 +76,7 @@ resultsBtn.addEventListener('click', function() {
         return encoder.encode(str);
       }
       
-      let utf16Encoded = encodeUTF16(text);
-      resultsInput.value = utf16Encoded // Uint8Array with UTF-16 bytes
+      var encodedtext = encodeUTF16(text);
     }
     if (name === "UTF-32") {
       function encodeUTF32(str) {
@@ -102,21 +95,17 @@ resultsBtn.addEventListener('click', function() {
         return new Uint8Array(utf32Array);
       }
       
-      let utf32Encoded = encodeUTF32(text);
-      resultsInput.value = utf32Encoded // Uint8Array with UTF-32 bytes 
+      var encodedtext = encodeUTF32(text);
     }
     if (name === "Base 64") {
-      let encodedText = btoa(text);
-      resultsInput.value = encodedText
+      var encodedtext = btoa(text);
     }
     if (name === "ASCII") {
       function encodeASCII(text) {
         return text.split('').map(char => char.charCodeAt(0)); // Convert each character to ASCII code
       }
-      
-      // Example Usage:
-      let encodedASCII = encodeASCII(text);
-      resultsInput.value = encodedASCII // [72, 101, 108, 108, 111]
+
+      var encodedtext = encodeASCII(text);
     }
     if (name === "EXTENDED ASCII") {
       function encodeExtendedASCII(text) {
@@ -126,8 +115,7 @@ resultsBtn.addEventListener('click', function() {
       function decodeExtendedASCII(asciiArray) {
         return asciiArray.map(code => String.fromCharCode(code)).join('');
       }
-      let extendedEncoded = encodeExtendedASCII(text);
-      resultsInput.value = extendedEncoded
+      var encodedtext = encodeExtendedASCII(text);
     }
     if (name === "Binary") {
       function encodeBinary(text) {
@@ -136,10 +124,7 @@ resultsBtn.addEventListener('click', function() {
           .join(' '); // Separate binary values with a space
       }
       
-      // Example Usage:
-      let binaryEncoded = encodeBinary(text);
-      resultsInput.value = binaryEncoded // "01001000 01101001"
-      
+      var encodedtext = encodeBinary(text);
     }
     
     if (name === "Shift Jis") {
@@ -148,9 +133,7 @@ resultsBtn.addEventListener('click', function() {
         return encoder.encode(text);
       }
       
-      // Example usage
-      const encodedShiftJIS = encodeToShiftJIS(text);
-      resultsInput.value = encodedShiftJIS
+      var encodedtext = encodeToShiftJIS(text);
     }
     
     if (name === "ISO 8859-1") {
@@ -158,8 +141,7 @@ resultsBtn.addEventListener('click', function() {
       function encodeToISO88591(text) {
         return new TextEncoder("iso-8859-1").encode(text);
       }
-      let encodediso = encodeToISO88591(text);
-      resultsInput.value = encodediso
+      var encodedtext = encodeToISO88591(text);
     }
     
     if (name === "Morse Code") {
@@ -208,10 +190,10 @@ resultsBtn.addEventListener('click', function() {
       function encodeToMorse(text) {
         return text.toUpperCase().split('').map(char => morseCodeMap[char] || "").join(' ');
       }
-      resultsInput.value = (encodeToMorse(text))
+      encodedtext = (encodeToMorse(text))
     }
-    
-    return
+    resultsInput.value = encodedtext;
+    return;
   };
   var resultsInput = document.getElementById('results');
   var resultsDiv = document.getElementById('resultsDiv')

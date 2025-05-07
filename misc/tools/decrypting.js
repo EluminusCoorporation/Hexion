@@ -37,16 +37,11 @@ dropDownMenu.addEventListener('click', function() {
   var i;
   for (i = 0; i < selectItem.length; i++) {
     selectItem[i].addEventListener('click', function() {
-      function setNameOfDD(message) {
-        // Access the element by its ID
-        var itemSelect = document.getElementById('dropdown-text');
-        // Set the text content to the error message
-        itemSelect.style.color = "black"
-        itemSelect.textContent = message;
-        return
-      }
       name = this.textContent // Logs each <p> text content
-      setNameOfDD(name);
+      var itemSelect = document.getElementById('dropdown-text');
+      // Set the text content to the error message
+      itemSelect.style.color = "black"
+      itemSelect.textContent = name;
       return
     });
   }
