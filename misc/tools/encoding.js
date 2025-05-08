@@ -38,7 +38,6 @@ dropDownMenu.addEventListener('click', function() {
       return
     });
   }
-  //var body = document.getElementById('');
   if (dropDownMenu.style.maxHeight === "500px") {
     dropDownMenu.style.maxHeight = "14px";
   }

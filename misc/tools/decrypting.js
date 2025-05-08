@@ -45,7 +45,6 @@ dropDownMenu.addEventListener('click', function() {
       return
     });
   }
-  //var body = document.getElementById('');
   if (dropDownMenu.style.maxHeight === "500px") {
     dropDownMenu.style.maxHeight = "14px";
   }
@@ -163,14 +162,12 @@ resultsBtn.addEventListener('click', function() {
       let row = 0,
         col = 0;
       
-      // Step 1: Mark the positions in zigzag order
       for (let i = 0; i < text.length; i++) {
         if (row === 0 || row === rails - 1) directionDown = !directionDown;
         rail[row][col++] = "*"; // Mark the path
         row += directionDown ? 1 : -1;
       }
       
-      // Step 2: Fill in the text based on the marked positions
       let index = 0;
       for (let i = 0; i < rails; i++) {
         for (let j = 0; j < text.length; j++) {
@@ -180,7 +177,6 @@ resultsBtn.addEventListener('click', function() {
         }
       }
       
-      // Step 3: Read the text row-wise to reconstruct the original order
       row = 0, col = 0;
       directionDown = false;
       for (let i = 0; i < text.length; i++) {
@@ -206,8 +202,7 @@ resultsBtn.addEventListener('click', function() {
         return decryptedText;
       }
       
-      // Example:
-      data = (decryptVigenereCipher(text, "KEY")); // "HELLO WORLD"
+      data = (decryptVigenereCipher(text, "KEY"));
     }
     
     if (name === "Affine Cipher") {
@@ -229,8 +224,6 @@ resultsBtn.addEventListener('click', function() {
     setError('Something went wrong, did you enter a valid encrypted text?');
     return false;
   }
-  //const hasBoxCharacter = /□/.test(resultsInput.value);
-  //const hasInvalidChars = /[\u25A1�]/.test(resultsInput.value);
   const hasInvalidChars = /[\x00-\x1F]/.test(resultsInput.value);
   if (hasInvalidChars) {
     setError('Something went wrong, did you enter a valid encoded text ?');

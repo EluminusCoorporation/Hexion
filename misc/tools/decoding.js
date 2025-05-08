@@ -127,7 +127,7 @@ resultsBtn.addEventListener('click', function() {
           // Convert each binary to a character
           .join(''); // Join the characters into a string
       }
-      var decodedtext = (binaryToText(text)); // Output: "Hello"
+      var decodedtext = (binaryToText(text));
     }
     
     if (name === "Shift Jis") {
@@ -141,7 +141,7 @@ resultsBtn.addEventListener('click', function() {
     if (name === "ISO 8859-1") {
       function decodeFromISO(bytes) {
         const encodedTextiso = new Uint8Array(bytes); // Your existing encoded data
-        const finalTextiso = encodedTextiso.buffer // Outputs: ArrayBuffer
+        const finalTextiso = encodedTextiso.buffer;
         return new TextDecoder("iso-8859-1").decode(finalTextiso);
       }
       var decodedtext = (decodeFromISO(text.split(/[\s,]+/).map(Number)));
