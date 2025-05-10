@@ -6,7 +6,6 @@ html {
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  /*overflow-y: scroll;*/
   font-family: 'poppins', Sans-Serif;
   color: var(--blackthemefc);
   /* Prevents any scrolling issues */
@@ -143,7 +142,6 @@ html {
 .tooltip {
   position: absolute;
   bottom: 100%;
-  /* Positions tooltip above */
   left: 50%;
   transform: translateX(-50%);
   background: mediumspringgreen;
@@ -172,9 +170,6 @@ li:hover .tooltip {
   left: 50%;
   margin-top: 25px;
   transform: translate(-50%, -50%);
-  /*justify-self: center;
-  align-content: center;*/
-  /*margin-top: 145px;*/
   backdrop-filter: blur(5px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 2);
 }
@@ -404,9 +399,6 @@ li:hover .tooltip {
 
 #socials-special ul {
   position: absolute;
-  /*top: 50%;*/
-  /*left: 50%;*/
-  /*transform: translate( -50%, -50%);*/
   margin: 0;
   padding: 0;
   display: flex;
@@ -418,7 +410,6 @@ li:hover .tooltip {
 
 #socials-special ul li {
   list-style: none;
-  /*margin: 0 50px;*/
   margin-right: 25px;
   margin-left: 25px;
 }
@@ -770,7 +761,6 @@ footer {
   .navigate ul li i {
     margin: 0 auto;
     padding: 10px;
-    /*margin-right: 20px;*/
     cursor: pointer;
   }
   
