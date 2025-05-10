@@ -1,148 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Starter Section</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   </link>
   <link rel="website icon" href="assets/home/logo.png">
   <link rel="stylesheet" href="/stylings/home.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/0c750fa2a7.js" crossorigin="anonymous"></script>
-  <title>Home</title>
 </head>
 
 <body>
   <div class="container">
     <div id="preloader">
-      <div class="loader"></div>
+      <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3.5" stroke-miterlimit="10"></circle>
+      </svg>
     </div>
-    <div class="logo-hexion">
-      <img src="/assets/home/logo.png" class="logo" />
-      <h1 class="brandname">Hexion</h1>
+    <div class="image-wrapper fade-in-d">
+      <img src="/assets/home/logo.png" class="logoimg">
+      <h1 class="MainHeader">Hexion</h1>
+      <div class="addiv">
+        <p class="adp">Ad space here</p>
+      </div>
+      <a href="home.html"><button type="submit" class="starting">Start Coding!</button></a>
+      <p class="topp">You make it we <span class="fixtopp">fix</span> it.</p>
+      <img src="/assets/home/background.png" class="mainimg">
     </div>
-    <div class="addiv ad1">
-      <p class="adp">Ad space here</p>
-    </div>
-    <nav class="navigate">
-      <ul>
-        <li>
-          <a href="#" class="dspecial"><i class='bx bx-home-alt mspecial'></i>
-            <p>Home</p>
-          </a>
-          <div class="tooltip" id="tooltip">Home</div>
-        </li>
-        <li>
-          <a href="donation.html">
-            <i class='bx bxs-gift'></i>
-            <p>Donation</p>
-          </a>
-          <div class="tooltip" id="tooltip">Donations</div>
-        </li>
-        <li>
-          <a href="app.html">
-            <i class='bx bx-clipboard'></i>
-            <p>App</p>
-          </a>
-          <div class="tooltip" id="tooltip">App</div>
-        </li>
-        <li>
-          <a href="cources.html">
-            <i class='bx bxl-graphql special-i-3'></i>
-            <p>Cources</p>
-          </a>
-          <div class="tooltip" id="tooltip">Cources</div>
-        </li>
-      </ul>
-    </nav>
     <div class="addiv ad2">
       <p class="adp">Ad space here</p>
     </div>
-    <h2 class="homeH2"><i class='bx bx-cube-alt homeI'></i>Home (Toolboxes)</h2>
-    <div class="toolboxes-container">
-      <div class="tool1 tool">
-        <div class="top-right design">
-        </div>
-        <div class="i-h3">
-          <i class='bx bx-expand-horizontal'></i>
-          <h3>Encoding</h3>
-        </div>
-        <div class="bottom-left design">
-        </div>
-        <a href="#"><button id="button-launch" class="tool-button"><i class='bx bxs-rocket button-icon' id="button-icon">H</i>
-            <tag id="button-text">Start Here!</tag>
-          </button></a>
+    <div class="features">
+      <div class="feature1 fade-in-d" id="f1">
+        <i class='bx bx-code'></i>
+        <h2>Encoding and Decoding</h2>
+        <p>Encoding changes the text entered in the text box to the binary form that means only 1 and 0, Decoding changes the binary(encoded) text into a readable text or the original text</p>
       </div>
-      <div class="tool2 tool">
-        <div class="top-right design">
-        </div>
-        <div class="i-h3">
-          <i class='bx bx-collapse-horizontal'></i>
-          <h3>Decoding</h3>
-        </div>
-        <div class="bottom-left design">
-        </div>
-        <a href="tools/decoding.html"><button id="button-launch" class="tool-button"><i class='bx bxs-rocket button-icon' id="button-icon"></i>
-            <tag id="button-text">Start Here!</tag>
-          </button></a>
+      <div class="feature2 fade-in-d" id="f2">
+        <i class='bx bx-lock'></i>
+        <h2>Encrypting and Decrypting</h2>
+        <p>Encrypting encrypt your data to make it more secure it can be used to hide important stuff like addresses etc, Decrypting it turns the encrypted text into readable or original text</p>
       </div>
-      <div class="tool3 tool">
-        <div class="top-right design">
-        </div>
-        <div class="i-h3">
-          <i class='bx bx-shield-quarter'></i>
-          <h3>Encrypting</h3>
-        </div>
-        <div class="bottom-left design">
-        </div>
-        <a href="tools/encrypting.html"><button id="button-launch" class="tool-button"><i class='bx bxs-rocket button-icon' id="button-icon"></i>
-            <tag id="button-text">Start Here!</tag>
-          </button></a>
+      <div class="features3 fade-in-d" id="f3">
+        <i class='bx bx-error'></i>
+        <h2>Error Debugging</h2>
+        <p>Error Debugging helps you to debug or find out errors in you're code sometimes the hardest work in coding is finding the actual error that's causing it Error Debugging makes you're life easy by doing it for you</p>
       </div>
-      <div class="tool4 tool">
-        <div class="top-right design">
-        </div>
-        <div class="i-h3">
-          <i class='bx bx-lock'></i>
-          <h3>Decrypting</h3>
-        </div>
-        <div class="bottom-left design">
-        </div>
-        <a href="tools/decrypting.html"><button id="button-launch" class="tool-button"><i class='bx bxs-rocket button-icon' id="button-icon"></i>
-            <tag id="button-text">Start Here!</tag>
-          </button></a>
-      </div>
-      <div class="tool5 tool">
-        <div class="top-right design">
-        </div>
-        <div class="i-h3">
-          <i class='bx bx-error'></i>
-          <h3>Error <br/>Debugging</h3>
-        </div>
-        <div class="bottom-left design">
-        </div>
-        <a href="/tools/errordebug.html"><button id="button-launch" class="tool-button"><i class='bx bxs-rocket button-icon' id="button-icon"></i>
-            <tag id="button-text">Start Here!</tag>
-          </button></a>
-      </div>
-      <div class="tool6 tool">
-        <div class="top-right design">
-        </div>
-        <div class="i-h3">
-          <i class='bx bx-palette'></i>
-          <h3>Color Code <br/>Generator</h3>
-        </div>
-        <div class="bottom-left design">
-        </div>
-        <a href="/tools/colorcode.html"><button id="button-launch" class="tool-button"><i class='bx bxs-rocket button-icon' id="button-icon"></i>
-            <tag id="button-text">Start Here!</tag>
-          </button></a>
+      <div class="feature4 fade-in-d" id="f4">
+        <i class='bx bx-palette'></i>
+        <h2>Color Generator</h2>
+        <p>This let's you generate colors for you like if you want to get a hex color but you're editor doesn't have a color generator use this to get the hex codes</p>
       </div>
     </div>
     <div class="addiv ad3">
       <p class="adp">Ad space here</p>
     </div>
+    <section id="faq">
+      <div class="faq-heading fade-in-d">
+        <h3 class="fade-in-d">FAQS</h3>
+        <p class="fade-in-d">FAQS are here to clear you're doubts about our website/service so that you can use all of our features without any worrys if you're doubts are not cleared here you can contact cus<br /> Contact -? </p>
+      </div>
+      <div class="faq-content fade-in-d">
+        <div class="faq-box-container fade-in-d">
+          <div class="faq-box">
+            <div class="faq-box-question">
+              <h4>What features does you're website have ?</h4>
+              <span class="faq-box-icon"></span>
+            </div>
+            <div class="faq-box-answer">
+              <p>Our website has alot of features to help you make you're codding life easy let me tell you, decoding, encoding, encrypting, Decrypting, error Debugging all of these features will help you alot enjoy you're codding</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-box-container fade-in-d">
+          <div class="faq-box">
+            <div class="faq-box-question">
+              <h4>Is you're service completely free ?</h4>
+              <span class="faq-box-icon"></span>
+            </div>
+            <div class="faq-box-answer">
+              <p>Yes our service is completely free we will never force you to pay money to use our tools the only source of income for us is ads</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-box-container fade-in-d">
+          <div class="faq-box">
+            <div class="faq-box-question">
+              <h4>How to upload my code file ?</h4>
+              <span class="faq-box-icon"></span>
+            </div>
+            <div class="faq-box-answer">
+              <p>Uploading a code file is easy only work to do is just click on the upload file button and it should redirect you to you're file manage then go to you're file and click on it this should start uploading the file then you can use our tools</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-box-container fade-in-d faq-special">
+          <div class="faq-box">
+            <div class="faq-box-question">
+              <h4>How to use the Error Debugging feature ?</h4>
+              <span class="faq-box-icon"></span>
+            </div>
+            <div class="faq-box-answer">
+              <p>To use Error Debugging in you're code file you need to upload the code file then click find error button then wait for 5-10s it should display all the lines where an error occurs then you can fix all the errors easily</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <div class="footer-container">
       <footer>
         <div class="row">
@@ -154,8 +122,8 @@
             <h3><i class="bx bx-phone"></i>Contacts<div class="underline"><span></span></div>
             </h3>
             <p>You can use the following contacts to contact us for<tag class="fcol2bold">only important purposes or if it is told to you</tag> is the only time you are allowed to contact us or you can use the discord for general support.</p>
-            <h3 class="contact-ids">eluminusco@gmail.com </h3>
-            <h3 class="contact-ids">91+ 8097045648</h3>
+            <p class="email-id">Gmail -? </p>
+            <p>Number -? </p>
           </div>
           <div class="col col3">
             <h3><i class="bx bx-link"></i>Links<div class="underline"><span></span></div>
@@ -218,10 +186,9 @@
       </footer>
     </div>
   </div>
-  <!--Scripts-->
+  <script src="/misc/api/faq.js"></script>
   <script src="/misc/effects/loading.js"></script>
-  <script src="/misc/effects/launch-button.js">
-  </script>
+  <script src="/misc/effects/incoming.js"></script>
 </body>
 
 </html>

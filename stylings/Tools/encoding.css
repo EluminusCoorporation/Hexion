@@ -26,7 +26,7 @@ html {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, #00093c, #2d0b00);
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,82 +34,47 @@ html {
   transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
 }
 
-.loader {
-  position: relative;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: transparent;
-  /*background: conic-gradient(transparent, #007bff);*/
-  /*background: conic-gradient(#ff7b00, #ffbb00, #ff7b00);
-  mask: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 51%);
-  border-radius: 50%;*/
-  z-index: 8;
-  overflow: hidden;
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-/*.loader::after {
-  content: "";
+.circular {
+  animation: rotate 2s linear infinite;
+  height: 165px;
+  transform-origin: center center;
+  width: 165px;
   position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  border-radius: 50%;
-  background: conic-gradient(#007bff, transparent 70%);
-  z-index: -2;
-}*/
-
-.loader::before,
-.loader::after {
-  content: '';
-  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
-.loader::before {
-  /*top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;*/
-  border-radius: 50%;
-  background: conic-gradient(transparent 30%, #007bff);
-  inset: -50%;
-  z-index: -2;
-  animation: loading-spin 1s linear infinite;
+.path {
+  stroke: white;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round;
 }
 
-.loader::after {
-  --bordersize: 50%;
-  --inset: 0.50rem;
-  background: linear-gradient(to right, #00093c, #2d0b00);
-  inset: var(--inset);
-  border-radius:
-    /*calc(var(--bordersize) - var(--inset))*/
-    50%;
-  z-index: -1;
-  /*transition: all 0.35s linear;*/
-}
-
-@keyframes loading-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  
+@keyframes rotate {
   100% {
     transform: rotate(360deg);
   }
 }
 
-@keyframes pulse {
-  
-  0%,
-  100% {
-    box-shadow: 0 0 5px #007bff;
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
   }
   
   50% {
-    box-shadow: 0 0 20px #007bff;
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
   }
 }
 
@@ -339,7 +304,8 @@ li:hover .tooltip {
   align-self: center;
 }
 
-.ttc, .results{
+.ttc,
+.results {
   border-radius: 15px;
   width: 268px;
   display: flex;
@@ -353,7 +319,8 @@ li:hover .tooltip {
   position: relative;
 }
 
-.ttc::placeholder, .results::placeholder{
+.ttc::placeholder,
+.results::placeholder {
   color: #B4B4B4;
   font-weight: bold;
   padding-left: 5px;
@@ -393,7 +360,7 @@ li:hover .tooltip {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate( -50%, -50%);
+  transform: translate(-50%, -50%);
   width: 250px;
   resize: none;
   display: flex;
@@ -750,9 +717,12 @@ footer {
   }
 }
 
-
-
 @media (max-width: 800px) {
+  .circular {
+    width: 90px;
+    height: 90px;
+  }
+  
   .navigate ul li i {
     font-size: 30px;
     height: 30px;

@@ -66,12 +66,10 @@ html {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
   }
-  
   50% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -35px;
   }
-  
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -124px;
@@ -81,6 +79,39 @@ html {
 .fade-out {
   opacity: 0;
   visibility: hidden;
+}
+
+.addiv {
+  position: relative;
+  height: 60px;
+  width: 90%;
+  background: transparent;
+  place-content: center;
+  left: 50%;
+  margin-top: 25px;
+  transform: translate(-50%, -50%);
+  /*justify-self: center;
+  align-content: center;*/
+  /*margin-top: 145px;*/
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 2);
+}
+
+.addiv p {
+  text-align: center;
+}
+
+.ad3 {
+  z-index: 2;
+  margin-top: 0;
+  margin-bottom: 600px !important;
+}
+
+.ad4 {
+  position: relative;
+  z-index: 1;
+  margin-top: 130px;
+  margin-bottom: 0;
 }
 
 .logo-hexion {
@@ -95,11 +126,9 @@ html {
   height: 50px;
   border-radius: 50%;
   border: 3px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 3);
 }
 
 .brandname {
-  text-shadow: 0 0 10px rgba(0, 0, 0, 3);
   color: springgreen;
 }
 
@@ -163,35 +192,8 @@ li:hover .tooltip {
   visibility: visible;
 }
 
-.addiv {
-  position: relative;
-  height: 60px;
-  width: 90%;
-  background: transparent;
-  place-content: center;
-  left: 50%;
-  margin-top: 25px;
-  transform: translate(-50%, -50%);
-  /*justify-self: center;
-  align-content: center;*/
-  /*margin-top: 145px;*/
-  backdrop-filter: blur(5px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 2);
-}
-
-.addiv p {
-  text-align: center;
-}
-
-.ad4 {
-  position: relative;
-  z-index: 1;
-  margin-top: 130px;
-  margin-bottom: 0;
-}
-
 .homeH2 {
-  background: linear-gradient(to right, transparent 5%, orange, transparent 95%);
+  background: linear-gradient(to right, transparent 5%, springgreen, transparent 95%);
   color: white;
   text-align: center;
   padding: 20px;
@@ -203,197 +205,200 @@ li:hover .tooltip {
   margin: 0;
 }
 
-.dropdown-container {
-  color: #B4B4B4;
-  background: white;
-  position: relative;
-  border: 1px solid #B4B4B4;
-  padding: 15px;
-  width: 265px;
-  border-radius: 15px;
+.toolboxes-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  gap: 25px;
+}
+
+.toolboxes-container .tool {
+  width: 80%;
+  height: 150px;
+  background: whitesmoke;
+  box-shadow: 14px 14px 60px rgba(59, 42, 130, 0, 0.06);
+  border-radius: 10px;
+  align-items: center;
   display: flex;
-  justify-self: center;
-  margin: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  max-height: 14px;
+  padding: 10px;
   flex-direction: column;
-  transition: all ease 0.5s;
+  border: 1px solid springgreen;
+  position: relative;
+}
+
+.tool5,
+.tool6 {
+  margin-bottom: 125px;
+}
+
+.toolboxes-container .tool i {
+  font-size: 2em;
+}
+
+.toolboxes-container .tool h3 {
+  font-size: 2em;
+  display: flex;
+  margin: 0 !important;
+  padding-right: 25px;
+  z-index: 2;
+}
+
+.toolboxes-container .tool button {
+  border: none;
+  color: white;
+  border-radius: 25px;
+  width: 190px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.8s ease, color 0.8s ease, border 0.8s ease, transform 0.2s ease;
+  user-select: none;
+  margin-top: 30px;
+  font-size: 1em;
   overflow: hidden;
 }
 
-.head-i {
-  display: flex;
-  position: relative;
+.tool1 {
+  color: springgreen;
+  box-shadow: 0px 0px 10px 3px springgreen;
 }
 
-.dropdown-text {
-  margin: 0 !important;
-  display: flex;
-  align-self: center;
-  font-weight: bold !important;
-  font-size: 0.8em !important;
+.tool1 button {
+  background-color: springgreen;
 }
 
-.dd-i {
-  font-size: 35px;
-  font-weight: none !important;
-  display: block;
-  position: absolute;
-  align-self: center;
-  padding-right: 5px;
-  right: 0;
-  transition: all 0.3s;
+.tool1 button:hover {
+  transform: scale(0.8);
+  color: springgreen;
 }
 
-.dd-i.active {
-  transform: rotate(180deg);
+.tool2 {
+  box-shadow: 0px 0px 10px 3px lawngreen;
+  color: lawngreen;
 }
 
-.dropdown-content {
-  margin-top: 15px;
+.tool2 button {
+  background: lawngreen;
 }
 
-.dropdown-content p {
-  color: black;
-  cursor: pointer;
-  padding: 10px;
-  margin: 3px;
-  font-size: 0.8em;
-  font-weight: none !important;
-  position: relative;
-  z-index: 50;
+.tool2 button:hover {
+  transform: scale(0.8);
+  color: lawngreen;
 }
 
-.dropdown-content.active {
-  display: unset;
+.tool3 {
+  box-shadow: 0px 0px 10px 3px orange;
+  color: orange;
 }
 
-.select-item:hover {
-  background-color: grey;
+.tool3 button {
+  background: orange;
 }
 
-#errorDiv {
-  background-color: red;
-  height: 60px;
-  padding: 20px;
-  width: 280px;
-  border-radius: 15px;
-  display: none;
-  flex-direction: row;
-  justify-self: center;
-  color: white;
+.tool3 button:hover {
+  transform: scale(0.8);
+  color: orange;
 }
 
-.linefordiv {
-  display: flex;
-  align-self: center;
-  height: 80%;
-  margin-right: 10px;
-  width: 1px;
-  background: linear-gradient(to right, transparent, white, transparent)
+.tool4 {
+  box-shadow: 0px 0px 10px 3px orangered;
+  color: orangered;
 }
 
-#errorDiv p {
-  text-align: center;
+.tool4 button {
+  background: orangered;
 }
 
-#errorDiv i {
-  font-size: 3em;
-  margin: 15px 10px 15px 5px;
-  align-self: center;
+.tool4 button:hover {
+  transform: scale(0.8);
+  color: orangered;
 }
 
-.ttc,
-.results {
-  border-radius: 15px;
-  width: 268px;
-  display: flex;
-  justify-self: center;
-  padding: 15px;
-  border: 1px solid #B4B4B4;
-  color: black;
-  background-color: white;
-  margin: 15px;
-  outline: none;
-  position: relative;
+.tool5 {
+  box-shadow: 0px 0px 10px 3px indianred;
+  color: indianred;
 }
 
-.ttc::placeholder,
-.results::placeholder {
-  color: #B4B4B4;
-  font-weight: bold;
-  padding-left: 5px;
+.tool5 button {
+  margin-top: 5px !important;
+  margin-left: 15px !important;
+  background: indianred;
 }
 
-.results-div i {
-  position: absolute;
-  display: flex;
-  top: 10px;
-  color: black;
-  right: 10px;
+.tool5 button:hover {
+  transform: scale(0.8);
+  color: indianred;
+}
+
+.tool6 {
+  box-shadow: 0px 0px 10px 3px purple;
+  color: purple;
+}
+
+.tool6 button {
+  margin-top: 5px !important;
+  margin-left: 15px !important;
+  background: purple;
+}
+
+.tool6 button:hover {
+  transform: scale(0.8);
+  color: purple;
+}
+
+.toolboxes-container .tool button i {
   font-size: 1em;
-  z-index: 600;
-  cursor: pointer;
-  padding: 5px;
-  border-radius: 50%;
-  user-select: none;
+  margin-right: 8px;
+  transition: transform 0.5s ease;
+}
+
+.toolboxes-container .tool button:hover {
+  background-color: white;
+  border: 1px solid springgreen;
+}
+
+.toolboxes-container .tool button:hover .button-icon {
+  transform: rotate(-45deg);
+}
+
+#button-icon {
   transition: all 0.5s;
 }
 
-.results-div i:hover {
-  background: #A5A5A5;
-}
-
-.flexbox-results {
+#button-text.active {
   display: none;
-  justify-content: center;
 }
 
-.results-div {
-  position: relative;
-  display: inline-block;
-  justify-content: center;
+#button-icon.active {
+  font-size: 1.5em;
 }
 
-.results {
+.toolboxes-container .tool .bottom-left {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 250px;
-  resize: none;
+  bottom: 0;
+  left: 0;
+  height: 67px;
+  width: 67px;
+  background-color: #E9E9E9;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 50%;
+}
+
+.toolboxes-container .tool .top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 58.4px;
+  width: 58.4px;
+  background-color: #E9E9E9;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 50%;
+}
+
+.i-h3 {
   display: flex;
-  position: relative;
-  justify-self: center;
-  min-height: 200px;
-  margin: 0 auto;
-  padding: 25px;
-  box-shadow: 0px 0px 10px 3px orange;
-}
-
-.results-btn-div {
-  display: flex;
-  justify-content: center;
-}
-
-.results-button {
-  width: 150px;
-  height: 50px;
-  border-radius: 25px;
-  border: none;
-  background-color: orange;
-  color: white;
-  font-size: 1em;
-  font-weight: bold;
-  outline: none;
-  margin: 15px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.results-button:hover {
-  transform: scale(0.9);
+  align-items: center;
+  gap: 10px;
+  background-color: transparent !important;
 }
 
 .socials-special {
@@ -516,10 +521,11 @@ li:hover .tooltip {
 
 footer {
   width: 100%;
-  position: relative;
+  position: absolute;
   bottom: 0;
   background: linear-gradient(to right, #00093c, #2d0b00);
   padding: 100px 0 30px;
+  margin-top: 1000px;
   border-top-left-radius: 125px;
   font-size: 13px;
   color: #fff;
@@ -561,6 +567,7 @@ footer {
 
 .footer-container {
   position: relative;
+  margin-top: 500px;
 }
 
 .col h3 {
@@ -678,7 +685,7 @@ footer {
   0% {
     left: -20px;
   }
-  
+
   100% {
     left: 100%;
   }
@@ -696,21 +703,21 @@ footer {
     border-radius: 25px;
     transition: 0.2s ease-in-out;
   }
-  
+
   .navigate ul li a i {
     font-size: 30px;
     display: flex;
     align-items: center;
     margin-right: 10px;
   }
-  
+
   .navigate ul li a:hover {
     color: white;
     background: transparent;
     border: 1px solid white;
     transform: translateY(-3px);
   }
-  
+
   .navigate ul li .dspecial {
     background: white;
     color: springgreen;
@@ -722,7 +729,6 @@ footer {
     width: 90px;
     height: 90px;
   }
-  
   .navigate ul li i {
     font-size: 30px;
     height: 30px;
@@ -732,49 +738,63 @@ footer {
     transition: 0.2s ease-in-out;
     padding: 10px;
   }
-  
+
   .navigate ul li i:hover {
     color: white;
     background: transparent;
     border: 1px solid white;
     transform: translateY(-3px);
   }
-  
+
   .navigate ul li .mspecial {
     background: white;
     color: springgreen;
   }
-  
+
   .footer-container hr {
     margin: 35px auto;
   }
-  
+
   footer {
     bottom: unset;
     margin-top: 0;
   }
-  
+
   .footer-container {
     margin-top: 0;
   }
-  
+
   .col {
     flex-basis: 100%;
   }
-  
+
   .col:nth-child(2),
   .col:nth-child(3) {
     flex-basis: 100%;
   }
-  
+
   .navigate ul li i {
     margin: 0 auto;
     padding: 10px;
     /*margin-right: 20px;*/
     cursor: pointer;
   }
-  
+
   .navigate ul li p {
     display: none;
+  }
+
+  .toolboxes-container {
+    grid-template-columns: 1fr;
+  }
+
+  .tool5,
+  .tool6 {
+    margin-bottom: 10px !important;
+  }
+
+  .ad3 {
+    margin-top: 40px !important;
+    margin-bottom: 20px !important;
   }
 }
