@@ -1,66 +1,12 @@
-var dropDownMenu = document.getElementById("dropDownMenu");
-var dropDownCon = document.getElementById('dropDownCon');
-var dropDownIcon = document.getElementById('ddIcon');
-var selectItem = document.getElementsByClassName('select-item');
+import { setError, errorLoggerBEFORE } from '../api/errorLogger.js';
+import {} from '../api/sliderbtn.js'
+import {} from '../api/copy.js'
 var resultsBtn = document.getElementById('results-btn');
-var textEncode = document.getElementById('ttc')
 
-let errorTimeout;
-
-function setError(message) {
-  var errorText = document.getElementById('errorText');
-  var errorDiv = document.getElementById('errorDiv');
-  errorDiv.style.display = "flex";
-  errorText.textContent = message;
-  if (errorText.textContent === "") {
-    errorDiv.style.display = "none"
-  }
-  clearTimeout(errorTimeout);
-  
-  // Start a new timeout
-  errorTimeout = setTimeout(() => {
-    errorDiv.style.display = 'none';
-    errorText.textContent = '';
-  }, 7000);
-}
-
-dropDownMenu.addEventListener('click', function() {
-  dropDownContent.classList.toggle("active");
-  dropDownIcon.classList.toggle("active");
-  var i;
-  for (i = 0; i < selectItem.length; i++) {
-    selectItem[i].addEventListener('click', function() {
-      name = this.textContent // Logs each <p> text content
-      var itemSelect = document.getElementById('dropdown-text');
-      // Set the text content to the error message
-      itemSelect.style.color = "black"
-      itemSelect.textContent = name;
-      return
-    });
-  }
-  if (dropDownMenu.style.maxHeight === "500px") {
-    dropDownMenu.style.maxHeight = "14px";
-  }
-  else {
-    dropDownMenu.style.maxHeight = "500px"
-  }
-});
 resultsBtn.addEventListener('click', function() {
-  function errorLogger(name, text) {
-    if (name === "") {
-      setError('Please select a encoding language')
-      return false;
-    }
-    if (text === "") {
-      setError('Text cannot be empty!');
-      return false;
-    }
-    setError('')
-    return true;
-  }
   const text = document.getElementById('ttc').value;
   var title = document.getElementById('dropdown-text');
-  if (!errorLogger(name, text)) {
+  if (!errorLoggerBEFORE(name, text)) {
     return
   };
   
@@ -175,32 +121,4 @@ resultsBtn.addEventListener('click', function() {
   var resultsDiv = document.getElementById('resultsDiv')
   resultsDiv.style.display = "flex";
   encryptingText(name, text);
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const togglecopy = document.getElementById('tcopy');
-  var resultsInput = document.getElementById('results');
-  
-  togglecopy.addEventListener('click', function() {
-    const copyText = resultsInput.value; // Get the latest value on click
-    
-    // Copy text to clipboard with error handling
-    navigator.clipboard.writeText(copyText).then(() => {
-      console.log("Copied:", copyText);
-      
-      // Toggle the icon
-      this.classList.toggle('bx-copy');
-      this.classList.toggle('bx-check');
-      
-      // Store reference to button for setTimeout
-      const btn = this;
-      setTimeout(() => {
-        btn.classList.remove('bx-check');
-        btn.classList.add('bx-copy');
-      }, 2000);
-    }).catch(err => {
-      console.error("Copy failed:", err);
-      setError("Failed to copy text!"); // Show an alert if copy fails
-    });
-  });
 });

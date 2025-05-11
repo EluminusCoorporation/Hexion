@@ -548,12 +548,12 @@ li:hover .tooltip {
 }
 
 .results-div {
-  width: 465px;
+  width: 965px;
   position: relative;
   display: inline-block;
   justify-content: center;
-  background-color: #26262C;
-  padding: 80px 25px 25px 25px;
+  background-color: #1d1e22;
+  padding: 50px 25px 25px 25px;
   border-radius: 15px 15px 0 0;
 }
 
@@ -588,51 +588,38 @@ li:hover .tooltip {
   background-color: green;
 }
 
-.flexbox-lineNums {
-  position: relative;
-  font-family: monospace;
-  background-color: transparent;
-  overflow: hidden;
-}
-
-.line-numbers {
-  position: absolute;
-  top: -25px;
-  left: 9.5px;
-  display: inline-block;
-  white-space: pre-wrap;
-  font-weight: bold;
-  z-index: 2;
-  margin-top: 21px;
-  padding: 5px;
-  text-align: left;
-  user-select: none;
-  color: #888;
-  line-height: 1.2;
-  white-space: pre;
-  height: 100%;
-  overflow-y: hidden;
-}
-
-.results {
-  width: 263px;
+.textarea-div {
+  display: flex;
+  background: #1d1e22;
+  flex-grow: 1;
   height: 314px;
-  line-height: 1.2;
+}
+
+.textarea-div>textarea {
+  border: none;
+  margin: 0;
+  background: #1d1e22;
   resize: none;
-  color: white;
+  outline: none;
+  font-size: 13px;
+}
+
+.codePH {
+  flex-grow: 1;
+  color: #eee;
+  text-wrap: nowrap;
+  resize: none;
   background-color: #26262C;
   display: flex;
-  flex: 1;
   position: relative;
   justify-self: center;
-  margin: 0 auto;
-  padding: 0 5px 0 25px;
-  border: unset;
 }
 
-.line-numbers,
-.results {
-  font-size: 14px;
+.numbersPH {
+  width: 20px;
+  overflow: hidden;
+  color: #414141;
+  
 }
 
 .error-scroll {

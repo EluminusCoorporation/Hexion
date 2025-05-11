@@ -1,71 +1,13 @@
-var dropDownMenu = document.getElementById("dropDownMenu");
-var dropDownCon = document.getElementById('dropDownCon');
-var dropDownIcon = document.getElementById('ddIcon');
-var selectItem = document.getElementsByClassName('select-item');
+import { setError, errorLoggerBEFORE, errorLoggerAFTER } from '../api/errorLogger.js';
+import {} from '../api/copy.js'
+import {} from '../api/sliderbtn.js'
 var resultsBtn = document.getElementById('results-btn');
-var textEncode = document.getElementById('ttc')
 
-let errorTimeout;
-
-function setError(message) {
-  var errorText = document.getElementById('errorText');
-  var errorDiv = document.getElementById('errorDiv');
-  var resultsDiv2 = document.getElementById('resultsDiv')
-  errorDiv.style.display = "flex";
-  errorText.textContent = message;
-  if (errorText.innerText.trim() !== '') {
-    resultsDiv2.style.display = "none"
-  } else {
-    errorDiv.style.display = "none"
-    errorText.textContent = ""
-  }
-  clearTimeout(errorTimeout);
-  
-  // Start a new timeout
-  errorTimeout = setTimeout(() => {
-    errorDiv.style.display = 'none';
-    errorText.textContent = '';
-  }, 7000);
-}
-
-dropDownMenu.addEventListener('click', function() {
-  dropDownContent.classList.toggle("active");
-  dropDownIcon.classList.toggle("active");
-  var i;
-  for (i = 0; i < selectItem.length; i++) {
-    selectItem[i].addEventListener('click', function() {
-      name = this.textContent // Logs each <p> text content
-      var itemSelect = document.getElementById('dropdown-text');
-      // Set the text content to the error message
-      itemSelect.style.color = "black"
-      itemSelect.textContent = name;
-      return
-    });
-  }
-  if (dropDownMenu.style.maxHeight === "500px") {
-    dropDownMenu.style.maxHeight = "14px";
-  }
-  else {
-    dropDownMenu.style.maxHeight = "500px"
-  }
-});
 resultsBtn.addEventListener('click', function() {
-  function errorLogger(name, text) {
-    if (name === "") {
-      setError('Please select a decoding language')
-      return false;
-    }
-    if (text === "") {
-      setError('Text cannot be empty!');
-      return false;
-    }
-    setError('')
-    return true;
-  }
   const text = document.getElementById('ttc').value;
   var title = document.getElementById('dropdown-text');
-  if (!errorLogger(name, text)) {
-    return
+  if (!errorLoggerBEFORE(name, text)) {
+    return false;
   };
   
   function decodingText(name, text) {
@@ -200,41 +142,13 @@ resultsBtn.addEventListener('click', function() {
   };
   var resultsInput = document.getElementById('results');
   var resultsDiv = document.getElementById('resultsDiv')
-  decodingText(name, text);
-  if (resultsInput.value.includes("�")) {
-    setError('Something went wrong, did you enter a valid encoded text?');
-    return false;
-  }
-  const hasInvalidChars = /[\x00-\x1F]/.test(resultsInput.value);
-  if (hasInvalidChars) {
-    setError('Something went wrong, did you enter a valid encoded text ?');
-    return false;
-  }
-  resultsDiv.style.display = "flex";
-});
-document.addEventListener('DOMContentLoaded', function() {
-  const togglecopy = document.getElementById('tcopy');
-  var resultsInput = document.getElementById('results');
   
-  togglecopy.addEventListener('click', function() {
-    const copyText = resultsInput.value; // Get the latest value on click
-    
-    // Copy text to clipboard with error handling
-    navigator.clipboard.writeText(copyText).then(() => {
-      
-      // Toggle the icon
-      this.classList.toggle('bx-copy');
-      this.classList.toggle('bx-check');
-      
-      // Store reference to button for setTimeout
-      const btn = this;
-      setTimeout(() => {
-        btn.classList.remove('bx-check');
-        btn.classList.add('bx-copy');
-      }, 2000);
-    }).catch(err => {
-      console.error("Copy failed:", err);
-      setError("Failed to copy text!"); // Show an alert if copy fails
-    });
-  });
-});
+  decodingText(name, text);
+  
+  var decodedtext = document.getElementById('results').value;
+  console.log(decodedtext)
+  if (!errorLoggerAFTER(decodedtext)) {
+    return false;
+  };
+  resultsDiv.style.display = "flex";
+})

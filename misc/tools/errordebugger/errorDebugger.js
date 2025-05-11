@@ -1,29 +1,7 @@
-var dropDownMenu = document.getElementById("dropDownMenu");
-var dropDownCon = document.getElementById('dropDownCon');
-var dropDownIcon = document.getElementById('ddIcon');
-var selectItem = document.getElementsByClassName('select-item');
+import { setError, errorLoggerBEFORE } from '../../api/errorLogger.js';
+import {} from '../../api/copy.js'
+import {} from '../../api/sliderbtn.js'
 var resultsBtn = document.getElementById('results-btn');
-var textEncode = document.getElementById('ttc')
-
-let errorTimeout;
-
-function setError(message) {
-  var errorText = document.getElementById('errorText');
-  var errorDiv = document.getElementById('errorDiv');
-  errorDiv.style.display = "flex";
-  errorText.textContent = message;
-  if (errorText.textContent === "") {
-    errorDiv.style.display = "none"
-  }
-  clearTimeout(errorTimeout);
-  
-  // Start a new timeout
-  errorTimeout = setTimeout(() => {
-    errorDiv.style.display = 'none';
-    errorText.textContent = '';
-  }, 7000);
-}
-
 const dBtn1 = document.getElementById('dbtn1');
 const dBtn2 = document.getElementById('dbtn2');
 const buttons = document.querySelectorAll('.dualbtn');
@@ -61,70 +39,33 @@ uploadbtn.addEventListener('click', function() {
   uploadMenu.classList.add('active')
 })
 
-const textarea = document.getElementById('results');
-const lineNumbers = document.getElementById('lineNums');
-
-function updateLineNumbers() {
-  const lines = textarea.value.split('\n').length;
-  if (lines === 16) {
-    lineNumbers.style.transform = "unset"
+let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));
+for (let i = 0; i < textareasHere.length; i++) {
+  if (i != 0 && i % 2 == 1) {
+    textareasHere[i].addEventListener("scroll", function(e) {
+      textareasHere[i - 1].scrollTop = textareasHere[i].scrollTop;
+      textareasHere[i - 1].scrollLeft = textareasHere[i].scrollLeft;
+    });
+    textareasHere[i].addEventListener("input", function(e) {
+      textareasHere[i - 1].textContent = "";
+      const numberOfLinesHere = Math.max(textareasHere[i].value.split("\n").length, 1);
+      for (let h = 0; h < numberOfLinesHere; h++) {
+        textareasHere[i - 1].textContent += (h + 1).toString() + "\n";
+      }
+      textareasHere[i - 1].setAttribute("cols", numberOfLinesHere.toString().length.toString());
+    });
+    const numberOfLinesHereZ = Math.max(textareasHere[i].value.split("\n").length, 1);
+    for (let h = 0; h < numberOfLinesHereZ; h++) {
+      textareasHere[i - 1].textContent += (h + 1).toString() + "\n";
+    }
+    textareasHere[i - 1].setAttribute("cols", numberOfLinesHereZ.toString().length.toString());
   }
-  if (lines === 17) {
-    lineNumbers.style.transform = "translateY(-4px)";
-  };
-  if (lines === 18) {
-    lineNumbers.style.transform = "translateY(-20px)"
-  };
-  if (lines === 19) {
-    lineNumbers.style.transform = "translateY(-33px)"
-  }
-  lineNumbers.textContent = Array.from({ length: lines }, (_, i) => i + 1).join('\n');
-  textarea.addEventListener('scroll', () => {
-    lineNumbers.scrollTop = textarea.scrollTop; // Sync line numbers' scroll position with textarea
-  });
 }
 
-textarea.addEventListener('input', updateLineNumbers);
-// Initialize
-updateLineNumbers();
-
-dropDownMenu.addEventListener('click', function() {
-  dropDownContent.classList.toggle("active");
-  dropDownIcon.classList.toggle("active");
-  var i;
-  for (i = 0; i < selectItem.length; i++) {
-    selectItem[i].addEventListener('click', function() {
-      name = this.innerHTML // Logs each <p> text content
-      var itemSelect = document.getElementById('dropdown-text');
-      const itemSpecial = document.getElementById('textWrapper')
-      // Set the text content to the error message
-      itemSelect.style.color = "black"
-      itemSelect.innerHTML = name;
-      itemSpecial.style.transform = "translate( 0, -14px)"
-      return
-    });
-  }
-  //var body = document.getElementById('');
-  if (dropDownMenu.style.maxHeight === "500px") {
-    dropDownMenu.style.maxHeight = "14px";
-  }
-  else {
-    dropDownMenu.style.maxHeight = "500px"
-  }
-});
 resultsBtn.addEventListener('click', function() {
-  function errorLogger(name, text) {
-    if (name === "") {
-      setError('Please select a encoding language')
-      return false;
-    }
-    if (text === "") {
-      setError('Text cannot be empty!');
-      return false;
-    }
-    setError('')
-    return true;
-  }
+  if (!errorLoggerBEFORE(name, text)) {
+    return
+  };
   const text = document.getElementById('ttc').value;
   var title = document.getElementById('dropdown-text');
   if (!errorLogger(name, text)) {
@@ -280,33 +221,6 @@ resultsBtn.addEventListener('click', function() {
   encodingText(name, text);
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  const togglecopy = document.getElementById('tcopy');
-  var resultsInput = document.getElementById('results');
-  
-  togglecopy.addEventListener('click', function() {
-    const copyText = resultsInput.value; // Get the latest value on click
-    
-    // Copy text to clipboard with error handling
-    navigator.clipboard.writeText(copyText).then(() => {
-      console.log("Copied:", copyText);
-      
-      // Toggle the icon
-      this.classList.toggle('bx-copy');
-      this.classList.toggle('bx-check');
-      
-      // Store reference to button for setTimeout
-      const btn = this;
-      setTimeout(() => {
-        btn.classList.remove('bx-check');
-        btn.classList.add('bx-copy');
-      }, 2000);
-    }).catch(err => {
-      console.error("Copy failed:", err);
-      setError("Failed to copy text!"); // Show an alert if copy fails
-    });
-  });
-});
 const closeBtn = document.getElementById('close-btn');
 closeBtn.addEventListener('click', () => {
   uploadContainer.classList.remove('active');
