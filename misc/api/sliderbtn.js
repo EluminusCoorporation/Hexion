@@ -6,12 +6,20 @@ var selectItem = document.getElementsByClassName('select-item');
 dropDownMenu.addEventListener('click', function() {
   dropDownContent.classList.toggle("active");
   dropDownIcon.classList.toggle("active");
+  let previousSelected = null
   var i;
   for (i = 0; i < selectItem.length; i++) {
     selectItem[i].addEventListener('click', function() {
-      name = this.innerHTML // Logs each <p> text content
       var itemSelect = document.getElementById('dropdown-text');
-      const itemSpecial = document.getElementById('textWrapper')
+      const itemSpecial = document.getElementById('textWrapper');
+      const span = document.getElementById('spanR');
+      name = this.innerHTML
+      if (span) {
+        let removeSpanTC = this.cloneNode(true);
+        removeSpanTC.querySelector('#spanR')?.remove();
+        name = removeSpanTC.textContent.trim()
+      }
+      if (name === itemSelect.textContent) return;
       if (itemSpecial) {
         // Set the text content to the error message
         itemSelect.style.color = "black"
@@ -23,6 +31,11 @@ dropDownMenu.addEventListener('click', function() {
         itemSelect.style.color = "black"
         itemSelect.textContent = name;
       }
+      if (previousSelected) {
+        previousSelected.classList.remove('selected')
+      }
+      this.classList.add('selected')
+      previousSelected = this
       return;
     });
   }

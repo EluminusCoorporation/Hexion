@@ -7,7 +7,7 @@ resultsBtn.addEventListener('click', function() {
   const text = document.getElementById('ttc').value;
   var title = document.getElementById('dropdown-text');
   if (!errorLoggerBEFORE(name, text)) {
-    return
+    return;
   };
   
   function encodingText(name, text) {
