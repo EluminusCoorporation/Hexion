@@ -129,32 +129,36 @@ html {
 }
 
 .navigate {
-  transform: translate(-50%, -50%);
-  left: 50%;
   position: relative;
+  justify-self: center;
+  align-self: center;
   background: linear-gradient(to right, #53FF9B, #12FF75);
+  height: 70px;
   width: 80%;
-  border-radius: 15px;
+  margin-bottom: 55px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
   z-index: 2;
   flex-wrap: wrap;
 }
 
 .navigate ul {
+  height: 100%;
+  width: 100%;
   list-style: none;
   display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
+  margin: 0;
+  gap: 10px;
 }
 
 .navigate ul li {
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
   cursor: pointer;
   position: relative;
 }
@@ -180,9 +184,11 @@ html {
   opacity: 0;
   visibility: visible;
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  z-index: 100;
 }
 
 li:hover .tooltip {
+  display: unset;
   opacity: 1;
   visibility: visible;
 }
@@ -683,11 +689,13 @@ footer {
 }
 
 @media (min-width: 800px) {
+  .navigate {
+    height: 100px;
+  }
   .navigate ul li a {
     display: flex;
     flex-direction: row;
     text-decoration: none;
-    background-color: springgreen;
     color: white;
     padding: 10px;
     margin-right: 10px;
@@ -723,7 +731,6 @@ footer {
   .navigate ul li i {
     font-size: 30px;
     height: 30px;
-    margin-right: 10px !important;
     border-radius: 50%;
     color: white;
     transition: 0.2s ease-in-out;

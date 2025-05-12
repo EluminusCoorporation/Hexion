@@ -704,11 +704,14 @@ footer {
 }
 
 @media (min-width: 800px) {
+  .navigate {
+    height: 100px;
+  }
+  
   .navigate ul li a {
     display: flex;
     flex-direction: row;
     text-decoration: none;
-    background-color: springgreen;
     color: white;
     padding: 10px;
     margin-right: 10px;
@@ -747,7 +750,6 @@ footer {
   .navigate ul li i {
     font-size: 30px;
     height: 30px;
-    margin-right: 10px !important;
     border-radius: 50%;
     color: white;
     transition: 0.2s ease-in-out;

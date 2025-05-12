@@ -25,7 +25,6 @@ dropDownMenu.addEventListener('click', function() {
         itemSelect.style.color = "black"
         itemSelect.innerHTML = name;
         itemSpecial.style.transform = "translate( 0, -14px)"
-        return;
       }
       else {
         itemSelect.style.color = "black"

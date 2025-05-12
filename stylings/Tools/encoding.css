@@ -708,11 +708,14 @@ footer {
 }
 
 @media (min-width: 800px) {
+  .navigate {
+    height: 100px;
+  }
+  
   .navigate ul li a {
     display: flex;
     flex-direction: row;
     text-decoration: none;
-    background-color: springgreen;
     color: white;
     padding: 10px;
     border-radius: 25px;
