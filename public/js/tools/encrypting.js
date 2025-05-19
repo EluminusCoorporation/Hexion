@@ -13,7 +13,7 @@ resultsBtn.addEventListener('click', function() {
   
   function encryptingText(name, text, key = 3) {
     let data = ""
-    if (name === "Base64 (recommended)") {
+    if (name === "Base64") {
       data = btoa(text);
     };
     

@@ -98,8 +98,8 @@ html {
 }
 
 .brandname {
-  text-shadow: 0 0 10px rgba(0, 0, 0, 3);
   color: springgreen;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 3);
 }
 
 .navigate {
@@ -157,8 +157,8 @@ html {
   white-space: nowrap;
   opacity: 0;
   visibility: visible;
-  display: none;
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  z-index: 100;
 }
 
 li:hover .tooltip {
@@ -192,7 +192,7 @@ li:hover .tooltip {
 }
 
 .homeH2 {
-  background: linear-gradient(to right, transparent 5%, springgreen, transparent 95%);
+  background: linear-gradient(to right, transparent 5%, orangered, transparent 95%);
   color: white;
   text-align: center;
   padding: 20px;
@@ -285,17 +285,6 @@ li:hover .tooltip {
   color: white;
 }
 
-.recommended {
-  height: 15px;
-  padding: 2px 5px 2px 5px;
-  align-self: center;
-  font-size: 0.7em;
-  background: springgreen;
-  color: white;
-  border-radius: 7px;
-  border: 2px solid white;
-}
-
 #errorDiv {
   background-color: red;
   height: 80px;
@@ -306,23 +295,26 @@ li:hover .tooltip {
   flex-direction: row;
   justify-self: center;
   color: white;
+  align-items: center;
+  overflow: hidden;
 }
 
 .linefordiv {
-  display: flex;
   align-self: center;
-  height: 80%;
+  height: 100%;
   margin-right: 10px;
   width: 1px;
-  background: linear-gradient(to right, transparent, white, transparent)
+  background: #DCDCDC;
 }
 
 #errorDiv p {
-  height: 100%;
-  width: 100%;
-  overflow-y: scroll;
-  align-self: center;
+  max-height: 80%;
+  white-space: wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
   text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #errorDiv i {
@@ -396,7 +388,7 @@ li:hover .tooltip {
   min-height: 200px;
   margin: 0 auto;
   padding: 25px;
-  box-shadow: 0px 0px 10px 3px springgreen;
+  box-shadow: 0px 0px 10px 3px orangered;
 }
 
 .results-btn-div {
@@ -409,7 +401,7 @@ li:hover .tooltip {
   height: 50px;
   border-radius: 25px;
   border: none;
-  background-color: springgreen;
+  background-color: orangered;
   color: white;
   font-size: 1em;
   font-weight: bold;
@@ -708,16 +700,13 @@ footer {
 }
 
 @media (min-width: 800px) {
-  .navigate {
-    height: 100px;
-  }
-  
   .navigate ul li a {
     display: flex;
     flex-direction: row;
     text-decoration: none;
     color: white;
     padding: 10px;
+    margin-right: 10px;
     border-radius: 25px;
     transition: 0.2s ease-in-out;
   }

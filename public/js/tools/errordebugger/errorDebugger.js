@@ -1,6 +1,7 @@
-import { setError, errorLoggerBEFORE } from '../../api/errorLogger.js';
+import { setError, errorLoggerBEFORE, setErrorFile, fileLogger } from '../../api/errorLogger.js';
 import {} from '../../api/copy.js'
-import {} from '../../api/sliderbtn.js'
+import { formatFileSize } from '../../api/fileSizeFormat.js'
+import { langExtension } from '../../api/sliderbtn.js'
 var resultsBtn = document.getElementById('results-btn');
 const dBtn1 = document.getElementById('dbtn1');
 const dBtn2 = document.getElementById('dbtn2');
@@ -34,10 +35,52 @@ const container = document.getElementById('container')
 const uploadMenu = document.getElementById('uploadMenu')
 
 uploadbtn.addEventListener('click', function() {
+  if (!langExtension) {
+    setError('Select a language before uploading.')
+    return false;
+  };
+  setError('')
   uploadContainer.classList.add('active')
   document.body.classList.add('no-scroll');
   uploadMenu.classList.add('active')
 })
+
+const uploadZone = document.getElementById('uploadZone');
+const fileInput = document.getElementById('file');
+// Click to open file dialog
+uploadZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  uploadZone.classList.add('drag-over');
+});
+
+uploadZone.addEventListener('dragleave', () => {
+  uploadZone.classList.remove('drag-over');
+});
+
+uploadZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  uploadZone.classList.remove('drag-over');
+  const files = e.dataTransfer.files;
+  const file = files[0]
+  if (!fileLogger(files)) return false;
+});
+
+fileInput.addEventListener('change', () => {
+  if (!fileLogger(fileInput.files)) return false;
+  const file = fileInput.files[0]
+  var fileNameLabel = document.getElementById('fileName');
+  var fileIcon = document.getElementById('fileIcon');
+  var uploadInfo = document.getElementById('uploadInfo')
+  var uploadBarContainer = document.getElementById('uploadBarContainer');
+  var uploadBar = document.getElementById('uploadingBar');
+  const fileSize = formatFileSize(file.size)
+  
+  fileNameLabel.textContent = file.name;
+  fileIcon.classList.remove('bx-cloud-upload');
+  fileIcon.classList.add('bx-file-code');
+  uploadInfo.textContent = `0 / ${fileSize}`;
+  uploadBarContainer.style.display = "flex";
+});
 
 let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));
 for (let i = 0; i < textareasHere.length; i++) {
@@ -73,10 +116,8 @@ resultsBtn.addEventListener('click', function() {
   };
   
   function encodingText(name, text) {
-    if (name === "UTF-8 (recommended)") {
-      let encoder = new TextEncoder();
-      let data = encoder.encode(text);
-      resultsInput.value = data
+    if (name === "Python") {
+      
     };
     if (name === "UTF-16") {
       function encodeUTF16(str) {

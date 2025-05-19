@@ -11,7 +11,7 @@ resultsBtn.addEventListener('click', function() {
   };
   
   function encodingText(name, text) {
-    if (name === "UTF-8 (recommended)") {
+    if (name === "UTF-8") {
       let encoder = new TextEncoder();
       var encodedtext = encoder.encode(text);
     };

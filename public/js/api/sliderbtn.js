@@ -2,6 +2,7 @@ var dropDownMenu = document.getElementById("dropDownMenu");
 var dropDownCon = document.getElementById('dropDownCon');
 var dropDownIcon = document.getElementById('ddIcon');
 var selectItem = document.getElementsByClassName('select-item');
+export let langExtension;
 
 dropDownMenu.addEventListener('click', function() {
   dropDownContent.classList.toggle("active");
@@ -13,7 +14,7 @@ dropDownMenu.addEventListener('click', function() {
       var itemSelect = document.getElementById('dropdown-text');
       const itemSpecial = document.getElementById('textWrapper');
       const span = document.getElementById('spanR');
-      name = this.innerHTML
+      name = this.innerHTML;
       if (span) {
         let removeSpanTC = this.cloneNode(true);
         removeSpanTC.querySelector('#spanR')?.remove();
@@ -21,10 +22,23 @@ dropDownMenu.addEventListener('click', function() {
       }
       if (name === itemSelect.textContent) return;
       if (itemSpecial) {
-        // Set the text content to the error message
+        const langName = this.querySelector('p')?.textContent;
+        const extension = langName;
         itemSelect.style.color = "black"
         itemSelect.innerHTML = name;
         itemSpecial.style.transform = "translate( 0, -14px)"
+        if (extension === "Python") {
+          langExtension = "py"
+        }
+        if (extension === "Java Script") {
+          langExtension = "js"
+        }
+        if (extension === "Html") {
+          langExtension = "html"
+        }
+        if (extension === "css") {
+          langExtension = "css"
+        }
       }
       else {
         itemSelect.style.color = "black"

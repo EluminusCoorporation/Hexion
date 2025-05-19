@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js " rel="java script"/>
+  <link rel="stylesheet" href="test.css">
+  <title></title>
+</head>
+
+<body>
+  <div style="height: 200px;">
+    <textarea placeholder="Enter HTML Source Code" id="editing" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
+    <pre id="highlighting" aria-hidden="true">
+<code class="language-html" id="highlighting-content">
+
+&lt;span title=&quot;Start Typing&quot;&gt;Just start typing!&lt;/span&gt;
+</code>
+</pre>
+  </div>
+  <p><a target="_blank" href="https://github.com/WebCoder49/code-input"><b>View Custom Element on GitHub</b></a></p>
+  <p>This is an example of a <b>syntax-highlighted <code>textarea</code></b>. The textarea, almost completely transparent except for the <code>caret-color</code>, is positioned on top of the syntax-highlighted block using <code>z-indexes</code>, and the result is synchronised whenever the user enters code.</p>
+  <p>I have covered this technique in <a href="https://css-tricks.com/creating-an-editable-textarea-that-supports-syntax-highlighted-code/">an article for CSS-Tricks</a>, and have further edited it to include suggestions from comments.</p>
+  <p><b>One comment suggested creating a custom element for editable syntax-highlighted code, and I thought that was a very good idea, so you can find the custom element demo I created <a href="https://codepen.io/WebCoder49/details/jOypJOx">here</a>.</b></p>
+  <p>Syntax Highlighting by <a href="https://prismjs.com/">Prism.js</a><br />
+    Font from <a href="https://fonts.google.com/">Google Fonts</a><br />
+    Made by <a href="https://codepen.io/WebCoder49/">WebCoder49</a><br />
+    <b>Please feel free to use this technique as inspiration!</b>
+  </p>
+  <script type="text/javascript" charset="utf-8" src="test.js">
+  </script>
+</body>
+
+</html>

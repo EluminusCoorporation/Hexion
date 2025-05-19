@@ -11,6 +11,7 @@ Hexion also known as Project 2026 is a project started to help Developer with th
 - **Pre made Code**
 - **Editor app (external)**
 - **Coding Cources**
+- **Code book(notinfeatures)**
 
 # Compatibility #
 Our project is combatible with every single device as it's a website you don't need a device to access its features the only thing you need is a browser, search **__https://hexion.com__** and find our website ready to be used.

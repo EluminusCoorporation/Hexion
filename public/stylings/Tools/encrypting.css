@@ -305,23 +305,26 @@ li:hover .tooltip {
   flex-direction: row;
   justify-self: center;
   color: white;
+  align-items: center;
+  overflow: hidden;
 }
 
 .linefordiv {
-  display: flex;
   align-self: center;
-  height: 80%;
+  height: 100%;
   margin-right: 10px;
   width: 1px;
-  background: linear-gradient(to right, transparent, white, transparent)
+  background: #DCDCDC;
 }
 
 #errorDiv p {
-  height: 100%;
-  width: 100%;
-  overflow-y: scroll;
-  align-self: center;
+  max-height: 80%;
+  white-space: wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
   text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #errorDiv i {
@@ -739,9 +742,6 @@ footer {
 }
 
 @media (max-width: 800px) {
-  .navigate {
-    height: 100px;
-  }
   
   .circular {
     width: 90px;
