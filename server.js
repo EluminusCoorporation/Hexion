@@ -8,7 +8,7 @@ console.log("\x1b[1m\x1b[33mStarting\x1b[0m\x1b[90m | \x1b[0mStarting Server..."
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.redirect('/home')
+  res.redirect('/home');
 });
 app.get("/home", (req, res) => {
   res.render('home');
@@ -26,8 +26,8 @@ app.get("/cources", (req, res) => {
   res.render('cources');
 });
 
-const toolsRouter = require("./routers/tools.js")
-app.use("/tools", toolsRouter) 
+const toolsRouter = require("./routers/tools.js");
+app.use("/tools", toolsRouter) ;
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
