@@ -364,6 +364,10 @@ li:hover .tooltip {
   cursor: pointer;
 }
 
+.uploadbtn:hover {
+  transform: scale(0.9);
+}
+
 .dbtn1 {
   color: black;
   border-top-right-radius: 0;
