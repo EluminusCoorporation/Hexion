@@ -24,8 +24,8 @@ app.get("/dashboard", (req, res) => {
 app.get("/donations", (req, res) => {
   res.render('donation');
 });
-app.get("/app", (req, res) => {
-  res.render('app');
+app.get("/codeBook", (req, res) => {
+  res.render('codeBook');
 });
 app.get("/cources", (req, res) => {
   res.render('cources');
@@ -38,6 +38,11 @@ app.use("/tools", toolsRouter) ;
 //Setup static directorys
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
+
+//handles the POST requests
+app.post('/upload', async (req, res) => {
+  
+})
 
 //Server is now online
 const PORT = "8000";
