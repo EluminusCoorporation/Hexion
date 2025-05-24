@@ -30,6 +30,12 @@ app.get("/codeBook", (req, res) => {
 app.get("/cources", (req, res) => {
   res.render('cources');
 });
+app.get("/tos", (req, res) => {
+  res.render('documents/tos');
+});
+app.get("/privacy", (req, res) => {
+  res.render('documents/privacy');
+});
 
 // Router Setup
 const toolsRouter = require("./routers/tools.js");
