@@ -826,9 +826,9 @@ li:hover .tooltip {
   margin-left: 25px;
 }
 
-.footer-container #socials-special ul li a .fa-brands,
-.footer-container #socials-special ul li a .bx {
-  font-size: 10px;
+.footer-container #socials-special ul li a .bxl,
+.footer-container #socials-special ul li a .bxl {
+  font-size: 13px;
   color: #262626;
   line-height: 20px;
   transition: .5s;
@@ -876,8 +876,8 @@ li:hover .tooltip {
   box-shadow: -50px 50px 50px rgba(0, 0, 0, .5);
 }
 
-.footer-container #socials-special ul li:hover .fa-brands,
-.footer-container #socials-special ul li:hover .bx {
+.footer-container #socials-special ul li:hover .bxl,
+.footer-container #socials-special ul li:hover .bxl {
   color: #fff;
 }
 
