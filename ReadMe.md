@@ -1,5 +1,5 @@
 # Hexion #
-Hexion also known as Project 2026 is a project started to help Developer with their basic task of coding because coding can be hard in some cases we have made various tools so we could make you're experience less miserable with the basic tasks and make you're journey easy it can be hard coding whether it's fixing bugs or just viewing you're code we have mostly everything you need to complete you're goals faster good luck on you're journey.
+Hexion an multi perpose website it provides tools used to make you're project improve faster  getting an error of syntax or any type of error just use our errordebugging it will provide you with the an solution that will fix you're code, you can also learn in our pre built cources in these cources you can learn and write code, follow our simple cources and improve you're knowledge or if you want to decode or encode any text or decrypt and encrypt any code you can do that in our website.
 
 # Features #
 - **Error debugging**
