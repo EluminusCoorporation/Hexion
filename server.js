@@ -43,12 +43,6 @@ app.get("/privacy", (req, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
 
-//Error handling System
-app.use((req, res, next) => {
-  //separate middleware for 404
-  res.status(404).render('error_handling/errorbody', {error: 'Could not find page', errorurl: req.url, errorcode: '404'})
-})
-
 // Router Setup
 const toolsRouter = require("./routers/tools.js");
 app.use("/tools", toolsRouter) ;
@@ -57,7 +51,13 @@ app.use("/tools", toolsRouter) ;
 app.post('/upload', async (req, res) => {
   
 })
- 
+
+//Error handling System
+app.use((req, res, next) => {
+  //separate middleware for 404
+  res.status(404).render('error_handling/errorbody', {error: 'Could not find page', errorurl: req.url, errorcode: '404'})
+})
+
 app.use((err, req, res, next) => {
   //Logs the error stack for debugging purposes
   console.log(err.stack);
