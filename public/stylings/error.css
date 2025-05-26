@@ -1,0 +1,68 @@
+body,
+html {
+  padding: 0;
+  background-color: white;
+  font-family: 'Poppins', Sans-Serif;
+  overflow: hidden;
+}
+
+.container-404 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.h1404 {
+  margin-bottom: 0;
+  font-size: 10em;
+  color: springgreen;
+  text-align: center;
+}
+
+.errortext {
+  margin: 0;
+  font-family: Monospace, Sans-Serif;
+  color: springgreen;
+  font-size: 1.7em;
+}
+
+.errorurl {
+  width: 100%;
+  font-family: Monospace, Sans-Serif;
+  color: lightskyblue;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1.7em;
+  white-space: nowrap;
+  margin-top: 0;
+  text-decoration: underline;
+  text-decoration-color: lightskyblue;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn-404 {
+  width: 100px;
+  height: 50px;
+  background-color: springgreen;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  gap: 3px;
+}
+.btn-404 i {
+  align-self: center;
+  font-size: 1em;
+  color: white;
+}

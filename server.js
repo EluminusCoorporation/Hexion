@@ -10,8 +10,10 @@ console.log("\x1b[1m\x1b[33mStarting\x1b[0m\x1b[90m | \x1b[0mStarting Server..."
 
 //Set up view engine for express
 app.set("view engine", "ejs");
+ 
 
 //Route setup
+//Redirects / to /home
 app.get("/", (req, res) => {
   res.redirect('/home');
 });
@@ -22,7 +24,7 @@ app.get("/dashboard", (req, res) => {
   res.render('dashboard');
 });
 app.get("/donations", (req, res) => {
-  res.render('donation');
+  res.render('donations')
 });
 app.get("/codeBook", (req, res) => {
   res.render('codeBook');
@@ -37,13 +39,35 @@ app.get("/privacy", (req, res) => {
   res.render('documents/privacy');
 });
 
-// Router Setup
-const toolsRouter = require("./routers/tools.js");
-app.use("/tools", toolsRouter) ;
-
 //Setup static directorys
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
+
+//Error handling System
+app.use((req, res, next) => {
+  //separate middleware for 404
+  res.status(404).render('error_handling/errorbody', {error: 'Could not find page', errorurl: req.url, errorcode: '404'})
+})
+app.use((err, req, res, next) => {
+  //Logs the error stack for debugging purposes
+  console.log(err.stack);
+  
+  const status = err.status || 500;
+  
+  const messages = {
+    400: 'Bad Request', 
+    401: 'Unauthorized Access', 
+    402: 'Forbidden', 
+    404: 'Could not find page', 
+    500: 'Internal server error'
+  };
+  const message = messages[status];
+  
+  res.status(status).render('error_handling/errorbody', { error: message, errorcode: status, errorurl: req.url});
+});
+// Router Setup
+const toolsRouter = require("./routers/tools.js");
+app.use("/tools", toolsRouter) ;
 
 //handles the POST requests
 app.post('/upload', async (req, res) => {
