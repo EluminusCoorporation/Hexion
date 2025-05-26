@@ -22,8 +22,8 @@ app.get("/home", (req, res) => {
 app.get("/dashboard", (req, res) => {
   res.render('dashboard');
 });
-app.get("/donations", (req, res) => {
-  res.render('donations')
+app.get("/donation", (req, res) => {
+  res.render('donation')
 });
 app.get("/codeBook", (req, res) => {
   res.render('codeBook');
