@@ -300,10 +300,11 @@ li:hover .tooltip {
 
 .select-item:hover {
   background-color: #A5A5A5;
-  transform: translateY(-2.5px);
+  transform: translateX(2.5px);
 }
 
 .select-item.selected {
+  transform: translateX(2.5px);
   background-color: springgreen;
   color: white;
 }

@@ -283,13 +283,11 @@ li:hover .tooltip {
   align-items: center;
 }
 
-.jsspecial {
-  border-radius: 50%;
-}
-
 .langIcon {
   width: 30px;
   height: 30px;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .dropdown-content p {
@@ -315,10 +313,11 @@ li:hover .tooltip {
 
 .select-item:hover {
   background-color: #A5A5A5;
-  transform: translateY(-2.5px);
+  transform: translateX(2.5px);
 }
 
 .select-item.selected {
+  transform: translateX(2.5px);
   background-color: springgreen;
   color: white;
 }
@@ -385,6 +384,7 @@ li:hover .tooltip {
   outline: none;
   margin: 15px;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .uploadbtn:hover {
