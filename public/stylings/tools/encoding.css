@@ -204,6 +204,29 @@ li:hover .tooltip {
   margin: 0;
 }
 
+.back-container {
+  display: inline-flex;
+  flex-direction: row;
+  color: #383838;
+  font-size: 0.8em;
+  font-weight: 700;
+  margin: 0 0 0 2px;
+  padding: 0;
+  cursor: pointer;
+  align-items: center;
+  user-select: none;
+  text-decoration: none;
+}
+
+.back-container i {
+  display: inline-flex;
+  font-size: 1.8em;
+}
+
+.back-container p {
+  margin: 0;
+}
+
 .dropdown-container {
   color: #B4B4B4;
   background: white;
