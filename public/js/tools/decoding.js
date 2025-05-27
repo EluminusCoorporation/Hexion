@@ -11,7 +11,7 @@ resultsBtn.addEventListener('click', function() {
   };
   
   function decodingText(name, text) {
-    if (name === "UTF-8 (recommended)") {
+    if (name === "UTF-8") {
       function decodeUTF8(byteArray) {
         const decoder = new TextDecoder("utf-8"); // Create a UTF-8 decoder
         return decoder.decode(new Uint8Array(byteArray)); // Convert byte array to string
