@@ -2,11 +2,14 @@
 const express = require('express');
 const path = require('path');
 
+//Initializes the logger module
+const log = new (require('cat-loggr'))()
+
 // initializes the express app
 const app = express();
 
 //The server starting process starts from here
-console.log("\x1b[1m\x1b[33mStarting\x1b[0m\x1b[90m | \x1b[0mStarting Server...");
+log.info('Starting Server')
 
 //Set up view engine for express
 app.set("view engine", "ejs");
@@ -59,7 +62,7 @@ app.use((req, res, next) => {
 //This middleware handles all other status codes
 app.use((err, req, res, next) => {
   //Logs the error stack for debugging purposes
-  console.log(err.stack);
+  log.error(err.stack);
   
   //Gets the status code
   const status = err.status || 500;
@@ -82,5 +85,5 @@ app.use((err, req, res, next) => {
 //Starts the server
 const PORT = "8000";
 app.listen(PORT, () => {
-  console.log(`\x1b[1m\x1b[32mSuccess\x1b[0m\x1b[90m | \x1b[0mServer online on http://localhost:${PORT}.`);
+  log.info(`Server online on http://localhost:${PORT}.`);
 })
