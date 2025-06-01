@@ -114,10 +114,8 @@
 
 footer {
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  position: relative;
   padding: 100px 0 30px;
-  margin-top: 1000px;
   border-top-left-radius: 125px;
   font-size: 13px;
   color: #fff;
@@ -177,7 +175,6 @@ footer {
 
 .footer-container {
   position: relative;
-  margin-top: 500px;
 }
 
 .col h3 {
@@ -305,16 +302,7 @@ footer {
   .footer-container hr {
     margin: 35px auto;
   }
-  
-  footer {
-    bottom: unset;
-    margin-top: 0;
-  }
-  
-  .footer-container {
-    margin-top: 0;
-  }
-  
+ 
   .col {
     flex-basis: 100%;
   }
