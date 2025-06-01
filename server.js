@@ -1,13 +1,14 @@
 //Required Imports
 const express = require('express');
+const fs = require('fs')
 const path = require('path');
 
 //Initializes the logger module
-const log = new (require('cat-loggr'))()
+const log = new(require('cat-loggr'))()
 
 // initializes the express app
 const app = express();
-
+const expressWs = require('express-ws')(app)
 //The server starting process starts from here
 log.info('Starting Server')
 
@@ -15,39 +16,35 @@ log.info('Starting Server')
 app.set("view engine", "ejs");
 
 //Route setup
-//Redirects / to /home
-app.get("/", (req, res) => {
-  res.redirect('/home');
-});
-app.get("/home", (req, res) => {
-  res.render('home');
-}); 
-app.get("/dashboard", (req, res) => {
-  res.render('dashboard');
-});
-app.get("/donation", (req, res) => {
-  res.render('donation')
-});
-app.get("/codeBook", (req, res) => {
-  res.render('codeBook');
-});
-app.get("/cources", (req, res) => {
-  res.render('cources');
-});
-app.get("/tos", (req, res) => {
-  res.render('documents/tos');
-});
-app.get("/privacy", (req, res) => {
-  res.render('documents/privacy');
-});
+//initializes the routes directory
+const routesDir = path.join(__dirname, 'routes');
+
+//Starts loading the routes
+function loadRoutes(directory) {
+  //for every file in directory
+  fs.readdirSync(directory).forEach(file => {
+    //Connects the paths
+    const fullPath = path.join(directory, file);
+    const stat = fs.statSync(fullPath);
+    //checks if it is a directory
+    if (stat.isDirectory()) {
+      //sends it back to get Synced
+      loadRoutes(fullPath);
+    } else if (stat.isFile() && path.extname(file) === '.js') {
+      //Else gets the full path
+      const route = require(fullPath);
+      //Applys Ws
+      expressWs.applyTo(route);
+      //Applys the routes
+      app.use("/", route);
+    }
+  });
+}
+loadRoutes(routesDir);
 
 //Setup static directorys
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
-
-// Router Setup
-const toolsRouter = require("./routers/tools.js");
-app.use("/tools", toolsRouter) ;
 
 //handles the POST requests
 app.post('/upload', async (req, res) => {
@@ -57,7 +54,7 @@ app.post('/upload', async (req, res) => {
 //Error handling System
 app.use((req, res, next) => {
   //separate middleware for 404
-  res.status(404).render('error_handling/errorbody', {error: 'Could not find page', errorurl: req.url, errorcode: '404'})
+  res.status(404).render('error_handling/errorbody', { error: 'Could not find page', errorurl: req.url, errorcode: '404' })
 })
 //This middleware handles all other status codes
 app.use((err, req, res, next) => {
@@ -69,17 +66,17 @@ app.use((err, req, res, next) => {
   
   //Sets error codes for certain status codes
   const messages = {
-    400: 'Bad Request', 
-    401: 'Unauthorized Access', 
-    402: 'Forbidden', 
-    404: 'Could not find page', 
+    400: 'Bad Request',
+    401: 'Unauthorized Access',
+    402: 'Forbidden',
+    404: 'Could not find page',
     500: 'Internal server error'
   };
   //Gets the correct message for the status code
   const message = messages[status];
   
   //Sends data to the frontend
-  res.status(status).render('error_handling/errorbody', { error: message, errorcode: status, errorurl: req.url});
+  res.status(status).render('error_handling/errorbody', { error: message, errorcode: status, errorurl: req.url });
 });
 
 //Starts the server

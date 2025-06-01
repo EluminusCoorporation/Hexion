@@ -1,28 +1,28 @@
 const express = require('express');
 const router = express.Router()
 
-router.get("/", (req, res) => {
+router.get("/tools", (req, res) => {
   res.redirect('/tools/encoding')
 });
 
-router.get("/encoding", (req, res) => {
+router.get("/tools/encoding", (req, res) => {
   res.render('tools/encoding')
 });
 
-router.get("/decoding", (req, res) => {
+router.get("/tools/decoding", (req, res) => {
   res.render('tools/decoding')
 });
 
-router.get("/encrypting", (req, res) => {
+router.get("/tools/encrypting", (req, res) => {
   res.render('tools/encrypting')
 });
-router.get("/decrypting", (req, res) => {
+router.get("/tools/decrypting", (req, res) => {
   res.render('tools/decrypting')
 });
-router.get("/errorDebugger", (req, res) => {
+router.get("/tools/errorDebugger", (req, res) => {
   res.render('tools/errorDebugger')
 });
-router.get("/colorCodeGenerator", (req, res) => {
+router.get("/tools/colorCodeGenerator", (req, res) => {
   res.render('tools/colorCodeGenerator')
 });
 
