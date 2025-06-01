@@ -10,17 +10,14 @@
   <link rel="stylesheet" href="/stylings/tools/decrypting.css">
   <link rel="stylesheet" href="/stylings/components/header.css">
   <link rel="stylesheet" href="/stylings/components/footer.css">
+  <link rel="stylesheet" href="/stylings/components/effects/loading.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <title>Decoding(Tool)</title>
 </head>
 
 <body>
   <div class="container">
-    <div id="preloader">
-      <svg class="circular" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3.5" stroke-miterlimit="10"></circle>
-      </svg>
-    </div>
+    <%- include('components/effects/loading') -%>
     <%- include('../components/header') -%>
     <div class="addiv ad1">
       <p class="adp">Ad space here</p>

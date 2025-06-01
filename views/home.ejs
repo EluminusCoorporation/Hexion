@@ -10,17 +10,12 @@
   </link>
   <link rel="website icon" href="/global/logo.png">
   <link rel="stylesheet" href="/stylings/home.css">
+  <link rel="stylesheet" href="/stylings/components/effects/loading.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/0c750fa2a7.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
   <div class="container">
-    <div id="preloader">
-      <svg class="circular" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3.5" stroke-miterlimit="10"></circle>
-      </svg>
-    </div>
+    <%- include('components/effects/loading') -%>
     <div class="image-wrapper fade-in-d">
       <img src="/global/logo.png" class="logoimg">
       <h1 class="MainHeader">Hexion</h1>
