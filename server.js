@@ -1,19 +1,25 @@
-//Required Imports
+//Imports Required modules
 const express = require('express');
 const fs = require('fs')
 const path = require('path');
 
+//Initializes the express app
+const app = express();
+//Initializes the modules that require app to be Initialize first
+const expressWs = require('express-ws')(app) 
+
 //Initializes the logger module
 const log = new(require('cat-loggr'))()
 
-// initializes the express app
-const app = express();
-const expressWs = require('express-ws')(app)
 //The server starting process starts from here
 log.info('Starting Server')
 
 //Set up view engine for express
 app.set("view engine", "ejs");
+
+//Setup static directorys
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'assets')));
 
 //Route setup
 //initializes the routes directory
@@ -40,11 +46,9 @@ function loadRoutes(directory) {
     }
   });
 }
-loadRoutes(routesDir);
 
-//Setup static directorys
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'assets')));
+//Loads the Routes
+loadRoutes(routesDir);
 
 //handles the POST requests
 app.post('/upload', async (req, res) => {
