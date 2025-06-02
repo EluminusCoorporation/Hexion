@@ -1,18 +1,18 @@
 //Imports Required modules
 const express = require('express');
-const fs = require('fs')
+const fs = require('fs');
 const path = require('path');
 
 //Initializes the express app
 const app = express();
 //Initializes the modules that require app to be Initialize first
-const expressWs = require('express-ws')(app) 
+const expressWs = require('express-ws')(app);
 
 //Initializes the logger module
-const log = new(require('cat-loggr'))()
+const log = new(require('cat-loggr'))();
 
 //The server starting process starts from here
-log.info('Starting Server')
+log.info('Starting Server');
 
 //Set up view engine for express
 app.set("view engine", "ejs");
@@ -36,11 +36,9 @@ function loadRoutes(directory) {
     if (stat.isDirectory()) {
       //sends it back to get Synced
       loadRoutes(fullPath);
-    } else if (stat.isFile() && path.extname(file) === '.js') {
+    } else {
       //Else gets the full path
       const route = require(fullPath);
-      //Applys Ws
-      expressWs.applyTo(route);
       //Applys the routes
       app.use("/", route);
     }
