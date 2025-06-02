@@ -31,6 +31,7 @@ function loadRoutes(directory) {
   fs.readdirSync(directory).forEach(file => {
     //Connects the paths
     const fullPath = path.join(directory, file);
+    //Gets the file
     const stat = fs.statSync(fullPath);
     //checks if it is a directory
     if (stat.isDirectory()) {
@@ -41,15 +42,15 @@ function loadRoutes(directory) {
       const route = require(fullPath);
       //Applys the routes
       app.use("/", route);
-    }
+    };
   });
-}
+};
 
 //Loads the Routes
 loadRoutes(routesDir);
 
 //handles the POST requests
-app.post('/upload', async (req, res) => {
+app.post('/upload', (req, res) => {
   
 })
 
