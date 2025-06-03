@@ -312,6 +312,9 @@ li:hover .tooltip {
   outline: none;
   z-index: 2;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   margin: 0;
 }
