@@ -317,6 +317,7 @@ li:hover .tooltip {
   justify-content: center;
   background-color: transparent;
   margin: 0;
+  gap: 5px;
 }
 
 #textmodetxt {
