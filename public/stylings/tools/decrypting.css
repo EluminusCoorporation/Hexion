@@ -155,12 +155,10 @@ li:hover .tooltip {
   color: white;
   text-align: center;
   padding: 20px;
-}
-
-.homeI {
-  font-size: 1.3em;
-  padding-right: 5px;
-  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .back-container {

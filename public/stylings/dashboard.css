@@ -97,17 +97,15 @@ li:hover .tooltip {
   visibility: visible;
 }
 
-.homeH2 {
+.pageH2 {
   background: linear-gradient(to right, transparent 5%, springgreen, transparent 95%);
   color: white;
   text-align: center;
   padding: 20px;
-}
-
-.homeI {
-  font-size: 1.3em;
-  padding-right: 5px;
-  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .toolboxes-container {
