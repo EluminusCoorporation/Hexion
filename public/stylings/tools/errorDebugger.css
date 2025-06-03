@@ -206,13 +206,16 @@ li:hover .tooltip {
 
 .head-i {
   display: flex;
+  align-items: center;
   position: relative;
+  height: 14px;
 }
 
 .dropdown-text {
   margin: 0 !important;
   display: flex;
-  align-self: center;
+  gap: 5px;
+  align-items: center;
   font-weight: bold !important;
   font-size: 0.8em !important;
 }
@@ -236,17 +239,8 @@ li:hover .tooltip {
   margin-top: 15px;
 }
 
-.imgWrapper {
-  display: flex;
-  gap: 3.5px;
-  align-items: center;
-}
-
 .langIcon {
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  padding: 5px;
+  font-size: 30px;
 }
 
 .dropdown-content p {
@@ -266,7 +260,9 @@ li:hover .tooltip {
 .select-item {
   display: flex;
   gap: 5px;
+  color: #383838;
   border-radius: 5px;
+  align-items: center;
   transition: transform 0.5s;
 }
 

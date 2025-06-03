@@ -12,7 +12,6 @@ dropDownMenu.addEventListener('click', function() {
   for (i = 0; i < selectItem.length; i++) {
     selectItem[i].addEventListener('click', function() {
       var itemSelect = document.getElementById('dropdown-text');
-      const itemSpecial = document.getElementById('textWrapper');
       const span = document.getElementById('spanR');
       name = this.innerHTML;
       if (span) {
@@ -21,28 +20,9 @@ dropDownMenu.addEventListener('click', function() {
         name = removeSpanTC.textContent.trim()
       }
       if (name === itemSelect.textContent) return;
-      if (itemSpecial) {
-        const langName = this.querySelector('p')?.textContent;
-        const extension = langName;
-        itemSelect.style.color = "black"
-        itemSelect.innerHTML = name;
-        itemSpecial.style.transform = "translate( 0, -14px)"
-        if (extension === "Python") {
-          langExtension = "py"
-        }
-        if (extension === "Java Script") {
-          langExtension = "js"
-        }
-        if (extension === "Html") {
-          langExtension = "html"
-        }
-        if (extension === "css") {
-          langExtension = "css"
-        }
-      }
       else {
         itemSelect.style.color = "black"
-        itemSelect.textContent = name;
+        itemSelect.innerHTML = name;
       }
       if (previousSelected) {
         previousSelected.classList.remove('selected')
