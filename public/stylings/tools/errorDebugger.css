@@ -213,6 +213,7 @@ li:hover .tooltip {
   margin: 0 !important;
   display: flex;
   gap: 5px;
+  color: black;
   align-items: center;
   font-weight: bold !important;
   font-size: 0.8em !important;
@@ -273,6 +274,17 @@ li:hover .tooltip {
   transform: translateX(2.5px);
   background-color: springgreen;
   color: white;
+}
+
+.recommended {
+  height: 15px;
+  padding: 2px 5px 2px 5px;
+  align-self: center;
+  font-size: 0.7em;
+  background: springgreen;
+  color: white;
+  border-radius: 7px;
+  border: 2px solid white;
 }
 
 .buttonWrapper {

@@ -1,4 +1,4 @@
-import { langExtension } from './sliderbtn.js'
+import { selectedExt } from './sliderbtn.js'
 
 let errorTimeout;
 export function setError(message) {
@@ -74,12 +74,21 @@ export function fileLogger(files) {
   const fileName = file.name;
   const fileSize = file.size;
   const fileExtension = fileName.split('.').pop().toLowerCase();
+  const supportedExtensions = ["py", "js", "html", "css"]
   if (files.length === 0) {
-    setError('Something went wrong did you select a file?')
+    setError('Something went wrong did you select a file?');
     return false;
   };
-  if (fileExtension !== langExtension) {
-    setErrorFile(`File Extension not supported by the language you have selected (.${langExtension})`);
+  if (selectedExt === "auto") {
+    if (!supportedExtensions.includes(fileExtension)) {
+      setErrorFile('File Extension not supported by our service');
+      return false;
+    }
+    setErrorFile('')
+    return true;
+  }
+  else if (fileExtension !== selectedExt) {
+    setErrorFile(`File Extension not supported by the language you have selected (.${selectedExt})`);
     return false;
   }
   if (file.size > 15728670) {

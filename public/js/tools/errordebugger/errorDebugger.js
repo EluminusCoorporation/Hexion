@@ -1,7 +1,7 @@
 import { setError, errorLoggerBEFORE, setErrorFile, fileLogger } from '../../api/errorLogger.js';
 import {} from '../../api/copy.js'
 import { formatFileSize } from '../../api/fileSizeFormat.js'
-import { langExtension } from '../../api/sliderbtn.js'
+import { selectedExt } from '../../api/sliderbtn.js'
 var resultsBtn = document.getElementById('results-btn');
 const dBtn1 = document.getElementById('dbtn1');
 const dBtn2 = document.getElementById('dbtn2');
@@ -35,7 +35,7 @@ const container = document.getElementById('container')
 const uploadMenu = document.getElementById('uploadMenu')
 
 uploadbtn.addEventListener('click', function() {
-  if (!langExtension) {
+  if (!selectedExt) {
     setError('Select a language before uploading.')
     return false;
   };
@@ -66,7 +66,7 @@ uploadZone.addEventListener('drop', (e) => {
 });
 
 fileInput.addEventListener('change', () => {
-  //if (!fileLogger(fileInput.files)) return false;
+  if (!fileLogger(fileInput.files)) return false;
   const file = fileInput.files[0]
   var fileNameLabel = document.getElementById('fileName');
   var fileIcon = document.getElementById('fileIcon');

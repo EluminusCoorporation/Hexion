@@ -1,23 +1,26 @@
 var dropDownMenu = document.getElementById("dropDownMenu");
 var dropDownCon = document.getElementById('dropDownCon');
 var dropDownIcon = document.getElementById('ddIcon');
+var auto = document.getElementById('auto');
 var selectItem = document.getElementsByClassName('select-item');
-export let langExtension;
+export var selectedExt = "auto"
 
+auto.classList.add('selected')
 dropDownMenu.addEventListener('click', function() {
   dropDownContent.classList.toggle("active");
   dropDownIcon.classList.toggle("active");
-  let previousSelected = null
+  let previousSelected = auto;
   var i;
   for (i = 0; i < selectItem.length; i++) {
     selectItem[i].addEventListener('click', function() {
       var itemSelect = document.getElementById('dropdown-text');
       const span = document.getElementById('spanR');
+      selectedExt = this.dataset.ext;
       name = this.innerHTML;
       if (span) {
         let removeSpanTC = this.cloneNode(true);
         removeSpanTC.querySelector('#spanR')?.remove();
-        name = removeSpanTC.textContent.trim()
+        name = removeSpanTC.innerHTML.trim()
       }
       if (name === itemSelect.textContent) return;
       else {
