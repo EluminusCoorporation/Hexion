@@ -3,6 +3,9 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
+//Imports in app Funcs
+const loadRoutes = require('./utils/loadRoutes');
+
 //Initializes the express app
 const app = express();
 //Initializes the modules that require app to be Initialize first
@@ -24,27 +27,6 @@ app.use(express.static(path.join(__dirname, 'assets')));
 //Route setup
 //initializes the routes directory
 const routesDir = path.join(__dirname, 'routes');
-
-//Starts loading the routes
-function loadRoutes(directory) {
-  //for every file in directory
-  fs.readdirSync(directory).forEach(file => {
-    //Connects the paths
-    const fullPath = path.join(directory, file);
-    //Gets the file
-    const stat = fs.statSync(fullPath);
-    //checks if it is a directory
-    if (stat.isDirectory()) {
-      //sends it back to get Synced
-      loadRoutes(fullPath);
-    } else {
-      //Else gets the full path
-      const route = require(fullPath);
-      //Applys the routes
-      app.use("/", route);
-    };
-  });
-};
 
 //Loads the Routes
 loadRoutes(routesDir);
