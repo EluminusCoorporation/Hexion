@@ -1,6 +1,8 @@
+//Setups a router
 const express = require('express');
 const router = express.Router()
 
+//Returns to encoding when GET is /tools
 router.get("/tools", (req, res) => {
   res.redirect('/tools/encoding')
 });
@@ -26,4 +28,5 @@ router.get("/tools/colorCodeGenerator", (req, res) => {
   res.render('tools/colorCodeGenerator')
 });
 
+//Exports the router
 module.exports = router;
