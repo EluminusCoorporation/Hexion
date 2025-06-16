@@ -350,15 +350,23 @@ li:hover .tooltip {
   position: relative;
   border-radius: 25px;
   border: none;
-  background-color: white;
-  color: indianred;
-  border: 1.5px solid indianred;
+  background-color: deepskyblue;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3.5px;
   font-size: 1em;
   font-weight: bold;
   outline: none;
   margin: 15px;
   cursor: pointer;
   transition: all 0.3s;
+}
+
+.uploadbtn i {
+  font-size: 1.2em;
+  margin: 0;
 }
 
 .uploadbtn:hover {
