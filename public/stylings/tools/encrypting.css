@@ -172,6 +172,7 @@ li:hover .tooltip {
   align-items: center;
   user-select: none;
   text-decoration: none;
+  transition: all 0.3s;
 }
 
 .back-container i {
@@ -181,6 +182,10 @@ li:hover .tooltip {
 
 .back-container p {
   margin: 0;
+}
+
+.back-container:hover {
+  transform: translateX(-6px);
 }
 
 .dropdown-container {
