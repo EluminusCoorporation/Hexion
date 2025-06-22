@@ -355,7 +355,7 @@ li:hover .tooltip {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3.5px;
+  gap: 5px;
   font-size: 1em;
   font-weight: bold;
   outline: none;
@@ -483,7 +483,7 @@ li:hover .tooltip {
   text-align: center;
   color: #42445A;
   font-weight: bold;
-  margin: 0;
+  margin-top: 10px;
 }
 
 .flexbox-upload {
