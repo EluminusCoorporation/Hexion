@@ -8,6 +8,7 @@ const loadRoutes = require('./utils/loadRoutes');
 
 //Initializes the express app
 const app = express();
+
 //Initializes the modules that require app to be Initialize first
 const expressWs = require('express-ws')(app);
 
@@ -41,6 +42,7 @@ app.use((req, res, next) => {
   //separate middleware for 404
   res.status(404).render('error_handling/errorbody', { error: 'Could not find page', errorurl: req.url, errorcode: '404' })
 })
+
 //This middleware handles all other status codes
 app.use((err, req, res, next) => {
   //Logs the error stack for debugging purposes
