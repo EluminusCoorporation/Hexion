@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'assets')));
 const routesDir = path.join(__dirname, 'routes');
 
 //Loads the Routes
-loadRoutes(routesDir);
+loadRoutes(app, routesDir);
 
 //handles the POST requests
 app.post('/upload', (req, res) => {
