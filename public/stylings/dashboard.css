@@ -46,11 +46,6 @@ html {
   position: relative;
 }
 
-.tool5,
-.tool6 {
-  margin-bottom: 125px;
-}
-
 .toolboxes-container .tool i {
   font-size: 2em;
 }
@@ -228,14 +223,5 @@ html {
 
   .toolboxes-container {
     grid-template-columns: 1fr;
-  }
-
-  .tool5,
-  .tool6 {
-    margin-bottom: 10px !important;
-  }
-
-  .ad3 {
-    margin-top: 40px !important;
   }
 }
