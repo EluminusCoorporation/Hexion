@@ -54,10 +54,12 @@ html {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
   }
+  
   50% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -35px;
   }
+  
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -124px;
@@ -145,35 +147,35 @@ html {
   width: 100%;
 }
 
-.starting {
-  transform: translate( -50%, -50%);
-  left: 50%;
+.starting-btn {
   position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 60%;
   background-color: transparent;
   border: none;
-  height: 45px;
+  height: 35px;
   color: white;
-  width: 150px;
-  border-radius: 15px;
-  user-select: none;
+  width: 160px;
+  border-radius: 3px;
   cursor: pointer;
-  margin-top: 218px;
+  font-weight: bold;
   transition: all 0.1s;
   backdrop-filter: blur(5px);
   box-shadow: 0 0 5px rgba(0, 0, 0, 2);
 }
 
-.starting:hover {
-  font-weight: bold;
+.starting-btn:hover {
   background-color: springgreen;
   box-shadow: 0 0 5px rgba(0, 0, 0, 2);
-  transform: translate( -50%, -50% ) scale(0.8);
+  transform: translate(-50%, -50%) scale(0.9);
 }
 
 .logoimg {
   height: 50px;
   width: 50px;
-  margin-top: 30px;transform: scale(0.8);
+  margin-top: 30px;
+  transform: scale(0.8);
   transform: translate(-50%, -50%);
   left: 50%;
   position: absolute;
@@ -526,43 +528,43 @@ html {
     font-size: 2em;
     width: 100%;
   }
-
+  
   .fixtopp::after {
     height: 3px;
   }
-
+  
   .features {
     display: grid;
     grid-template-columns: 1fr;
   }
-
+  
   #faq {
     padding: 84px 90px 144px 0px;
     padding-right: auto;
   }
-
+  
   .faq-content {
     padding-left: 46px;
     grid-template-columns: 1fr;
   }
-
+  
   .footer-container hr {
     margin: 35px auto;
   }
-
+  
   footer {
     bottom: unset;
     margin-top: 0;
   }
-
+  
   .footer-container {
     margin-top: 0;
   }
-
+  
   .col {
     flex-basis: 100%;
   }
-
+  
   .col:nth-child(2),
   .col:nth-child(3) {
     flex-basis: 100%;
