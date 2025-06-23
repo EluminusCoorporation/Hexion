@@ -1,3 +1,49 @@
+.addiv {
+  position: relative;
+  display: flex;
+  justify-self: center;
+  height: 50px;
+  width: 90%;
+  background: transparent;
+  border-radius: 5px;
+  margin: 15px;
+  padding: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 2);
+}
+
+.addiv p {
+  text-align: center;
+}
+
+.logo-hexion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid black;
+}
+
+.brandname {
+  color: springgreen;
+}
+
+.pageH2 {
+  color: white;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
 .navigate {
   position: relative;
   justify-self: center;
@@ -36,6 +82,30 @@
 
 .navigate ul li i {
   font-size: 35px;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: mediumspringgreen;
+  color: white;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: visible;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  z-index: 100;
+}
+
+li:hover .tooltip {
+  display: unset;
+  opacity: 1;
+  visibility: visible;
 }
 
 .navigate ul li p {
