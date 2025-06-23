@@ -141,27 +141,21 @@ footer {
   transform: scaleX(1);
 }
 
-.socials-special {
-  height: 320px;
-  width: 100%;
+.col4 {
   position: relative;
+  margin-bottom: 15px;
 }
 
 #socials-special ul {
-  position: absolute;
-  margin: 0;
+  position: relative;
   padding: 0;
   display: flex;
 }
 
-.socials-youtube {
-  margin-left: 0;
-}
-
 #socials-special ul li {
   list-style: none;
-  margin-right: 25px;
-  margin-left: 25px;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .footer-container #socials-special ul li a .bxl,
@@ -174,7 +168,7 @@ footer {
 }
 
 .footer-container #socials-special ul li a {
-  position: absolute;
+  position: relative;
   display: block;
   width: 20px;
   height: 20px;
