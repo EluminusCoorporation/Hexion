@@ -69,5 +69,5 @@ app.use((err, req, res, next) => {
 //Starts the server
 const PORT = "8000";
 app.listen(PORT, () => {
-  log.info(`Server online on http://localhost:${PORT}.`);
+  log.info(`Server online on Port:${PORT}`);
 })
