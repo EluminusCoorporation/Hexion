@@ -91,7 +91,8 @@ html {
   background: linear-gradient(to bottom, #f5f5ff 75%, transparent);
   border-top-right-radius: 200px;
   flex-direction: column;
-  padding: 60px;
+  padding: 60px 120px 60px 60px;
+  
   color: black;
   font-weight: bold;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
