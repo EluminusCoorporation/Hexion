@@ -551,6 +551,8 @@ html {
 
 .ttc,
 .results {
+  height: 150px;
+  text-wrap: nowrap;
   border-radius: 15px;
   width: 268px;
   justify-self: center;
