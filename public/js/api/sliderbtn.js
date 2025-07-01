@@ -8,7 +8,9 @@ var selectItem = document.getElementsByClassName('select-item');
 export var selectedExt = "auto";
 
 //Enables auto as default (only for errordebugger)
-auto.classList.add('selected');
+if (auto) {
+  auto.classList.add('selected');
+}
 
 //event listener for click
 dropDownMenu.addEventListener('click', function() {

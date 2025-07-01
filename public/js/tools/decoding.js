@@ -1,8 +1,9 @@
 import { setError, errorLoggerBEFORE, errorLoggerAFTER } from '../api/errorLogger.js';
-import {} from '../api/copy.js'
-import {} from '../api/sliderbtn.js'
+import {} from '../api/copy.js';
+import {} from '../api/sliderbtn.js';
 var resultsBtn = document.getElementById('results-btn');
 
+alert('hhh')
 resultsBtn.addEventListener('click', function() {
   const text = document.getElementById('ttc').value;
   var title = document.getElementById('dropdown-text');
@@ -148,7 +149,7 @@ resultsBtn.addEventListener('click', function() {
   var decodedtext = document.getElementById('results').value;
   console.log(decodedtext)
   if (!errorLoggerAFTER(decodedtext)) {
-    return false;
+    return;
   };
   resultsDiv.style.display = "flex";
 })
