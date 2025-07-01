@@ -36,7 +36,7 @@ html {
 .toolboxes-container .tool {
   width: 80%;
   height: 150px;
-  background: whitesmoke;
+  background-color: whitesmoke;
   box-shadow: 14px 14px 60px rgba(59, 42, 130, 0, 0.06);
   border-radius: 10px;
   align-items: center;
@@ -70,6 +70,10 @@ html {
   margin-top: 30px;
   font-size: 1em;
   overflow: hidden;
+}
+
+.tool button:hover {
+  background-color: whitesmoke !important;
 }
 
 .tool1 {
