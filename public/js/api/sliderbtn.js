@@ -7,9 +7,13 @@ var selectItem = document.getElementsByClassName('select-item');
 //Gets selected Ext(only for errordebugger)
 export var selectedExt = "auto";
 
+//defines the previous selected bar here
+let previousSelected;  
+
 //Enables auto as default (only for errordebugger)
 if (auto) {
   auto.classList.add('selected');
+  previousSelected = auto;
 }
 
 //event listener for click
@@ -17,8 +21,6 @@ dropDownMenu.addEventListener('click', function() {
   //Enables Stylers
   dropDownContent.classList.toggle("active");
   dropDownIcon.classList.toggle("active");
-  //Sets the previous selected to auto(only for error debugger)
-  let previousSelected = auto;
   
   //Makes a event listener for all Items
   var i;

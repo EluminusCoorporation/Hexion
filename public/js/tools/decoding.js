@@ -2,8 +2,6 @@ import { setError, errorLoggerBEFORE, errorLoggerAFTER } from '../api/errorLogge
 import {} from '../api/copy.js';
 import {} from '../api/sliderbtn.js';
 var resultsBtn = document.getElementById('results-btn');
-
-alert('hhh')
 resultsBtn.addEventListener('click', function() {
   const text = document.getElementById('ttc').value;
   var title = document.getElementById('dropdown-text');
