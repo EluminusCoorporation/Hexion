@@ -310,15 +310,7 @@ html {
   border-bottom-left-radius: 0;
 }
 
-.dbtn1.special {
-  color: white;
-}
-
-.dbtn1.active {
-  color: white;
-}
-
-.dbtn2.active {
+.dualbtn.selected {
   color: white;
 }
 
