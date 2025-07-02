@@ -12,11 +12,11 @@ const btnindicator = document.getElementById('btnIndicator')
 const uploadWrapper = document.getElementById('uploadWrapper')
 
 buttons.forEach((btn, index) => {
-  dBtn1.classList.add('active')
+  dBtn1.classList.add('selected')
   btn.addEventListener('click', () => {
-    if (btn.classList.contains('active')) return;
+    if (btn.classList.contains('selected')) return;
     btnindicator.style.left = index === 0 ? '0%' : '50%';
-    buttons.forEach(b => b.classList.remove('active'));
+    buttons.forEach(b => b.classList.remove('selected'));
     if (index === 0) {
       uploadWrapper.style.display = "flex"
       textinput.style.display = "none"
@@ -25,7 +25,7 @@ buttons.forEach((btn, index) => {
       textinput.style.display = "flex"
       uploadWrapper.style.display = "none"
     }
-    btn.classList.add('active')
+    btn.classList.add('selected')
   });
 });
 
