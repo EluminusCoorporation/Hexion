@@ -258,6 +258,9 @@ html {
   background-color: transparent;
   margin: 0;
   gap: 5px;
+  color: black;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 #textmodetxt {
@@ -296,12 +299,6 @@ html {
 
 .uploadbtn:hover {
   transform: scale(0.9);
-}
-
-.dualbtn {
-  color: black;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 .dualbtn.selected {
