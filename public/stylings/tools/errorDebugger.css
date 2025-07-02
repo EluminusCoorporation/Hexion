@@ -263,6 +263,10 @@ html {
   border-bottom-right-radius: 0;
 }
 
+.dualbtn.selected {
+  color: white;
+}
+
 #textmodetxt {
   display: none;
 }
@@ -299,10 +303,6 @@ html {
 
 .uploadbtn:hover {
   transform: scale(0.9);
-}
-
-.dualbtn.selected {
-  color: white;
 }
 
 .uploadMenu-container {
