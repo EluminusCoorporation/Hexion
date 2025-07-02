@@ -24,8 +24,8 @@ router.get("/tools/decrypting", (req, res) => {
 router.get("/tools/errorDebugger", (req, res) => {
   res.render('tools/errorDebugger')
 });
-router.get("/tools/colorCodeGenerator", (req, res) => {
-  res.render('tools/colorCodeGenerator')
+router.get("/tools/gradiantGenerator", (req, res) => {
+  res.render('tools/gradiantGenerator')
 });
 
 //Exports the router

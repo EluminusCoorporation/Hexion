@@ -12,12 +12,11 @@ const btnindicator = document.getElementById('btnIndicator')
 const uploadWrapper = document.getElementById('uploadWrapper')
 
 buttons.forEach((btn, index) => {
-  dBtn1.classList.add('special')
+  dBtn1.classList.add('active')
   btn.addEventListener('click', () => {
     if (btn.classList.contains('active')) return;
     btnindicator.style.left = index === 0 ? '0%' : '50%';
     buttons.forEach(b => b.classList.remove('active'));
-    buttons.forEach(b => b.classList.remove('special'));
     if (index === 0) {
       uploadWrapper.style.display = "flex"
       textinput.style.display = "none"

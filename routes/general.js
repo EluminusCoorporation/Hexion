@@ -1,6 +1,6 @@
 //Setup's the router
 const express = require('express');
-const router = express.Router()
+const router = express.Router();
 
 // Returns / to /home
 router.get("/", (req, res) => {
