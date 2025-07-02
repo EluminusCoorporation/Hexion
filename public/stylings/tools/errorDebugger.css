@@ -298,16 +298,10 @@ html {
   transform: scale(0.9);
 }
 
-.dbtn1 {
+.dualbtn {
   color: black;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-}
-
-.dbtn2 {
-  color: black;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 .dualbtn.selected {
