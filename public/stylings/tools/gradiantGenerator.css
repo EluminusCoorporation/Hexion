@@ -52,6 +52,70 @@ html {
   transform: translateX(-6px);
 }
 
+.color-pallete-container {
+  padding: 10px 30px;
+  max-height: 500px;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+.color-dropdownmenu {
+  display: inline-flex;
+  flex-direction: row;
+  align-content: center;
+  color: #373737;
+  gap: 3.5px;
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.color-dropdownmenu i {
+  margin: 0;
+  align-self: center;
+  font-size: 1.8em;
+  transition: all 0.3s;
+}
+
+.color-dropdownmenu .active {
+  transform: rotate(180deg);
+}
+
+.color-dropdownmenu p {
+  margin: 0;
+  align-self: center;
+}
+
+.colors-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.color-container {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  border-radius: 15px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.color-div {
+  height: 60px;
+  width: 60px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: black;
+}
+
+.color-name {
+  display: flex;
+  align-self: center;
+}
+
 .dropdown-container {
   color: #B4B4B4;
   background: white;

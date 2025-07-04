@@ -1,6 +1,22 @@
 import { setError, errorLoggerBEFORE } from '../api/errorLogger.js';
 import {} from '../api/sliderbtn.js'
 import {} from '../api/copy.js'
+var colorDropdownmenu = document.getElementById('colorDropdownmenu');
+
+colorDropdownmenu.addEventListener('click', function() {
+  var colorDropdownmenuIcon = document.getElementById('colorDropdownmenuIcon');
+  var colorPalleteContainer = document.getElementById('colorPalleteContainer')
+  colorDropdownmenuIcon.classList.toggle('active')
+  //Opens the drop down menu
+  if (colorPalleteContainer.style.maxHeight === "14px") {
+    colorPalleteContainer.style.maxHeight = "500px";
+  }
+  //closes the drop down menu
+  else {
+    colorPalleteContainer.style.maxHeight = "14px"
+  }
+})
+
 var resultsBtn = document.getElementById('results-btn');
 
 resultsBtn.addEventListener('click', function() {
