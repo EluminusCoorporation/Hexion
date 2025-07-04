@@ -224,7 +224,7 @@ html {
 
 .deselectedFunc {
   display: flex;
-  display: none!important;
+  display: none !important;
 }
 
 .uploadWrapper {

@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <title>Gradiant Generator(Tool)</title>
 </head>
+
 <body>
   <div class="container">
     <%- include('../components/effects/loading') -%>
@@ -21,7 +22,9 @@
     <div class="addiv">
       <p>Ad space here</p>
     </div>
-    <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i><p>Back to dashboard</p></a>
+    <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
+      <p>Back to dashboard</p>
+    </a>
     <h2 class="pageH2"><i class='bx bx-code'></i>Gradiant Generator(Tool)</h2>
     <div id="errorDiv">
       <i class='bx bx-alert-triangle'></i>
@@ -31,7 +34,7 @@
     <div class="dropdown-container" id="dropDownMenu">
       <div class="head-i">
         <h3 class="dropdown-text" id="dropdown-text">Format Selector</h3>
-          <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+        <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
       </div>
       <div class="dropdown-content" id="dropDownContent">
         <p class="select-item">UTF-8 <span class="recommended" id="spanR">recommended</span></p>

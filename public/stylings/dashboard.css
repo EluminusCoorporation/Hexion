@@ -224,7 +224,7 @@ html {
     width: 90px;
     height: 90px;
   }
-
+  
   .toolboxes-container {
     grid-template-columns: 1fr;
   }

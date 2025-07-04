@@ -8,7 +8,7 @@ var selectItem = document.getElementsByClassName('select-item');
 export var selectedExt = "auto";
 
 //defines the previous selected bar here
-let previousSelected;  
+let previousSelected;
 
 //Enables auto as default (only for errordebugger)
 if (auto) {

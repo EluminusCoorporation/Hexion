@@ -45,7 +45,7 @@ export function setErrorFile(message) {
     errorDiv.style.display = 'none';
     errorText.textContent = '';
   }, 7000);
-} 
+}
 
 //Global error logger func used before the Execution of a FUNC
 export function errorLoggerBEFORE(name, text) {

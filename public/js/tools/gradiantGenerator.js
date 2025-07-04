@@ -49,7 +49,7 @@ resultsBtn.addEventListener('click', function() {
       function encodeASCII(text) {
         return text.split('').map(char => char.charCodeAt(0)); // Convert each character to ASCII code
       }
-
+      
       var encodedtext = encodeASCII(text);
     }
     if (name === "EXTENDED ASCII") {

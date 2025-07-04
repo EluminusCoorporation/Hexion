@@ -162,5 +162,5 @@ resultsBtn.addEventListener('click', function() {
     return false;
   };
   console.log('hh')
-  resultsDiv.style.display = "flex"; 
+  resultsDiv.style.display = "flex";
 });
