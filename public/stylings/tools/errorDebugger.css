@@ -243,6 +243,7 @@ html {
   color: white;
   justify-content: center;
   align-items: center;
+  display: flex;
   gap: 5px;
   font-size: 1em;
   font-weight: bold;
