@@ -21,7 +21,7 @@ html {
 }
 
 .pageH2 {
-  background: linear-gradient(to right, transparent 5%, springgreen, transparent 95%);
+  background: linear-gradient(to right, transparent 5%, purple, transparent 95%);
 }
 
 .back-container {
@@ -183,8 +183,7 @@ html {
   align-self: center;
 }
 
-.ttc,
-.results {
+.ttc {
   border-radius: 15px;
   width: 268px;
   display: flex;
@@ -198,8 +197,7 @@ html {
   position: relative;
 }
 
-.ttc::placeholder,
-.results::placeholder {
+.ttc::placeholder {
   color: #B4B4B4;
   font-weight: bold;
   padding-left: 5px;
@@ -235,22 +233,6 @@ html {
   justify-content: center;
 }
 
-.results {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 250px;
-  resize: none;
-  display: flex;
-  position: relative;
-  justify-self: center;
-  min-height: 200px;
-  margin: 0 auto;
-  padding: 25px;
-  box-shadow: 0px 0px 10px 3px springgreen;
-}
-
 .results-btn-div {
   display: flex;
   justify-content: center;
@@ -261,7 +243,7 @@ html {
   height: 50px;
   border-radius: 25px;
   border: none;
-  background-color: springgreen;
+  background-color: purple;
   color: white;
   font-size: 1em;
   font-weight: bold;
