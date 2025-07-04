@@ -7,7 +7,6 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   font-family: 'poppins', Sans-Serif;
-  color: var(--blackthemefc);
   /* Prevents any scrolling issues */
   box-sizing: border-box;
 }
