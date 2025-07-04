@@ -81,11 +81,6 @@ html {
   background: linear-gradient(to right, transparent 5%, lawngreen, transparent 95%);
 }
 
-.fade-out {
-  opacity: 0;
-  visibility: hidden;
-}
-
 .back-container {
   display: inline-flex;
   flex-direction: row;

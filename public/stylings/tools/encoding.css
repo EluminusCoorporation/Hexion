@@ -21,69 +21,8 @@ html {
   /* Ensures the container takes the full height of the viewport */
 }
 
-#preloader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
-}
-
-.circular {
-  animation: rotate 2s linear infinite;
-  height: 165px;
-  transform-origin: center center;
-  width: 165px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.path {
-  stroke: white;
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
-  stroke-linecap: round;
-}
-
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
-  
-  50% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35px;
-  }
-  
-  100% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -124px;
-  }
-}
-
 .pageH2 {
   background: linear-gradient(to right, transparent 5%, springgreen, transparent 95%);
-}
-
-.fade-out {
-  opacity: 0;
-  visibility: hidden;
 }
 
 .back-container {
