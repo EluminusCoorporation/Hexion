@@ -226,15 +226,15 @@ footer {
 }
 
 .footer-container #socials-special ul li:hover:nth-child(2) a {
-  background: black;
+  background: #171717;
 }
 
 .footer-container #socials-special ul li:hover:nth-child(2) a::before {
-  background: #272727;
+  background: #232323;
 }
 
 .footer-container #socials-special ul li:hover:hover:nth-child(2) a::after {
-  background: #1C1C1C;
+  background: #060606;
 }
 
 .footer-container #socials-special ul li:hover:nth-child(3) a {
