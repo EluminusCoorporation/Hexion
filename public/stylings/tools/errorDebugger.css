@@ -267,8 +267,25 @@ html {
   color: white;
 }
 
+.switcherContainer {
+  transform: translateX(50vh);
+  display: flex;
+  justify-content: center;
+  transition: transform ease 0.2s;
+}
+
 #textmodetxt {
   display: none;
+  transition: display 2s;
+}
+
+.selectedFunc {
+  transform: translateX(0) !important;
+}
+
+.deselectedFunc {
+  display: flex;
+  display: none!important;
 }
 
 .uploadWrapper {
@@ -277,6 +294,7 @@ html {
 }
 
 .uploadbtn {
+  transform: translateX(-50vh);
   width: 180px;
   height: 40px;
   position: relative;
@@ -284,7 +302,6 @@ html {
   border: none;
   background-color: deepskyblue;
   color: white;
-  display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
@@ -534,11 +551,12 @@ html {
 
 .ttc,
 .results {
+  resize: none;
+  justify-self: center;
   height: 150px;
   text-wrap: nowrap;
   border-radius: 15px;
   width: 268px;
-  justify-self: center;
   padding: 15px;
   border: 1px solid #B4B4B4;
   color: black;
