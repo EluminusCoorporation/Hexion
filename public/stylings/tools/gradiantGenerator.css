@@ -247,7 +247,7 @@ html {
   align-self: center;
 }
 
-.ttc {
+.ttc, .results{
   border-radius: 15px;
   width: 268px;
   display: flex;
@@ -261,7 +261,7 @@ html {
   position: relative;
 }
 
-.ttc::placeholder {
+.ttc::placeholder, .results::placeholder {
   color: #B4B4B4;
   font-weight: bold;
   padding-left: 5px;
@@ -289,6 +289,22 @@ html {
 .flexbox-results {
   display: none;
   justify-content: center;
+}
+
+.results {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  resize: none;
+  display: flex;
+  position: relative;
+  justify-self: center;
+  min-height: 200px;
+  margin: 0 auto;
+  padding: 25px;
+  box-shadow: 0px 0px 10px 3px purple;
 }
 
 .results-div {
