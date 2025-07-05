@@ -95,10 +95,11 @@ html {
 }
 
 .color-container {
+  position: relative;
   display: flex;
   flex-direction: row;
   gap: 25px;
-  border-radius: 15px;
+  border-radius: 15px 15px 0 15px;
   padding: 10px;
   border: 1px solid black;
 }
@@ -114,6 +115,22 @@ html {
 .color-name {
   display: flex;
   align-self: center;
+  font-weight: bold;
+}
+
+.delete-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.delete-icon:hover {
+  color: white;
+  background-color: red;
 }
 
 .dropdown-container {
