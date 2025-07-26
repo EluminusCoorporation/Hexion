@@ -19,3 +19,5 @@ Hexion an multi perpose website it provides tools used to make you're project im
 Our project is combatible with every single device as it's a website you don't need a device to access its features the only thing you need is a browser, search **__https://hexion.com__** and find our website ready to be used.
 
 # Creators #
+- MagicM
+- SirCube
