@@ -67,3 +67,7 @@ a {
   font-size: 1em;
   color: white;
 }
+
+.btn-404:hover {
+  transform: scale(0.9);
+}
