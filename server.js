@@ -3,6 +3,9 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
+//Imports the config
+const config = require('./config.json');
+
 //Imports in app Funcs
 const loadRoutes = require('./utils/loadRoutes');
 
@@ -67,7 +70,7 @@ app.use((err, req, res, next) => {
 });
 
 //Starts the server
-const PORT = "8000";
+const PORT = config.general.port || 8000;
 app.listen(PORT, () => {
   log.info(`Server online on Port:${PORT}`);
 })
