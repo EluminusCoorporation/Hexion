@@ -13,7 +13,6 @@ const loadRoutes = require('./utils/loadRoutes');
 const app = express();
 
 //Initializes the modules that require app to be Initialize first
-const expressWs = require('express-ws')(app);
 
 //Initializes the logger module
 const log = new(require('cat-loggr'))();
