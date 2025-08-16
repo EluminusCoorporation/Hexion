@@ -8,12 +8,10 @@ colorDropdownmenu.addEventListener('click', function() {
   var colorPalleteContainer = document.getElementById('colorPalleteContainer')
   colorDropdownmenuIcon.classList.toggle('active')
   //Opens the drop down menu
-  if (colorPalleteContainer.style.maxHeight === "14px") {
-    colorPalleteContainer.style.maxHeight = "500px";
-  }
-  //closes the drop down menu
-  else {
-    colorPalleteContainer.style.maxHeight = "14px"
+  if (colorPalleteContainer.style.maxHeight && colorPalleteContainer.style.maxHeight !== "14px") {
+  colorPalleteContainer.style.maxHeight = "14px";
+  } else {
+    colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
   }
 })
 
@@ -160,4 +158,8 @@ resultsBtn.addEventListener('click', function() {
   var resultsDiv = document.getElementById('resultsDiv')
   resultsDiv.style.display = "flex";
   encodingText(name, text);
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
 });
