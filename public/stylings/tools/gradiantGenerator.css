@@ -153,8 +153,9 @@ html {
   font-size: 1.1em;
   font-weight: bold;
   border-radius: 15px;
-  background-color: lightgrey;
-  border: 1px dashed black;
+  color: #C4C4C4;
+  background-color: white;
+  border: 1px dashed #C4C4C4;
 }
 
 .dropdown-container {
