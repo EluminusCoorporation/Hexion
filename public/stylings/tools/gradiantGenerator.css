@@ -65,7 +65,6 @@ html {
 
 .color-pallete-container {
   padding: 10px 30px;
-  max-height: 500px;
   overflow: hidden;
   transition: all 0.5s;
 }
