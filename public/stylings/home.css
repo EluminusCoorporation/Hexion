@@ -26,17 +26,21 @@ html {
   transform: translateY(-30px);
 }
 
-.MainHeader {
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 15%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  color: transparent;
-  font-size: 3em;
-  background: linear-gradient(to right, #88FFCB, #00FF8F);
-  -webkit-background-clip: text;
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  height: 100vh;
+  /* Ensures the container takes the full height of the viewport */
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
+  /* Adjust the height of the image container */
 }
 
 .addiv {
@@ -66,6 +70,29 @@ html {
   margin: 0;
 }
 
+.mainimg {
+  z-index: -1;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  /* Ensures the image covers the container without distortion */
+}
+
+.MainHeader {
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 15%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  color: transparent;
+  font-size: 3em;
+  background: linear-gradient(to right, #88FFCB, #00FF8F);
+  -webkit-background-clip: text;
+}
+
 .topp {
   position: absolute;
   margin-top: 320px;
@@ -74,6 +101,25 @@ html {
   font-size: 3em;
   text-align: center;
   width: 100%;
+}
+
+.fixtopp {
+  color: transparent;
+  position: relative;
+  background: linear-gradient(to right, #7CFFCD, #00FF9E);
+  -webkit-background-clip: text;
+  text-decoration: underline;
+}
+
+.fixtopp::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 6px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #7CFFCD, #00FF9E);
 }
 
 .starting-btn {
@@ -110,104 +156,6 @@ html {
   position: absolute;
   border-radius: 50%;
   border: 3px solid white;
-}
-
-.container {
-  position: relative;
-  width: 100%;
-  max-width: 2000px;
-  margin: 0 auto;
-  height: 100vh;
-  /* Ensures the container takes the full height of the viewport */
-}
-
-.image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 450px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
-  /* Adjust the height of the image container */
-}
-
-.mainimg {
-  z-index: -1;
-  user-select: none;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: relative;
-  /* Ensures the image covers the container without distortion */
-}
-
-.fixtopp {
-  color: transparent;
-  position: relative;
-  background: linear-gradient(to right, #7CFFCD, #00FF9E);
-  -webkit-background-clip: text;
-  text-decoration: underline;
-}
-
-.fixtopp::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 100%;
-  height: 6px;
-  border-radius: 10px;
-  background: linear-gradient(to right, #7CFFCD, #00FF9E);
-}
-
-#f2::before {
-  background-image: conic-gradient(orange 0deg, transparent 60deg, transparent 180deg, orange 180deg, transparent 240deg);
-}
-
-#f2 {
-  color: orange;
-}
-
-#f2:hover::after {
-  background-color: orange;
-}
-
-#f2:hover {
-  box-shadow: 0px 0px 10px 3px orange;
-  color: white;
-}
-
-#f3 {
-  color: indianred;
-}
-
-#f3:hover::after {
-  background-color: indianred;
-}
-
-#f3:hover {
-  box-shadow: 0px 0px 10px 3px indianred;
-  color: white;
-}
-
-#f3::before {
-  background-image: conic-gradient(indianred 0deg, transparent 60deg, transparent 180deg, indianred 180deg, transparent 240deg);
-}
-
-#f4:hover::after {
-  background-color: purple;
-}
-
-#f4:hover {
-  box-shadow: 0px 0px 10px 3px purple;
-  color: white;
-}
-
-#f4::before {
-  background-image: conic-gradient(purple 0deg, transparent 60deg, transparent 180deg, purple 180deg, transparent 240deg);
-}
-
-#f4 {
-  color: purple;
-  margin-bottom: 100px;
 }
 
 .features {
@@ -287,6 +235,58 @@ html {
 
 #f1 {
   color: mediumspringgreen;
+}
+
+#f2::before {
+  background-image: conic-gradient(orange 0deg, transparent 60deg, transparent 180deg, orange 180deg, transparent 240deg);
+}
+
+#f2 {
+  color: orange;
+}
+
+#f2:hover::after {
+  background-color: orange;
+}
+
+#f2:hover {
+  box-shadow: 0px 0px 10px 3px orange;
+  color: white;
+}
+
+#f3 {
+  color: indianred;
+}
+
+#f3:hover::after {
+  background-color: indianred;
+}
+
+#f3:hover {
+  box-shadow: 0px 0px 10px 3px indianred;
+  color: white;
+}
+
+#f3::before {
+  background-image: conic-gradient(indianred 0deg, transparent 60deg, transparent 180deg, indianred 180deg, transparent 240deg);
+}
+
+#f4:hover::after {
+  background-color: purple;
+}
+
+#f4:hover {
+  box-shadow: 0px 0px 10px 3px purple;
+  color: white;
+}
+
+#f4::before {
+  background-image: conic-gradient(purple 0deg, transparent 60deg, transparent 180deg, purple 180deg, transparent 240deg);
+}
+
+#f4 {
+  color: purple;
+  margin-bottom: 100px;
 }
 
 @keyframes spin {
