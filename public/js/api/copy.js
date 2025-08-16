@@ -20,5 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }).catch(err => {
       setError("Failed to copy text!"); // Show an alert if copy fails
     });
+    var copyAlertContainer = document.getElementById('copyAlertContainer')
+    copyAlertContainer.classList.add("active")
+    setTimeout(() => {
+      copyAlertContainer.classList.remove("active")
+    }, 3000);
   });
 });
