@@ -93,7 +93,7 @@ html {
   -webkit-background-clip: text;
 }
 
-.topp {
+.header-message {
   position: absolute;
   margin-top: 320px;
   color: white;
@@ -103,7 +103,7 @@ html {
   width: 100%;
 }
 
-.fixtopp {
+.header-special {
   color: transparent;
   position: relative;
   background: linear-gradient(to right, #7CFFCD, #00FF9E);
@@ -111,7 +111,7 @@ html {
   text-decoration: underline;
 }
 
-.fixtopp::after {
+.header-special::after {
   content: "";
   position: absolute;
   left: 0;
@@ -179,7 +179,7 @@ html {
   pointer-events: auto;
 }
 
-.features div {
+.features .feature {
   --bordersize: 1rem;
   position: relative;
   width: 300px;
@@ -193,13 +193,13 @@ html {
   text-align: center;
 }
 
-.features div::before,
-.features div::after {
+.features .feature::before,
+.features .feature::after {
   content: '';
   position: absolute;
 }
 
-.features div::before {
+.features .feature::before {
   width: 200%;
   height: 200%;
   inset: -50%;
@@ -207,7 +207,7 @@ html {
   animation: spin 8s linear infinite;
 }
 
-.features div::after {
+.features .feature::after {
   --inset: 0.25rem;
   background-color: whitesmoke;
   inset: var(--inset);
@@ -216,7 +216,7 @@ html {
   transition: all 0.35s linear;
 }
 
-.features div:hover::before {
+.features .feature:hover::before {
   animation-play-state: paused;
 }
 
