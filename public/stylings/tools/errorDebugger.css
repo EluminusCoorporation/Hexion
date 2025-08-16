@@ -24,6 +24,17 @@ html {
   background: linear-gradient(to right, transparent 5%, indianred, transparent 95%);
 }
 
+.header-tag {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  padding: 2px;
+  background-color: white;
+  font-size: 0.6em;
+  color: indianred;
+  border-radius: 3px;
+}
+
 .back-container {
   display: inline-flex;
   flex-direction: row;
