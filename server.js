@@ -23,6 +23,9 @@ log.info('Starting Server');
 //Set up view engine for express
 app.set("view engine", "ejs");
 
+//Enable required middlewares
+app.use(express.json())
+
 //Setup static directorys
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
