@@ -180,10 +180,9 @@ html {
 }
 
 .features .feature {
-  --bordersize: 1rem;
   position: relative;
   width: 300px;
-  border-radius: var(--bordersize);
+  border-radius: 1rem;
   place-content: center;
   padding: 1rem 1rem 2rem;
   isolation: isolate;
@@ -208,10 +207,9 @@ html {
 }
 
 .features .feature::after {
-  --inset: 0.25rem;
   background-color: whitesmoke;
-  inset: var(--inset);
-  border-radius: calc(var(--bordersize) - var(--inset));
+  inset: 0.25rem;
+  border-radius: calc(1rem - 0.25rem);
   z-index: -1;
   transition: all 0.35s linear;
 }
