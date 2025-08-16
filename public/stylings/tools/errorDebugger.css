@@ -499,8 +499,7 @@ html {
   align-self: center;
 }
 
-.ttc,
-.results {
+.ttc {
   resize: none;
   justify-self: center;
   height: 150px;
@@ -516,8 +515,7 @@ html {
   position: relative;
 }
 
-.ttc::placeholder,
-.results::placeholder {
+.ttc::placeholder {
   color: #B4B4B4;
   font-weight: bold;
   padding-left: 5px;
@@ -586,6 +584,17 @@ html {
 
 .greenball {
   background-color: green;
+}
+
+.results {
+  border: none;
+  border-radius: 15px;
+}
+
+.results::placeholder {
+  color: #B4B4B4;
+  font-weight: bold;
+  padding-left: 5px;
 }
 
 .textarea-div {
