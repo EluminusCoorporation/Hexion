@@ -194,8 +194,7 @@ html {
   align-self: center;
 }
 
-.ttc,
-.results {
+.ttc {
   border-radius: 15px;
   width: 268px;
   display: flex;
@@ -209,8 +208,7 @@ html {
   position: relative;
 }
 
-.ttc::placeholder,
-.results::placeholder {
+.ttc::placeholder {
   color: #B4B4B4;
   font-weight: bold;
   padding-left: 5px;
@@ -260,6 +258,14 @@ html {
   margin: 0 auto;
   padding: 25px;
   box-shadow: 0px 0px 10px 3px springgreen;
+  border: none;
+  border-radius: 15px;
+}
+
+.results::placeholder {
+  color: #B4B4B4;
+  font-weight: bold;
+  padding-left: 5px;
 }
 
 .results-btn-div {
