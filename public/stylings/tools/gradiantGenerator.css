@@ -106,9 +106,11 @@ html {
 }
 
 .color-container {
+  height: 75px;
   position: relative;
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 25px;
   border-radius: 15px 15px 0 15px;
   padding: 10px;
@@ -125,7 +127,6 @@ html {
 
 .color-name {
   display: flex;
-  align-self: center;
   font-weight: bold;
 }
 
