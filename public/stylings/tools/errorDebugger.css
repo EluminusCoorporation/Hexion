@@ -258,7 +258,7 @@ html {
 }
 
 .uploadbtn:hover {
-  transform: scale(0.9);
+  transform: translate(-50vh) scale(0.9);
 }
 
 .uploadMenu-container {
