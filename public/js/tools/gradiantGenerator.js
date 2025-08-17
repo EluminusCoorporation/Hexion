@@ -9,10 +9,37 @@ colorDropdownmenu.addEventListener('click', function() {
   colorDropdownmenuIcon.classList.toggle('active')
   //Opens the drop down menu
   if (colorPalleteContainer.style.maxHeight && colorPalleteContainer.style.maxHeight !== "14px") {
-  colorPalleteContainer.style.maxHeight = "14px";
+    colorPalleteContainer.style.maxHeight = "14px";
   } else {
     colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
   }
+})
+
+document.querySelectorAll('.color-div').forEach((el, i) => {
+  const pickr = Pickr.create({
+    el: el,
+    theme: 'monolith',
+    
+    components: {
+      
+      // Main components
+      preview: true,
+      opacity: false,
+      hue: true,
+      
+      // Input / output Options
+      interaction: {
+        hex: false,
+        rgba: false,
+        hsla: false,
+        hsva: false,
+        cmyk: false,
+        input: true,
+        clear: false,
+        save: true
+      }
+    }
+  });
 })
 
 var resultsBtn = document.getElementById('results-btn');

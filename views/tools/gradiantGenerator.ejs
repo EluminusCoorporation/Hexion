@@ -7,11 +7,13 @@
   <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
   <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
   <link rel="website icon" href="/global/logo.webp">
+  <link rel="stylesheet" href="/stylings/components/effects/loading.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css">
   <link rel="stylesheet" href="/stylings/tools/gradiantGenerator.css">
   <link rel="stylesheet" href="/stylings/components/header.css">
   <link rel="stylesheet" href="/stylings/components/footer.css">
-  <link rel="stylesheet" href="/stylings/components/effects/loading.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
   <title>Gradiant Generator</title>
 </head>
 
@@ -43,7 +45,7 @@
         </div>
         <div class="color-container">
           <div class="color-div"></div>
-          <p class="color-name">N/A</p>
+          <p class="color-name" id="colorName">N/A</p>
           <i class='bx bx-trash delete-icon'></i>
         </div>
       </div>
@@ -83,6 +85,8 @@
     </div>
     <%- include('../components/footer') -%>
   </div>
+  <!--Module imports-->
+  <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
   <!--function Import-->
   <script src="/js/effects/loading.js"></script>
   <script src="/js/tools/gradiantGenerator.js" type="module"></script>

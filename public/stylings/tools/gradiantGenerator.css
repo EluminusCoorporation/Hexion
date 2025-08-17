@@ -116,12 +116,9 @@ html {
   border: 1px solid black;
 }
 
-.color-div {
-  height: 60px;
-  width: 60px;
-  border-radius: 5px;
-  border: 1px solid black;
-  background-color: black;
+.pcr-button {
+  height: 60px !important;
+  width: 60px !important;
 }
 
 .color-name {
