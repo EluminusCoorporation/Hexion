@@ -16,7 +16,7 @@ colorDropdownmenu.addEventListener('click', function() {
 })
 
 document.querySelectorAll('.color-container').forEach((container, i) => {
-  const el = container.querySelector('.color-div')
+  const el = container.querySelector('.color-preview')
   var colorName = container.querySelector('.color-name')
   const pickr = Pickr.create({
     el: el,
