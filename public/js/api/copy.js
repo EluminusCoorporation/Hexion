@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const togglecopy = document.getElementById('tcopy');
+  const togglecopy = document.getElementById('copy-icon');
   
   togglecopy.addEventListener('click', function() {
     // Get the latest value on click 
