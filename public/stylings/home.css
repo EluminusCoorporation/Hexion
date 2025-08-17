@@ -343,6 +343,10 @@ html {
   max-width: 461px;
 }
 
+.faq-email {
+  font-weight: bold;
+}
+
 .faq-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
