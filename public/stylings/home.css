@@ -358,7 +358,14 @@ html {
 }
 
 .faq-email {
+  color: #7a719b;
   font-weight: bold;
+}
+
+.faq-discord {
+  text-decoration: underline;
+  text-decoration-color: #7a719b;
+  color: #71719b;
 }
 
 .faq-content {
