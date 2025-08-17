@@ -15,13 +15,14 @@ colorDropdownmenu.addEventListener('click', function() {
   }
 })
 
-document.querySelectorAll('.color-div').forEach((el, i) => {
+document.querySelectorAll('.color-container').forEach((container, i) => {
+  const el = container.querySelector('.color-div')
+  var colorName = container.querySelector('.color-name')
   const pickr = Pickr.create({
     el: el,
     theme: 'monolith',
     
     components: {
-      
       // Main components
       preview: true,
       opacity: false,
@@ -40,6 +41,11 @@ document.querySelectorAll('.color-div').forEach((el, i) => {
       }
     }
   });
+  pickr.on('save', (color, instance) => {
+    const colorHex = color.toHEXA().toString()
+    colorName.textContent = colorHex
+    colorName.style.color = colorHex
+  })
 })
 
 var resultsBtn = document.getElementById('results-btn');
