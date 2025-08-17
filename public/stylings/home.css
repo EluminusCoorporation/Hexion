@@ -39,7 +39,12 @@ html {
   position: relative;
   width: 100%;
   height: 450px;
+  pointer-events: none;
   /* Adjust the height of the image container */
+}
+
+.image-wrapper * {
+  pointer-events: auto;
 }
 
 .image-wrapper::after {
@@ -93,7 +98,7 @@ html {
 
 .mainimg {
   z-index: -1;
-  user-select: none;
+  pointer-events: none;
   width: 100%;
   height: 100%;
   object-fit: cover;
