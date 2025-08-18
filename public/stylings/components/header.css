@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   justify-self: center;
+  justify-content: center;
   height: 50px;
   width: 90%;
   background: transparent;
