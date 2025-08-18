@@ -92,13 +92,13 @@ html {
 }
 
 .back-container {
-  display: inline-flex;
+  display: flex;
+  width: max-content;
   flex-direction: row;
   color: #383838;
   font-size: 0.8em;
-  font-weight: 700;
-  margin: 0 0 0 2px;
-  padding: 0;
+  font-weight: bold;
+  margin-left: 2px;
   cursor: pointer;
   align-items: center;
   user-select: none;
@@ -107,7 +107,6 @@ html {
 }
 
 .back-container i {
-  display: inline-flex;
   font-size: 1.8em;
 }
 
