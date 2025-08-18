@@ -82,6 +82,7 @@ html {
 }
 
 .pageH2 {
+  margin: 20px;
   background: linear-gradient(to right, transparent 5%, orangered, transparent 95%);
 }
 
