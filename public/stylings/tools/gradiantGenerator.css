@@ -310,6 +310,44 @@ html {
   padding-left: 5px;
 }
 
+.preview-screen-container {
+  width: 80%;
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.preview-header {
+  padding: 10px;
+  width: 93%;
+  color: white;
+  font-weight: bold;
+  font-size: 0.6em;
+  background-color: #414141;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  z-index: 2;
+  box-shadow: 0 10px 10px 0 black;
+}
+
+.preview-screen {
+  display: flex;
+  padding: 10px;
+  width: 93%;
+  align-items: center;
+  background-color: #262626;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  font-size: 3em;
+}
+
+.preview-screen p {
+  color: white;
+  width: 100%;
+  word-wrap: break-word;
+}
+
 .results-div i {
   position: absolute;
   display: flex;
