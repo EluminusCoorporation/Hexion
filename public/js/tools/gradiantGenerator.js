@@ -15,6 +15,40 @@ colorDropdownmenu.addEventListener('click', function() {
   }
 })
 
+document.querySelectorAll('.color-container').forEach((container, i) => {
+  const el = container.querySelector('.color-preview')
+  var colorName = container.querySelector('.color-name')
+  const pickr = Pickr.create({
+    el: el,
+    theme: 'monolith',
+    default: "#000000",
+    
+    components: {
+      // Main components
+      preview: true,
+      opacity: false,
+      hue: true,
+      
+      // Input / output Options
+      interaction: {
+        hex: false,
+        rgba: false,
+        hsla: false,
+        hsva: false,
+        cmyk: false,
+        input: true,
+        clear: false,
+        save: true
+      }
+    }
+  });
+  pickr.on('save', (color, instance) => {
+    const colorHex = color.toHEXA().toString()
+    colorName.textContent = colorHex
+    colorName.style.color = colorHex
+  })
+})
+
 var addColorButton = document.getElementById('addColorButton');
 addColorButton.addEventListener('click', () => {
   const colorsContainer = document.getElementById('colorsContainer');
@@ -74,39 +108,18 @@ addColorButton.addEventListener('click', () => {
   colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
 });
 
-document.querySelectorAll('.color-container').forEach((container, i) => {
-  const el = container.querySelector('.color-preview')
-  var colorName = container.querySelector('.color-name')
-  const pickr = Pickr.create({
-    el: el,
-    theme: 'monolith',
-    default: "#000000",
-    
-    components: {
-      // Main components
-      preview: true,
-      opacity: false,
-      hue: true,
-      
-      // Input / output Options
-      interaction: {
-        hex: false,
-        rgba: false,
-        hsla: false,
-        hsva: false,
-        cmyk: false,
-        input: true,
-        clear: false,
-        save: true
-      }
-    }
-  });
-  pickr.on('save', (color, instance) => {
-    const colorHex = color.toHEXA().toString()
-    colorName.textContent = colorHex
-    colorName.style.color = colorHex
+const observer = new MutationObserver(() => {
+  document.querySelectorAll('.delete-icon').forEach((icon, i) => {
+    icon.addEventListener('click', () => {
+      const container = icon.parentNode;
+      container.remove();
+      colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
+    })
   })
 })
+
+const colorsContainer = document.getElementById("colorsContainer");
+observer.observe(colorsContainer, { childList: true })
 
 var resultsBtn = document.getElementById('results-btn');
 
