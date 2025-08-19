@@ -15,6 +15,65 @@ colorDropdownmenu.addEventListener('click', function() {
   }
 })
 
+var addColorButton = document.getElementById('addColorButton');
+addColorButton.addEventListener('click', () => {
+  const colorsContainer = document.getElementById('colorsContainer');
+  const colorContainer = document.getElementById('colorContainer');
+  var clonedContainer = colorContainer.cloneNode(true);
+  var clonedColorName = clonedContainer.querySelector('.color-name')
+  const el = clonedContainer.querySelector('.pcr-button')
+  var childIcon = document.createElement('i')
+  
+  const colorContainerLength = colorsContainer.querySelectorAll('.color-container').length;
+  
+  if (colorContainerLength === 15) {
+    setError('Too many colors')
+    return;
+  }
+  
+  const pickr = Pickr.create({
+    el: el,
+    theme: 'monolith',
+    default: "#000000",
+    
+    components: {
+      // Main components
+      preview: true,
+      opacity: false,
+      hue: true,
+      
+      // Input / output Options
+      interaction: {
+        hex: false,
+        rgba: false,
+        hsla: false,
+        hsva: false,
+        cmyk: false,
+        input: true,
+        clear: false,
+        save: true
+      }
+    }
+  });
+  
+  pickr.on('save', (color, instance) => {
+    const colorHex = color.toHEXA().toString()
+    clonedColorName.textContent = colorHex
+    clonedColorName.style.color = colorHex
+  })
+  
+  clonedContainer.id = '';
+  if (clonedColorName.style.color != "#000000") {
+    clonedColorName.textContent = "#000000";
+    clonedColorName.style.color = "#000000"
+  }
+  childIcon.classList.add('bx', 'bx-trash', 'delete-icon');
+  clonedContainer.appendChild(childIcon);
+  
+  colorsContainer.appendChild(clonedContainer);
+  colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
+});
+
 document.querySelectorAll('.color-container').forEach((container, i) => {
   const el = container.querySelector('.color-preview')
   var colorName = container.querySelector('.color-name')

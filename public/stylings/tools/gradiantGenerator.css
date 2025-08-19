@@ -70,7 +70,6 @@ html {
 
 .color-pallete-container {
   padding: 10px 30px;
-  overflow: hidden;
   transition: all 0.5s;
 }
 
@@ -83,8 +82,6 @@ html {
   font-size: 0.8em;
   font-weight: bold;
   cursor: pointer;
-  margin: 0;
-  padding: 0;
 }
 
 .color-dropdownmenu i {
@@ -104,6 +101,7 @@ html {
 }
 
 .colors-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 15px;
