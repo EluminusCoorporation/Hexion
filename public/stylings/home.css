@@ -115,14 +115,14 @@ html {
 .MainHeader {
   transform: translate(-50%, -50%);
   left: 50%;
-  top: 15%;
+  top: 20%;
   position: absolute;
   display: flex;
   justify-content: center;
   color: transparent;
   font-size: 3em;
   background: linear-gradient(to right, #88FFCB, #00FF8F);
-  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .starting-btn {
