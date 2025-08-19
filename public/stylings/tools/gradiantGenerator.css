@@ -75,7 +75,8 @@ html {
 }
 
 .color-dropdownmenu {
-  display: inline-flex;
+  display: flex;
+  width: max-content;
   flex-direction: row;
   align-content: center;
   color: #373737;
