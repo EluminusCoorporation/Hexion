@@ -137,7 +137,7 @@ html {
   border-top-left-radius: 5px;
   padding: 5px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.1s;
 }
 
 .delete-icon:hover {
