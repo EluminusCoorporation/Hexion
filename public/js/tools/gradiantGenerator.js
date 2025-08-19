@@ -108,7 +108,7 @@ addColorButton.addEventListener('click', () => {
   colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
 });
 
-const observer = new MutationObserver(() => {
+function updateQuery() {
   document.querySelectorAll('.delete-icon').forEach((icon, i) => {
     icon.addEventListener('click', () => {
       const container = icon.parentNode;
@@ -116,6 +116,12 @@ const observer = new MutationObserver(() => {
       colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
     })
   })
+}
+
+updateQuery()
+
+const observer = new MutationObserver(() => {
+  updateQuery()
 })
 
 const colorsContainer = document.getElementById("colorsContainer");
