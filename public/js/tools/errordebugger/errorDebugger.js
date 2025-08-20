@@ -78,14 +78,13 @@ fileInput.addEventListener('change', () => {
   const fileSize = formatFileSize(file.size)
   
   fileNameLabel.textContent = file.name;
-  fileIcon.classList.remove('bx-arrow-from-to');
+  fileIcon.classList.remove('fa-solid', 'fa-upload')
   uploadInfoContainer.style.display = "flex"
-  fileIcon.classList.add('bx-file-code');
+  fileIcon.classList.add('bx', 'bx-file-code');
   uploadInfo.textContent = `${fileSize} / ${fileSize}`;
   
   sessionStorage.setItem("errorDebuggerFile", file)
   let data = sessionStorage.getItem("errorDebuggerFile")
-  alert(data)
 });
 
 let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));
