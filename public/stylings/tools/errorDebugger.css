@@ -395,21 +395,6 @@ html {
   font-weight: 500;
 }
 
-.upload-bar-container {
-  height: 7.5px;
-  width: 80%;
-  margin-top: 10px;
-  background-color: #fff;
-  border-radius: 30px;
-}
-
-.upload-bar {
-  height: 100%;
-  width: 0%;
-  background-color: #6990f2;
-  border-radius: inherit;
-}
-
 .dragicon {
   font-size: 7em;
   color: #42445A;

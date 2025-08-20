@@ -72,17 +72,20 @@ fileInput.addEventListener('change', () => {
   const file = fileInput.files[0]
   var fileNameLabel = document.getElementById('fileName');
   var fileIcon = document.getElementById('fileIcon');
+  var uploadInfoContainer = document.getElementById('uploadBarContainer')
   var uploadInfo = document.getElementById('uploadInfo')
-  var uploadBarContainer = document.getElementById('uploadBarContainer');
-  var uploadBar = document.getElementById('uploadingBar');
   var status = document.getElementById('status')
   const fileSize = formatFileSize(file.size)
   
   fileNameLabel.textContent = file.name;
   fileIcon.classList.remove('bx-arrow-from-to');
+  uploadInfoContainer.style.display = "flex"
   fileIcon.classList.add('bx-file-code');
-  uploadInfo.textContent = `0 / ${fileSize}`;
-  uploadBarContainer.style.display = "flex";
+  uploadInfo.textContent = `${fileSize} / ${fileSize}`;
+  
+  sessionStorage.setItem("errorDebuggerFile", file)
+  let data = sessionStorage.getItem("errorDebuggerFile")
+  alert(data)
 });
 
 let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));
