@@ -129,8 +129,15 @@ observer.observe(colorsContainer, { childList: true })
 
 var resultsBtn = document.getElementById('results-btn');
 
+var inputText = document.getElementById('inputText')
+inputText.addEventListener('input', (event) => {
+  const text = event.target.value;
+  var previewText = document.getElementById('previewText')
+  previewText.textContent = text
+})
+
 resultsBtn.addEventListener('click', function() {
-  const text = document.getElementById('ttc').value;
+  const text = document.getElementById('inputText').value;
   var title = document.getElementById('dropdown-text');
   if (!errorLoggerBEFORE(name, text)) {
     return;
