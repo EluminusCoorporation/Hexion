@@ -1,6 +1,39 @@
 import { setError, errorLoggerBEFORE } from '../api/errorLogger.js';
 import {} from '../api/sliderbtn.js'
 import {} from '../api/copy.js'
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('#copyIcon').forEach((togglecopy, i) => {
+    
+    togglecopy.addEventListener('click', function() {
+      const colorNameContainer = this.parentNode;
+      // Get the latest value on click 
+      const text = colorNameContainer.querySelector('.color-name').textContent;
+      // Copy text to clipboard with error handling
+      navigator.clipboard.writeText(text).then(() => {
+        
+        // Toggle the icon
+        this.classList.toggle('bx-copy');
+        this.classList.toggle('bx-check');
+        
+        // Setting up timeout
+        setTimeout(() => {
+          this.classList.remove('bx-check');
+          this.classList.add('bx-copy');
+        }, 2000);
+      }).catch(err => {
+        setError("Failed to copy text!");
+        console.log(err)// log the error if copy fails
+      });
+      var copyAlertContainer = document.getElementById('copyAlertContainer')
+      copyAlertContainer.classList.add("active")
+      setTimeout(() => {
+        copyAlertContainer.classList.remove("active")
+      }, 3000);
+    });
+  });
+});
+
 var colorDropdownmenu = document.getElementById('colorDropdownmenu');
 
 colorDropdownmenu.addEventListener('click', function() {

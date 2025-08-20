@@ -127,6 +127,27 @@ html {
   width: 60px !important;
 }
 
+.color-name-container {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-direction: row;
+}
+
+.color-name-container i {
+  display: flex;
+  color: black;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  user-select: none;
+  transition: all 0.5s;
+}
+
+.color-name-container i:hover {
+  background: #A5A5A5;
+}
+
 .color-name {
   display: flex;
   font-weight: bold;
@@ -293,7 +314,7 @@ html {
   align-self: center;
 }
 
-.ttc{
+.ttc {
   border-radius: 15px;
   width: 268px;
   display: flex;
