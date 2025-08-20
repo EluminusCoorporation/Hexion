@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 var colorDropdownmenu = document.getElementById('colorDropdownmenu');
 
-colorDropdownmenu.addEventListener('click', function() {
+colorDropdownmenu.addEventListener('click', () => {
   var colorDropdownmenuIcon = document.getElementById('colorDropdownmenuIcon');
   var colorPalleteContainer = document.getElementById('colorPalleteContainer')
   colorDropdownmenuIcon.classList.toggle('active')
