@@ -121,7 +121,7 @@ html {
   justify-content: center;
   color: transparent;
   font-size: 3em;
-  background: linear-gradient(to right, #88FFCB, #00FF8F);
+  background: linear-gradient(to right, #88FFCB, springgreen);
   background-clip: text;
 }
 
