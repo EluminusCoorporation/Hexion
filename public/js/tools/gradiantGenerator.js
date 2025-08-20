@@ -3,9 +3,9 @@ import {} from '../api/sliderbtn.js'
 import {} from '../api/copy.js'
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('#copyIcon').forEach((togglecopy, i) => {
+  document.querySelectorAll('#copyIcon').forEach((button, i) => {
     
-    togglecopy.addEventListener('click', function() {
+    button.addEventListener('click', function() {
       const colorNameContainer = this.parentNode;
       // Get the latest value on click 
       const text = colorNameContainer.querySelector('.color-name').textContent;
@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Setting up timeout
         setTimeout(() => {
-          this.classList.remove('bx-check');
-          this.classList.add('bx-copy');
+          this.classList.toggle('bx-check');
+          this.classList.toggle('bx-copy');
         }, 2000);
       }).catch(err => {
         setError("Failed to copy text!");

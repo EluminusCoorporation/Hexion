@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Setting up timeout
       setTimeout(() => {
-        this.classList.remove('bx-check');
-        this.classList.add('bx-copy');
+        this.classList.toggle('bx-check');
+        this.classList.toggle('bx-copy');
       }, 2000);
     }).catch(err => {
       setError("Failed to copy text!");
