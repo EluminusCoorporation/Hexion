@@ -38,11 +38,6 @@ const routesDir = path.join(__dirname, 'routes');
 //Loads the Routes
 loadRoutes(app, routesDir);
 
-//handles the POST requests
-app.post('/upload', (req, res) => {
-  
-})
-
 //Error handling System
 app.use((req, res, next) => {
   //separate middleware for 404

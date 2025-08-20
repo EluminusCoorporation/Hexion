@@ -83,32 +83,6 @@ fileInput.addEventListener('change', () => {
   fileIcon.classList.add('bx-file-code');
   uploadInfo.textContent = `0 / ${fileSize}`;
   uploadBarContainer.style.display = "flex";
-  
-  const formData = new FormData();
-  formData.append('file', file);
-  
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', '/upload');
-  
-  xhr.upload.addEventListener('progress', e => {
-    if (e.lengthComputable) {
-      const percent = (e.loaded / e.total) * 100;
-      uploadBar.style.width = percent + '%';
-    };
-  });
-  xhr.onload = () => {
-    if (xhr.status === 200) {
-      status.textContent = 'Uploaded';
-    } else {
-      status.textContent = 'Failed to upload' + xhr.responseText;
-    }
-  }
-  
-  xhr.onerror = () => {
-    status.textContent = 'An error occurred'
-  }
-  
-  xhr.send(formData)
 });
 
 let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));
