@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const togglecopy = document.getElementById('copy-icon');
+  const toggleCopy = document.getElementById('copy-icon');
   
-  togglecopy.addEventListener('click', function() {
+  toggleCopy.addEventListener('click', function() {
     // Get the latest value on click 
     const resultsInput = document.getElementById('results').value;
     // Copy text to clipboard with error handling
