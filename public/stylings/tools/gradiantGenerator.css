@@ -130,6 +130,7 @@ html {
 .color-name {
   display: flex;
   font-weight: bold;
+  color: springgreen;
 }
 
 .delete-icon {
@@ -345,9 +346,11 @@ html {
 }
 
 .preview-screen p {
-  color: white;
+  background: linear-gradient(to right, springgreen);
+  color: transparent;
   width: 100%;
   word-wrap: break-word;
+  background-clip: text;
 }
 
 .results-div i {

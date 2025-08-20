@@ -21,7 +21,7 @@ document.querySelectorAll('.color-container').forEach((container, i) => {
   const pickr = Pickr.create({
     el: el,
     theme: 'monolith',
-    default: "#000000",
+    default: "#00FF7F",
     
     components: {
       // Main components
