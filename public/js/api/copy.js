@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   const togglecopy = document.getElementById('copy-icon');
   
   togglecopy.addEventListener('click', function() {
@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', function() {
       this.classList.toggle('bx-copy');
       this.classList.toggle('bx-check');
       
-      // Store reference to button for setTimeout
-      const btn = this;
+      // Setting up timeout
       setTimeout(() => {
-        btn.classList.remove('bx-check');
-        btn.classList.add('bx-copy');
+        this.classList.remove('bx-check');
+        this.classList.add('bx-copy');
       }, 2000);
     }).catch(err => {
-      setError("Failed to copy text!"); // Show an alert if copy fails
+      setError("Failed to copy text!");
+      console.log(err)// log the error if copy fails
     });
     var copyAlertContainer = document.getElementById('copyAlertContainer')
     copyAlertContainer.classList.add("active")
