@@ -1,6 +1,6 @@
 import { setError, errorLoggerBEFORE, errorLoggerAFTER } from '../api/errorLogger.js';
 import {} from '../api/copy.js';
-import {} from '../api/sliderbtn.js';
+import {} from '../api/dropDownMenu.js';
 var resultsBtn = document.getElementById('results-btn');
 resultsBtn.addEventListener('click', function() {
   const text = document.getElementById('ttc').value;

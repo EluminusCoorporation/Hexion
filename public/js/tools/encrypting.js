@@ -1,5 +1,5 @@
 import { setError, errorLoggerBEFORE } from '../api/errorLogger.js';
-import {} from '../api/sliderbtn.js'
+import {} from '../api/dropDownMenu.js'
 import {} from '../api/copy.js'
 var resultsBtn = document.getElementById('results-btn');
 

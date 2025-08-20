@@ -1,7 +1,7 @@
 import { setError, errorLoggerBEFORE, setErrorFile, fileLogger } from '../../api/errorLogger.js';
 import {} from '../../api/copy.js'
 import { formatFileSize } from '../../api/fileSizeFormat.js'
-import { selectedExt } from '../../api/sliderbtn.js'
+import { selectedExt } from '../../api/dropDownMenu.js'
 var resultsBtn = document.getElementById('results-btn');
 const dBtn1 = document.getElementById('dbtn1');
 const dBtn2 = document.getElementById('dbtn2');

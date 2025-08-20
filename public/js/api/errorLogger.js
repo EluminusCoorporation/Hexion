@@ -1,4 +1,4 @@
-import { selectedExt } from './sliderbtn.js'
+import { selectedExt } from './dropDownMenu.js'
 //Sets an error timeout var
 let errorTimeout;
 //Global setError func
