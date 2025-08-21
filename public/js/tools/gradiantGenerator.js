@@ -2,28 +2,30 @@ import { setError, errorLoggerBEFORE } from '../api/errorLogger.js';
 import {} from '../api/dropDownMenu.js'
 import {} from '../api/copy.js'
 
+let timeout;
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('#copyIcon').forEach((button, i) => {
     
     button.addEventListener('click', function() {
-      const colorNameContainer = this.parentNode;
-      // Get the latest value on click 
-      const text = colorNameContainer.querySelector('.color-name').textContent;
+      const text = this.nextElementSibling.textContent;
       // Copy text to clipboard with error handling
       navigator.clipboard.writeText(text).then(() => {
         
         // Toggle the icon
-        this.classList.toggle('bx-copy');
-        this.classList.toggle('bx-check');
+        this.classList.remove('bx-copy');
+        this.classList.add('bx-check');
+        
+        clearTimeout(timeout)
         
         // Setting up timeout
-        setTimeout(() => {
-          this.classList.toggle('bx-check');
-          this.classList.toggle('bx-copy');
-        }, 2000);
+        timeout = setTimeout(() => {
+          this.classList.remove('bx-check');
+          this.classList.add('bx-copy');
+        }, 3000);
       }).catch(err => {
         setError("Failed to copy text!");
-        console.log(err)// log the error if copy fails
+        console.log(err) // log the error if copy fails
       });
       var copyAlertContainer = document.getElementById('copyAlertContainer')
       copyAlertContainer.classList.add("active")
@@ -48,38 +50,42 @@ colorDropdownmenu.addEventListener('click', () => {
   }
 })
 
-document.querySelectorAll('.color-container').forEach((container, i) => {
-  const el = container.querySelector('.color-preview')
-  var colorName = container.querySelector('.color-name')
-  const pickr = Pickr.create({
-    el: el,
-    theme: 'monolith',
-    default: "#00FF7F",
-    
-    components: {
-      // Main components
-      preview: true,
-      opacity: false,
-      hue: true,
+function createPickr(el, color) {
+    const colorNameContainer = el.nextElementSibling
+    var colorName = colorNameContainer.querySelector('.color-name')
+    const pickr = Pickr.create({
+      el: el,
+      theme: 'monolith',
+      default: color,
       
-      // Input / output Options
-      interaction: {
-        hex: false,
-        rgba: false,
-        hsla: false,
-        hsva: false,
-        cmyk: false,
-        input: true,
-        clear: false,
-        save: true
+      components: {
+        // Main components
+        preview: true,
+        opacity: false,
+        hue: true,
+        
+        // Input / output Options
+        interaction: {
+          hex: false,
+          rgba: false,
+          hsla: false,
+          hsva: false,
+          cmyk: false,
+          input: true,
+          clear: false,
+          save: true
+        }
       }
-    }
-  });
-  pickr.on('save', (color, instance) => {
-    const colorHex = color.toHEXA().toString()
-    colorName.textContent = colorHex
-    colorName.style.color = colorHex
-  })
+    });
+    pickr.on('save', (color, instance) => {
+      const colorHex = color.toHEXA().toString()
+      colorName.textContent = colorHex
+      colorName.style.color = colorHex
+    })
+}
+
+document.querySelectorAll('.color-preview').forEach((el, i) => {
+  createPickr(el, "#00FF7F")
 })
 
 var addColorButton = document.getElementById('addColorButton');
@@ -88,7 +94,7 @@ addColorButton.addEventListener('click', () => {
   const colorContainer = document.getElementById('colorContainer');
   var clonedContainer = colorContainer.cloneNode(true);
   var clonedColorName = clonedContainer.querySelector('.color-name')
-  const el = clonedContainer.querySelector('.pcr-button')
+  const el = clonedContainer.querySelector('.pickr');
   var childIcon = document.createElement('i')
   
   const colorContainerLength = colorsContainer.querySelectorAll('.color-container').length;
@@ -98,44 +104,16 @@ addColorButton.addEventListener('click', () => {
     return;
   }
   
-  const pickr = Pickr.create({
-    el: el,
-    theme: 'monolith',
-    default: "#000000",
-    
-    components: {
-      // Main components
-      preview: true,
-      opacity: false,
-      hue: true,
-      
-      // Input / output Options
-      interaction: {
-        hex: false,
-        rgba: false,
-        hsla: false,
-        hsva: false,
-        cmyk: false,
-        input: true,
-        clear: false,
-        save: true
-      }
-    }
-  });
-  
-  pickr.on('save', (color, instance) => {
-    const colorHex = color.toHEXA().toString()
-    clonedColorName.textContent = colorHex
-    clonedColorName.style.color = colorHex
-  })
-  
   clonedContainer.id = '';
   if (clonedColorName.style.color != "#000000") {
     clonedColorName.textContent = "#000000";
     clonedColorName.style.color = "#000000"
   }
   childIcon.classList.add('bx', 'bx-trash', 'delete-icon');
+  
   clonedContainer.appendChild(childIcon);
+  
+  createPickr(el, "#000000")
   
   colorsContainer.appendChild(clonedContainer);
   colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
