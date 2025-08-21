@@ -60,6 +60,7 @@ a {
   text-align: center;
   justify-content: center;
   gap: 3px;
+  transition: all 500ms;
 }
 
 .btn-404 i {
