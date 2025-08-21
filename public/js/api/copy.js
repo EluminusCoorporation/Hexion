@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const toggleCopy = document.getElementById('copy-icon');
   
+  let timeout;
+  
   toggleCopy.addEventListener('click', function() {
     // Get the latest value on click 
     const resultsInput = document.getElementById('results').value;
@@ -8,14 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
     navigator.clipboard.writeText(resultsInput).then(() => {
       
       // Toggle the icon
-      this.classList.toggle('bx-copy');
-      this.classList.toggle('bx-check');
+      this.classList.remove('bx-copy');
+      this.classList.add('bx-check');
+      
+      clearTimeout(timeout)
       
       // Setting up timeout
-      setTimeout(() => {
-        this.classList.toggle('bx-check');
-        this.classList.toggle('bx-copy');
-      }, 2000);
+      timeout = setTimeout(() => {
+        this.classList.remove('bx-check');
+        this.classList.add('bx-copy');
+      }, 3000);
     }).catch(err => {
       setError("Failed to copy text!");
       console.log(err)// log the error if copy fails
