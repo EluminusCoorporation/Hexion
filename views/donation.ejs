@@ -19,27 +19,29 @@
   <div class="container">
     <%- include('components/effects/loading') -%>
     <%- include('components/header') -%>
-    <div class="addiv">
-      <p>Ad space here</p>
-    </div>
-    <h2 class="pageH2"><i class='bx bxs-gift'></i>Donations</h2>
-    <div class="donation-div">
-      <p>Donation is another way for us to make money apart from the ads, these two are the main reasons on how this website runs so to contribute to run this website full of developer tools forever ,donate now.</p>
-      <h3>Payment Methods: Paypal</h3>
-      <button class="donation-btn" id="donation-btn">Donate now!</button>
-    </div>
-    <%- include('components/footer') -%>
-  </div>
-  <div class="donation-menu-div" id="donation-menu-div">
-    <div id="donation-menu" class="donation-menu">
-      <div class="close-btn" id="close-btn">
-        <i class="bx bx-x"></i>
+    <main>
+      <div class="addiv">
+        <p>Ad space here</p>
       </div>
-      <h2>Payment</h2>
-      <div class="input">
-        <input type="number" name="amount" id="" placeholder="Amount" maxlength="100">
+      <h2 class="pageH2"><i class='bx bxs-gift'></i>Donations</h2>
+      <div class="donation-div">
+        <p>Donation is another way for us to make money apart from the ads, these two are the main reasons on how this website runs so to contribute to run this website full of developer tools forever ,donate now.</p>
+        <h3>Payment Methods: Paypal</h3>
+        <button class="donation-btn" id="donation-btn">Donate now!</button>
+        <div class="donation-menu-div" id="donation-menu-div">
+          <div id="donation-menu" class="donation-menu">
+            <div class="close-btn" id="close-btn">
+              <i class="bx bx-x"></i>
+            </div>
+            <h2>Payment</h2>
+            <div class="input">
+              <input type="number" name="amount" id="" placeholder="Amount" maxlength="100">
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      <%- include('components/footer') -%>
+    </main>
   </div>
   <!--function Import-->
   <script src="/js/effects/loading.js"></script>

@@ -40,14 +40,9 @@ var colorDropdownmenu = document.getElementById('colorDropdownmenu');
 
 colorDropdownmenu.addEventListener('click', () => {
   var colorDropdownmenuIcon = document.getElementById('colorDropdownmenuIcon');
-  var colorPalleteContainer = document.getElementById('colorPalleteContainer')
-  colorDropdownmenuIcon.classList.toggle('active')
-  //Opens the drop down menu
-  if (colorPalleteContainer.style.maxHeight && colorPalleteContainer.style.maxHeight !== "14px") {
-    colorPalleteContainer.style.maxHeight = "14px";
-  } else {
-    colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
-  }
+  var colorsGridContainer = document.getElementById('colorsGridContainer');
+  colorDropdownmenuIcon.classList.toggle('active');
+  colorsGridContainer.classList.toggle('show');
 })
 
 function createPickr(el, color) {
@@ -116,7 +111,6 @@ addColorButton.addEventListener('click', () => {
   createPickr(el, "#000000")
   
   colorsContainer.appendChild(clonedContainer);
-  colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
 });
 
 function updateQuery() {
@@ -124,7 +118,6 @@ function updateQuery() {
     icon.addEventListener('click', () => {
       const container = icon.parentNode;
       container.remove();
-      colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
     })
   })
 }
@@ -288,8 +281,4 @@ resultsBtn.addEventListener('click', function() {
   var resultsDiv = document.getElementById('resultsDiv')
   resultsDiv.style.display = "flex";
   encodingText(name, text);
-});
-
-window.addEventListener("DOMContentLoaded", () => {
-  colorPalleteContainer.style.maxHeight = colorPalleteContainer.scrollHeight + "px";
 });

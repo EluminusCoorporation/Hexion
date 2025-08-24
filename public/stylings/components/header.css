@@ -99,7 +99,7 @@
   white-space: nowrap;
   opacity: 0;
   visibility: visible;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transition: opacity .2s ease-in-out, visibility .2s ease-in-out;
   z-index: 100;
 }
 
@@ -124,7 +124,7 @@ li:hover .tooltip {
   text-decoration: none;
   color: white;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all .2s;
   align-items: center;
 }
 

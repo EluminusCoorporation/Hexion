@@ -18,7 +18,7 @@ html {
 .fade-in-d {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity .6s ease-out, transform .6s ease-out;
 }
 
 .fade-in-d.show {
@@ -94,7 +94,7 @@ html {
   height: 50px;
   width: 50px;
   margin-top: 30px;
-  transform: scale(0.8);
+  transform: scale(.8);
   transform: translate(-50%, -50%);
   left: 50%;
   position: absolute;
@@ -109,6 +109,7 @@ html {
   height: 100%;
   object-fit: cover;
   position: relative;
+  user-select: none;
   /* Ensures the image covers the container without distortion */
 }
 
@@ -138,7 +139,7 @@ html {
   border-radius: 3px;
   cursor: pointer;
   font-weight: bold;
-  transition: all 0.1s;
+  transition: all .1s;
   backdrop-filter: blur(5px);
   box-shadow: 0 0 5px rgba(0, 0, 0, 2);
 }
@@ -146,7 +147,7 @@ html {
 .starting-btn:hover {
   background-color: springgreen;
   box-shadow: 0 0 5px rgba(0, 0, 0, 2);
-  transform: translate(-50%, -50%) scale(0.9);
+  transform: translate(-50%, -50%) scale(.9);
 }
 
 .header-message {
@@ -179,9 +180,12 @@ html {
 }
 
 .features {
+  padding: 1em;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   position: relative;
+  justify-content: center;
+  gap: 1em;
 }
 
 .features::after {
@@ -200,16 +204,14 @@ html {
 }
 
 .features .feature {
-  position: relative;
-  width: 300px;
   border-radius: 1rem;
-  place-content: center;
-  padding: 1rem 1rem 2rem;
-  isolation: isolate;
+  padding: 2em;
   overflow: hidden;
-  margin: 0 auto;
-  place-content: center;
   text-align: center;
+}
+
+.features .feature p {
+  margin-top: 1em;
 }
 
 .features .feature::before,
@@ -228,10 +230,10 @@ html {
 
 .features .feature::after {
   background-color: whitesmoke;
-  inset: 0.25rem;
-  border-radius: calc(1rem - 0.25rem);
+  inset: .25rem;
+  border-radius: calc(1rem - .25rem);
   z-index: -1;
-  transition: all 0.35s linear;
+  transition: all .35s linear;
 }
 
 .features .feature:hover::before {
@@ -319,11 +321,9 @@ html {
 
 #faq {
   background-color: #f5f5ff;
-  padding: 84px 90px 144px 100px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  padding: 3em 2em 10em 2em;
   pointer-events: none;
+  position: relative;
 }
 
 #faq * {
@@ -343,8 +343,8 @@ html {
 .faq-heading {
   display: flex;
   flex-direction: column;
-  padding-left: 46px;
-  margin-bottom: 24px;
+  margin-bottom: 1.5em;
+  padding-right: 5em;
 }
 
 .faq-heading h3 {
@@ -363,37 +363,24 @@ html {
   max-width: 461px;
 }
 
-.faq-email {
-  color: #7a719b;
-  font-weight: bold;
-}
-
 .faq-discord {
-  text-decoration: underline;
+  font-weight: bold;
   text-decoration-color: #7a719b;
-  color: #71719b;
+  color: #7a719b;
 }
 
 .faq-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
 }
 
 .faq-box {
-  padding: 35px;
-  background: rgba(255, 255, 255, 0.4);
+  padding: 2em;
+  background: rgba(255, 255, 255, .4);
   border: 1px solid #ffffff;
-  box-shadow: 14px 14px 60px rgba(59, 42, 130, 0, 0.06);
+  box-shadow: 14px 14px 60px rgba(59, 42, 130, 0, .06);
   border-radius: 25px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.faq-box-container {
-  margin-right: 110px;
 }
 
 .faq-box-question {
@@ -428,7 +415,7 @@ html {
   width: 100%;
   height: 100%;
   border-radius: 3px;
-  transition: all ease-out 0.2s;
+  transition: all ease-out .2s;
 }
 
 .faq-box-icon::before {
@@ -459,64 +446,5 @@ html {
 .faq-box-answer {
   max-height: 0px;
   overflow: hidden;
-  transition: all ease 0.5s;
-}
-
-@media (max-width: 800px) {
-  .getstarted {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-  
-  .circular {
-    width: 90px;
-    height: 90px;
-  }
-  
-  .topp {
-    margin-top: 300px;
-    font-size: 2em;
-    width: 100%;
-  }
-  
-  .fixtopp::after {
-    height: 3px;
-  }
-  
-  .features {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  
-  #faq {
-    padding: 84px 90px 144px 0px;
-    padding-right: auto;
-  }
-  
-  .faq-content {
-    padding-left: 46px;
-    grid-template-columns: 1fr;
-  }
-  
-  .footer-container hr {
-    margin: 35px auto;
-  }
-  
-  footer {
-    bottom: unset;
-    margin-top: 0;
-  }
-  
-  .footer-container {
-    margin-top: 0;
-  }
-  
-  .col {
-    flex-basis: 100%;
-  }
-  
-  .col:nth-child(2),
-  .col:nth-child(3) {
-    flex-basis: 100%;
-  }
+  transition: all ease .5s;
 }

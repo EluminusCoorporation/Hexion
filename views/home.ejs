@@ -20,104 +20,103 @@
 <body>
   <div class="container">
     <%- include('components/effects/loading') -%>
-    <div class="image-wrapper fade-in-d">
+    <header class="image-wrapper fade-in-d">
       <img src="/global/logo.webp" class="logoimg">
-      <h1 class="MainHeader">Hexion</h1>
-      <div class="addiv adspecial">
-        <p>Ad space here</p>
-      </div>
-      <a href="/dashboard">
-        <button type="submit" class="starting-btn">Start Coding!</button>
-      </a>
-      <p class="header-message">You make it we <span class="header-special">fix</span> it.</p>
-      <img src="/global/background.webp" class="mainimg">
+        <h1 class="MainHeader">Hexion</h1>
+        <div class="addiv adspecial">
+          <p>Ad space here</p>
+        </div>
+        <a href="/dashboard">
+          <button type="submit" class="starting-btn">Start Coding!</button>
+        </a>
+        <p class="header-message">You make it we <span class="header-special">fix</span> it.</p>
+        <img src="/global/background.webp" class="mainimg">
+      </header>
+      <main>
+        <div class="addiv">
+          <p>Ad space here</p>
+        </div>
+        <div class="features">
+          <div class="feature1 fade-in-d feature" id="f1">
+            <i class='bx bx-code'></i>
+            <h2>Encoding and Decoding</h2>
+            <p>Encoding Encoded the text by the format selected by user formats are the way on how encoding is performed there are many formats we have the best ones for you.</p>
+          </div>
+          <div class="feature2 fade-in-d feature" id="f2">
+            <i class='bx bx-lock'></i>
+            <h2>Encrypting and Decrypting</h2>
+            <p>Encrypting encrypt your data to make it more secure it can be used to hide important data like addresses, emails, passwords, etc, Decrypting it turns the encrypted text into readable or original text</p>
+          </div>
+          <div class="features3 fade-in-d feature" id="f3">
+            <i class='bx bx-alert-triangle'></i>
+            <h2>Error Debugging</h2>
+            <p>Error Debugging helps you to debug or find out errors in you're code sometimes the hardest work in coding is finding the actual error that's causing it Error Debugging makes you're life easy by doing it for you</p>
+          </div>
+          <div class="feature4 fade-in-d feature" id="f4">
+            <i class='bx bx-palette'></i>
+            <h2>Color Generator</h2>
+            <p>This let's you generate colors for you like if you want to get a hex color but you're editor doesn't have a color generator use this to get the hex codes</p>
+          </div>
+        </div>
+        <section id="faq">
+          <div class="faq-heading fade-in-d">
+            <h3 class="fade-in-d">FAQS</h3>
+            <p class="fade-in-d">FAQS are here to clear you're doubts about our website/service so that you can use all of our features without any worrys if you're doubts are not cleared here you can contact us<br /> <span class="contact">Contact - <strong class="faq-email">eluminushosting@gmail.com</strong> or <a href="https://discord.gg/zkGcUK9nkn" class="faq-discord">Discord</a></span></p>
+          </div>
+          <div class="faq-content fade-in-d">
+            <div class="faq-box-container fade-in-d">
+              <div class="faq-box">
+                <div class="faq-box-question">
+                  <h4>What features does you're website have ?</h4>
+                  <span class="faq-box-icon"></span>
+                </div>
+                <div class="faq-box-answer">
+                  <p>Our website has alot of features to help you make you're programming easier. We have many tools yo help you with these daily programming tasks that take you're precious time. So go see them for yourself.</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-box-container fade-in-d">
+              <div class="faq-box">
+                <div class="faq-box-question">
+                  <h4>Is you're service completely free ?</h4>
+                  <span class="faq-box-icon"></span>
+                </div>
+                <div class="faq-box-answer">
+                  <p>Yes our service is completely free we will never force you to pay money to use our tools, all our tools and EVERYTHING on this website is free</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-box-container fade-in-d">
+              <div class="faq-box">
+                <div class="faq-box-question">
+                  <h4>How to upload my code file ?</h4>
+                  <span class="faq-box-icon"></span>
+                </div>
+                <div class="faq-box-answer">
+                  <p>Uploading a code file is easy just click on the upload file button and it should redirect you to you're file manager then go to you're desired file click on it this should start uploading your file then you can continue using our website</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-box-container fade-in-d faq-special">
+              <div class="faq-box">
+                <div class="faq-box-question">
+                  <h4>How to use the Error Debugging feature ?</h4>
+                  <span class="faq-box-icon"></span>
+                </div>
+                <div class="faq-box-answer">
+                  <p>To use Error Debugging in you're code file you need to upload the code file then click find error button then wait for 5-10s it should display all the lines where an error occurs then you can fix all the errors easily.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <%- include('components/footer') -%>
+      </main>
     </div>
-    <div class="addiv">
-      <p>Ad space here</p>
-    </div>
-    <div class="features">
-      <div class="feature1 fade-in-d feature" id="f1">
-        <i class='bx bx-code'></i>
-        <h2>Encoding and Decoding</h2>
-        <p>Encoding Encoded the text by the format selected by user formats are the way on how encoding is performed there are many formats we have the best ones for you.</p>
-      </div>
-      <div class="feature2 fade-in-d feature" id="f2">
-        <i class='bx bx-lock'></i>
-        <h2>Encrypting and Decrypting</h2>
-        <p>Encrypting encrypt your data to make it more secure it can be used to hide important data like addresses, emails, passwords, etc, Decrypting it turns the encrypted text into readable or original text</p>
-      </div>
-      <div class="features3 fade-in-d feature" id="f3">
-        <i class='bx bx-alert-triangle'></i>
-        <h2>Error Debugging</h2>
-        <p>Error Debugging helps you to debug or find out errors in you're code sometimes the hardest work in coding is finding the actual error that's causing it Error Debugging makes you're life easy by doing it for you</p>
-      </div>
-      <div class="feature4 fade-in-d feature" id="f4">
-        <i class='bx bx-palette'></i>
-        <h2>Color Generator</h2>
-        <p>This let's you generate colors for you like if you want to get a hex color but you're editor doesn't have a color generator use this to get the hex codes</p>
-      </div>
-    </div>
-    <section id="faq">
-      <div class="faq-heading fade-in-d">
-        <h3 class="fade-in-d">FAQS</h3>
-        <p class="fade-in-d">FAQS are here to clear you're doubts about our website/service so that you can use all of our features without any worrys if you're doubts are not cleared here you can contact us<br /> Contact -</p>
-        <span class="faq-email">eluminushosting@gmail.com</span>
-        <p>or</p>
-        <a href="https://discord.gg/zkGcUK9nkn" class="faq-discord">Discord</a>
-      </div>
-      <div class="faq-content fade-in-d">
-        <div class="faq-box-container fade-in-d">
-          <div class="faq-box">
-            <div class="faq-box-question">
-              <h4>What features does you're website have ?</h4>
-              <span class="faq-box-icon"></span>
-            </div>
-            <div class="faq-box-answer">
-              <p>Our website has alot of features to help you make you're programming easier. We have many tools yo help you with these daily programming tasks that take you're precious time. So go see them for yourself.</p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-box-container fade-in-d">
-          <div class="faq-box">
-            <div class="faq-box-question">
-              <h4>Is you're service completely free ?</h4>
-              <span class="faq-box-icon"></span>
-            </div>
-            <div class="faq-box-answer">
-              <p>Yes our service is completely free we will never force you to pay money to use our tools, all our tools and EVERYTHING on this website is free</p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-box-container fade-in-d">
-          <div class="faq-box">
-            <div class="faq-box-question">
-              <h4>How to upload my code file ?</h4>
-              <span class="faq-box-icon"></span>
-            </div>
-            <div class="faq-box-answer">
-              <p>Uploading a code file is easy just click on the upload file button and it should redirect you to you're file manager then go to you're desired file click on it this should start uploading your file then you can continue using our website</p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-box-container fade-in-d faq-special">
-          <div class="faq-box">
-            <div class="faq-box-question">
-              <h4>How to use the Error Debugging feature ?</h4>
-              <span class="faq-box-icon"></span>
-            </div>
-            <div class="faq-box-answer">
-              <p>To use Error Debugging in you're code file you need to upload the code file then click find error button then wait for 5-10s it should display all the lines where an error occurs then you can fix all the errors easily.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <%- include('components/footer') -%>
-  </div>
-  <!--function Import-->
-  <script src="/js/api/faq.js"></script>
-  <script src="/js/effects/loading.js"></script>
-  <script src="/js/effects/incoming.js"></script>
+    <!--function Import-->
+    <script src="/js/api/faq.js"></script>
+    <script src="/js/effects/loading.js"></script>
+    <script src="/js/effects/incoming.js"></script>
 </body>
 
 </html>

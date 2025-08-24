@@ -19,7 +19,7 @@ if (auto) {
 //event listener for click
 dropDownMenu.addEventListener('click', function() {
   //Enables Stylers
-  dropDownContent.classList.toggle("active");
+  dropDownContent.classList.toggle("show");
   dropDownIcon.classList.toggle("active");
   
   //Makes a event listener for all Items
@@ -54,13 +54,5 @@ dropDownMenu.addEventListener('click', function() {
       previousSelected = this;
       return;
     });
-  }
-  //Closes the drop down menu
-  if (dropDownMenu.style.maxHeight === "500px") {
-    dropDownMenu.style.maxHeight = "14px";
-  }
-  //Opens the drop down menu
-  else {
-    dropDownMenu.style.maxHeight = "500px"
   }
 });

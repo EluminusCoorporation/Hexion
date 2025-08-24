@@ -2,7 +2,6 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-
 //Imports the config
 const config = require('./config.json');
 
@@ -25,15 +24,15 @@ log.info('Starting Server');
 app.set("view engine", "ejs");
 
 //Enable required middlewares
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //Setup static directorys
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
 
 //Setup in-app middlewares
-app.use(errorHandling)
+app.use(errorHandling);
 
 //Route setup
 //initializes the routes directory
@@ -45,11 +44,11 @@ loadRoutes(app, routesDir);
 //Error handling System
 app.use((req, res, next) => {
   //separate middleware for 404
-  res.status(404).render('error_handling/errorbody', { error: 'Could not find page', errorurl: req.url, errorcode: '404' })
-})
+  res.status(404).render('error_handling/errorbody', { error: 'Could not find page', errorurl: req.url, errorcode: '404' });
+});
 
 //Starts the server
 const PORT = config.general.port || 8000;
 app.listen(PORT, () => {
   log.info(`Server online on Port:${PORT}`);
-})
+});

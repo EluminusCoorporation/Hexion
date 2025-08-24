@@ -19,53 +19,57 @@
   <div class="container">
     <%- include('../components/effects/loading') -%>
     <%- include('../components/header') -%>
-    <div class="addiv">
-      <p>Ad space here</p>
-    </div>
-    <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
-      <p>Back to dashboard</p>
-    </a>
-    <h2 class="pageH2"><i class='bx bx-lock'></i>Decrypting <span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h2>
-    <div id="errorDiv">
-      <i class='bx bx-alert-triangle'></i>
-      <div class="linefordiv"></div>
-      <p id="errorText"></p>
-    </div>
-    <div class="dropdown-container" id="dropDownMenu">
-      <div class="head-i">
-        <h3 class="dropdown-text" id="dropdown-text">Format Selector</h3>
-        <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+    <main>
+      <div class="addiv">
+        <p>Ad space here</p>
       </div>
-      <div class="dropdown-content" id="dropDownContent">
-        <p class="select-item">Base64</p>
-        <p class="select-item">ROT13</p>
-        <p class="select-item">Caesar Cipher</p>
-        <p class="select-item">Atbash Cipher</p>
-        <p class="select-item">Morse Code</p>
-        <p class="select-item">Binary Encoding</p>
-        <p class="select-item">Hexadecimal Encoding</p>
-        <p class="select-item">Rail Fence Cipher</p>
-        <p class="select-item">Vigenère Cipher</p>
-        <p class="select-item">Affine Cipher</p>
+      <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
+        <p>Back to dashboard</p>
+      </a>
+      <h2 class="pageH2"><i class='bx bx-lock'></i>Decrypting <span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h2>
+      <div id="errorDiv">
+        <i class='bx bx-alert-triangle'></i>
+        <div class="linefordiv"></div>
+        <p id="errorText"></p>
       </div>
-    </div>
-    <input type="text" name="textToConvert" id="ttc" placeholder="Text" class="ttc" maxlength="500" />
-    <div class="flexbox-results" id="resultsDiv">
-      <div class="results-div">
-        <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Results"></textarea>
-        <div class="tooltip-container">
-          <i class='bx bx-copy' id="copy-icon"></i>
+      <div class="dropdown-container" id="dropDownMenu">
+        <div class="head-i">
+          <h3 class="dropdown-text" id="dropdown-text">Format Selector</h3>
+          <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+        </div>
+        <div class="dropdown-content" id="dropDownContent">
+          <div>
+            <p class="select-item">Base64</p>
+            <p class="select-item">ROT13</p>
+            <p class="select-item">Caesar Cipher</p>
+            <p class="select-item">Atbash Cipher</p>
+            <p class="select-item">Morse Code</p>
+            <p class="select-item">Binary Encoding</p>
+            <p class="select-item">Hexadecimal Encoding</p>
+            <p class="select-item">Rail Fence Cipher</p>
+            <p class="select-item">Vigenère Cipher</p>
+            <p class="select-item">Affine Cipher</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="copy-alert-container" id="copyAlertContainer">
-      <i class="bx bx-clipboard-check"></i>
-      <p>Copied to clipboard!</p>
-    </div>
-    <div class="results-btn-div">
-      <button class="results-button" id="results-btn">Decrypt!</button>
-    </div>
-    <%- include('../components/footer') -%>
+      <input type="text" name="textToConvert" id="ttc" placeholder="Text" class="ttc" maxlength="500" />
+      <div class="flexbox-results" id="resultsDiv">
+        <div class="results-div">
+          <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Results"></textarea>
+          <div class="tooltip-container">
+            <i class='bx bx-copy' id="copy-icon"></i>
+          </div>
+        </div>
+      </div>
+      <div class="copy-alert-container" id="copyAlertContainer">
+        <i class="bx bx-clipboard-check"></i>
+        <p>Copied to clipboard!</p>
+      </div>
+      <div class="results-btn-div">
+        <button class="results-button" id="results-btn">Decrypt!</button>
+      </div>
+      <%- include('../components/footer') -%>
+    </main>
   </div>
   <!--function Import-->
   <script src="/js/effects/loading.js"></script>

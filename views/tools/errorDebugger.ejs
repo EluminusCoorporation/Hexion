@@ -19,105 +19,111 @@
   <div class="container" id="container">
     <%- include('../components/effects/loading') -%>
     <%- include('../components/header') -%>
-    <div class="addiv">
-      <p>Ad space here</p>
-    </div>
-    <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
-      <p>Back to dashboard</p>
-    </a>
-    <h2 class="pageH2"><i class='bx bx-alert-triangle'></i>ErrorDebugger<span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h2>
-    <div id="errorDiv">
-      <i class='bx bx-alert-triangle'></i>
-      <div class="linefordiv"></div>
-      <p id="errorText"></p>
-    </div>
-    <div class="dropdown-container" id="dropDownMenu">
-      <div class="head-i">
-        <h3 class="dropdown-text" id="dropdown-text"><i class="bx bx-refresh-cw langIcon"></i>Auto</h3>
-        <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+    <main>
+      <div class="addiv">
+        <p>Ad space here</p>
       </div>
-      <div class="dropdown-content" id="dropDownContent">
-        <p class="select-item" id="auto" data-ext="auto">
-          <i class="bx bx-refresh-cw langIcon"></i>Auto<span class="recommended" id="spanR">recommended</span>
-        </p>
-        <p class="select-item" data-ext="py">
-          <i class="bxl bx-python langIcon"></i>Python
-        </p>
-        <p class="select-item" data-ext="js">
-          <i class="bxl bx-javascript langIcon"></i>
-          Java Script
-        </p>
-        <p class="select-item" data-ext="html">
-          <i class="bxl bx-html5 langIcon"></i>
-          Html
-        </p>
-        <p class="select-item" data-ext="css">
-          <i class="bxl bx-css3 langIcon"></i>
-          Css
-        </p>
-      </div>
-    </div>
-    <div class="buttonWrapper">
-      <div class="buttonIndicator" id="btnIndicator"></div>
-      <button class="dualbtn dbtn1" id="dbtn1"><i class="bx bx-file-detail"></i>File mode</button>
-      <button class="dualbtn dbtn2" id="dbtn2"><i class="bx bx-edit-alt"></i>Text mode</button>
-    </div>
-    <div class="switcherContainer" id="switcherContainer">
-      <textarea name="textToConvert" id="textmodetxt" placeholder="Code" class="ttc" maxlength="500"></textarea>
-      <div class="uploadWrapper" id="uploadWrapper">
-        <button class="uploadbtn" id="uploadbtn"><i class="fa-solid fa-upload"></i>Upload File</button>
-      </div>
-    </div>
-    <div class="flexbox-results" id="resultsDiv">
-      <div class="results-div">
-        <div class="ball-container">
-          <div class="redball ball"></div>
-          <div class="yellowball ball"></div>
-          <div class="greenball ball"></div>
-        </div>
-        <div class="textarea-div">
-          <textarea class="numbersPH" cols="5" readonly></textarea>
-          <textarea class="codePH" maxlength="500" placeholder="Results" id="results"></textarea>
-          <i class='bx bx-copy' id="copy-icon"></i>
-        </div>
-      </div>
-      <div class="error-switch">
-        <i class='bx bx-arrow-left-stroke arrows arrow1'></i>
-        <p>1 / 9</p>
-        <i class='bx bx-arrow-right-stroke arrows arrow2'></i>
-      </div>
-    </div>
-    <div class="copy-alert-container" id="copyAlertContainer">
-      <i class="bx bx-clipboard-check"></i>
-      <p>Copied to clipboard!</p>
-    </div>
-    <div class="results-btn-div">
-      <button class="results-button" id="results-btn">Find Errors!</button>
-    </div>
-    <%- include('../components/footer') -%>
-  </div>
-  <div class="uploadMenu-container" id="uploadMenuC">
-    <div class="uploadMenu" id="uploadMenu">
-      <div id="errorDivUPLOAD">
+      <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
+        <p>Back to dashboard</p>
+      </a>
+      <h2 class="pageH2"><i class='bx bx-alert-triangle'></i>ErrorDebugger<span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h2>
+      <div id="errorDiv">
         <i class='bx bx-alert-triangle'></i>
         <div class="linefordiv"></div>
-        <p id="errorTextUPLOAD"></p>
+        <p id="errorText"></p>
       </div>
-      <div class="close-btn" id="close-btn">
-        <i class="bx bx-x"></i>
-      </div>
-      <input class="uploadFileMenu" type="file" id="file">
-      <label for="file" class="uploadZone" id="uploadZone">
-        <i class='fa-solid fa-upload dragicon' id="fileIcon"></i>
-        <p class="labelUpload" id="fileName">Drag and Drop or Click to Upload</p>
-        <div class="flexbox-upload" id="uploadBarContainer">
-          <div class="flexbox-uploadinfo">
-            <p class="upload-info" id="uploadInfo"></p>
-            <p class="status" id="status">Uploaded!</p>
+      <div class="dropdown-container" id="dropDownMenu">
+        <div class="head-i">
+          <h3 class="dropdown-text" id="dropdown-text"><i class="bx bx-refresh-cw langIcon"></i>Auto</h3>
+          <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+        </div>
+        <div class="dropdown-content" id="dropDownContent">
+          <div>
+            <p class="select-item" id="auto" data-ext="auto">
+              <i class="bx bx-refresh-cw langIcon"></i>Auto<span class="recommended" id="spanR">recommended</span>
+            </p>
+            <p class="select-item" data-ext="py">
+              <i class="bxl bx-python langIcon"></i>Python
+            </p>
+            <p class="select-item" data-ext="js">
+              <i class="bxl bx-javascript langIcon"></i>
+              Java Script
+            </p>
+            <p class="select-item" data-ext="html">
+              <i class="bxl bx-html5 langIcon"></i>
+              Html
+            </p>
+            <p class="select-item" data-ext="css">
+              <i class="bxl bx-css3 langIcon"></i>
+              Css
+            </p>
           </div>
         </div>
-      </label>
-    </div>
+      </div>
+      <div class="buttonWrapper">
+        <div class="buttonIndicator" id="btnIndicator"></div>
+        <button class="dualbtn dbtn1" id="dbtn1"><i class="bx bx-file-detail"></i>File mode</button>
+        <button class="dualbtn dbtn2" id="dbtn2"><i class="bx bx-edit-alt"></i>Text mode</button>
+      </div>
+      <div class="switcherContainer" id="switcherContainer">
+        <textarea name="textToConvert" id="textmodetxt" placeholder="Code" class="ttc" maxlength="500"></textarea>
+        <div class="uploadWrapper" id="uploadWrapper">
+          <button class="uploadbtn" id="uploadbtn"><i class="fa-solid fa-upload"></i>Upload File</button>
+        </div>
+      </div>
+      
+      <div class="uploadMenu-container" id="uploadMenuC">
+        <div class="uploadMenu" id="uploadMenu">
+          <div id="errorDivUPLOAD">
+            <i class='bx bx-alert-triangle'></i>
+            <div class="linefordiv"></div>
+            <p id="errorTextUPLOAD"></p>
+          </div>
+          <div class="close-btn" id="close-btn">
+            <i class="bx bx-x"></i>
+          </div>
+          <input class="uploadFileMenu" type="file" id="file">
+          <label for="file" class="uploadZone" id="uploadZone">
+            <i class='fa-solid fa-upload dragicon' id="fileIcon"></i>
+            <p class="labelUpload" id="fileName">Drag and Drop or Click to Upload</p>
+            <div class="flexbox-upload" id="uploadBarContainer">
+              <div class="flexbox-uploadinfo">
+                <p class="upload-info" id="uploadInfo"></p>
+                <p class="status" id="status">Uploaded!</p>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+      
+      <div class="flexbox-results" id="resultsDiv">
+        <div class="results-div">
+          <div class="ball-container">
+            <div class="redball ball"></div>
+            <div class="yellowball ball"></div>
+            <div class="greenball ball"></div>
+          </div>
+          <div class="textarea-div">
+            <textarea class="numbersPH" cols="5" readonly></textarea>
+            <textarea class="codePH" maxlength="500" placeholder="Results" id="results"></textarea>
+            <i class='bx bx-copy' id="copy-icon"></i>
+          </div>
+        </div>
+        <div class="error-switch">
+          <i class='bx bx-arrow-left-stroke arrows arrow1'></i>
+          <p>1 / 9</p>
+          <i class='bx bx-arrow-right-stroke arrows arrow2'></i>
+        </div>
+      </div>
+      <div class="copy-alert-container" id="copyAlertContainer">
+        <i class="bx bx-clipboard-check"></i>
+        <p>Copied to clipboard!</p>
+      </div>
+      <div class="results-btn-div">
+        <button class="results-button" id="results-btn">Find Errors!</button>
+      </div>
+      <%- include('../components/footer') -%>
+    </main>
   </div>
   <!--function Import-->
   <script src="/js/effects/loading.js"></script>

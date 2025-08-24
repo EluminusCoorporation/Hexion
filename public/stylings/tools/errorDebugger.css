@@ -36,7 +36,7 @@ html {
   align-items: center;
   padding: 2px;
   background-color: white;
-  font-size: 0.6em;
+  font-size: .6em;
   color: indianred;
   border-radius: 3px;
 }
@@ -46,14 +46,14 @@ html {
   width: max-content;
   flex-direction: row;
   color: #383838;
-  font-size: 0.8em;
+  font-size: .8em;
   font-weight: bold;
   margin-left: 2px;
   cursor: pointer;
   align-items: center;
   user-select: none;
   text-decoration: none;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 
 .back-container i {
@@ -74,44 +74,40 @@ html {
   position: relative;
   border: 1px solid #B4B4B4;
   padding: 15px;
-  width: 265px;
+  width: 75%;
   border-radius: 15px;
   display: flex;
   justify-self: center;
   margin: 15px;
   font-weight: bold;
-  max-height: 14px;
   flex-direction: column;
-  transition: all ease 0.5s;
+  transition: all ease .5s;
   overflow: hidden;
 }
 
 .head-i {
   display: flex;
-  align-items: center;
   position: relative;
-  height: 14px;
 }
 
 .dropdown-text {
-  margin: 0 !important;
-  display: flex;
-  gap: 5px;
+  gap: .5em;
   color: black;
-  align-items: center;
-  font-weight: bold !important;
-  font-size: 0.8em !important;
+  display: flex;
+  align-self: center;
+  font-weight: bold;
+  font-size: .8em;
 }
 
 .dd-i {
   font-size: 35px;
-  font-weight: none !important;
+  font-weight: none;
   display: block;
   position: absolute;
   align-self: center;
   padding-right: 5px;
   right: 0;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 
 .dd-i.active {
@@ -119,25 +115,34 @@ html {
 }
 
 .dropdown-content {
-  margin-top: 15px;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: all 300ms;
 }
 
-.langIcon {
-  font-size: 30px;
+.dropdown-content div {
+  overflow: hidden;
 }
 
 .dropdown-content p {
   color: black;
-  padding: 10px;
-  margin: 3px;
-  font-size: 0.8em;
-  font-weight: none !important;
+  padding: .8em;
+  display: flex;
+  gap: .3em;
+  font-size: .8em;
   position: relative;
-  z-index: 50;
 }
 
-.dropdown-content.active {
-  display: unset;
+.dropdown-content p:nth-child(1) {
+  margin-top: 1em;
+}
+
+.dropdown-content.show {
+  grid-template-rows: 1fr;
+}
+
+.langIcon {
+  font-size: 2em;
 }
 
 .select-item {
@@ -146,7 +151,7 @@ html {
   color: #383838;
   border-radius: 5px;
   align-items: center;
-  transition: transform 0.5s;
+  transition: transform .5s;
 }
 
 .select-item:hover {
@@ -164,7 +169,7 @@ html {
   height: 15px;
   padding: 2px 5px 2px 5px;
   align-self: center;
-  font-size: 0.7em;
+  font-size: .7em;
   background: springgreen;
   color: white;
   border-radius: 7px;
@@ -192,7 +197,7 @@ html {
   border-radius: 8px;
   z-index: 1;
   margin: 0;
-  transition: left 0.2s ease;
+  transition: left .2s ease;
   overflow: hidden;
 }
 
@@ -225,7 +230,7 @@ html {
   transform: translateX(50vh);
   display: flex;
   justify-content: center;
-  transition: transform ease 0.2s;
+  transition: transform ease .2s;
 }
 
 #textmodetxt {
@@ -265,7 +270,7 @@ html {
   outline: none;
   margin: 15px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 
 .uploadbtn i {
@@ -274,7 +279,7 @@ html {
 }
 
 .uploadbtn:hover {
-  transform: translate(-50vh) scale(0.9);
+  transform: translate(-50vh) scale(.9);
 }
 
 .uploadMenu-container {
@@ -288,8 +293,8 @@ html {
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out, background 0.6s ease-in-out, backdrop-filter 0.6s ease-in-out;
-  z-index: 9998;
+  transition: opacity .6s ease-in-out, visibility .6s ease-in-out, background .6s ease-in-out, backdrop-filter .6s ease-in-out;
+  z-index: 100;
 }
 
 .uploadMenu {
@@ -302,8 +307,8 @@ html {
   height: 300px;
   border-radius: 10px;
   transform: scale(0);
-  transition: transform 0.5s ease-out;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform .5s ease-out;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, .3);
   border: 1px solid white;
   flex-direction: column;
   isolation: isolate;
@@ -337,7 +342,7 @@ html {
 }
 
 .uploadMenu.active {
-  transform: scale(2);
+  transform: scale(1);
 }
 
 .uploadMenu input {
@@ -383,7 +388,7 @@ html {
   color: black;
   margin: 0;
   padding: 0;
-  font-size: 0.8em;
+  font-size: .8em;
   font-weight: 500;
 }
 
@@ -391,7 +396,7 @@ html {
   color: black;
   margin: 0;
   padding: 0;
-  font-size: 0.8em;
+  font-size: .8em;
   font-weight: 500;
 }
 
@@ -495,7 +500,7 @@ html {
   height: 150px;
   text-wrap: nowrap;
   border-radius: 15px;
-  width: 268px;
+  width: 75%;
   padding: 15px;
   border: 1px solid #B4B4B4;
   color: black;
@@ -513,16 +518,17 @@ html {
 
 .results-div i {
   position: absolute;
-  top: 10px;
-  color: white;
-  right: 10px;
+  top: 0;
+  color: black;
+  right: 0;
   font-size: 1em;
-  z-index: 3;
+  z-index: 2;
   cursor: pointer;
   padding: 5px;
   border-radius: 50%;
   user-select: none;
-  transition: all 0.5s;
+  transition: all .5s;
+  margin: .3em;
 }
 
 .results-div i:hover {
@@ -530,13 +536,13 @@ html {
 }
 
 .flexbox-results {
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-self: center;
 }
 
 .results-div {
-  width: 965px;
   position: relative;
   display: inline-block;
   justify-content: center;
@@ -618,7 +624,6 @@ html {
   width: 20px;
   overflow: hidden;
   color: #414141;
-  
 }
 
 .error-switch {
@@ -645,7 +650,7 @@ html {
   position: absolute;
   cursor: pointer;
   margin: 30px;
-  transition: all 0.5s;
+  transition: all .5s;
   border-radius: 50%;
 }
 
@@ -675,12 +680,12 @@ html {
   padding: 5px;
   color: white;
   font-weight: bold;
-  font-size: 0.7em;
+  font-size: .7em;
   z-index: 2;
   border-radius: 15px;
   background-color: springgreen;
   border: 1px solid white;
-  transition: all 0.5s;
+  transition: all .5s;
 }
 
 .copy-alert-container i {
@@ -709,24 +714,9 @@ html {
   outline: none;
   margin: 15px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 
 .results-button:hover {
-  transform: scale(0.9);
-}
-
-@media (max-width: 800px) {
-  .circular {
-    width: 90px;
-    height: 90px;
-  }
-  
-  .results-div {
-    width: 265px;
-  }
-  
-  .uploadMenu.active {
-    transform: scale(1);
-  }
+  transform: scale(.9);
 }

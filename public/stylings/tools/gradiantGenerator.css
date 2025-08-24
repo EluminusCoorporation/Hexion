@@ -36,7 +36,7 @@ html {
   align-items: center;
   padding: 2px;
   background-color: white;
-  font-size: 0.6em;
+  font-size: .6em;
   color: purple;
   border-radius: 3px;
 }
@@ -46,14 +46,14 @@ html {
   width: max-content;
   flex-direction: row;
   color: #383838;
-  font-size: 0.8em;
+  font-size: .8em;
   font-weight: bold;
   margin-left: 2px;
   cursor: pointer;
   align-items: center;
   user-select: none;
   text-decoration: none;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 
 .back-container i {
@@ -69,9 +69,7 @@ html {
 }
 
 .color-pallete-container {
-  overflow: hidden;
   padding: 10px 30px;
-  transition: all 0.5s;
 }
 
 .color-dropdownmenu {
@@ -81,17 +79,16 @@ html {
   align-content: center;
   color: #373737;
   gap: 3.5px;
-  font-size: 0.8em;
+  font-size: .8em;
   font-weight: bold;
   cursor: pointer;
   margin-bottom: 15px;
 }
 
 .color-dropdownmenu i {
-  margin: 0;
   align-self: center;
   font-size: 1.8em;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 
 .color-dropdownmenu .active {
@@ -99,15 +96,28 @@ html {
 }
 
 .color-dropdownmenu p {
-  margin: 0;
   align-self: center;
+}
+
+.colors-grid-container {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: all 300ms;
+}
+
+.colors-grid-container div {
+  overflow: hidden;
+}
+
+.colors-grid-container.show {
+  grid-template-rows: 1fr;
 }
 
 .colors-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1em;
 }
 
 .color-container {
@@ -141,7 +151,7 @@ html {
   padding: 5px;
   border-radius: 50%;
   user-select: none;
-  transition: all 0.5s;
+  transition: all .5s;
 }
 
 .color-name-container i:hover {
@@ -161,7 +171,7 @@ html {
   border-top-left-radius: 5px;
   padding: 5px;
   cursor: pointer;
-  transition: all 0.1s;
+  transition: all .1s;
 }
 
 .delete-icon:hover {
@@ -189,15 +199,14 @@ html {
   position: relative;
   border: 1px solid #B4B4B4;
   padding: 15px;
-  width: 265px;
+  width: 75%;
   border-radius: 15px;
   display: flex;
   justify-self: center;
   margin: 15px;
   font-weight: bold;
-  max-height: 14px;
   flex-direction: column;
-  transition: all ease 0.5s;
+  transition: all ease .5s;
   overflow: hidden;
 }
 
@@ -207,22 +216,21 @@ html {
 }
 
 .dropdown-text {
-  margin: 0 !important;
   display: flex;
   align-self: center;
-  font-weight: bold !important;
-  font-size: 0.8em !important;
+  font-weight: bold;
+  font-size: .8em;
 }
 
 .dd-i {
   font-size: 35px;
-  font-weight: none !important;
+  font-weight: none;
   display: block;
   position: absolute;
   align-self: center;
   padding-right: 5px;
   right: 0;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 
 .dd-i.active {
@@ -230,28 +238,37 @@ html {
 }
 
 .dropdown-content {
-  margin-top: 15px;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: all 300ms;
+}
+
+.dropdown-content div {
+  overflow: hidden;
 }
 
 .dropdown-content p {
   color: black;
-  padding: 10px;
-  margin: 3px;
-  font-size: 0.8em;
-  font-weight: none !important;
+  padding: .8em;
+  display: flex;
+  gap: .3em;
+  font-size: .8em;
   position: relative;
-  z-index: 50;
 }
 
-.dropdown-content.active {
-  display: unset;
+.dropdown-content p:nth-child(1) {
+  margin-top: 1em;
+}
+
+.dropdown-content.show {
+  grid-template-rows: 1fr;
 }
 
 .select-item {
   display: flex;
   gap: 5px;
   border-radius: 5px;
-  transition: transform 0.5s;
+  transition: transform .5s;
 }
 
 .select-item:hover {
@@ -269,7 +286,7 @@ html {
   height: 15px;
   padding: 2px 5px 2px 5px;
   align-self: center;
-  font-size: 0.7em;
+  font-size: .7em;
   background: springgreen;
   color: white;
   border-radius: 7px;
@@ -316,7 +333,7 @@ html {
 
 .ttc {
   border-radius: 15px;
-  width: 268px;
+  width: 75%;
   display: flex;
   justify-self: center;
   padding: 15px;
@@ -347,7 +364,7 @@ html {
   width: 93%;
   color: white;
   font-weight: bold;
-  font-size: 0.6em;
+  font-size: .6em;
   background-color: #414141;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
@@ -376,17 +393,17 @@ html {
 
 .results-div i {
   position: absolute;
-  display: flex;
-  top: 10px;
+  top: 0;
   color: black;
-  right: 10px;
+  right: 0;
   font-size: 1em;
-  z-index: 600;
+  z-index: 2;
   cursor: pointer;
   padding: 5px;
   border-radius: 50%;
   user-select: none;
-  transition: all 0.5s;
+  transition: all .5s;
+  margin: .3em;
 }
 
 .results-div i:hover {
@@ -394,24 +411,24 @@ html {
 }
 
 .flexbox-results {
-  display: flex;
+  display: none;
   justify-content: center;
 }
 
-.results {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 250px;
-  resize: none;
-  display: flex;
+.results-div {
+  display: inline-block;
   position: relative;
-  justify-self: center;
+}
+
+.results {
+  position: relative;
+  resize: none;
+  width: fit-content;
+  max-width: 75vw;
+  position: relative;
   min-height: 200px;
-  margin: 0 auto;
-  padding: 25px;
-  box-shadow: 0px 0px 10px 3px purple;
+  padding: 15px;
+  box-shadow: 0px 0px 10px 3px springgreen;
   border: none;
   border-radius: 15px;
 }
@@ -436,12 +453,12 @@ html {
   padding: 5px;
   color: white;
   font-weight: bold;
-  font-size: 0.7em;
+  font-size: .7em;
   z-index: 2;
   border-radius: 15px;
   background-color: springgreen;
   border: 1px solid white;
-  transition: all 0.5s;
+  transition: all .5s;
 }
 
 .copy-alert-container i {
@@ -476,16 +493,9 @@ html {
   outline: none;
   margin: 15px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 
 .results-button:hover {
-  transform: scale(0.9);
-}
-
-@media (max-width: 800px) {
-  .circular {
-    width: 90px;
-    height: 90px;
-  }
+  transform: scale(.9);
 }

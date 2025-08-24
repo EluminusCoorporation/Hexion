@@ -19,51 +19,55 @@
   <div class="container">
     <%- include('../components/effects/loading') -%>
     <%- include('../components/header') -%>
-    <div class="addiv">
-      <p>Ad space here</p>
-    </div>
-    <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
-      <p>Back to dashboard</p>
-    </a>
-    <h2 class="pageH2"><i class='bx bx-code'></i>Encoding <span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h2>
-    <div id="errorDiv">
-      <i class='bx bx-alert-triangle'></i>
-      <div class="linefordiv"></div>
-      <p id="errorText"></p>
-    </div>
-    <div class="dropdown-container" id="dropDownMenu">
-      <div class="head-i">
-        <h3 class="dropdown-text" id="dropdown-text">Format Selector</h3>
-        <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+    <main>
+      <div class="addiv">
+        <p>Ad space here</p>
       </div>
-      <div class="dropdown-content" id="dropDownContent">
-        <p class="select-item">UTF-8 <span class="recommended" id="spanR">recommended</span></p>
-        <p class="select-item">UTF-16</p>
-        <p class="select-item">UTF-32</p>
-        <p class="select-item">Base 64</p>
-        <p class="select-item">ASCII</p>
-        <p class="select-item">EXTENDED ASCII</p>
-        <p class="select-item">Binary</p>
-        <p class="select-item">Shift Jis</p>
-        <p class="select-item">ISO 8859-1</p>
-        <p class="select-item">Morse Code</p>
+      <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
+        <p>Back to dashboard</p>
+      </a>
+      <h2 class="pageH2"><i class='bx bx-code'></i>Encoding <span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h2>
+      <div id="errorDiv">
+        <i class='bx bx-alert-triangle'></i>
+        <div class="linefordiv"></div>
+        <p id="errorText"></p>
       </div>
-    </div>
-    <input type="text" name="textToConvert" id="ttc" placeholder="Text" class="ttc" maxlength="500" />
-    <div class="flexbox-results" id="resultsDiv">
-      <div class="results-div">
-        <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Results"></textarea>
-        <i class='bx bx-copy' id="copy-icon"></i>
+      <div class="dropdown-container" id="dropDownMenu">
+        <div class="head-i">
+          <h3 class="dropdown-text" id="dropdown-text">Format Selector</h3>
+          <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+        </div>
+        <div class="dropdown-content" id="dropDownContent">
+          <div>
+            <p class="select-item">UTF-8 <span class="recommended" id="spanR">recommended</span></p>
+            <p class="select-item">UTF-16</p>
+            <p class="select-item">UTF-32</p>
+            <p class="select-item">Base 64</p>
+            <p class="select-item">ASCII</p>
+            <p class="select-item">EXTENDED ASCII</p>
+            <p class="select-item">Binary</p>
+            <p class="select-item">Shift Jis</p>
+            <p class="select-item">ISO 8859-1</p>
+            <p class="select-item">Morse Code</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="copy-alert-container" id="copyAlertContainer">
-      <i class="bx bx-clipboard-check"></i>
-      <p>Copied to clipboard!</p>
-    </div>
-    <div class="results-btn-div">
-      <button class="results-button" id="results-btn">Encode!</button>
-    </div>
-    <%- include('../components/footer') -%>
+      <input type="text" name="textToConvert" id="ttc" placeholder="Text" class="ttc" maxlength="500" />
+      <div class="flexbox-results" id="resultsDiv">
+        <div class="results-div">
+          <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Results"></textarea>
+          <i class='bx bx-copy' id="copy-icon"></i>
+        </div>
+      </div>
+      <div class="copy-alert-container" id="copyAlertContainer">
+        <i class="bx bx-clipboard-check"></i>
+        <p>Copied to clipboard!</p>
+      </div>
+      <div class="results-btn-div">
+        <button class="results-button" id="results-btn">Encode!</button>
+      </div>
+      <%- include('../components/footer') -%>
+    </main>
   </div>
   <!--function Import-->
   <script src="/js/effects/loading.js"></script>
