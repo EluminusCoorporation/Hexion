@@ -10,9 +10,9 @@ resultsBtn.addEventListener('click', function() {
     return
   };
 
-  let results;
-
   function decryptingText(name, text, key = 3) {
+    let results;
+    
     if (name === "Base64") {
       try {
         results = atob(text); // Attempt to decode

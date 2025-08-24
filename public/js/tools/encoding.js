@@ -10,9 +10,9 @@ resultsBtn.addEventListener('click', function() {
     return;
   };
   
-  let results;
-  
   function encodingText(name, text) {
+    let results;
+    
     if (name === "UTF-8") {
       let encoder = new TextEncoder();
       results = encoder.encode(text);

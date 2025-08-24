@@ -9,9 +9,9 @@ resultsBtn.addEventListener('click', function() {
     return false;
   };
   
-  let results;
-  
   function decodingText(name, text) {
+    let results;
+    
     if (name === "UTF-8") {
       function decodeUTF8(byteArray) {
         const decoder = new TextDecoder("utf-8"); // Create a UTF-8 decoder

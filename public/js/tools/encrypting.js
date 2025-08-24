@@ -10,10 +10,9 @@ resultsBtn.addEventListener('click', function() {
     return
   };
   
-  let results;
-  
   function encryptingText(name, text, key = 3) {
-    let data = ""
+    let results;
+    
     if (name === "Base64") {
       results = btoa(text);
     };
