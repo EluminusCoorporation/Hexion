@@ -120,6 +120,8 @@ resultsBtn.addEventListener('click', function() {
     return
   };
   
+  let results;
+  
   function encodingText(name, text) {
     if (name === "Python") {
       

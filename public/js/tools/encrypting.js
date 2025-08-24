@@ -10,21 +10,22 @@ resultsBtn.addEventListener('click', function() {
     return
   };
   
+  let results;
   
   function encryptingText(name, text, key = 3) {
     let data = ""
     if (name === "Base64") {
-      data = btoa(text);
+      results = btoa(text);
     };
     
     if (name === "ROT13") {
-      data = text.replace(/[A-Za-z]/g, function(c) {
+      results = text.replace(/[A-Za-z]/g, function(c) {
         return String.fromCharCode(c.charCodeAt(0) + (c.toUpperCase() <= 'M' ? 13 : -13));
       });
     };
     
     if (name === "Caesar Cipher") {
-      data = text.replace(/[A-Za-z]/g, function(c) {
+      results = text.replace(/[A-Za-z]/g, function(c) {
         let code = c.charCodeAt(0);
         let shift = key % 26;
         return String.fromCharCode(
@@ -35,7 +36,7 @@ resultsBtn.addEventListener('click', function() {
     };
     
     if (name === "Atbash Cipher") {
-      data = text.replace(/[A-Za-z]/g, function(c) {
+      results = text.replace(/[A-Za-z]/g, function(c) {
         return String.fromCharCode(
           c <= 'Z' ? (90 - (c.charCodeAt(0) - 65)) : (122 - (c.charCodeAt(0) - 97))
         );
@@ -72,15 +73,15 @@ resultsBtn.addEventListener('click', function() {
         'Z': '--..',
         ' ': '/'
       };
-      data = text.toUpperCase().split("").map(c => morseMap[c] || c).join(" ");
+      results = text.toUpperCase().split("").map(c => morseMap[c] || c).join(" ");
     };
     
     if (name === "Binary Encoding") {
-      data = text.split("").map(c => c.charCodeAt(0).toString(2)).join(" ");
+      results = text.split("").map(c => c.charCodeAt(0).toString(2)).join(" ");
     };
     
     if (name === "Hexadecimal Encoding") {
-      data = text.split("").map(c => c.charCodeAt(0).toString(16)).join(" ");
+      results = text.split("").map(c => c.charCodeAt(0).toString(16)).join(" ");
     };
     
     if (name === "Rail Fence Cipher") {
@@ -93,7 +94,7 @@ resultsBtn.addEventListener('click', function() {
         if (row === key - 1) direction = -1;
         row += direction;
       });
-      data = rails.flat().join("");
+      results = rails.flat().join("");
     };
     
     if (name === "Vigenère Cipher") {
@@ -101,7 +102,7 @@ resultsBtn.addEventListener('click', function() {
       text = text.toUpperCase();
       key = "KEY"
       key = key.toUpperCase().repeat(Math.ceil(text.length / key.length)).slice(0, text.length);
-      data = text.split("").map((c, i) =>
+      results = text.split("").map((c, i) =>
         alphabet.includes(c) ? alphabet[(alphabet.indexOf(c) + alphabet.indexOf(key[i])) % 26] : c
       ).join("");
     };
@@ -110,12 +111,13 @@ resultsBtn.addEventListener('click', function() {
       let a = 5,
         b = 8;
       let modInverse = 21;
-      data = text.split("").map(c =>
+      results = text.split("").map(c =>
         c.match(/[A-Za-z]/) ?
         String.fromCharCode((((a * (c.toUpperCase().charCodeAt(0) - 65) + b) % 26) + 65)) : c
       ).join("");
     };
-    resultsInput.value = data;
+    resultsInput.value = results;
+    return;
   }
   var resultsInput = document.getElementById('results');
   var resultsDiv = document.getElementById('resultsDiv')

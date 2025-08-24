@@ -9,20 +9,22 @@ resultsBtn.addEventListener('click', function() {
     return false;
   };
   
+  let results;
+  
   function decodingText(name, text) {
     if (name === "UTF-8") {
       function decodeUTF8(byteArray) {
         const decoder = new TextDecoder("utf-8"); // Create a UTF-8 decoder
         return decoder.decode(new Uint8Array(byteArray)); // Convert byte array to string
       }
-      var decodedtext = (decodeUTF8(text.split(/[\s,]+/).map(Number)));
+      results = (decodeUTF8(text.split(/[\s,]+/).map(Number)));
     };
     if (name === "UTF-16") {
       function decodeUTF16(byteArray) {
         const decoder = new TextDecoder("utf-16"); // Create a UTF-16 decoder
         return decoder.decode(new Uint16Array(byteArray)); // Convert byte array to string
       }
-      var decodedtext = (decodeUTF16(text.split(/[\s,]+/).map(Number)));
+      results = (decodeUTF16(text.split(/[\s,]+/).map(Number)));
     }
     if (name === "UTF-32") {
       function decodeUTF32(byteArray) {
@@ -36,7 +38,7 @@ resultsBtn.addEventListener('click', function() {
         return decodedString;
       }
       
-      var decodedtext = (decodeUTF32(text.split(/[\s,]+/).map(Number)));
+      results = (decodeUTF32(text.split(/[\s,]+/).map(Number)));
     }
     if (name === "Base 64") {
       function decodeBase64(base64String) {
@@ -47,19 +49,19 @@ resultsBtn.addEventListener('click', function() {
         setError('Something went wrong, did you enter a valid encoded text?')
         return false;
       }
-      var decodedtext = (decodeBase64(text))
+      results = (decodeBase64(text))
     }
     if (name === "ASCII") {
       function decodeASCII(byteArray) {
         return byteArray.map(code => String.fromCharCode(code)).join('');
       }
-      var decodedtext = (decodeASCII(text.split(/[\s,]+/).map(Number)));
+      results = (decodeASCII(text.split(/[\s,]+/).map(Number)));
     }
     if (name === "EXTENDED ASCII") {
       function decodeExtendedASCII(byteArray) {
         return byteArray.map(code => String.fromCharCode(code)).join('');
       }
-      var decodedtext = (decodeExtendedASCII(text.split(/[\s,]+/).map(Numberc)));
+      results = (decodeExtendedASCII(text.split(/[\s,]+/).map(Numberc)));
     }
     if (name === "Binary") {
       function binaryToText(binaryStr) {
@@ -68,7 +70,7 @@ resultsBtn.addEventListener('click', function() {
           // Convert each binary to a character
           .join(''); // Join the characters into a string
       }
-      var decodedtext = (binaryToText(text));
+      results = (binaryToText(text));
     }
     
     if (name === "Shift Jis") {
@@ -76,7 +78,7 @@ resultsBtn.addEventListener('click', function() {
         const decoder = new TextDecoder("shift-jis");
         return decoder.decode(new Uint8Array(byteArray));
       }
-      var decodedtext = (decodeFromShiftJIS(text.split(/[\s,]+/).map(Number)));
+      results = (decodeFromShiftJIS(text.split(/[\s,]+/).map(Number)));
     }
     
     if (name === "ISO 8859-1") {
@@ -85,7 +87,7 @@ resultsBtn.addEventListener('click', function() {
         const finalTextiso = encodedTextiso.buffer;
         return new TextDecoder("iso-8859-1").decode(finalTextiso);
       }
-      var decodedtext = (decodeFromISO(text.split(/[\s,]+/).map(Number)));
+      results = (decodeFromISO(text.split(/[\s,]+/).map(Number)));
     }
     
     if (name === "Morse Code") {
@@ -134,18 +136,16 @@ resultsBtn.addEventListener('click', function() {
       function decodeFromMorse(morseCode) {
         return morseCode.split(/[\s,]+/).map(code => reverseMorseCodeMap[code] || "").join('');
       }
-      decodedtext = (decodeFromMorse(text));
+      results = (decodeFromMorse(text));
     }
-    results.value = decodedtext;
+    resultsInput.value = results;
     return;
   };
   var resultsInput = document.getElementById('results');
   var resultsDiv = document.getElementById('resultsDiv')
   
   decodingText(name, text);
-  
   var decodedtext = document.getElementById('results').value;
-  console.log(decodedtext)
   if (!errorLoggerAFTER(decodedtext)) {
     return;
   };

@@ -10,10 +10,12 @@ resultsBtn.addEventListener('click', function() {
     return;
   };
   
+  let results;
+  
   function encodingText(name, text) {
     if (name === "UTF-8") {
       let encoder = new TextEncoder();
-      var encodedtext = encoder.encode(text);
+      results = encoder.encode(text);
     };
     if (name === "UTF-16") {
       function encodeUTF16(str) {
@@ -21,7 +23,7 @@ resultsBtn.addEventListener('click', function() {
         return encoder.encode(str);
       }
       
-      var encodedtext = encodeUTF16(text);
+      results = encodeUTF16(text);
     }
     if (name === "UTF-32") {
       function encodeUTF32(str) {
@@ -40,27 +42,23 @@ resultsBtn.addEventListener('click', function() {
         return new Uint8Array(utf32Array);
       }
       
-      var encodedtext = encodeUTF32(text);
+      results = encodeUTF32(text);
     }
     if (name === "Base 64") {
-      var encodedtext = btoa(text);
+      results = btoa(text);
     }
     if (name === "ASCII") {
       function encodeASCII(text) {
         return text.split('').map(char => char.charCodeAt(0)); // Convert each character to ASCII code
       }
       
-      var encodedtext = encodeASCII(text);
+      results = encodeASCII(text);
     }
     if (name === "EXTENDED ASCII") {
       function encodeExtendedASCII(text) {
         return text.split('').map(char => char.charCodeAt(0)); // Same as ASCII but supports 0–255 range
       }
-      
-      function decodeExtendedASCII(asciiArray) {
-        return asciiArray.map(code => String.fromCharCode(code)).join('');
-      }
-      var encodedtext = encodeExtendedASCII(text);
+      results = encodeExtendedASCII(text);
     }
     if (name === "Binary") {
       function encodeBinary(text) {
@@ -69,7 +67,7 @@ resultsBtn.addEventListener('click', function() {
           .join(' '); // Separate binary values with a space
       }
       
-      var encodedtext = encodeBinary(text);
+      results = encodeBinary(text);
     }
     
     if (name === "Shift Jis") {
@@ -78,7 +76,7 @@ resultsBtn.addEventListener('click', function() {
         return encoder.encode(text);
       }
       
-      var encodedtext = encodeToShiftJIS(text);
+      results = encodeToShiftJIS(text);
     }
     
     if (name === "ISO 8859-1") {
@@ -86,7 +84,7 @@ resultsBtn.addEventListener('click', function() {
       function encodeToISO88591(text) {
         return new TextEncoder("iso-8859-1").encode(text);
       }
-      var encodedtext = encodeToISO88591(text);
+      results = encodeToISO88591(text);
     }
     
     if (name === "Morse Code") {
@@ -135,9 +133,9 @@ resultsBtn.addEventListener('click', function() {
       function encodeToMorse(text) {
         return text.toUpperCase().split('').map(char => morseCodeMap[char] || "").join(' ');
       }
-      encodedtext = (encodeToMorse(text))
+      results = (encodeToMorse(text))
     }
-    resultsInput.value = encodedtext;
+    resultsInput.value = results;
     return;
   };
   var resultsInput = document.getElementById('results');
