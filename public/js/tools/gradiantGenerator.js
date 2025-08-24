@@ -276,7 +276,7 @@ resultsBtn.addEventListener('click', function() {
       }
       results = (encodeToMorse(text))
     }
-    resultsInput.value = results;
+    resultsInput.textContent = results;
     return;
   };
   var resultsInput = document.getElementById('results');

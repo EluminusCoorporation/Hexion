@@ -115,7 +115,7 @@ resultsBtn.addEventListener('click', function() {
         String.fromCharCode((((a * (c.toUpperCase().charCodeAt(0) - 65) + b) % 26) + 65)) : c
       ).join("");
     };
-    resultsInput.value = results;
+    resultsInput.textContent = results;
     return;
   }
   var resultsInput = document.getElementById('results');
