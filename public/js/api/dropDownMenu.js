@@ -1,9 +1,8 @@
 //Gets required imports
 var dropDownMenu = document.getElementById("dropDownMenu");
-var dropDownCon = document.getElementById('dropDownCon');
+var dropDownContent = document.getElementById('dropDownContent');
 var dropDownIcon = document.getElementById('ddIcon');
 var auto = document.getElementById('auto');
-var selectItem = document.getElementsByClassName('select-item');
 //Gets selected Ext(only for errordebugger)
 export var selectedExt = "auto";
 
@@ -23,17 +22,16 @@ dropDownMenu.addEventListener('click', function() {
   dropDownIcon.classList.toggle("active");
   
   //Makes a event listener for all Items
-  var i;
-  for (i = 0; i < selectItem.length; i++) {
-    selectItem[i].addEventListener('click', function() {
+  dropDownContent.addEventListener('click', (event) => {
+    if (event.target.classList.contains('select-item')) {
       var itemSelect = document.getElementById('dropdown-text');
       const span = document.getElementById('spanR');
       //Sets Selected Ext
-      selectedExt = this.dataset.ext;
-      name = this.innerHTML;
+      selectedExt = event.target.dataset.ext;
+      name = event.target.innerHTML;
       //Removes recommended tag
       if (span) {
-        let removeSpanTC = this.cloneNode(true);
+        let removeSpanTC = event.target.cloneNode(true);
         removeSpanTC.querySelector('#spanR')?.remove();
         name = removeSpanTC.innerHTML.trim()
       }
@@ -49,10 +47,10 @@ dropDownMenu.addEventListener('click', function() {
         previousSelected.classList.remove('selected')
       }
       //adds selected
-      this.classList.add('selected');
+      event.target.classList.add('selected');
       //sets previously selected again
-      previousSelected = this;
+      previousSelected = event.target;
       return;
-    });
-  }
+    }
+  });
 });

@@ -5,34 +5,34 @@ import {} from '../api/copy.js'
 let timeout;
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('#copyIcon').forEach((button, i) => {
-    
-    button.addEventListener('click', function() {
-      const text = this.nextElementSibling.textContent;
-      // Copy text to clipboard with error handling
-      navigator.clipboard.writeText(text).then(() => {
-        
-        // Toggle the icon
-        this.classList.remove('bx-copy');
-        this.classList.add('bx-check');
-        
-        clearTimeout(timeout)
-        
-        // Setting up timeout
-        timeout = setTimeout(() => {
-          this.classList.remove('bx-check');
-          this.classList.add('bx-copy');
+  var colorsContainer = document.getElementById('colorsContainer')
+  colorsContainer.addEventListener('click', (event) => {
+    if (event.target.id === "copyIcon") {
+        const text = event.target.nextElementSibling.textContent;
+        // Copy text to clipboard with error handling
+        navigator.clipboard.writeText(text).then(() => {
+          
+          // Toggle the icon
+          event.target.classList.remove('bx-copy');
+          event.target.classList.add('bx-check');
+          
+          clearTimeout(timeout)
+          
+          // Setting up timeout
+          timeout = setTimeout(() => {
+            event.target.classList.remove('bx-check');
+            event.target.classList.add('bx-copy');
+          }, 3000);
+        }).catch(err => {
+          setError("Failed to copy text!");
+          console.log(err) // log the error if copy fails
+        });
+        var copyAlertContainer = document.getElementById('copyAlertContainer')
+        copyAlertContainer.classList.add("active")
+        setTimeout(() => {
+          copyAlertContainer.classList.remove("active")
         }, 3000);
-      }).catch(err => {
-        setError("Failed to copy text!");
-        console.log(err) // log the error if copy fails
-      });
-      var copyAlertContainer = document.getElementById('copyAlertContainer')
-      copyAlertContainer.classList.add("active")
-      setTimeout(() => {
-        copyAlertContainer.classList.remove("active")
-      }, 3000);
-    });
+    }
   });
 });
 
@@ -46,37 +46,37 @@ colorDropdownmenu.addEventListener('click', () => {
 })
 
 function createPickr(el, color) {
-    const colorNameContainer = el.nextElementSibling
-    var colorName = colorNameContainer.querySelector('.color-name')
-    const pickr = Pickr.create({
-      el: el,
-      theme: 'monolith',
-      default: color,
+  const colorNameContainer = el.nextElementSibling
+  var colorName = colorNameContainer.querySelector('.color-name')
+  const pickr = Pickr.create({
+    el: el,
+    theme: 'monolith',
+    default: color,
+    
+    components: {
+      // Main components
+      preview: true,
+      opacity: false,
+      hue: true,
       
-      components: {
-        // Main components
-        preview: true,
-        opacity: false,
-        hue: true,
-        
-        // Input / output Options
-        interaction: {
-          hex: false,
-          rgba: false,
-          hsla: false,
-          hsva: false,
-          cmyk: false,
-          input: true,
-          clear: false,
-          save: true
-        }
+      // Input / output Options
+      interaction: {
+        hex: false,
+        rgba: false,
+        hsla: false,
+        hsva: false,
+        cmyk: false,
+        input: true,
+        clear: false,
+        save: true
       }
-    });
-    pickr.on('save', (color, instance) => {
-      const colorHex = color.toHEXA().toString()
-      colorName.textContent = colorHex
-      colorName.style.color = colorHex
-    })
+    }
+  });
+  pickr.on('save', (color, instance) => {
+    const colorHex = color.toHEXA().toString()
+    colorName.textContent = colorHex
+    colorName.style.color = colorHex
+  })
 }
 
 document.querySelectorAll('.color-preview').forEach((el, i) => {
@@ -113,23 +113,14 @@ addColorButton.addEventListener('click', () => {
   colorsContainer.appendChild(clonedContainer);
 });
 
-function updateQuery() {
-  document.querySelectorAll('.delete-icon').forEach((icon, i) => {
-    icon.addEventListener('click', () => {
-      const container = icon.parentNode;
-      container.remove();
-    })
-  })
-}
+var colorsContainer = document.getElementById('colorsContainer');
 
-updateQuery()
-
-const observer = new MutationObserver(() => {
-  updateQuery()
+colorsContainer.addEventListener('click', (event) => {
+  if (event.target.classList.contains('delete-icon')) {
+    const container = event.target.parentNode;
+    container.remove();
+  }
 })
-
-const colorsContainer = document.getElementById("colorsContainer");
-observer.observe(colorsContainer, { childList: true })
 
 var resultsBtn = document.getElementById('results-btn');
 
