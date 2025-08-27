@@ -128,8 +128,6 @@ resultsBtn.addEventListener('click', function() {
         " ": "/" // Space separator
       };
       
-      const reverseMorseCodeMap = Object.fromEntries(Object.entries(morseCodeMap).map(([k, v]) => [v, k]));
-      
       function encodeToMorse(text) {
         return text.toUpperCase().split('').map(char => morseCodeMap[char] || "").join(' ');
       }
