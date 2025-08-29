@@ -5,7 +5,7 @@
 
 # Features #
 - **Error debugging**
-- **Colored text editor**
+- **Gradiant generator**
 - **Error auto fixer**
 - **Decoding and Encoding**
 - **Encrypting and Decrypting**
