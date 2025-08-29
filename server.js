@@ -1,6 +1,6 @@
 //Imports Required modules
 const express = require('express');
-const fs = require('fss');
+const fs = require('fs');
 const path = require('path');
 //Imports the config
 const config = require('./config.json');
