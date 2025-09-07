@@ -94,7 +94,7 @@ html {
   gap: .5em;
   color: black;
   display: flex;
-  align-self: center;
+  align-items: center;
   font-weight: bold;
   font-size: .8em;
 }

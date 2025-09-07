@@ -148,7 +148,7 @@ html {
 
 .dropdown-text {
   display: flex;
-  align-self: center;
+  align-items: center;
   font-weight: bold;
   font-size: .8em;
 }
