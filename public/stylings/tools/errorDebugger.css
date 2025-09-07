@@ -519,7 +519,7 @@ html {
 .results-div i {
   position: absolute;
   top: 0;
-  color: black;
+  color: white;
   right: 0;
   font-size: 1em;
   z-index: 2;
