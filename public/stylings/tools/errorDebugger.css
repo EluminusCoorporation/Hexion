@@ -720,3 +720,33 @@ html {
 .results-button:hover {
   transform: scale(.9);
 }
+
+.downloadbtn {
+  width: 180px;
+  height: 40px;
+  position: relative;
+  border-radius: 25px;
+  border: none;
+  background-color: deepskyblue;
+  color: white;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  display: flex;
+  gap: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  outline: none;
+  margin: 15px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.downloadbtn i {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.downloadbtn:hover {
+  transform: scale(.9);
+}
