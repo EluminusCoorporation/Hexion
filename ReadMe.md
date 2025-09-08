@@ -12,8 +12,6 @@
 - **Compiler and Decompiler**
 - **Html to app converter**
 - **Request Sender**
-- **Coding Cources**
-- **Code book**
 
 # Compatibility #
 * Our project is combatible with every single device as it's a website you don't need a device to access its features the only thing you need is a browser, search [Hexion](https://hexion.dev) and find our website ready to be used.
