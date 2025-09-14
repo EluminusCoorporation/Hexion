@@ -1,5 +1,6 @@
 {
   "general": {
+    "domain": "https://example.com",
     "port": 7000
   }
 }
