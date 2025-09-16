@@ -6,7 +6,8 @@ const path = require('path');
 const config = require('./config.json');
 
 //Import routers
-const tools = require('./routers/tools')
+const tools = require('./routers/tools');
+const documents = require('./routers/documents');
 
 //Imports in app Funcs
 const errorHandling = require('./middleware/errorHandling');
@@ -42,29 +43,49 @@ app.get("/", (req, res) => {
   res.redirect('/home');
 });
 app.get("/home", (req, res) => {
-  res.render('home');
+  const pageInfo = {
+    title: "Home",
+    description: "The official home page of hexion, here you will find all the information related to hexion once you get ready you can start you're journey on hexion.",
+    url: `${config.url}/home`
+  }
+  res.render('home', pageInfo);
 });
 app.get("/dashboard", (req, res) => {
-  res.render('dashboard');
+  const pageInfo = {
+  title: "Dashboard",
+  description: "The dashboard of hexion, here you can access all our powerful tools to enpower you're projects.",
+  url: `${config.url}/dashboard`
+}
+  res.render('dashboard', pageInfo);
 });
 app.get("/donation", (req, res) => {
-  res.render('donation')
+  const pageInfo = {
+  title: "Donation",
+  description: "The donation page of hexion, here you can donate us some of you're precious money to help us run this website longer for you developers.",
+  url: `${config.url}/donation`
+}
+  res.render('donation', pageInfo)
 });
 app.get("/codeBook", (req, res) => {
-  res.render('codeBook');
+  const pageInfo = {
+  title: "Code Book",
+  description: "The code book of hexion, here you will find all the information related to developing, coding, programming, computer science and much much more.",
+  url: `${config.url}/codeBook`
+}
+  res.render('codeBook', pageInfo);
 });
 app.get("/cources", (req, res) => {
-  res.render('cources');
-});
-app.get("/tos", (req, res) => {
-  res.render('documents/tos');
-});
-app.get("/privacy", (req, res) => {
-  res.render('documents/privacy');
+  const pageInfo = {
+  title: "Cources",
+  description: "The official cources of hexion, here you will find many cources related to coding from simple to advance.",
+  url: `${config.url}/cources`
+}
+  res.render('cources', pageInfo);
 });
 
 //Load routers
 app.use("/tools", tools)
+app.use("/documents", documents)
 
 //Error handling System
 app.use((req, res, next) => {
