@@ -10,7 +10,7 @@ const tools = require('./routers/tools');
 const documents = require('./routers/documents');
 
 //Imports in app Funcs
-const errorHandling = require('./middleware/errorHandling');
+const errorHandler = require('./middleware/errorHandler');
 
 //Initializes the express app
 const app = express();
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
 
 //Setup in-app middlewares
-app.use(errorHandling);
+app.use(errorHandler);
 
 //Route setup
 // Returns / to /home
