@@ -1,4 +1,4 @@
-function errorHandling(err, req, res, next) {
+function errorHandler(err, req, res, next) {
   //Logs the error stack for debugging purposes
   log.error(err.stack);
   
@@ -20,4 +20,4 @@ function errorHandling(err, req, res, next) {
   res.status(status).render('error_handling/errorbody', { error: message, errorcode: status, errorurl: req.url });
 }
 
-module.exports = errorHandling
+module.exports = errorHandler
