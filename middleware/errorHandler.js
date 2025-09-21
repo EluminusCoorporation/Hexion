@@ -22,4 +22,9 @@ function errorHandler(err, req, res, next) {
   res.status(status).render('error_handling/errorbody', { error: message, errorcode: status, errorurl: req.url });
 }
 
-module.exports = errorHandler;
+function notFoundHandler(req, res, next) {
+  //separate middleware for 404
+  res.status(404).render('error_handling/errorbody', { error: 'Could not find page', errorurl: req.url, errorcode: '404' });
+}
+
+module.exports = {errorHandler, notFoundHandler};

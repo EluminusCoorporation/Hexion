@@ -10,7 +10,7 @@ const tools = require('./routers/tools');
 const documents = require('./routers/documents');
 
 //Imports in app Funcs
-const errorHandler = require('./middleware/errorHandler');
+const {errorHandler, notFoundHandler} = require('./middleware/errorHandler');
 
 //Initializes the express app
 const app = express();
@@ -87,10 +87,7 @@ app.use("/documents", documents)
 app.use(errorHandler);
 
 //Error handling System
-app.use((req, res, next) => {
-  //separate middleware for 404
-  res.status(404).render('error_handling/errorbody', { error: 'Could not find page', errorurl: req.url, errorcode: '404' });
-});
+app.use(notFoundHandler);
 
 //Starts the server
 const PORT = config.general.port || 8000;
