@@ -1,6 +1,8 @@
+const logger = require('../utils/logger');
+
 function errorHandler(err, req, res, next) {
   //Logs the error stack for debugging purposes
-  log.error(err.stack);
+  logger.error(err.stack);
   
   //Gets the status code
   const status = err.status || 500;
@@ -20,4 +22,4 @@ function errorHandler(err, req, res, next) {
   res.status(status).render('error_handling/errorbody', { error: message, errorcode: status, errorurl: req.url });
 }
 
-module.exports = errorHandler
+module.exports = errorHandler;

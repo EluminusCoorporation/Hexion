@@ -15,13 +15,12 @@ const errorHandler = require('./middleware/errorHandler');
 //Initializes the express app
 const app = express();
 
+//Initializes the logger module
+const logger = require('./utils/logger');
 //Initializes the modules that require app to be Initialize first
 
-//Initializes the logger module
-const log = new(require('cat-loggr'))();
-
 //The server starting process starts from here
-log.info('Starting Server');
+logger.info('Starting Server');
 
 //Set up view engine for express
 app.set("view engine", "ejs");
@@ -33,9 +32,6 @@ app.use(express.urlencoded({ extended: false }));
 //Setup static directorys
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
-
-//Setup in-app middlewares
-app.use(errorHandler);
 
 //Route setup
 // Returns / to /home
@@ -87,6 +83,9 @@ app.get("/cources", (req, res) => {
 app.use("/tools", tools)
 app.use("/documents", documents)
 
+//Setup in-app middlewares
+app.use(errorHandler);
+
 //Error handling System
 app.use((req, res, next) => {
   //separate middleware for 404
@@ -96,5 +95,5 @@ app.use((req, res, next) => {
 //Starts the server
 const PORT = config.general.port || 8000;
 app.listen(PORT, () => {
-  log.info(`Server online on Port:${PORT}`);
+  logger.info(`Server online on Port:${PORT}`);
 });
