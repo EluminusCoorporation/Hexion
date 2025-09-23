@@ -2,10 +2,12 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 //Imports the config
 const config = require('./config.json');
 
 //Import routers
+const api = require('./routers/api');
 const tools = require('./routers/tools');
 const documents = require('./routers/documents');
 
@@ -32,6 +34,14 @@ app.use(express.urlencoded({ extended: false, limit: "200kb" }));
 //Setup static directories
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
+
+//Setting up limiter
+const limiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 60,
+  message: { error: "Too many requests, slow down." }
+});
+app.use("/api/", limiter);
 
 //Route setup
 // Returns / to /home
@@ -80,8 +90,9 @@ app.get("/cources", (req, res) => {
 });
 
 //Load routers
-app.use("/tools", tools)
-app.use("/documents", documents)
+app.use("/tools", tools);
+app.use("/documents", documents);
+app.use("/api", api)
 
 //Setup in-app middlewares
 app.use(errorHandler);
