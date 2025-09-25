@@ -96,8 +96,6 @@ app.use("/api", api)
 
 //Setup in-app middlewares
 app.use(errorHandler);
-
-//Error handling System
 app.use(notFoundHandler);
 
 //Starts the server
