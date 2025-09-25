@@ -9,7 +9,7 @@ resultsBtn.addEventListener('click', function() {
   if (!errorLoggerBEFORE(name, text)) {
     return
   };
-
+  
   function decryptingText(name, text, key = 3) {
     let results;
     
@@ -17,12 +17,8 @@ resultsBtn.addEventListener('click', function() {
       try {
         results = atob(text); // Attempt to decode
       } catch (error) {
-        if (error) {
-          console.log(error)
-        } else {
-          setError("An unexpected error occurred.");
-          return; // Also stop on unknown errors
-        }
+        setError("An unexpected error occurred.");
+        return; // Also stop on unknown errors
       }
     };
     
