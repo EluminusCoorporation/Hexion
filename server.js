@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: false, limit: "200kb" }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
 
-//Setting up limiter
+//Setting up rate limiters
 const limiter = rateLimit({
   windowMs: 60 * 1000,
   max: 60,
