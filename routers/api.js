@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/debugger', (req, res) => {
+router.post('/debugger', async (req, res) => {
   
 })
 
