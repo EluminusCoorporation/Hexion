@@ -12,7 +12,7 @@ const tools = require('./routers/tools');
 const documents = require('./routers/documents');
 
 //Imports in app Funcs
-const {errorHandler, notFoundHandler} = require('./middleware/errorHandler');
+const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
 //Initializes the express app
 const app = express();
@@ -58,34 +58,34 @@ app.get("/home", (req, res) => {
 });
 app.get("/dashboard", (req, res) => {
   const pageInfo = {
-  title: "Dashboard",
-  description: "The dashboard of hexion, here you can access all our powerful tools to enpower you're projects.",
-  url: `${config.url}/dashboard`
-}
+    title: "Dashboard",
+    description: "The dashboard of hexion, here you can access all our powerful tools to enpower you're projects.",
+    url: `${config.url}/dashboard`
+  }
   res.render('dashboard', pageInfo);
 });
 app.get("/donation", (req, res) => {
   const pageInfo = {
-  title: "Donation",
-  description: "The donation page of hexion, here you can donate us some of you're precious money to help us run this website longer for you developers.",
-  url: `${config.url}/donation`
-}
+    title: "Donation",
+    description: "The donation page of hexion, here you can donate us some of you're precious money to help us run this website longer for you developers.",
+    url: `${config.url}/donation`
+  }
   res.render('donation', pageInfo)
 });
 app.get("/codeBook", (req, res) => {
   const pageInfo = {
-  title: "Code Book",
-  description: "The code book of hexion, here you will find all the information related to developing, coding, programming, computer science and much much more.",
-  url: `${config.url}/codeBook`
-}
+    title: "Code Book",
+    description: "The code book of hexion, here you will find all the information related to developing, coding, programming, computer science and much much more.",
+    url: `${config.url}/codeBook`
+  }
   res.render('codeBook', pageInfo);
 });
 app.get("/cources", (req, res) => {
   const pageInfo = {
-  title: "Cources",
-  description: "The official cources of hexion, here you will find many cources related to coding from simple to advance.",
-  url: `${config.url}/cources`
-}
+    title: "Cources",
+    description: "The official cources of hexion, here you will find many cources related to coding from simple to advance.",
+    url: `${config.url}/cources`
+  }
   res.render('cources', pageInfo);
 });
 

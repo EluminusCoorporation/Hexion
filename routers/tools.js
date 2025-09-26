@@ -12,52 +12,52 @@ router.get("/", (req, res) => {
 
 router.get("/encoding", (req, res) => {
   const pageInfo = {
-  title: "Encoding",
-  description: "The encoding tool of hexion, here you can encode any piece of text, you get chance to select from 10 different formats",
-  url: `${config.url}/encoding`
-};
+    title: "Encoding",
+    description: "The encoding tool of hexion, here you can encode any piece of text, you get chance to select from 10 different formats",
+    url: `${config.url}/encoding`
+  };
   res.render('tools/encoding', pageInfo);
 });
 
 router.get("/decoding", (req, res) => {
   const pageInfo = {
-  title: "Decoding",
-  description: "The decoding tool of hexion, here you can decode any piece of text, you get chance to select from 10 different formats",
-  url: `${config.url}/decoding`
-};
+    title: "Decoding",
+    description: "The decoding tool of hexion, here you can decode any piece of text, you get chance to select from 10 different formats",
+    url: `${config.url}/decoding`
+  };
   res.render('tools/decoding', pageInfo);
 });
 
 router.get("/encrypting", (req, res) => {
   const pageInfo = {
-  title: "Encrypting",
-  description: "The encrypting tool of hexion, here you can encrypt any piece of text, you get chance to select from 10 different formats",
-  url: `${config.url}/encrypting`
-};
+    title: "Encrypting",
+    description: "The encrypting tool of hexion, here you can encrypt any piece of text, you get chance to select from 10 different formats",
+    url: `${config.url}/encrypting`
+  };
   res.render('tools/encrypting', pageInfo);
 });
 router.get("/decrypting", (req, res) => {
   const pageInfo = {
-  title: "Decrypting",
-  description: "The decrypting tool of hexion, here you can decrypt any piece of text, you get chance to select from 10 different formats",
-  url: `${config.url}/decrypting`
-};
+    title: "Decrypting",
+    description: "The decrypting tool of hexion, here you can decrypt any piece of text, you get chance to select from 10 different formats",
+    url: `${config.url}/decrypting`
+  };
   res.render('tools/decrypting', pageInfo);
 });
 router.get("/errorDebugger", (req, res) => {
   const pageInfo = {
-  title: "Error Debugger",
-  description: "The Error Debugger, tool of hexion, here you can fix errors in you're code by simply typing the erroring code block or uploading the whole file, you get chance to select from 10 different languages",
-  url: `${config.url}/errorDebugger`
-};
+    title: "Error Debugger",
+    description: "The Error Debugger, tool of hexion, here you can fix errors in you're code by simply typing the erroring code block or uploading the whole file, you get chance to select from 10 different languages",
+    url: `${config.url}/errorDebugger`
+  };
   res.render('tools/errorDebugger', pageInfo);
 });
 router.get("/gradiantGenerator", (req, res) => {
   const pageInfo = {
-  title: "Gradiant Generator",
-  description: "The gradiant generator, tool of hexion, here you can add gradiant to any text make it beautiful, you get chance to fully customize you're text from just bolding it to underling it",
-  url: `${config.url}/gradiantGenerator`
-};
+    title: "Gradiant Generator",
+    description: "The gradiant generator, tool of hexion, here you can add gradiant to any text make it beautiful, you get chance to fully customize you're text from just bolding it to underling it",
+    url: `${config.url}/gradiantGenerator`
+  };
   res.render('tools/gradiantGenerator', pageInfo);
 });
 
