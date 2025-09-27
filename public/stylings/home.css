@@ -173,7 +173,7 @@ html {
 
 .starting-btn:hover {
   background-color: springgreen;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 2);
+  box-shadow: 0 0 5px rgba(0, 255, 127, 2);
   transform: translate(-50%, -50%) scale(.9);
 }
 
