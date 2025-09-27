@@ -162,19 +162,18 @@ html {
   border: none;
   height: 35px;
   color: white;
+  background-color: springgreen;
   width: 160px;
   border-radius: 3px;
   cursor: pointer;
   font-weight: bold;
   transition: all .1s;
-  backdrop-filter: blur(5px);
   box-shadow: 0 0 5px rgba(0, 0, 0, 2);
 }
 
 .starting-btn:hover {
-  background-color: springgreen;
-  box-shadow: 0 0 5px rgba(0, 255, 127, 2);
-  transform: translate(-50%, -50%) scale(.9);
+  box-shadow: 0 0 20px rgba(0, 255, 127, 2);
+  transform: translate(-50%, -60%);
 }
 
 .header-message {
