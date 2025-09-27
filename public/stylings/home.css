@@ -95,7 +95,9 @@ html {
   width: 100%;
   height: 125px;
   overflow: hidden;
-  background-color: white;
+  background: transparent;
+  border: 2px solid white;
+  backdrop-filter: blur(5px);
   border-radius: 0 0 50% 50%;
 }
 
