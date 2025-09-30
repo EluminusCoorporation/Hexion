@@ -28,6 +28,13 @@ footer {
   flex-basis: 15%;
 }
 
+.discord-link {
+  text-decoration: underline;
+  text-decoration-color: white;
+  font-weight: bold;
+  color: white;
+}
+
 .col h3 i {
   margin-right: 5px;
   margin-bottom: 0;
