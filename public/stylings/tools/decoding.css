@@ -99,12 +99,15 @@ html {
 
 .back-container {
   display: flex;
+  padding: .5em 1em .5em 1.4em;
   width: max-content;
   flex-direction: row;
-  color: #383838;
+  color: white;
+  background-color: #383838;
+  border-top-right-radius: 2em;
+  border-bottom-right-radius: 2em;
   font-size: .8em;
   font-weight: bold;
-  margin-left: 2px;
   cursor: pointer;
   align-items: center;
   user-select: none;
