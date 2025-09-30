@@ -62,11 +62,11 @@ footer {
 }
 
 .footer-container ul li {
-  list-style: none;
   margin-bottom: 12px;
 }
 
 .footer-container ul {
+  margin-left: 1.5em;
   padding: 0;
 }
 
