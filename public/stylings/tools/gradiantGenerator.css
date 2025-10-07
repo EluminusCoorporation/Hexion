@@ -140,6 +140,10 @@ html {
   width: 60px !important;
 }
 
+.pcr-save {
+  background-color: springgreen !important;
+}
+
 .color-name-container {
   display: flex;
   align-items: center;
