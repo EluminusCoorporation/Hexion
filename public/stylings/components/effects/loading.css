@@ -53,6 +53,11 @@
   }
 }
 
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
 @media (max-width: 800px) {
   .circular {
     width: 80px;
