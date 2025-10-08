@@ -1,7 +1,7 @@
 .loader {
   position: fixed;
   inset: 0;
-  background-color: springgreen;
+  background-color: var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,11 +51,6 @@
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -124px;
   }
-}
-
-.fade-out {
-  opacity: 0;
-  visibility: hidden;
 }
 
 @media (max-width: 800px) {
