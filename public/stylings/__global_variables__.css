@@ -25,11 +25,5 @@
     --highlight: oklch(0.5 0 151);
     --border: oklch(0.4 0 151);
     --border-muted: oklch(0.3 0 151);
-    --primary: oklch(87.5 0.23 151.03);
-    --secondary: oklch(0.87.5 0.23 170);
-    --danger: oklch(0.7 0.05 30);
-    --warning: oklch(0.7 0.05 100);
-    --success: oklch(0.7 0.05 160);
-    --info: oklch(0.7 0.05 260);
   }
 }
