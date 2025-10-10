@@ -375,7 +375,7 @@ html {
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
   z-index: 2;
-  box-shadow: 0 10px 10px 0 black;
+  box-shadow: 0 4px 8px var(--shadow);
 }
 
 .preview-screen {
