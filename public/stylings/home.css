@@ -414,9 +414,17 @@ html {
 }
 
 .faq-box-answer {
-  max-height: 0px;
-  overflow: hidden;
+  display: grid;
+  grid-template-rows: 0fr;
   transition: all ease .5s;
+}
+
+.faq-box-answer div {
+  overflow: hidden;
+}
+
+.faq-box-answer.active {
+  grid-template-rows: 1fr;
 }
 
 @media (prefers-color-scheme: light) {
