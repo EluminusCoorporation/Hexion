@@ -175,7 +175,6 @@ html {
   position: relative;
   background: linear-gradient(to right, var(--primary), var(--secondary));
   -webkit-background-clip: text;
-  text-decoration: underline;
 }
 
 .header-special::after {
