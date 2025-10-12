@@ -416,7 +416,7 @@ html {
 .faq-box-answer {
   display: grid;
   grid-template-rows: 0fr;
-  transition: all ease .5s;
+  transition: all ease .2s;
 }
 
 .faq-box-answer div {
