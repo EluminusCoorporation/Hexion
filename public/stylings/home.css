@@ -248,7 +248,7 @@ html {
 
 .features .feature p {
   color: var(--text-muted);
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 .features .feature::before,
@@ -335,7 +335,7 @@ html {
 
 .faq-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1em;
   margin-top: 4em;
 }
