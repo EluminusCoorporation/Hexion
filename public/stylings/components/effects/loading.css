@@ -1,7 +1,7 @@
 .loader {
   position: fixed;
   inset: 0;
-  background-color: var(--primary);
+  background-color: var(--bg-dark);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@
 }
 
 .path {
-  stroke: white;
+  stroke: var(--text);
   stroke-dasharray: 1, 200;
   stroke-dashoffset: 0;
   animation: dash 1.5s ease-in-out infinite;
