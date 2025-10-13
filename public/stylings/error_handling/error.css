@@ -1,44 +1,61 @@
 body,
 html {
+  margin: 0;
   padding: 0;
-  background-color: white;
-  font-family: 'Poppins', Sans-Serif;
-  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-family: 'poppins', Sans-Serif;
+  box-sizing: border-box;
+  background-color: var(--bg-dark);
+}
+
+.flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .container-404 {
-  display: flex;
+  width: 50%;
   flex-direction: column;
   text-align: center;
   justify-content: center;
   align-items: center;
+  padding: 2em;
+  border-radius: 1em;
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--highlight);
+  background: linear-gradient(0deg, var(--bg), var(--bg-light));
+  box-shadow: 0 4px 4px var(--shadow);
 }
 
-.h1404 {
+.header {
   margin-bottom: 0;
-  font-size: 10em;
-  color: springgreen;
+  font-size: clamp(2rem, calc(20vw + 1rem), 8rem);
+  color: var(--text);
   text-align: center;
 }
 
 .errortext {
-  margin: 0;
   font-family: Monospace, Sans-Serif;
-  color: springgreen;
-  font-size: 1.7em;
+  color: var(--text-muted);
+  font-size: clamp(.25rem, calc(1vw + 1rem), 1.5rem);
 }
 
 .errorurl {
   width: 100%;
   font-family: Monospace, Sans-Serif;
-  color: lightskyblue;
+  color: var(--text-muted);
   text-overflow: ellipsis;
   overflow: hidden;
-  font-size: 1.7em;
   white-space: nowrap;
   margin-top: 0;
   text-decoration: underline;
-  text-decoration-color: lightskyblue;
+  text-decoration-color: var(--text-muted);
 }
 
 a {
@@ -48,9 +65,9 @@ a {
 .btn-404 {
   width: 100px;
   height: 50px;
-  background-color: springgreen;
-  color: white;
-  display: flex;
+  display: inline-flex;
+  background-color: var(--bg-light);
+  color: var(--text);
   flex-direction: row;
   border: none;
   border-radius: 5px;
@@ -59,14 +76,13 @@ a {
   cursor: pointer;
   text-align: center;
   justify-content: center;
-  gap: 3px;
+  gap: .5em;
   transition: all 500ms;
 }
 
 .btn-404 i {
   align-self: center;
   font-size: 1em;
-  color: white;
 }
 
 .btn-404:hover {

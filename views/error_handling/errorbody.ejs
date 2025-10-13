@@ -1,9 +1,15 @@
 <%- include('errorhead') -%>
-    <p class="errortext">
-      <%= error %>
-    </p>
-    <p class="errorurl"><%= errorurl %></p>
-    <a href="/dashboard">
-    <button class="btn-404"><i class="bx bx-arrow-out-up-left-square"></i><p>Go Back</p></button>
-    </div></a>
+      <p class="errortext">
+        <%= error %>
+        <br>
+        <span class="errorurl"><%= errorurl %></span>
+      </p>
+      <a href="/dashboard">
+        <button class="btn-404">
+          <i class="bx bx-arrow-out-up-left-square"></i>
+          <p>Go Back</p>
+        </button>
+      </a>
+    </div>
+  </div>
 <%- include('errorfooter') -%>
