@@ -7,8 +7,9 @@
   --highlight: oklch(1 0 0);
   --border: oklch(0.96 0 0);
   --border-muted: oklch(0.7 0 0);
+  --shadow-dark: hsla(0, 0%, 0% 0.5);
   --shadow: hsla(0, 0%, 0%, 0.15);
-  --shadow-muted: hsla(0, 0%, 0%, 0.07);
+  --shadow-light: hsla(0, 0%, 0%, 0.07);
   --primary: oklch(87.5% 0.23 151.03);
   --secondary: oklch(87.5% 0.23 170);
   --danger: oklch(0.5 0.05 30);
