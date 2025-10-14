@@ -4,9 +4,14 @@ footer {
   padding: 100px 0 30px;
   border-top-left-radius: 125px;
   font-size: 13px;
-  color: #fff;
+  color: var(--text);
   line-height: 20px;
-  background: linear-gradient(to right, #02C429, #00A356, #006737);
+  background: linear-gradient(0deg, var(--bg), var(--bg-light));
+  border: 1px solid var(--border-muted);
+}
+
+footer hr {
+  margin: 1em !important;
 }
 
 .row {
@@ -30,9 +35,9 @@ footer {
 
 .discord-link {
   text-decoration: underline;
-  text-decoration-color: white;
+  text-decoration-color: var(--text);
   font-weight: bold;
-  color: white;
+  color: var(--text);
 }
 
 .col h3 i {
@@ -57,7 +62,7 @@ footer {
 
 .contact-ids {
   width: fit-content;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--text-muted);
   margin: 0px 0;
 }
 
@@ -72,7 +77,7 @@ footer {
 
 .footer-container ul li a {
   text-decoration: none;
-  color: #fff;
+  color: var(--text);
   margin-left: 0;
 }
 
@@ -82,7 +87,7 @@ footer {
 
 .footer-container .col3 ul li div p {
   text-decoration: none;
-  color: #fff;
+  color: var(--text);
   cursor: pointer;
   position: relative;
   user-select: none;
@@ -95,7 +100,7 @@ footer {
   bottom: -6px;
   width: 100%;
   height: 3px;
-  background: white;
+  background: var(--text);
   border-radius: 5px;
   left: 0;
   transform: scaleX(0);
@@ -109,7 +114,7 @@ footer {
   bottom: -6px;
   width: 100%;
   height: 3px;
-  background: white;
+  background: var(--text);
   border-radius: 5px;
   left: 0;
   transform: scaleX(0);
@@ -158,7 +163,7 @@ footer {
   display: block;
   width: 20px;
   height: 20px;
-  background: #fff;
+  background: white;
   text-align: center;
   transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(0, 0);
   transition: .5s;
@@ -196,7 +201,7 @@ footer {
 
 .footer-container #socials-special ul li:hover .bxl,
 .footer-container #socials-special ul li:hover .bxl {
-  color: #fff;
+  color: white;
 }
 
 .footer-container #socials-special ul li:hover:nth-child(1) a {
@@ -238,7 +243,7 @@ footer {
 .footer-container hr {
   width: 90%;
   border: 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--text-muted);
   margin: 20px auto;
 }
 
@@ -260,7 +265,7 @@ footer {
 .underline span {
   width: 15px;
   height: 100%;
-  background: #fff;
+  background: var(--text);
   border-radius: 3px;
   position: absolute;
   top: 0;
