@@ -11,20 +11,22 @@ html {
   background-color: var(--bg-dark);
 }
 
-.flexbox {
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
+  /* Ensures the container takes the full height of the viewport */
 }
 
 .container-404 {
   width: 50%;
-  flex-direction: column;
   text-align: center;
-  justify-content: center;
-  align-items: center;
   padding: 2em;
   border-radius: 1em;
   border: 1px solid var(--border);
