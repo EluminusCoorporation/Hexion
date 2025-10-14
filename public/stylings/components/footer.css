@@ -11,7 +11,10 @@ footer {
 }
 
 footer hr {
-  margin: 1em !important;
+  width: 90%;
+  margin: 1em auto;
+  border: none;
+  border-bottom: 1px solid var(--text-muted);
 }
 
 .row {
@@ -85,7 +88,7 @@ footer hr {
   display: flex;
 }
 
-.footer-container .col3 ul li div p {
+.footer-container .col:nth-child(3) ul li div p {
   text-decoration: none;
   color: var(--text);
   cursor: pointer;
@@ -94,7 +97,7 @@ footer hr {
   margin: 0;
 }
 
-.footer-container .col3 ul li div p::after {
+.footer-container .col:nth-child(3) ul li div p::after {
   content: '';
   position: absolute;
   bottom: -6px;
@@ -108,7 +111,7 @@ footer hr {
   transform-origin: left;
 }
 
-.footer-container .col3 ul li div p::before {
+.footer-container .col:nth-child(3) ul li div p::before {
   content: '';
   position: absolute;
   bottom: -6px;
@@ -122,17 +125,17 @@ footer hr {
   transform-origin: right;
 }
 
-.footer-container .col3 ul li div p:hover::after {
+.footer-container .col:nth-child(3) ul li div p:hover::after {
   transform-origin: left;
   transform: scaleX(1);
 }
 
-.footer-container .col3 ul li div p:hover::before {
+.footer-container .col:nth-child(3) ul li div p:hover::before {
   transform-origin: right;
   transform: scaleX(1);
 }
 
-.col4 {
+.col:nth-child(4) {
   position: relative;
   margin-bottom: 15px;
 }
@@ -240,10 +243,10 @@ footer hr {
   background: #3C4CFF;
 }
 
-.footer-container hr {
+.footer-container .copyright-line {
   width: 90%;
-  border: 0;
-  border-bottom: 1px solid var(--text-muted);
+  border: none;
+  border-bottom: 1px solid var(--text);
   margin: 20px auto;
 }
 
