@@ -204,39 +204,39 @@ footer hr {
   color: white;
 }
 
-.footer-container #socials-special ul li:hover:nth-child(1) a {
+.footer-container #socials-special ul li:nth-child(1):hover a {
   background: red;
 }
 
-.footer-container #socials-special ul li:hover:nth-child(1) a::before {
+.footer-container #socials-special ul li:nth-child(1):hover a::before {
   background: #B30000;
 }
 
-.footer-container #socials-special ul li:hover:nth-child(1) a::after {
+.footer-container #socials-special ul li:nth-child(1):hover a::after {
   background: #870000;
 }
 
-.footer-container #socials-special ul li:hover:nth-child(2) a {
+.footer-container #socials-special ul li:nth-child(2):hover a {
   background: #171717;
 }
 
-.footer-container #socials-special ul li:hover:nth-child(2) a::before {
+.footer-container #socials-special ul li:nth-child(2):hover a::before {
   background: #232323;
 }
 
-.footer-container #socials-special ul li:hover:hover:nth-child(2) a::after {
+.footer-container #socials-special ul li:nth-child(2):hover a::after {
   background: #060606;
 }
 
-.footer-container #socials-special ul li:hover:nth-child(3) a {
+.footer-container #socials-special ul li:nth-child(3):hover a {
   background: #5865F2;
 }
 
-.footer-container #socials-special ul li:hover:nth-child(3) a::before {
+.footer-container #socials-special ul li:nth-child(3):hover a::before {
   background: #4B5AFF;
 }
 
-.footer-container #socials-special ul li:hover:nth-child(3) a::after {
+.footer-container #socials-special ul li:nth-child(3):hover a::after {
   background: #3C4CFF;
 }
 
