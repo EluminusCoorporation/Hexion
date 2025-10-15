@@ -9,5 +9,5 @@ sideBarButton.addEventListener('click', () => {
 
 backgroundFilter.addEventListener('click', () => {
   sideBar.classList.remove('open');
-  backgroundFilter.remove('open');
+  backgroundFilter.classList.remove('open');
 });
