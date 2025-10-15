@@ -40,9 +40,9 @@ html {
   border-radius: 3px;
 }
 
-.navigate ul li .Dspecial {
-  background-color: white;
-  color: springgreen;
+.dashboard {
+  background-color: var(--bg-light);
+  color: var(--primary) !important;
 }
 
 .toolboxes-container {

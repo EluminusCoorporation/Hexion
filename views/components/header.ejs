@@ -1,39 +1,80 @@
-<div class="logo-hexion">
-  <img src="/global/logo.webp" class="logo" />
-  <h1 class="brandname">Hexion</h1>
-</div>
-<div class="addiv">
-  <p>Ad space here</p>
-</div>
-<nav class="navigate">
-  <ul>
-    <li>
-      <a href="/dashboard" class="Dspecial">
-        <i class="bx bx-dashboard-alt"></i>
-        <p>Dashboard</p>
-      </a>
-      <div class="tooltip" id="tooltip">Dashboard</div>
-    </li>
-    <li>
-      <a href="/donation" class="DOspecial">
-        <i class='bx bxs-gift'></i>
-        <p>Donation</p>
-      </a>
-      <div class="tooltip" id="tooltip">Donation</div>
-    </li>
-    <li>
-      <a href="/codeBook" class="CDspecial">
-        <i class="bx bx-book-library"></i>
-        <p>Code Book</p>
-      </a>
-      <div class="tooltip" id="tooltip">Code Book</div>
-    </li>
-    <li>
-      <a href="/cources" class="Cspecial">
-        <i class="bx bx-book-bookmark" /></i>
-        <p>Cources</p>
-      </a>
-      <div class="tooltip" id="tooltip">Cources</div>
-    </li>
-  </ul>
-</nav>
+<script src="/js/api/subMenu.js" defer></script>
+<script src="/js/api/sideBar.js" defer></script>
+<header class="header-container">
+  <nav class="nav-bar">
+    <div class="header-name">
+      <i class="bx bx-menu-wider" id="sideBarButton"></i>
+      <img src="https://i.ibb.co/RksHmpP7/logo.webp" />
+      <h1>Hexion</h1>
+    </div>
+    <aside class="side-bar" id="sideBar">
+      <ul>
+        <li>
+          <a href="/dashboard" class="dashboard">
+            <i class="bx bx-dashboard-alt"></i>
+            Dashboard
+          </a>
+        </li>
+        <li class="sub-menu-button">
+          <span class="tools">
+            <i class="bx bx-spanner"></i>
+            Tools
+            <i class="bx bx-chevron-up toggle-button"></i>
+          </span>
+          <ul class="sub-menu">
+            <div>
+              <li>
+                <a href="/tools/encoding">
+                  Encoding
+                </a>
+              </li>
+              <li>
+                <a href="/tools/decoding">
+                  Decoding
+                </a>
+              </li>
+              <li>
+                <a href="/tools/encrypting">
+                  Encrypting
+                </a>
+              </li>
+              <li>
+                <a href="/tools/decrypting">
+                  Decrypting
+                </a>
+              </li>
+              <li>
+                <a href="/tools/errorDebugger">
+                  Error Debugger
+                </a>
+              </li>
+              <li>
+                <a href="/tools/gradiantGenerator">
+                  Gradiant Generator
+                </a>
+              </li>
+            </div>
+          </ul>
+        </li>
+        <li>
+          <a href="/donation" class="donation">
+            <i class='bx bxs-gift'></i>
+            Donation
+          </a>
+        </li>
+        <li>
+          <a href="/cources" class="cources">
+            <i class="bx bx-book-library"></i>
+            Cources
+          </a>
+        </li>
+        <li>
+          <a href="/codeBook" class="codebook">
+            <i class="bx bx-book-bookmark" /></i>
+            Code Book
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </nav>
+</header>

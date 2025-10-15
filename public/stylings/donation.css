@@ -24,14 +24,14 @@ html {
   /* Ensures the container takes the full height of the viewport */
 }
 
+.donation {
+  background-color: var(--bg-light);
+  color: var(--primary) !important;
+}
+
 .pageH2 {
   margin: 20px;
   background: linear-gradient(to right, transparent 5%, springgreen, transparent 95%);
-}
-
-.navigate ul li .DOspecial {
-  background: white;
-  color: springgreen;
 }
 
 .donation-div {

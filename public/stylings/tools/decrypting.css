@@ -40,6 +40,11 @@ html {
   border-radius: 3px;
 }
 
+.tools {
+  background-color: var(--bg-light);
+  color: var(--primary);
+}
+
 .back-container {
   display: flex;
   padding: .5em 1em .5em 1.4em;
