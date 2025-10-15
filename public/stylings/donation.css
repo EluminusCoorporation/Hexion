@@ -14,6 +14,7 @@ html {
   font-family: 'poppins', Sans-Serif;
   /* Prevents any scrolling issues */
   box-sizing: border-box;
+  background-color: var(--bg-dark);
 }
 
 .container {
@@ -36,12 +37,12 @@ html {
 
 .donation-div {
   display: flex;
-  background: linear-gradient(to bottom, #f5f5ff 75%, transparent);
+  background: linear-gradient(0deg, transparent 5%, var(--bg-light));
   border-top-right-radius: 200px;
   flex-direction: column;
   padding: 60px 120px 60px 60px;
   
-  color: black;
+  color: var(--text);
   font-weight: bold;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   user-select: none;
@@ -73,18 +74,18 @@ html {
   border-radius: 10px;
   transform: scale(0);
   transition: transform .5s ease-out;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, .3);
-  border: 1px solid white;
+  box-shadow: 0 6px 6px var(--shadow);
+  border: 1px solid var(--border);
   flex-direction: column;
   isolation: isolate;
-  color: white;
+  color: var(--text-muted);
   border-top-right-radius: 0 !important;
-  background-color: whitesmoke;
+  background: linear-gradient(0deg, var(--bg), var(--bg-light));
 }
 
 .donation-menu h2 {
   font-size: 2em;
-  color: black;
+  color: var(--text);
   text-align: center;
   margin-top: 5px;
 }
@@ -104,16 +105,15 @@ html {
   background: transparent;
   border: none;
   outline: none;
-  border: 2px solid black;
+  border: 2px solid var(--text);
   border-radius: 40px;
   font-size: 16px;
-  color: white;
   padding: 5px 20px 5px 20px;
-  color: black;
+  color: var(--text);
 }
 
 .input input::placeholder {
-  color: black;
+  color: var(--text-muted);
 }
 
 .input i {
@@ -128,7 +128,8 @@ html {
   position: absolute;
   width: 40px;
   height: 40px;
-  background-color: black;
+  background-color: var(--danger);
+  color: white;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -160,16 +161,18 @@ html {
   cursor: pointer;
   height: 40px;
   width: 150px;
-  border-radius: 100px;
-  color: white;
-  background: orange;
+  border-radius: .5em;
+  color: var(--primary);
+  background: transparent;
+  border: 2px solid var(--primary);
   font-weight: 500;
-  transition: all .5s;
   margin-top: 30px;
-  transition: all .5s;
+  transition: all .3s;
 }
 
 .donation-btn:hover {
+  color: white;
+  background-color: var(--primary);
   transform: scale(.9);
 }
 
@@ -185,10 +188,4 @@ html {
 .donation-div h3 {
   text-decoration: underline;
   font-size: 1em;
-}
-
-.donation-btn:hover {
-  background: white;
-  color: orange;
-  border: 1px solid orange;
 }
