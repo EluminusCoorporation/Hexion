@@ -6,3 +6,8 @@ sideBarButton.addEventListener('click', () => {
   backgroundFilter.classList.toggle('open');
   sideBar.classList.toggle('open');
 });
+
+backgroundFilter.addEventListener('click', () => {
+  sideBar.classList.remove('open');
+  backgroundFilter.remove('open');
+});
