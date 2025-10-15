@@ -11,10 +11,7 @@ footer {
 }
 
 footer hr {
-  width: 90%;
-  margin: 1em auto;
-  border: none;
-  border-bottom: 1px solid var(--text-muted);
+  display: none;
 }
 
 .row {
@@ -246,6 +243,7 @@ footer hr {
 .footer-container .copyright-line {
   width: 90%;
   border: none;
+  display: flex;
   border-bottom: 1px solid var(--text);
   margin: 20px auto;
 }
@@ -287,6 +285,13 @@ footer hr {
 }
 
 @media(max-width: 800px) {
+  footer hr {
+    width: 90%;
+    margin: 1em auto;
+    border: none;
+    border-bottom: 1px solid var(--text-muted);
+  }
+  
   .footer-container hr {
     margin: 35px auto;
   }
