@@ -108,6 +108,7 @@ html {
 
 .colors-grid-container {
   display: grid;
+  visibility: hidden;
   grid-template-rows: 0fr;
   transition: all 300ms;
 }
@@ -117,6 +118,7 @@ html {
 }
 
 .colors-grid-container.show {
+  visibility: visible;
   grid-template-rows: 1fr;
 }
 
@@ -250,6 +252,7 @@ html {
 
 .dropdown-content {
   display: grid;
+  visibility: hidden;
   grid-template-rows: 0fr;
   transition: all 300ms;
 }
@@ -272,6 +275,7 @@ html {
 }
 
 .dropdown-content.show {
+  visibility: visible;
   grid-template-rows: 1fr;
 }
 

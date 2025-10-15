@@ -414,6 +414,7 @@ html {
 
 .faq-box-answer {
   display: grid;
+  visibility: hidden;
   grid-template-rows: 0fr;
   transition: all ease .2s;
 }
@@ -423,6 +424,7 @@ html {
 }
 
 .faq-box-answer.active {
+  visibility: visible;
   grid-template-rows: 1fr;
 }
 

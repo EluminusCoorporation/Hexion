@@ -121,6 +121,7 @@ html {
 
 .dropdown-content {
   display: grid;
+  visibility: hidden;
   grid-template-rows: 0fr;
   transition: all 300ms;
 }
@@ -143,6 +144,7 @@ html {
 }
 
 .dropdown-content.show {
+  visibility: visible;
   grid-template-rows: 1fr;
 }
 
