@@ -17,5 +17,5 @@
 * Our project is created compatible with every device & broswer its made with components that dont require good hardware or good internet just a coding setup so what are you waiting for, search [Hexion](https://hexion.dev) and find our website ready to be used.
 
 ## Creators ##
-- [@magicdevm](https://www.github.com/MagicDevM)
+- [@MagicDevM](https://www.github.com/MagicDevM)
 - [@SirCube](https://github.com/EluminusOrg)
