@@ -14,7 +14,7 @@
 - **Request Sender**
 
 # Compatibility #
-* Our project is combatible with every single device as it's a website you don't need a device to access its features the only thing you need is a browser, search [Hexion](https://hexion.dev) and find our website ready to be used.
+* Our project is created compatible with every device & broswer its made with components that dont require good hardware or good internet just a coding setup so what are you waiting for, search [Hexion](https://hexion.dev) and find our website ready to be used.
 
 ## Creators ##
 - [@magicdevm](https://www.github.com/MagicDevM)
