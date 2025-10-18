@@ -57,8 +57,10 @@ html {
 }
 
 .toolboxes-container .tool {
-  background-color: var(--bg);
+  background: linear-gradient(0deg, var(--bg), var(--bg-light));
   box-shadow: 0 4px 4px var(--shadow);
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--highlight);
   border-radius: 10px;
   align-items: center;
   display: flex;
@@ -105,7 +107,6 @@ html {
 
 .tool:nth-child(1) {
   color: springgreen;
-  box-shadow: 0px 0px 10px 3px springgreen;
 }
 
 .tool:nth-child(1) button {
@@ -117,7 +118,6 @@ html {
 }
 
 .tool:nth-child(2) {
-  box-shadow: 0px 0px 10px 3px lawngreen;
   color: lawngreen;
 }
 
@@ -130,7 +130,6 @@ html {
 }
 
 .tool:nth-child(3) {
-  box-shadow: 0px 0px 10px 3px orange;
   color: orange;
 }
 
@@ -143,7 +142,6 @@ html {
 }
 
 .tool:nth-child(4) {
-  box-shadow: 0px 0px 10px 3px orangered;
   color: orangered;
 }
 
@@ -155,13 +153,7 @@ html {
   color: orangered;
 }
 
-.tool:nth-child(4) {
-  box-shadow: 0px 0px 10px 3px indianred;
-  color: indianred;
-}
-
 .tool:nth-child(5) {
-  box-shadow: 0px 0px 10px 3px indianred;
   color: indianred;
 }
 
@@ -174,7 +166,6 @@ html {
 }
 
 .tool:nth-child(6) {
-  box-shadow: 0px 0px 10px 3px purple;
   color: purple;
 }
 
