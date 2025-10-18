@@ -42,7 +42,7 @@ html {
 
 .tools {
   background-color: var(--bg-light);
-  color: var(--primary);
+  color: var(--primary) !important;
 }
 
 .back-container {
