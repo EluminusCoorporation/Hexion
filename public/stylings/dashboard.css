@@ -208,7 +208,8 @@ html {
   font-size: 1.5em;
 }
 
-.toolboxes-container .tool .bottom-left {
+.toolboxes-container .tool::before {
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -219,7 +220,8 @@ html {
   border-top-right-radius: 50%;
 }
 
-.toolboxes-container .tool .top-right {
+.toolboxes-container .tool::after {
+  content: '';
   position: absolute;
   top: 0;
   right: 0;
@@ -230,7 +232,7 @@ html {
   border-bottom-left-radius: 50%;
 }
 
-.i-h3 {
+.tool-header {
   display: flex;
   align-items: center;
   gap: 10px;
