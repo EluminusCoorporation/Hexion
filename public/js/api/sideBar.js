@@ -2,7 +2,7 @@
 var sideBarButton = document.getElementById('sideBarButton');
 const sideBar = document.getElementById('sideBar');
 const backgroundFilter = document.getElementById('backgroundSideBar');
-const links = document.querySelectorAll('.nav-bar .side-bar ul li');
+const links = document.querySelectorAll('.nav-bar .side-bar ul li a');
 
 // Makes an event listener for sidebar opening & closing
 sideBarButton.addEventListener('click', () => {
