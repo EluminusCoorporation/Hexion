@@ -39,7 +39,7 @@ dropDownMenu.addEventListener('click', function() {
       if (name === itemSelect.textContent) return;
       //Else starts the process
       else {
-        itemSelect.style.color = "black"
+        itemSelect.style.color = "var(--text)"
         itemSelect.innerHTML = name;
       }
       //Sets previous selected to Not selected
