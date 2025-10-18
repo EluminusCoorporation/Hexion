@@ -12,6 +12,7 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   font-family: 'poppins', Sans-Serif;
+  background-color: var(--bg-dark);
   /* Prevents any scrolling issues */
   box-sizing: border-box;
 }
@@ -50,8 +51,8 @@ html {
   padding: .5em 1em .5em 1.4em;
   width: max-content;
   flex-direction: row;
-  color: white;
-  background-color: #383838;
+  color: var(--text);
+  background-color: var(--bg);
   border-top-right-radius: 2em;
   border-bottom-right-radius: 2em;
   font-size: .8em;
@@ -72,10 +73,12 @@ html {
 }
 
 .dropdown-container {
-  color: #B4B4B4;
-  background: white;
+  color: var(--text-muted);
+  background-color: var(--bg);
   position: relative;
-  border: 1px solid #B4B4B4;
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--highlight);
+  box-shadow: 0 2px 2px var(--shadow);
   padding: 15px;
   width: 75%;
   border-radius: 15px;
@@ -97,6 +100,7 @@ html {
   display: flex;
   align-items: center;
   font-weight: bold;
+  color: var(--text-muted);
   font-size: .8em;
 }
 
@@ -127,7 +131,7 @@ html {
 }
 
 .dropdown-content p {
-  color: black;
+  color: var(--text);
   padding: .8em;
   display: flex;
   gap: .3em;
@@ -152,13 +156,13 @@ html {
 }
 
 .select-item:hover {
-  background-color: #A5A5A5;
+  background-color: var(--bg-light);
   transform: translateX(2.5px);
 }
 
 .select-item.selected {
   transform: translateX(2.5px);
-  background-color: springgreen;
+  background-color: var(--success);
   color: white;
 }
 
@@ -167,14 +171,13 @@ html {
   padding: 2px 5px 2px 5px;
   align-self: center;
   font-size: .7em;
-  background: springgreen;
+  background-color: var(--primary);
   color: white;
   border-radius: 7px;
-  border: 2px solid white;
 }
 
 #errorDiv {
-  background-color: red;
+  background-color: var(--danger);
   height: 80px;
   padding: 5px;
   width: 300px;
@@ -182,7 +185,7 @@ html {
   display: none;
   flex-direction: row;
   justify-self: center;
-  color: white;
+  color: var(--text);
   align-items: center;
   overflow: hidden;
 }
@@ -192,7 +195,7 @@ html {
   height: 80%;
   margin-right: 10px;
   width: 1px;
-  background: #DCDCDC;
+  background: var(--text-muted);
 }
 
 #errorDiv p {
@@ -217,16 +220,18 @@ html {
   display: flex;
   justify-self: center;
   padding: 15px;
-  border: 1px solid #B4B4B4;
-  color: black;
-  background-color: white;
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--highlight);
+  color: var(--text);
+  background-color: var(--bg);
+  box-shadow: 0 2px 2px var(--shadow);
   margin: 15px;
   outline: none;
   position: relative;
 }
 
 .ttc::placeholder {
-  color: #B4B4B4;
+  color: var(--text-muted);
   font-weight: bold;
   padding-left: 5px;
 }
@@ -234,7 +239,7 @@ html {
 .results-div i {
   position: absolute;
   top: 0;
-  color: black;
+  color: var(--text);
   right: 0;
   font-size: 1em;
   z-index: 2;
@@ -247,7 +252,7 @@ html {
 }
 
 .results-div i:hover {
-  background: #A5A5A5;
+  background: var(--bg-light);
 }
 
 .flexbox-results {
@@ -268,13 +273,15 @@ html {
   position: relative;
   min-height: 200px;
   padding: 15px;
-  box-shadow: 0px 0px 10px 3px springgreen;
+  box-shadow: 0px 4px 6px var(--shadow);
+  color: var(--text);
+  background: linear-gradient(0deg, var(--bg), var(--bg-light));
   border: none;
   border-radius: 15px;
 }
 
 .results::placeholder {
-  color: #B4B4B4;
+  color: var(--text-muted);
   font-weight: bold;
   padding-left: 5px;
 }
@@ -296,8 +303,8 @@ html {
   font-size: .7em;
   z-index: 2;
   border-radius: 15px;
-  background-color: springgreen;
-  border: 1px solid white;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
   transition: all .5s;
 }
 
@@ -320,7 +327,8 @@ html {
   height: 50px;
   border-radius: 25px;
   border: none;
-  background-color: springgreen;
+  background-color: var(--primary);
+  box-shadow: 0 2px 2px var(--shadow);
   color: white;
   font-size: 1em;
   font-weight: bold;
