@@ -98,7 +98,8 @@ html {
 
 .tool button:hover {
   font-weight: bold;
-  background-color: whitesmoke !important;
+  background: transparent !important;
+  transform: scale(.9);
 }
 
 .tool:nth-child(1) {
@@ -111,7 +112,6 @@ html {
 }
 
 .tool:nth-child(1) button:hover {
-  transform: scale(.8);
   color: springgreen;
 }
 
@@ -125,7 +125,6 @@ html {
 }
 
 .tool:nth-child(2) button:hover {
-  transform: scale(.8);
   color: lawngreen;
 }
 
@@ -139,7 +138,6 @@ html {
 }
 
 .tool:nth-child(3) button:hover {
-  transform: scale(.8);
   color: orange;
 }
 
@@ -153,7 +151,6 @@ html {
 }
 
 .tool:nth-child(4) button:hover {
-  transform: scale(.8);
   color: orangered;
 }
 
@@ -168,13 +165,10 @@ html {
 }
 
 .tool:nth-child(5) button {
-  margin-top: 5px !important;
-  margin-left: 15px !important;
   background: indianred;
 }
 
 .tool:nth-child(5) button:hover {
-  transform: scale(.8);
   color: indianred;
 }
 
@@ -184,13 +178,10 @@ html {
 }
 
 .tool:nth-child(6) button {
-  margin-top: 5px !important;
-  margin-left: 15px !important;
   background: purple;
 }
 
 .tool:nth-child(6) button:hover {
-  transform: scale(.8);
   color: purple;
 }
 
@@ -198,10 +189,6 @@ html {
   font-size: 1em;
   margin-right: 8px;
   transition: transform .5s ease;
-}
-
-.toolboxes-container .tool button:hover {
-  background-color: white;
 }
 
 .toolboxes-container .tool button:hover .button-icon {
