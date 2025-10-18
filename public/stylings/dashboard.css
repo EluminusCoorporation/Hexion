@@ -101,90 +101,95 @@ html {
   background-color: whitesmoke !important;
 }
 
-.tool1 {
+.tool:nth-child(1) {
   color: springgreen;
   box-shadow: 0px 0px 10px 3px springgreen;
 }
 
-.tool1 button {
+.tool:nth-child(1) button {
   background-color: springgreen;
 }
 
-.tool1 button:hover {
+.tool:nth-child(1) button:hover {
   transform: scale(.8);
   color: springgreen;
 }
 
-.tool2 {
+.tool:nth-child(2) {
   box-shadow: 0px 0px 10px 3px lawngreen;
   color: lawngreen;
 }
 
-.tool2 button {
+.tool:nth-child(2) button {
   background: lawngreen;
 }
 
-.tool2 button:hover {
+.tool:nth-child(2) button:hover {
   transform: scale(.8);
   color: lawngreen;
 }
 
-.tool3 {
+.tool:nth-child(3) {
   box-shadow: 0px 0px 10px 3px orange;
   color: orange;
 }
 
-.tool3 button {
+.tool:nth-child(3) button {
   background: orange;
 }
 
-.tool3 button:hover {
+.tool:nth-child(3) button:hover {
   transform: scale(.8);
   color: orange;
 }
 
-.tool4 {
+.tool:nth-child(4) {
   box-shadow: 0px 0px 10px 3px orangered;
   color: orangered;
 }
 
-.tool4 button {
+.tool:nth-child(4) button {
   background: orangered;
 }
 
-.tool4 button:hover {
+.tool:nth-child(4) button:hover {
   transform: scale(.8);
   color: orangered;
 }
 
-.tool5 {
+.tool:nth-child(4) {
   box-shadow: 0px 0px 10px 3px indianred;
   color: indianred;
 }
 
-.tool5 button {
+.tool:nth-child(5) {
+  box-shadow: 0px 0px 10px 3px indianred;
+  color: indianred;
+}
+
+.tool:nth-child(5) button {
   margin-top: 5px !important;
   margin-left: 15px !important;
   background: indianred;
 }
 
-.tool5 button:hover {
+.tool:nth-child(5) button:hover {
   transform: scale(.8);
   color: indianred;
 }
 
-.tool6 {
+.tool:nth-child(6) {
   box-shadow: 0px 0px 10px 3px purple;
   color: purple;
 }
 
-.tool6 button {
+.tool:nth-child(6) button {
   margin-top: 5px !important;
   margin-left: 15px !important;
   background: purple;
 }
 
-.tool6 button:hover {
+.tool:nth-child(6) button:hover {
   transform: scale(.8);
   color: purple;
 }
