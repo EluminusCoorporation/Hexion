@@ -162,7 +162,8 @@
     transform: translateX(-100%);
     z-index: 5;
     width: 200px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     visibility: hidden;
     transition: all ease .3s;
   }
