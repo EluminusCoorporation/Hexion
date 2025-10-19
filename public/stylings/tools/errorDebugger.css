@@ -130,6 +130,8 @@ html {
 }
 
 .dropdown-content div {
+  display: grid;
+  gap: .3em;
   overflow: hidden;
 }
 
@@ -142,7 +144,7 @@ html {
   position: relative;
 }
 
-.dropdown-content p:nth-child(1) {
+.dropdown-content li:nth-child(1) {
   margin-top: 1em;
 }
 
