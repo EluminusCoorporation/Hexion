@@ -7,7 +7,7 @@ const config = require('../config.json');
 
 //Returns to encoding when GET is /tools
 router.get("/", (req, res) => {
-  res.redirect('/encoding');
+  res.redirect('/encoder');
 });
 
 router.get("/encoder", (req, res) => {
