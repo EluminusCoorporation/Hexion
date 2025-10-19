@@ -47,14 +47,15 @@ html {
 
 .back-container {
   display: flex;
-  padding: .5em 1em .5em 1.4em;
+  padding: .3em 1em .3em 1em;
   width: max-content;
   flex-direction: row;
-  color: white;
-  background-color: #383838;
+  color: var(--text);
+  background-color: var(--bg);
+  border: 1px solid var(--border);
   border-top-right-radius: 2em;
   border-bottom-right-radius: 2em;
-  font-size: .8em;
+  font-size: .65em;
   font-weight: bold;
   cursor: pointer;
   align-items: center;
