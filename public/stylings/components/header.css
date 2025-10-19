@@ -226,9 +226,9 @@
   
   .nav-bar .side-bar ul li .sub-menu {
     position: unset;
-    top: unset;
-    left: unset;
-    transform: unset;
+    top: none;
+    left: none;
+    transform: none;
   }
   
   .nav-bar .side-bar ul li .sub-menu div 
