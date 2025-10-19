@@ -116,6 +116,7 @@
   left: 50%;
   transform: translateX(-50%);
   display: grid;
+  visibility: hidden;
   grid-template-rows: 0fr;
   place-content: center;
   transition: all ease .2s;
@@ -139,6 +140,7 @@
 }
 
 .nav-bar .side-bar ul li .sub-menu.open {
+  visibility: visible;
   grid-template-rows: 1fr;
 }
 
