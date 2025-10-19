@@ -84,6 +84,7 @@ html {
 .color-dropdownmenu {
   display: flex;
   width: max-content;
+  user-select: none;
   flex-direction: row;
   align-content: center;
   color: #373737;
@@ -232,6 +233,7 @@ html {
 
 .dropdown-text {
   display: flex;
+  user-select: none;
   align-items: center;
   font-weight: bold;
   font-size: .8em;

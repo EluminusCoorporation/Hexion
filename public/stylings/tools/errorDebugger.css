@@ -102,6 +102,7 @@ html {
 .dropdown-text {
   gap: .5em;
   color: black;
+  user-select: none;
   display: flex;
   align-items: center;
   font-weight: bold;
