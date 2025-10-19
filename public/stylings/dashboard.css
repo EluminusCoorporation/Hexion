@@ -76,7 +76,6 @@ html {
 .toolboxes-container .tool h3 {
   font-size: 2em;
   display: flex;
-  margin: 0 !important;
   padding-right: 25px;
   z-index: 2;
 }
@@ -94,7 +93,6 @@ html {
   cursor: pointer;
   transition: background-color .8s ease, color .8s ease, border .8s ease, transform .2s ease;
   user-select: none;
-  margin-top: 30px;
   font-size: 1em;
   overflow: hidden;
 }
@@ -227,5 +225,6 @@ html {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 2em;
   background-color: transparent !important;
 }
