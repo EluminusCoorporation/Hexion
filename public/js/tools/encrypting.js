@@ -13,10 +13,37 @@ resultsBtn.addEventListener('click', function() {
   function encryptingText(name, text, key = 3) {
     let results;
     
-    if (name === "Base64") {
-      results = btoa(text);
+    if (name === "Base85") {
+      function base85Encode(str) {
+        const bytes = new TextEncoder().encode(str);
+        let padding = (4 - (bytes.length % 4)) % 4;
+        const padded = new Uint8Array([...bytes, ...new Array(padding).fill(0)]);
+        
+        let output = '';
+        for (let i = 0; i < padded.length; i += 4) {
+          const chunk =
+            (padded[i] << 24) |
+            (padded[i + 1] << 16) |
+            (padded[i + 2] << 8) |
+            padded[i + 3];
+          if (chunk === 0) {
+            output += 'z';
+          } else {
+            let encodedChunk = '';
+            let value = chunk;
+            for (let j = 0; j < 5; j++) {
+              encodedChunk = String.fromCharCode((value % 85) + 33) + encodedChunk;
+              value = Math.floor(value / 85);
+            }
+            output += encodedChunk;
+          }
+          if (padding > 0) output = output.slice(0, -(4 - padding));
+          
+          return `<~${output}~>`;
+        }
+      };
+      results = base85Encode(text);
     };
-    
     if (name === "ROT13") {
       results = text.replace(/[A-Za-z]/g, function(c) {
         return String.fromCharCode(c.charCodeAt(0) + (c.toUpperCase() <= 'M' ? 13 : -13));

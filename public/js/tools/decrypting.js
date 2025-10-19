@@ -13,13 +13,32 @@ resultsBtn.addEventListener('click', function() {
   function decryptingText(name, text, key = 3) {
     let results;
     
-    if (name === "Base64") {
-      try {
-        results = atob(text); // Attempt to decode
-      } catch (error) {
-        setError("An unexpected error occurred.");
-        return; // Also stop on unknown errors
+    if (name === "Base85") {
+      function base85Decode(base85Str) {
+        base85Str = base85Str.replace(/^<~|~>$/g, '').replace(/\s+/g, '');
+        base85Str = base85Str.replace(/z/g, '!!!!!');
+        const padding = (5 - (base85Str.length % 5)) % 5;
+        base85Str += 'u'.repeat(padding);
+        
+        const bytes = [];
+        
+        for (let i = 0; i < base85Str.length; i += 5) {
+          const chunkStr = base85Str.slice(i, i + 5);
+          let value = 0;
+          for (let j = 0; j < 5; j++) {
+            value = value * 85 + (chunkStr.charCodeAt(j) - 33);
+          }
+          
+          bytes.push((value >> 24) & 0xff);
+          bytes.push((value >> 16) & 0xff);
+          bytes.push((value >> 8) & 0xff);
+          bytes.push(value & 0xff);
+        }
+        
+        const trimmed = bytes.slice(0, bytes.length - padding);
+        return new TextDecoder().decode(new Uint8Array(trimmed)).replace(/[\x00-\x1F]/g, '');;
       }
+      results = base85Decode(text);
     };
     
     if (name === "ROT13") {
