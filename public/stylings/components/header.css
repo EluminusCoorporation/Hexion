@@ -231,7 +231,7 @@
   }
   
   .nav-bar .side-bar ul li .sub-menu a {
-    margin-left: .5em;
+    padding-left: 2em;
   }
   
   .header-name {
