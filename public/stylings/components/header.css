@@ -93,6 +93,7 @@
   gap: .5em;
   cursor: pointer;
   padding: 1em 1.5em;
+  width: 100%;
   transition: all .3s;
 }
 
