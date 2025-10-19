@@ -14,7 +14,7 @@ router.get("/encoder", (req, res) => {
   const pageInfo = {
     title: "Encoder",
     description: "The encoder tool of hexion, here you can encode any piece of text, you get chance to select from 10 different formats",
-    url: `${config.url}/encoding`
+    url: `${config.url}/encoder`
   };
   res.render('tools/encoder', pageInfo);
 });
@@ -23,7 +23,7 @@ router.get("/decoder", (req, res) => {
   const pageInfo = {
     title: "Decoder",
     description: "The decoder tool of hexion, here you can decode any piece of text, you get chance to select from 10 different formats",
-    url: `${config.url}/decoding`
+    url: `${config.url}/decoder`
   };
   res.render('tools/decoder', pageInfo);
 });
@@ -32,7 +32,7 @@ router.get("/encrypter", (req, res) => {
   const pageInfo = {
     title: "Encrypter",
     description: "The encrypter tool of hexion, here you can encrypt any piece of text, you get chance to select from 10 different formats",
-    url: `${config.url}/encrypting`
+    url: `${config.url}/encrypter`
   };
   res.render('tools/encrypter', pageInfo);
 });
@@ -40,7 +40,7 @@ router.get("/decrypter", (req, res) => {
   const pageInfo = {
     title: "Decrypter",
     description: "The decrypter tool of hexion, here you can decrypt any piece of text, you get chance to select from 10 different formats",
-    url: `${config.url}/decrypting`
+    url: `${config.url}/decrypter`
   };
   res.render('tools/decrypter', pageInfo);
 });
