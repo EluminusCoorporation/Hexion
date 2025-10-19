@@ -137,6 +137,7 @@
 
 .nav-bar .side-bar ul li .sub-menu div {
   overflow: hidden;
+  padding: 1em 0;
 }
 
 .nav-bar .side-bar ul li .sub-menu.open {
@@ -228,6 +229,11 @@
     top: unset;
     left: unset;
     transform: unset;
+  }
+  
+  .nav-bar .side-bar ul li .sub-menu div 
+  {
+    padding: unset;
   }
   
   .nav-bar .side-bar ul li .sub-menu a {
