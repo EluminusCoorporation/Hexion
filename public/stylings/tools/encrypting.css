@@ -53,6 +53,7 @@ html {
   color: var(--text);
   background-color: var(--bg);
   border: 1px solid var(--border);
+  border-left: none;
   border-top-right-radius: 2em;
   border-bottom-right-radius: 2em;
   font-size: .65em;
