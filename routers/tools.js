@@ -10,39 +10,39 @@ router.get("/", (req, res) => {
   res.redirect('/encoding');
 });
 
-router.get("/encoding", (req, res) => {
+router.get("/encoder", (req, res) => {
   const pageInfo = {
-    title: "Encoding",
-    description: "The encoding tool of hexion, here you can encode any piece of text, you get chance to select from 10 different formats",
+    title: "Encoder",
+    description: "The encoder tool of hexion, here you can encode any piece of text, you get chance to select from 10 different formats",
     url: `${config.url}/encoding`
   };
-  res.render('tools/encoding', pageInfo);
+  res.render('tools/encoder', pageInfo);
 });
 
-router.get("/decoding", (req, res) => {
+router.get("/decoder", (req, res) => {
   const pageInfo = {
-    title: "Decoding",
-    description: "The decoding tool of hexion, here you can decode any piece of text, you get chance to select from 10 different formats",
+    title: "Decoder",
+    description: "The decoder tool of hexion, here you can decode any piece of text, you get chance to select from 10 different formats",
     url: `${config.url}/decoding`
   };
-  res.render('tools/decoding', pageInfo);
+  res.render('tools/decoder', pageInfo);
 });
 
-router.get("/encrypting", (req, res) => {
+router.get("/encrypter", (req, res) => {
   const pageInfo = {
-    title: "Encrypting",
-    description: "The encrypting tool of hexion, here you can encrypt any piece of text, you get chance to select from 10 different formats",
+    title: "Encrypter",
+    description: "The encrypter tool of hexion, here you can encrypt any piece of text, you get chance to select from 10 different formats",
     url: `${config.url}/encrypting`
   };
-  res.render('tools/encrypting', pageInfo);
+  res.render('tools/encrypter', pageInfo);
 });
-router.get("/decrypting", (req, res) => {
+router.get("/decrypter", (req, res) => {
   const pageInfo = {
-    title: "Decrypting",
-    description: "The decrypting tool of hexion, here you can decrypt any piece of text, you get chance to select from 10 different formats",
+    title: "Decrypter",
+    description: "The decrypter tool of hexion, here you can decrypt any piece of text, you get chance to select from 10 different formats",
     url: `${config.url}/decrypting`
   };
-  res.render('tools/decrypting', pageInfo);
+  res.render('tools/decrypter', pageInfo);
 });
 router.get("/errorDebugger", (req, res) => {
   const pageInfo = {
