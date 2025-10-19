@@ -138,6 +138,9 @@ html {
 .dropdown-content p {
   color: var(--text);
   padding: .8em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
   display: flex;
   gap: .3em;
   font-size: .8em;

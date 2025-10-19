@@ -272,6 +272,9 @@ html {
   padding: .8em;
   display: flex;
   gap: .3em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
   font-size: .8em;
   position: relative;
 }

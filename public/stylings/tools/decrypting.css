@@ -139,6 +139,9 @@ html {
   color: black;
   padding: .8em;
   display: flex;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
   gap: .3em;
   font-size: .8em;
   position: relative;
