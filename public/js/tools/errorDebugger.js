@@ -58,6 +58,16 @@ uploadZone.addEventListener('drop', (event) => {
   const files = event.dataTransfer.files;
   const file = files[0];
   if (!fileLogger(files)) return false;
+  var fileNameLabel = document.getElementById('fileName');
+  var fileIcon = document.getElementById('fileIcon');
+  const fileSize = formatFileSize(file.size)
+  
+  fileNameLabel.textContent = file.name + ` (${fileSize})`;
+  fileIcon.classList.remove('fa-solid', 'fa-upload')
+  fileIcon.classList.add('bx', 'bx-file-code');
+  
+  sessionStorage.setItem("errorDebuggerFile", file)
+  let data = sessionStorage.getItem("errorDebuggerFile")
 });
 
 fileInput.addEventListener('change', () => {
