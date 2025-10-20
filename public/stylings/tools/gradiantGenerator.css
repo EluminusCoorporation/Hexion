@@ -368,7 +368,7 @@ html {
   justify-self: center;
   padding: 15px;
   border: 1px solid var(--border);
-  border-top: 1px solid var(--higlight);
+  border-top: 1px solid var(--highlight);
   color: var(--text);
   background-color: var(--bg);
   box-shadow: 0 2px 2px var(--shadow);
