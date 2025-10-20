@@ -240,7 +240,7 @@ html {
   display: flex;
   user-select: none;
   align-items: center;
-  color: var(--text);
+  color: var(--text-muted);
   font-weight: bold;
   font-size: .8em;
 }
