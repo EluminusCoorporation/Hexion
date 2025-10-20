@@ -10,11 +10,11 @@
   <link rel="stylesheet" href="/stylings/tools/errorDebugger.css">
   <link rel="stylesheet" href="/stylings/components/header.css">
   <link rel="stylesheet" href="/stylings/components/footer.css">
-  <link rel="stylesheet" href="/stylings/components/effects/loading.css">
+  <link rel="stylesheet" href="/stylings/components/effects/loader.css">
   <link rel="stylesheet" href="/stylings/__global_variables__.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <!--function Import-->
-  <script src="/js/effects/loading.js" defer></script>
+  <script src="/js/effects/loader.js" defer></script>
   <script src="/js/tools/errordebugger/errorDebugger.js" type="module" defer></script>
   <!--Icon Import-->
   <script src="https://kit.fontawesome.com/57901f661d.js" crossorigin="anonymous" defer></script>
@@ -74,30 +74,10 @@
       <div class="switcherContainer" id="switcherContainer">
         <textarea name="textToConvert" id="textmodetxt" placeholder="Code" class="ttc" maxlength="500"></textarea>
         <div class="uploadWrapper" id="uploadWrapper">
-          <button class="uploadbtn" id="uploadbtn"><i class="fa-solid fa-upload"></i>Upload File</button>
-        </div>
-      </div>
-      
-      <div class="uploadMenu-container" id="uploadMenuC">
-        <div class="uploadMenu" id="uploadMenu">
-          <div id="errorDivUPLOAD">
-            <i class='bx bx-alert-triangle'></i>
-            <div class="linefordiv"></div>
-            <p id="errorTextUPLOAD"></p>
-          </div>
-          <div class="close-btn" id="close-btn">
-            <i class="bx bx-x"></i>
-          </div>
-          <input class="uploadFileMenu" type="file" id="file">
-          <label for="file" class="uploadZone" id="uploadZone">
+          <input type="file" id="fileUploader" class="file-upload-input">
+          <label for="fileUploader" class="file-upload-button" id="uploadZone">
             <i class='fa-solid fa-upload dragicon' id="fileIcon"></i>
-            <p class="labelUpload" id="fileName">Drag and Drop or Click to Upload</p>
-            <div class="flexbox-upload" id="uploadBarContainer">
-              <div class="flexbox-uploadinfo">
-                <p class="upload-info" id="uploadInfo"></p>
-                <p class="status" id="status">Uploaded!</p>
-              </div>
-            </div>
+            <p id="fileName" class="file-name">Upload File</p>
           </label>
         </div>
       </div>
@@ -132,6 +112,10 @@
       <%- include('../components/footer') -%>
     </main>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+<script>
+  eruda.init();
+</script>
 </body>
 
 </html>

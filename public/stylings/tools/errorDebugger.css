@@ -267,210 +267,42 @@ html {
 .uploadWrapper {
   display: flex;
   justify-content: center;
+  margin: 1em
 }
 
-.uploadbtn {
-  transform: translateX(-50vh);
-  width: 180px;
-  height: 40px;
-  position: relative;
-  border-radius: 25px;
-  border: none;
-  background-color: deepskyblue;
-  color: white;
+.file-upload-input {
+  display: none;
+}
+
+.file-upload-button {
+  max-width: 70vw;
+  display: flex;
+  flex-direction: row;
+  gap: .5em;
   justify-content: center;
   align-items: center;
-  display: flex;
-  gap: 5px;
-  font-size: 1em;
+  padding: 1em 2em;
+  border-radius: 1em;
+  border: 2px dashed var(--text-muted);
   font-weight: bold;
-  outline: none;
-  margin: 15px;
+  color: var(--text-muted);
+  transform: translateX(-50vh);
   cursor: pointer;
   transition: all .3s;
 }
 
-.uploadbtn i {
-  font-size: 1.2em;
-  margin: 0;
+.file-upload-button.drag-over {
+  transform: scale(1.1);
+  border: 2px dashed deepskyblue;
+  color: deepskyblue;
 }
 
-.uploadbtn:hover {
-  transform: translate(-50vh) scale(.9);
-}
-
-.uploadMenu-container {
-  position: fixed;
-  top: 0;
-  left: 0;
+.file-name {
   width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .6s ease-in-out, visibility .6s ease-in-out, background .6s ease-in-out, backdrop-filter .6s ease-in-out;
-  z-index: 100;
-}
-
-.uploadMenu {
-  background: transparent;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  display: flex;
-  width: 300px;
-  height: 300px;
-  border-radius: 10px;
-  transform: scale(0);
-  transition: transform .5s ease-out;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, .3);
-  border: 1px solid white;
-  flex-direction: column;
-  isolation: isolate;
-  color: white;
-  border-top-right-radius: 0 !important;
-  background-color: whitesmoke;
-}
-
-.close-btn {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background-color: black;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 10px;
-  justify-self: right;
-  top: 0;
-  right: 0;
-  user-select: none;
-  cursor: pointer;
-  font-size: 1.5em;
-}
-
-.uploadMenu-container.active {
-  opacity: 1;
-  visibility: visible;
-  backdrop-filter: blur(5px);
-}
-
-.uploadMenu.active {
-  transform: scale(1);
-}
-
-.uploadMenu input {
-  display: none;
-}
-
-.uploadZone {
-  width: 84%;
-  height: 84%;
-  position: relative;
-  border: 2px dashed #999;
-  border-radius: 15px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.labelUpload {
-  width: auto;
-  height: auto;
-  text-align: center;
-  color: #42445A;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.flexbox-upload {
-  width: 90%;
-  display: none;
-  flex-direction: column;
-}
-
-.flexbox-uploadinfo {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.upload-info {
-  color: black;
-  margin: 0;
-  padding: 0;
-  font-size: .8em;
-  font-weight: 500;
-}
-
-.status {
-  color: black;
-  margin: 0;
-  padding: 0;
-  font-size: .8em;
-  font-weight: 500;
-}
-
-.dragicon {
-  font-size: 7em;
-  color: #42445A;
-  align-self: center;
-  text-align: center;
-}
-
-.uploadZone.drag-over {
-  background-color: #f5f5ff;
-}
-
-.no-scroll {
+  font-family: Monospace, Sans-Serif;
+  text-overflow: ellipsis;
   overflow: hidden;
-  height: 100vh;
-}
-
-#errorDivUPLOAD {
-  background-color: red;
-  height: 85px;
-  padding: 5px;
-  width: 85%;
-  border-radius: 15px;
-  display: none;
-  flex-direction: row;
-  justify-self: center;
-  align-self: center;
-  color: white;
-  align-items: center;
-  margin: 15px;
-  overflow: hidden;
-}
-
-.linefordiv {
-  align-self: center;
-  height: 80%;
-  margin-right: 10px;
-  width: 1px;
-  background: #DCDCDC;
-}
-
-#errorDivUPLOAD p {
-  max-height: 80%;
-  white-space: wrap;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  text-align: center;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-#errorDivUPLOAD i {
-  font-size: 3em;
-  margin: 15px 10px 15px 5px;
-  align-self: center;
+  white-space: nowrap;
 }
 
 #errorDiv {

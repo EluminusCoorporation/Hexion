@@ -1,4 +1,4 @@
-import { setError, errorLoggerBEFORE, setErrorFile, fileLogger } from '../../api/errorLogger.js';
+import { setError, errorLoggerBEFORE, fileLogger } from '../../api/errorLogger.js';
 import {} from '../../api/copy.js'
 import { formatFileSize } from '../../api/fileSizeFormat.js'
 import { selectedExt } from '../../api/dropDownMenu.js'
@@ -6,7 +6,7 @@ var resultsBtn = document.getElementById('results-btn');
 const dBtn1 = document.getElementById('dbtn1');
 const dBtn2 = document.getElementById('dbtn2');
 const buttons = document.querySelectorAll('.dualbtn');
-const uploadbtn = document.getElementById('uploadbtn');
+const uploadbtn = document.getElementById('uploadZone');
 const textinput = document.getElementById('textmodetxt')
 const switcherContainer = document.getElementById('switcherContainer')
 const btnindicator = document.getElementById('btnIndicator')
@@ -32,26 +32,19 @@ buttons.forEach((btn, index) => {
   });
 });
 
-const uploadContainer = document.getElementById('uploadMenuC')
-const container = document.getElementById('container')
-const uploadMenu = document.getElementById('uploadMenu')
-
-uploadbtn.addEventListener('click', function() {
+uploadbtn.addEventListener('click', () => {
   if (!selectedExt) {
     setError('Select a language before uploading.')
     return false;
   };
-  setError('')
-  uploadContainer.classList.add('active')
-  document.body.classList.add('no-scroll');
-  uploadMenu.classList.add('active')
+  setError('');
 })
 
 const uploadZone = document.getElementById('uploadZone');
-const fileInput = document.getElementById('file');
+const fileInput = document.getElementById('fileUploader');
 // Click to open file dialog
-uploadZone.addEventListener('dragover', (e) => {
-  e.preventDefault();
+uploadZone.addEventListener('dragover', (event) => {
+  event.preventDefault();
   uploadZone.classList.add('drag-over');
 });
 
@@ -59,29 +52,24 @@ uploadZone.addEventListener('dragleave', () => {
   uploadZone.classList.remove('drag-over');
 });
 
-uploadZone.addEventListener('drop', (e) => {
-  e.preventDefault();
+uploadZone.addEventListener('drop', (event) => {
+  event.preventDefault();
   uploadZone.classList.remove('drag-over');
-  const files = e.dataTransfer.files;
-  const file = files[0]
+  const files = event.dataTransfer.files;
+  const file = files[0];
   if (!fileLogger(files)) return false;
 });
 
 fileInput.addEventListener('change', () => {
-  if (!fileLogger(fileInput.files)) return false;
-  const file = fileInput.files[0]
+  const file = fileInput.files[0];
+  if (!fileLogger(file)) return false;
   var fileNameLabel = document.getElementById('fileName');
   var fileIcon = document.getElementById('fileIcon');
-  var uploadInfoContainer = document.getElementById('uploadBarContainer')
-  var uploadInfo = document.getElementById('uploadInfo')
-  var status = document.getElementById('status')
   const fileSize = formatFileSize(file.size)
   
-  fileNameLabel.textContent = file.name;
+  fileNameLabel.textContent = file.name + ` (${fileSize})`;
   fileIcon.classList.remove('fa-solid', 'fa-upload')
-  uploadInfoContainer.style.display = "flex"
   fileIcon.classList.add('bx', 'bx-file-code');
-  uploadInfo.textContent = `${fileSize} / ${fileSize}`;
   
   sessionStorage.setItem("errorDebuggerFile", file)
   let data = sessionStorage.getItem("errorDebuggerFile")
@@ -131,10 +119,3 @@ resultsBtn.addEventListener('click', function() {
   resultsDiv.style.display = "flex";
   debuggingCode(name, code);
 });
-
-const closeBtn = document.getElementById('close-btn');
-closeBtn.addEventListener('click', () => {
-  uploadContainer.classList.remove('active');
-  uploadMenu.classList.remove('active');
-  document.body.classList.remove('no-scroll');
-})
