@@ -12,6 +12,7 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   font-family: 'poppins', Sans-Serif;
+  background-color: var(--bg-dark);
   /* Prevents any scrolling issues */
   box-sizing: border-box;
 }
@@ -78,10 +79,12 @@ html {
 }
 
 .dropdown-container {
-  color: #B4B4B4;
-  background: white;
+  color: var(--text-muted);
+  background-color: var(--bg);
   position: relative;
-  border: 1px solid #B4B4B4;
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--highlight);
+  box-shadow: 0 2px 2px var(--shadow);
   padding: 15px;
   width: 75%;
   border-radius: 15px;
@@ -101,7 +104,7 @@ html {
 
 .dropdown-text {
   gap: .5em;
-  color: black;
+  color: var(--text-muted);
   user-select: none;
   display: flex;
   align-items: center;
@@ -138,7 +141,7 @@ html {
 }
 
 .dropdown-content p {
-  color: black;
+  color: var(--text);
   padding: .8em;
   display: flex;
   gap: .3em;
@@ -165,20 +168,20 @@ html {
 .select-item {
   display: flex;
   gap: 5px;
-  color: #383838;
+  color: var(--text);
   border-radius: 5px;
   align-items: center;
   transition: transform .5s;
 }
 
 .select-item:hover {
-  background-color: #A5A5A5;
+  background-color: var(--bg-light);
   transform: translateX(2.5px);
 }
 
 .select-item.selected {
   transform: translateX(2.5px);
-  background-color: springgreen;
+  background-color: var(--success);
   color: white;
 }
 
@@ -187,10 +190,9 @@ html {
   padding: 2px 5px 2px 5px;
   align-self: center;
   font-size: .7em;
-  background: springgreen;
+  background: var(--primary);
   color: white;
   border-radius: 7px;
-  border: 2px solid white;
 }
 
 .buttonWrapper {
@@ -200,6 +202,8 @@ html {
   margin-bottom: 25px;
   justify-self: center;
   border: 1.6px solid indianred;
+  background-color: var(--bg);
+  box-shadow: 0 2px 2px var(--shadow);
   border-radius: 10px;
   overflow: hidden !important;
 }
@@ -234,7 +238,7 @@ html {
   background-color: transparent;
   margin: 0;
   gap: 5px;
-  color: black;
+  color: var(--text);
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -260,7 +264,6 @@ html {
 }
 
 .deselectedFunc {
-  display: flex;
   display: none !important;
 }
 
@@ -283,6 +286,7 @@ html {
   align-items: center;
   padding: 1em 2em;
   border-radius: 1em;
+  background-color: var(--bg);
   border: 2px dashed var(--text-muted);
   font-weight: bold;
   color: var(--text-muted);
@@ -306,7 +310,8 @@ html {
 }
 
 #errorDiv {
-  background-color: red;
+  background-color: var(--danger);
+  box-shadow: 0 2px 2px var(--shadow);
   height: 80px;
   padding: 5px;
   width: 300px;
@@ -314,7 +319,7 @@ html {
   display: none;
   flex-direction: row;
   justify-self: center;
-  color: white;
+  color: var(--text);
   align-items: center;
   overflow: hidden;
 }
@@ -324,7 +329,7 @@ html {
   height: 80%;
   margin-right: 10px;
   width: 1px;
-  background: #DCDCDC;
+  background: var(--text);
 }
 
 #errorDiv p {
@@ -351,16 +356,18 @@ html {
   border-radius: 15px;
   width: 75%;
   padding: 15px;
-  border: 1px solid #B4B4B4;
-  color: black;
-  background-color: white;
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--highlight);
+  color: var(--text);
+  background-color: var(--bg);
+  box-shadow: 0 2px 2px var(--shadow);
   margin: 15px;
   outline: none;
   position: relative;
 }
 
 .ttc::placeholder {
-  color: #B4B4B4;
+  color: var(--text-muted);
   font-weight: bold;
   padding-left: 5px;
 }
@@ -368,7 +375,7 @@ html {
 .results-div i {
   position: absolute;
   top: 0;
-  color: white;
+  color: var(--text);
   right: 0;
   font-size: 1em;
   z-index: 2;
@@ -381,13 +388,15 @@ html {
 }
 
 .results-div i:hover {
-  background: #A5A5A5;
+  background: var(--bg-light);
 }
 
 .flexbox-results {
   width: 90%;
   display: flex;
   flex-direction: column;
+  border-radius: 1em;
+  box-shadow: 0 4px 2px var(--shadow);
   justify-self: center;
 }
 
@@ -395,7 +404,7 @@ html {
   position: relative;
   display: inline-block;
   justify-content: center;
-  background-color: #1d1e22;
+  background-color: var(--bg);
   padding: 50px 25px 25px 25px;
   border-radius: 15px 15px 0 0;
 }
@@ -437,14 +446,14 @@ html {
 }
 
 .results::placeholder {
-  color: #B4B4B4;
+  color: var(--text-muted);
   font-weight: bold;
   padding-left: 5px;
 }
 
 .textarea-div {
   display: flex;
-  background: #1d1e22;
+  background: var(--bg);
   flex-grow: 1;
   height: 314px;
 }
@@ -452,7 +461,7 @@ html {
 .textarea-div>textarea {
   border: none;
   margin: 0;
-  background: #1d1e22;
+  background: var(--bg);
   resize: none;
   outline: none;
   font-size: 13px;
@@ -460,10 +469,10 @@ html {
 
 .codePH {
   flex-grow: 1;
-  color: #eee;
+  color: var(--text);
   text-wrap: nowrap;
   resize: none;
-  background-color: #26262C;
+  background-color: var(--bg);
   display: flex;
   position: relative;
   justify-self: center;
@@ -472,16 +481,16 @@ html {
 .numbersPH {
   width: 20px;
   overflow: hidden;
-  color: #414141;
+  color: var(--bg);
 }
 
 .error-switch {
   height: 50px;
   width: 100%;
   display: flex;
-  border-radius: 0 0 15px 15px;
-  background-color: #2D2D34;
-  color: white;
+  border-radius: 0 0 1em 1em;
+  background-color: var(--bg-light);
+  color: var(--text);
   font-weight: bold;
   font-size: 1.2em;
   justify-content: center;
@@ -512,7 +521,7 @@ html {
 }
 
 .arrows:hover {
-  background-color: #A5A5A5;
+  background-color: var(--text-muted);
 }
 
 .copy-alert-container {
@@ -527,13 +536,13 @@ html {
   gap: 3px;
   margin: 15px;
   padding: 5px;
-  color: white;
+  color: var(--text);
   font-weight: bold;
   font-size: .7em;
   z-index: 2;
   border-radius: 15px;
-  background-color: springgreen;
-  border: 1px solid white;
+  background-color: var(--bg-light);
+  border: 1px solid var;
   transition: all .5s;
 }
 
@@ -557,6 +566,7 @@ html {
   border-radius: 25px;
   border: none;
   background-color: indianred;
+  box-shadow: 0 2px 2px var(--shadow);
   color: white;
   font-size: 1em;
   font-weight: bold;
@@ -588,6 +598,7 @@ html {
   outline: none;
   margin: 15px;
   cursor: pointer;
+  box-shadow: 0 2px 2px var(--shadow);
   transition: all .3s;
 }
 
