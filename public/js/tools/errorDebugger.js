@@ -57,7 +57,7 @@ uploadZone.addEventListener('drop', (event) => {
   uploadZone.classList.remove('drag-over');
   const files = event.dataTransfer.files;
   const file = files[0];
-  if (!fileLogger(files)) return false;
+  if (!fileLogger(file)) return false;
   var fileNameLabel = document.getElementById('fileName');
   var fileIcon = document.getElementById('fileIcon');
   const fileSize = formatFileSize(file.size)
