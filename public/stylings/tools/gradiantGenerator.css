@@ -384,16 +384,15 @@ html {
 }
 
 .preview-screen-container {
-  width: 80%;
-  display: flex;
-  justify-self: center;
-  flex-direction: column;
+  width: 100%;
+  display: grid;
+  place-items: center;
   margin: 15px 0;
 }
 
 .preview-header {
-  padding: 10px;
-  width: 93%;
+  padding: 15px;
+  width: 75%;
   color: var(--text);
   font-weight: bold;
   font-size: .6em;
@@ -406,8 +405,8 @@ html {
 
 .preview-screen {
   display: flex;
-  padding: 10px;
-  width: 93%;
+  padding: 15px;
+  width: 75%;
   align-items: center;
   background-color: var(--bg);
   border-bottom-right-radius: 15px;
