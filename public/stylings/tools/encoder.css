@@ -307,7 +307,7 @@ html {
   gap: 3px;
   margin: 15px;
   padding: 5px;
-  color: white;
+  color: var(--text);
   font-weight: bold;
   font-size: .7em;
   z-index: 2;
