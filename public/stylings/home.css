@@ -168,6 +168,7 @@ html {
   text-align: center;
   width: 100%;
   font-family: "BHH Sans Bogle", sans-serif;
+  text-shadow: 0 4px 1px var(--shadow);
 }
 
 .header-special {
