@@ -407,6 +407,7 @@ html {
   border-radius: 15px 15px 0 0;
   border: 1px solid var(--border);
   border-top: 1px solid var(--highlight);
+  border-bottom: none;
 }
 
 .ball-container {
@@ -485,8 +486,8 @@ html {
 }
 
 .error-switch {
+  position: relative;
   height: 50px;
-  width: 100%;
   display: flex;
   border-radius: 0 0 1em 1em;
   background-color: var(--bg-light);
@@ -500,19 +501,14 @@ html {
   box-shadow: 0 4px 2px var(--shadow);
 }
 
-.error-switch p {
-  margin: 0 !important;
-}
-
 .arrows {
   font-weight: bold;
   font-size: 1.4em;
-  display: block;
   position: absolute;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   outline: none;
-  margin: 30px;
+  margin: .5em;
   transition: all .5s;
   border-radius: 50%;
 }
