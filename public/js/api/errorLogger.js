@@ -1,26 +1,29 @@
 import { selectedExt } from './dropDownMenu.js'
 //Sets an error timeout var
-let errorTimeout;
-//Global setError func
-export function setError(message) {
+let statusTimeout;
+//Global setStatus func
+export function setStatus(message) {
   //Clears old timeouts before execution
-  clearTimeout(errorTimeout);
+  clearTimeout(statusTimeout);
+  
   //Gets required imports
-  var errorText = document.getElementById('errorText');
-  var errorDiv = document.getElementById('errorDiv');
-  //Enables the Error screen
-  errorDiv.style.display = "flex";
-  //Adds error to the error screen
-  errorText.textContent = message;
+  var statusMessage = document.getElementById('statusMessage');
+  var statusContainer = document.getElementById('statusContainer');
+  
   //If text content is nothing it'll just close the error screen
-  if (errorText.textContent === "") {
-    errorDiv.style.display = "none"
+  if (statusMessage.textContent === null) {
+    statusContainer.style.display = "none"
   }
   
+  //Enables the Error screen
+  statusContainer.style.display = "flex";
+  //Adds error to the error screen
+  statusMessage.textContent = message;
+  
   // Start a new timeout
-  errorTimeout = setTimeout(() => {
-    errorDiv.style.display = 'none';
-    errorText.textContent = '';
+  statusTimeout = setTimeout(() => {
+    statusContainer.style.display = 'none';
+    statusMessage.textContent = null;
   }, 7000);
 };
 
@@ -28,17 +31,17 @@ export function setError(message) {
 export function errorLoggerBEFORE(name, text) {
   //Checks if name is not provided
   if (name === "") {
-    setError('Please select a language')
+    setStatus('Please select a language')
     return false;
   }
   
   //Checks if text is not provided
   if (text === "") {
-    setError('Text cannot be empty!');
+    setStatus('Text cannot be empty!');
     return false;
   }
   //Else clears the timeout and goes forward
-  setError('')
+  setStatus('')
   return true;
 }
 
@@ -47,7 +50,7 @@ export function errorLoggerAFTER(text) {
   //Checks if text has characters that are not valid
   if (text.includes("�")) {
     resultsDiv.style.display = "none";
-    setError('Something went wrong, did you enter a valid text ?');
+    setStatus('Something went wrong, did you enter a valid text ?');
     return false;
   }
   //var used to check if there are invalid characters in a text
@@ -55,13 +58,13 @@ export function errorLoggerAFTER(text) {
   //Checks if text has invalid characters(Advance way)
   if (hasInvalidChars) {
     resultsDiv.style.display = "none";
-    setError('Something went wrong, did you enter a valid text ?');
+    setStatus('Something went wrong, did you enter a valid text ?');
     return false;
   }
   //Checks if text is empty
   if (text === "") {
     resultsDiv.style.display = "none";
-    setError('Something went wrong, did you enter a valid text ?');
+    setStatus('Something went wrong, did you enter a valid text ?');
     return false;
   }
   //Else goes forward
@@ -82,31 +85,31 @@ export function fileLogger(file) {
   const supportedExtensions = ["py", "js", "html", "css"]
   //Checks if file exists (2nd way)
   if (file.length === 0) {
-    setError('Something went wrong did you select a file?');
+    setStatus('Something went wrong did you select a file?');
     return false;
   };
   //Sets selectedExt as auto
   if (selectedExt === "auto") {
     //Checks if Extension is supported
     if (!supportedExtensions.includes(fileExtension)) {
-      setError('File Extension not supported by our service');
+      setStatus('File Extension not supported by our service');
       return false;
     }
     //Else continues
-    setError('')
+    setStatus('')
     return true;
   }
   //Else checks if not supported
   else if (fileExtension !== selectedExt) {
-    setError(`File Extension not supported by the language you have selected (.${selectedExt})`);
+    setStatus(`File Extension not supported by the language you have selected (.${selectedExt})`);
     return false;
   }
   //Checks if file size exceeds the file size, limit
   if (file.size > 15728670) {
-    setError('File is too large');
+    setStatus('File is too large');
     return false;
   }
-  setError('');
+  setStatus('');
   //Else goes forward
   return true;
 }

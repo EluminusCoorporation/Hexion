@@ -184,45 +184,6 @@ html {
   border-radius: 7px;
 }
 
-#errorDiv {
-  background-color: var(--danger);
-  box-shadow: 0 2px 2px var(--shadow);
-  height: 80px;
-  padding: 5px;
-  width: 300px;
-  border-radius: 15px;
-  display: none;
-  flex-direction: row;
-  justify-self: center;
-  color: var(--text);
-  align-items: center;
-  overflow: hidden;
-}
-
-.linefordiv {
-  align-self: center;
-  height: 80%;
-  margin-right: 10px;
-  width: 1px;
-  background: var(--text);
-}
-
-#errorDiv p {
-  max-height: 100%;
-  white-space: wrap;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  text-align: center;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-#errorDiv i {
-  font-size: 3em;
-  margin: 15px 10px 15px 5px;
-  align-self: center;
-}
-
 .ttc {
   border-radius: 15px;
   width: 75%;

@@ -1,4 +1,4 @@
-import { setError, errorLoggerBEFORE, errorLoggerAFTER } from '../api/errorLogger.js';
+import { setStatus, errorLoggerBEFORE, errorLoggerAFTER } from '../api/errorLogger.js';
 import {} from '../api/copy.js';
 import {} from '../api/dropDownMenu.js';
 var resultsBtn = document.getElementById('results-btn');
@@ -46,7 +46,7 @@ resultsBtn.addEventListener('click', function() {
       }
       const hasInvalidChars2 = /\d/.test(decodeBase64(text));
       if (hasInvalidChars2) {
-        setError('Something went wrong, did you enter a valid encoded text?')
+        setStatus('Something went wrong, did you enter a valid encoded text?')
         return false;
       }
       results = (decodeBase64(text))

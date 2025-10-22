@@ -1,4 +1,4 @@
-import { setError, errorLoggerBEFORE } from '../api/errorLogger.js';
+import { setStatus, errorLoggerBEFORE } from '../api/errorLogger.js';
 import {} from '../api/dropDownMenu.js'
 import {} from '../api/copy.js'
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.target.classList.add('bx-copy');
           }, 3000);
         }).catch(err => {
-          setError("Failed to copy text!");
+          setStatus("Failed to copy text!");
           console.log(err) // log the error if copy fails
         });
         var copyAlertContainer = document.getElementById('copyAlertContainer')
@@ -95,7 +95,7 @@ addColorButton.addEventListener('click', () => {
   const colorContainerLength = colorsContainer.querySelectorAll('.color-container').length;
   
   if (colorContainerLength === 15) {
-    setError('Too many colors')
+    setStatus('Too many colors')
     return;
   }
   

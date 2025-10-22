@@ -1,4 +1,4 @@
-import { setError, errorLoggerBEFORE, fileLogger } from '../api/errorLogger.js';
+import { setStatus, errorLoggerBEFORE, fileLogger } from '../api/errorLogger.js';
 import {} from '../api/copy.js'
 import { formatFileSize } from '../api/fileSizeFormat.js'
 import { selectedExt } from '../api/dropDownMenu.js'
@@ -31,10 +31,10 @@ buttons.forEach((btn, index) => {
 
 uploadbtn.addEventListener('click', () => {
   if (!selectedExt) {
-    setError('Select a language before uploading.')
+    setStatus('Select a language before uploading.')
     return false;
   };
-  setError('');
+  setStatus('');
 })
 
 const uploadZone = document.getElementById('uploadZone');
