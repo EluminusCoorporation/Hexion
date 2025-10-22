@@ -53,7 +53,7 @@ app.get("/home", (req, res) => {
     title: "Home",
     description: "The official home page of hexion, here you will find all the information related to hexion once you get ready you can start you're journey on hexion.",
     url: `${config.url}/home`
-  }
+  };
   res.render('home', pageInfo);
 });
 app.get("/dashboard", (req, res) => {
@@ -61,7 +61,7 @@ app.get("/dashboard", (req, res) => {
     title: "Dashboard",
     description: "The dashboard of hexion, here you can access all our powerful tools to enpower you're projects.",
     url: `${config.url}/dashboard`
-  }
+  };
   res.render('dashboard', pageInfo);
 });
 app.get("/donation", (req, res) => {
@@ -69,15 +69,15 @@ app.get("/donation", (req, res) => {
     title: "Donation",
     description: "The donation page of hexion, here you can donate us some of you're precious money to help us run this website longer for you developers.",
     url: `${config.url}/donation`
-  }
-  res.render('donation', pageInfo)
+  };
+  res.render('donation', pageInfo);
 });
 app.get("/codeBook", (req, res) => {
   const pageInfo = {
     title: "Code Book",
     description: "The code book of hexion, here you will find all the information related to developing, coding, programming, computer science and much much more.",
     url: `${config.url}/codeBook`
-  }
+  };
   res.render('codeBook', pageInfo);
 });
 app.get("/cources", (req, res) => {
@@ -85,14 +85,14 @@ app.get("/cources", (req, res) => {
     title: "Cources",
     description: "The official cources of hexion, here you will find many cources related to coding from simple to advance.",
     url: `${config.url}/cources`
-  }
+  };
   res.render('cources', pageInfo);
 });
 
 //Load routers
 app.use("/tools", tools);
 app.use("/documents", documents);
-app.use("/api", api)
+app.use("/api", api);
 
 //Setup in-app middlewares
 app.use(errorHandler);
