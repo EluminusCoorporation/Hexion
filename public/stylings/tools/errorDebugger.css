@@ -510,6 +510,8 @@ html {
   display: block;
   position: absolute;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
   margin: 30px;
   transition: all .5s;
   border-radius: 50%;
