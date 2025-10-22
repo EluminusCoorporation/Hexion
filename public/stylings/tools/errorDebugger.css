@@ -395,10 +395,6 @@ html {
   width: 90%;
   display: flex;
   flex-direction: column;
-  border-radius: 1.2em;
-  box-shadow: 0 4px 2px var(--shadow);
-  border: 1px solid var(--border);
-  border-top: 1px solid var(--highlight);
   justify-self: center;
 }
 
@@ -409,6 +405,8 @@ html {
   background-color: var(--bg);
   padding: 50px 25px 25px 25px;
   border-radius: 15px 15px 0 0;
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--highlight);
 }
 
 .ball-container {
@@ -492,11 +490,14 @@ html {
   display: flex;
   border-radius: 0 0 1em 1em;
   background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  border-top: none;
   color: var(--text);
   font-weight: bold;
   font-size: 1.2em;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 4px 2px var(--shadow);
 }
 
 .error-switch p {
