@@ -248,29 +248,23 @@ html {
 }
 
 .switcherContainer {
-  transform: translateX(50vh);
   display: flex;
   justify-content: center;
-  transition: transform ease .2s;
-}
-
-#textmodetxt {
-  display: none;
-  transition: display 2s;
-}
-
-.selectedFunc {
-  transform: translateX(0) !important;
-}
-
-.deselectedFunc {
-  display: none !important;
+  flex-direction: row;
 }
 
 .uploadWrapper {
-  display: flex;
-  justify-content: center;
-  margin: 1em
+  margin: 1em;
+  position: absolute;
+  left: -100vw;
+  visibility: hidden;
+  transition: all ease .3s;
+}
+
+.uploadWrapper.selected {
+  position: relative;
+  left: 0;
+  visibility: visible;
 }
 
 .file-upload-input {
@@ -290,9 +284,8 @@ html {
   border: 2px dashed var(--text-muted);
   font-weight: bold;
   color: var(--text-muted);
-  transform: translateX(-50vh);
   cursor: pointer;
-  transition: all .3s;
+  transition: all ease .3s;
 }
 
 .file-upload-button.drag-over {
@@ -307,6 +300,39 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.ttc {
+  visibility: hidden;
+  right: -100vw;
+  resize: none;
+  justify-self: center;
+  height: 150px;
+  text-wrap: nowrap;
+  border-radius: 15px;
+  width: 75%;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--highlight);
+  color: var(--text);
+  background-color: var(--bg);
+  box-shadow: 0 2px 2px var(--shadow);
+  margin: 15px;
+  outline: none;
+  position: absolute;
+  transition: all ease .3s;
+}
+
+.ttc.selected {
+  position: relative;
+  right: 0;
+  visibility: visible;
+}
+
+.ttc::placeholder {
+  color: var(--text-muted);
+  font-weight: bold;
+  padding-left: 5px;
 }
 
 #errorDiv {
@@ -346,30 +372,6 @@ html {
   font-size: 3em;
   margin: 15px 10px 15px 5px;
   align-self: center;
-}
-
-.ttc {
-  resize: none;
-  justify-self: center;
-  height: 150px;
-  text-wrap: nowrap;
-  border-radius: 15px;
-  width: 75%;
-  padding: 15px;
-  border: 1px solid var(--border);
-  border-top: 1px solid var(--highlight);
-  color: var(--text);
-  background-color: var(--bg);
-  box-shadow: 0 2px 2px var(--shadow);
-  margin: 15px;
-  outline: none;
-  position: relative;
-}
-
-.ttc::placeholder {
-  color: var(--text-muted);
-  font-weight: bold;
-  padding-left: 5px;
 }
 
 .results-div i {

@@ -8,7 +8,6 @@ const dBtn2 = document.getElementById('dbtn2');
 const buttons = document.querySelectorAll('.dualbtn');
 const uploadbtn = document.getElementById('uploadZone');
 const textinput = document.getElementById('textmodetxt')
-const switcherContainer = document.getElementById('switcherContainer')
 const btnindicator = document.getElementById('btnIndicator')
 const uploadWrapper = document.getElementById('uploadWrapper')
 
@@ -19,14 +18,12 @@ buttons.forEach((btn, index) => {
     btnindicator.style.left = index === 0 ? '0%' : '50%';
     buttons.forEach(b => b.classList.remove('selected'));
     if (index === 0) {
-      switcherContainer.classList.toggle('selectedFunc')
-      textinput.style.display = "none"
-      uploadWrapper.style.display = "flex"
+      textinput.classList.remove('selected');
+      uploadWrapper.classList.add('selected');
     }
     else {
-      uploadWrapper.style.display = "none"
-      textinput.style.display = "flex"
-      switcherContainer.classList.toggle('selectedFunc')
+      uploadWrapper.classList.remove('selected');
+      textinput.classList.add('selected');
     }
     btn.classList.add('selected');
   });
