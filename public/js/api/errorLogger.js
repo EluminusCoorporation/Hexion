@@ -23,7 +23,6 @@ export function setStatus(type, title, message) {
   //Adds status message to the status screen
   statusTitle.textContent = title;
   statusMessage.textContent = message;
-  alert(statusMessage.textContent)
   
   if (type === "success") {
     statusContainer.style.backgroundColor = "var(--success)";

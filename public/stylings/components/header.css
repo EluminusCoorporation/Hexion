@@ -270,6 +270,28 @@
   transition: all ease .3s;
 }
 
+.close-btn {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-color: var(--danger);
+  color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  justify-self: right;
+  top: 0;
+  right: 0;
+  padding: .3em;
+  padding-top: .5em;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  font-size: .5em;
+}
+
 .status-container.active {
   visibility: visible;
   opacity: 1;
