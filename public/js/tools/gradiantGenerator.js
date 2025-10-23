@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.target.classList.add('bx-copy');
           }, 3000);
         }).catch(err => {
-          setStatus("Failed to copy text!");
+          setStatus('error', 'Copy failed', "Failed to copy text!");
           console.log(err) // log the error if copy fails
         });
         var copyAlertContainer = document.getElementById('copyAlertContainer')
@@ -95,7 +95,7 @@ addColorButton.addEventListener('click', () => {
   const colorContainerLength = colorsContainer.querySelectorAll('.color-container').length;
   
   if (colorContainerLength === 15) {
-    setStatus('Too many colors')
+    setStatus('error', 'Color addition failed', 'Too many colors')
     return;
   }
   

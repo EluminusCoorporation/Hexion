@@ -1,28 +1,50 @@
 import { selectedExt } from './dropDownMenu.js'
-//Sets an error timeout var
+//Sets an status timeout temp var
 let statusTimeout;
 //Global setStatus func
-export function setStatus(message) {
+export function setStatus(type, title, message) {
   //Clears old timeouts before execution
   clearTimeout(statusTimeout);
   
   //Gets required imports
-  var statusMessage = document.getElementById('statusMessage');
-  var statusContainer = document.getElementById('statusContainer');
+  const statusContainer = document.getElementById('statusContainer');
+  const statusIcon = document.getElementById('statusIcon');
+  const statusTitle = document.getElementById('statusTitle');
+  const statusMessage = document.getElementById('statusMessage');
   
-  //If text content is nothing it'll just close the error screen
-  if (statusMessage.textContent === null) {
-    statusContainer.style.display = "none"
+  //If message is nothing it'll just close the status screen
+  if (message === null) {
+    statusContainer.classList.remove('active');
+    statusMessage.textContent = null;
   }
   
-  //Enables the Error screen
-  statusContainer.style.display = "flex";
-  //Adds error to the error screen
+  //Enables the Status screen
+  statusContainer.classList.add('active');
+  //Adds status message to the status screen
+  statusTitle.textContent = title;
   statusMessage.textContent = message;
+  alert(statusMessage.textContent)
+  
+  if (type === "success") {
+    statusContainer.style.backgroundColor = "var(--success)";
+    statusIcon.className = "bx bx-check-circle";
+  }
+  else if (type === "info") {
+    statusContainer.style.backgroundColor = "var(--info)"
+    statusIcon.className = "bx bx-info-square"
+  }
+  else if (type === "warn") {
+    statusContainer.style.backgroundColor = "var(--warning)";
+    statusIcon.className = "bx bx-alert-circle";
+  }
+  else if (type === "error") {
+    statusContainer.style.backgroundColor = "var(--danger)";
+    statusIcon.className = "bx bx-alert-triangle";
+  };
   
   // Start a new timeout
   statusTimeout = setTimeout(() => {
-    statusContainer.style.display = 'none';
+    statusContainer.classList.remove('active');
     statusMessage.textContent = null;
   }, 7000);
 };
@@ -31,26 +53,26 @@ export function setStatus(message) {
 export function errorLoggerBEFORE(name, text) {
   //Checks if name is not provided
   if (name === "") {
-    setStatus('Please select a language')
+    setStatus('error', 'Process failed', 'Please select a language')
     return false;
-  }
+  };
   
   //Checks if text is not provided
   if (text === "") {
-    setStatus('Text cannot be empty!');
+    setStatus('error', 'Process failed', 'Text cannot be empty!');
     return false;
-  }
+  };
   //Else clears the timeout and goes forward
   setStatus('')
   return true;
-}
+};
 
 //Global error logger func used after the execution of a FUNC
 export function errorLoggerAFTER(text) {
   //Checks if text has characters that are not valid
   if (text.includes("�")) {
     resultsDiv.style.display = "none";
-    setStatus('Something went wrong, did you enter a valid text ?');
+    setStatus('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
     return false;
   }
   //var used to check if there are invalid characters in a text
@@ -58,15 +80,16 @@ export function errorLoggerAFTER(text) {
   //Checks if text has invalid characters(Advance way)
   if (hasInvalidChars) {
     resultsDiv.style.display = "none";
-    setStatus('Something went wrong, did you enter a valid text ?');
+    setStatus('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
     return false;
   }
   //Checks if text is empty
   if (text === "") {
     resultsDiv.style.display = "none";
-    setStatus('Something went wrong, did you enter a valid text ?');
+    setStatus('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
     return false;
   }
+  setStatus('')
   //Else goes forward
   return true;
 };
@@ -85,14 +108,14 @@ export function fileLogger(file) {
   const supportedExtensions = ["py", "js", "html", "css"]
   //Checks if file exists (2nd way)
   if (file.length === 0) {
-    setStatus('Something went wrong did you select a file?');
+    setStatus('error', 'File Upload failed', 'Something went wrong did you select a file?');
     return false;
   };
   //Sets selectedExt as auto
   if (selectedExt === "auto") {
     //Checks if Extension is supported
     if (!supportedExtensions.includes(fileExtension)) {
-      setStatus('File Extension not supported by our service');
+      setStatus('error', 'File Upload failed', 'File Extension not supported by our service');
       return false;
     }
     //Else continues
@@ -101,12 +124,12 @@ export function fileLogger(file) {
   }
   //Else checks if not supported
   else if (fileExtension !== selectedExt) {
-    setStatus(`File Extension not supported by the language you have selected (.${selectedExt})`);
+    setStatus('error', 'File Upload failed', `File Extension not supported by the language you have selected (.${selectedExt})`);
     return false;
   }
   //Checks if file size exceeds the file size, limit
   if (file.size > 15728670) {
-    setStatus('File is too large');
+    setStatus('error', 'File Verification failed', 'File is too large');
     return false;
   }
   setStatus('');

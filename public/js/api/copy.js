@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         this.classList.add('bx-copy');
       }, 3000);
     }).catch(err => {
-      setStatus("Failed to copy text!");
+      setStatus('error', 'Copy failed', "Failed to copy text!");
       console.log(err)// log the error if copy fails
     });
     var copyAlertContainer = document.getElementById('copyAlertContainer')

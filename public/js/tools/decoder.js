@@ -46,7 +46,7 @@ resultsBtn.addEventListener('click', function() {
       }
       const hasInvalidChars2 = /\d/.test(decodeBase64(text));
       if (hasInvalidChars2) {
-        setStatus('Something went wrong, did you enter a valid encoded text?')
+        setStatus('error', 'Proces failed', 'Something went wrong, did you enter a valid encoded text?')
         return false;
       }
       results = (decodeBase64(text))

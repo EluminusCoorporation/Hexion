@@ -31,7 +31,7 @@ buttons.forEach((btn, index) => {
 
 uploadbtn.addEventListener('click', () => {
   if (!selectedExt) {
-    setStatus('Select a language before uploading.')
+    setStatus('error', 'Debugging failed', 'Select a language before uploading.')
     return false;
   };
   setStatus('');

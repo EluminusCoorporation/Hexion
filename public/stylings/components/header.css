@@ -251,18 +251,29 @@
 }
 
 .status-container {
-  background-color: var(--danger);
+  position: absolute;
+  z-index: 20;
+  top: -100vh;
+  opacity: 0;
+  margin: 1em;
   box-shadow: 0 2px 2px var(--shadow);
   height: 80px;
   padding: 5px;
   width: 300px;
   border-radius: 15px;
-  display: none;
-  flex-direction: row;
+  visibility: hidden;
+  flex-direction: column;
   justify-self: center;
   color: var(--text);
   align-items: center;
   overflow: hidden;
+  transition: all ease .3s;
+}
+
+.status-container.active {
+  visibility: visible;
+  opacity: 1;
+  top: 0;
 }
 
 .line {
@@ -274,10 +285,10 @@
 }
 
 .status-container p {
-  max-height: 100%;
   white-space: wrap;
   word-break: break-word;
   overflow-wrap: break-word;
+  color: var(--text);
   text-align: center;
   overflow-y: auto;
   overflow-x: hidden;
