@@ -1,7 +1,7 @@
 <H1 align="center">Hexion</H1>
 <img src="https://i.ibb.co/RksHmpP7/logo.webp" width="150" height="150" align="left" alt="Hexion Logo">
 
-* Hexion an multi perpose website it provides tools used to make you're project improve faster  getting an error of syntax or any type of error just use our errordebugging it will provide you with the an solution that will fix you're code, you can also learn in our pre built cources in these cources you can learn and write code, follow our simple cources and improve you're knowledge or if you want to decode or encode any text or decrypt and encrypt any code you can do that in our website.
+* Hexion an multi perpose website it provides tools used to help you create you're project faster. Getting tons of syntax error ? just use our errordebugging it will provide you with the an solution that will fix you're code, you can also learn in our pre built cources in these cources you can learn and write code, follow our simple cources and improve you're coding knowledge or if you want to encode/decode any text or encrypt/decrypt any code you can do that in our website.
 
 # Features #
 - **Error debugging**
@@ -9,7 +9,7 @@
 - **Error auto fixer**
 - **Decoding and Encoding**
 - **Encrypting and Decrypting**
-- **Compiler and Decompiler**
+- **Image Worker**
 - **Html to app converter**
 - **Request Sender**
 
