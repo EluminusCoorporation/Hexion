@@ -83,6 +83,8 @@ document.querySelectorAll('.color-preview').forEach((el, i) => {
   createPickr(el, "#00FF7F")
 })
 
+let errorTimeout;
+
 const addColorButton = document.getElementById('addColorButton');
 addColorButton.addEventListener('click', () => {
   const colorsContainer = document.getElementById('colorsContainer');
@@ -93,11 +95,17 @@ addColorButton.addEventListener('click', () => {
   const childIcon = document.createElement('i');
   
   const colorContainerLength = colorsContainer.querySelectorAll('.color-container').length;
+  const errorMessage = document.getElementById('errorMessage');
   
   if (colorContainerLength === 15) {
-    setStatus('error', 'Color addition failed', 'Too many colors')
+    clearTimeout(errorTimeout);
+    errorMessage.style.display = "block";
+    addColorButton.classList.add('deselect');
     return;
   }
+  
+  errorMessage.style.display = "none";
+  addColorButton.classList.remove('deselect');
   
   clonedContainer.id = '';
   if (clonedColorName.style.color != "#000000") {
