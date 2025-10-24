@@ -55,7 +55,7 @@ router.get("/errorDebugger", (req, res) => {
 router.get("/gradiantGenerator", (req, res) => {
   const pageInfo = {
     title: "Gradiant Generator",
-    description: "The gradiant generator, tool of hexion, here you can add gradiant to any text make it beautiful, you get chance to fully customize you're text from just bolding it to underling it",
+    description: "The gradiant generator, tool of hexion, here you can add gradiant to any text make it beautiful, you get chance to fully customize you're text from just bolding it to underlining it",
     url: `${config.url}/gradiantGenerator`
   };
   res.render('tools/gradiantGenerator', pageInfo);
