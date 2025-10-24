@@ -187,6 +187,7 @@ html {
   position: absolute;
   bottom: 0;
   right: 0;
+  color: var(--text);
   border-top-left-radius: 5px;
   padding: 5px;
   cursor: pointer;
@@ -194,7 +195,6 @@ html {
 }
 
 .delete-icon:hover {
-  color: var(--text);
   background-color: var(--danger);
 }
 
