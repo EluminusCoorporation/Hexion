@@ -1,6 +1,5 @@
 //Imports Required modules
 const express = require('express');
-const fs = require('fs');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
 //Imports the config
@@ -14,11 +13,12 @@ const documents = require('./routers/documents');
 //Imports in app Funcs
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
+//Initializes the logger module
+const logger = require('./utils/logger');
+
 //Initializes the express app
 const app = express();
 
-//Initializes the logger module
-const logger = require('./utils/logger');
 //Initializes the modules that require app to be Initialize first
 
 //The server starting process starts from here
