@@ -5,7 +5,7 @@ import {} from '../api/copy.js'
 let timeout;
 
 document.addEventListener('DOMContentLoaded', () => {
-  var colorsContainer = document.getElementById('colorsContainer')
+  const colorsContainer = document.getElementById('colorsContainer')
   colorsContainer.addEventListener('click', (event) => {
     if (event.target.id === "copyIcon") {
         const text = event.target.nextElementSibling.textContent;
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
           setStatus('error', 'Copy failed', "Failed to copy text!");
           console.log(err) // log the error if copy fails
         });
-        var copyAlertContainer = document.getElementById('copyAlertContainer')
+        const copyAlertContainer = document.getElementById('copyAlertContainer')
         copyAlertContainer.classList.add("active")
         setTimeout(() => {
           copyAlertContainer.classList.remove("active")
@@ -36,18 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-var colorDropdownmenu = document.getElementById('colorDropdownmenu');
+const colorDropdownmenu = document.getElementById('colorDropdownmenu');
 
 colorDropdownmenu.addEventListener('click', () => {
-  var colorDropdownmenuIcon = document.getElementById('colorDropdownmenuIcon');
-  var colorsGridContainer = document.getElementById('colorsGridContainer');
+  const colorDropdownmenuIcon = document.getElementById('colorDropdownmenuIcon');
+  const colorsGridContainer = document.getElementById('colorsGridContainer');
   colorDropdownmenuIcon.classList.toggle('active');
   colorsGridContainer.classList.toggle('show');
 })
 
 function createPickr(el, color) {
   const colorNameContainer = el.nextElementSibling
-  var colorName = colorNameContainer.querySelector('.color-name')
+  const colorName = colorNameContainer.querySelector('.color-name')
   const pickr = Pickr.create({
     el: el,
     theme: 'monolith',
@@ -83,14 +83,14 @@ document.querySelectorAll('.color-preview').forEach((el, i) => {
   createPickr(el, "#00FF7F")
 })
 
-var addColorButton = document.getElementById('addColorButton');
+const addColorButton = document.getElementById('addColorButton');
 addColorButton.addEventListener('click', () => {
   const colorsContainer = document.getElementById('colorsContainer');
   const colorContainer = document.getElementById('colorContainer');
-  var clonedContainer = colorContainer.cloneNode(true);
-  var clonedColorName = clonedContainer.querySelector('.color-name')
+  const clonedContainer = colorContainer.cloneNode(true);
+  const clonedColorName = clonedContainer.querySelector('.color-name')
   const el = clonedContainer.querySelector('.pickr');
-  var childIcon = document.createElement('i')
+  const childIcon = document.createElement('i');
   
   const colorContainerLength = colorsContainer.querySelectorAll('.color-container').length;
   
@@ -113,7 +113,7 @@ addColorButton.addEventListener('click', () => {
   colorsContainer.appendChild(clonedContainer);
 });
 
-var colorsContainer = document.getElementById('colorsContainer');
+const colorsContainer = document.getElementById('colorsContainer');
 
 colorsContainer.addEventListener('click', (event) => {
   if (event.target.classList.contains('delete-icon')) {
@@ -122,18 +122,18 @@ colorsContainer.addEventListener('click', (event) => {
   }
 })
 
-var resultsBtn = document.getElementById('results-btn');
+const resultsBtn = document.getElementById('results-btn');
 
-var inputText = document.getElementById('inputText')
+const inputText = document.getElementById('inputText')
 inputText.addEventListener('input', (event) => {
   const text = event.target.value;
-  var previewText = document.getElementById('previewText')
+  const previewText = document.getElementById('previewText')
   previewText.textContent = text
 })
 
 resultsBtn.addEventListener('click', function() {
   const text = document.getElementById('inputText').value;
-  var title = document.getElementById('dropdown-text');
+  const title = document.getElementById('dropdown-text');
   if (!errorLoggerBEFORE(name, text)) {
     return;
   };
@@ -270,8 +270,8 @@ resultsBtn.addEventListener('click', function() {
     resultsInput.textContent = results;
     return;
   };
-  var resultsInput = document.getElementById('results');
-  var resultsDiv = document.getElementById('resultsDiv')
+  const resultsInput = document.getElementById('results');
+  const resultsDiv = document.getElementById('resultsDiv')
   resultsDiv.style.display = "flex";
   encodingText(name, text);
 });

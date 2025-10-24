@@ -1,11 +1,11 @@
 import { setStatus, errorLoggerBEFORE, errorLoggerAFTER } from '../api/errorLogger.js';
 import {} from '../api/dropDownMenu.js'
 import {} from '../api/copy.js'
-var resultsBtn = document.getElementById('results-btn');
+const resultsBtn = document.getElementById('results-btn');
 
 resultsBtn.addEventListener('click', function() {
   const text = document.getElementById('ttc').value;
-  var title = document.getElementById('dropdown-text');
+  const title = document.getElementById('dropdown-text');
   if (!errorLoggerBEFORE(name, text)) {
     return
   };
@@ -170,10 +170,10 @@ resultsBtn.addEventListener('click', function() {
     resultsInput.textContent = results;
     return;
   }
-  var resultsInput = document.getElementById('results');
-  var resultsDiv = document.getElementById('resultsDiv')
+  const resultsInput = document.getElementById('results');
+  const resultsDiv = document.getElementById('resultsDiv')
   decryptingText(name, text);
-  var decryptedText = document.getElementById('results').value;
+  const decryptedText = document.getElementById('results').value;
   if (!errorLoggerAFTER(decryptedText)) {
     return false;
   };

@@ -1,5 +1,5 @@
 // Import required elements
-var sideBarButton = document.getElementById('sideBarButton');
+const sideBarButton = document.getElementById('sideBarButton');
 const sideBar = document.getElementById('sideBar');
 const backgroundFilter = document.getElementById('backgroundSideBar');
 

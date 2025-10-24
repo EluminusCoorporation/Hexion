@@ -1,4 +1,4 @@
-var subMenuButton = document.querySelectorAll('.sub-menu-button');
+const subMenuButton = document.querySelectorAll('.sub-menu-button');
 
 // Event listener sub menus
 subMenuButton.forEach((subMenuButtons, i) => {

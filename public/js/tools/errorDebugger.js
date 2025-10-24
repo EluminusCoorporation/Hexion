@@ -2,7 +2,7 @@ import { setStatus, errorLoggerBEFORE, fileLogger } from '../api/errorLogger.js'
 import {} from '../api/copy.js'
 import { formatFileSize } from '../api/fileSizeFormat.js'
 import { selectedExt } from '../api/dropDownMenu.js'
-var resultsBtn = document.getElementById('results-btn');
+const resultsBtn = document.getElementById('results-btn');
 const dBtn1 = document.getElementById('dbtn1');
 const dBtn2 = document.getElementById('dbtn2');
 const buttons = document.querySelectorAll('.dualbtn');
@@ -55,8 +55,8 @@ uploadZone.addEventListener('drop', (event) => {
   const files = event.dataTransfer.files;
   const file = files[0];
   if (!fileLogger(file)) return false;
-  var fileNameLabel = document.getElementById('fileName');
-  var fileIcon = document.getElementById('fileIcon');
+  const fileNameLabel = document.getElementById('fileName');
+  const fileIcon = document.getElementById('fileIcon');
   const fileSize = formatFileSize(file.size)
   
   fileNameLabel.textContent = file.name + ` (${fileSize})`;
@@ -70,8 +70,8 @@ uploadZone.addEventListener('drop', (event) => {
 fileInput.addEventListener('change', () => {
   const file = fileInput.files[0];
   if (!fileLogger(file)) return false;
-  var fileNameLabel = document.getElementById('fileName');
-  var fileIcon = document.getElementById('fileIcon');
+  const fileNameLabel = document.getElementById('fileName');
+  const fileIcon = document.getElementById('fileIcon');
   const fileSize = formatFileSize(file.size)
   
   fileNameLabel.textContent = file.name + ` (${fileSize})`;
@@ -106,7 +106,7 @@ for (let i = 0; i < textareasHere.length; i++) {
 }
 
 resultsBtn.addEventListener('click', function() {
-  var name = document.getElementById('dropdown-text').textContent.trim();
+  const name = document.getElementById('dropdown-text').textContent.trim();
   const code = document.getElementById('textmodetxt').value;
   if (!errorLoggerBEFORE(name, code)) {
     return
@@ -121,8 +121,8 @@ resultsBtn.addEventListener('click', function() {
     resultsInput.value = results;
     return
   };
-  var resultsInput = document.getElementById('results');
-  var resultsDiv = document.getElementById('resultsDiv')
+  const resultsInput = document.getElementById('results');
+  const resultsDiv = document.getElementById('resultsDiv')
   resultsDiv.style.display = "flex";
   debuggingCode(name, code);
 });

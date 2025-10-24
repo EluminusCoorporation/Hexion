@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setStatus('error', 'Copy failed', "Failed to copy text!");
       console.log(err)// log the error if copy fails
     });
-    var copyAlertContainer = document.getElementById('copyAlertContainer')
+    const copyAlertContainer = document.getElementById('copyAlertContainer')
     copyAlertContainer.classList.add("active")
     setTimeout(() => {
       copyAlertContainer.classList.remove("active")

@@ -1,8 +1,8 @@
 //Gets required imports
-var dropDownMenu = document.getElementById("dropDownMenu");
-var dropDownContent = document.getElementById('dropDownContent');
-var dropDownIcon = document.getElementById('ddIcon');
-var auto = document.getElementById('auto');
+const dropDownMenu = document.getElementById("dropDownMenu");
+const dropDownContent = document.getElementById('dropDownContent');
+const dropDownIcon = document.getElementById('ddIcon');
+const auto = document.getElementById('auto');
 //Gets selected Ext(only for errordebugger)
 export var selectedExt = "auto";
 
@@ -24,7 +24,7 @@ dropDownMenu.addEventListener('click', function() {
   //Makes a event listener for all Items
   dropDownContent.addEventListener('click', (event) => {
     if (event.target.classList.contains('select-item')) {
-      var itemSelect = document.getElementById('dropdown-text');
+      const itemSelect = document.getElementById('dropdown-text');
       const span = document.getElementById('spanR');
       //Sets Selected Ext
       selectedExt = event.target.dataset.ext;
