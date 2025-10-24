@@ -289,7 +289,6 @@
   overflow: hidden;
   user-select: none;
   cursor: pointer;
-  font-size: .5em;
 }
 
 .status-container.active {
@@ -298,26 +297,24 @@
   top: 0;
 }
 
-.line {
-  align-self: center;
-  height: 80%;
-  margin-right: 10px;
-  width: 1px;
-  background: var(--text);
+.status-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: .2em;
+  color: var(--text);
+  font-size: 1em;
+  font-weight: bold;
 }
 
 .status-container p {
+  margin-top: .5em;
+  font-size: 1em;
+  font-family: Arial, Sans-Serif;
   white-space: wrap;
   word-break: break-word;
   overflow-wrap: break-word;
   color: var(--text);
-  text-align: center;
   overflow-y: auto;
   overflow-x: hidden;
-}
-
-.status-container i {
-  font-size: 3em;
-  margin: 15px 10px 15px 5px;
-  align-self: center;
 }
