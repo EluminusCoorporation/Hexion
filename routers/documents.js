@@ -20,7 +20,7 @@ router.get("/tos", (req, res) => {
 
 router.get("/privacy", (req, res) => {
   const pageInfo = {
-    title: "Privacy",
+    title: "Privacy Policy",
     description: "The official PRIVACY POLICY of hexion.",
     url: `${config.url}/policy`
   }
