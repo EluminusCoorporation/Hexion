@@ -3,18 +3,18 @@ import {} from '../api/copy.js'
 import { formatFileSize } from '../api/fileSizeFormat.js'
 import { selectedExt } from '../api/dropDownMenu.js'
 const resultsBtn = document.getElementById('results-btn');
-const dBtn1 = document.getElementById('dbtn1');
-const dBtn2 = document.getElementById('dbtn2');
+const fileMode = document.getElementById('fileMode');
+const textMode = document.getElementById('textMode');
 const buttons = document.querySelectorAll('.dualbtn');
 const uploadbtn = document.getElementById('uploadZone');
-const textinput = document.getElementById('textmodetxt')
+const textinput = document.getElementById('textMode');
 const btnindicator = document.getElementById('btnIndicator')
 const uploadWrapper = document.getElementById('uploadWrapper')
 
 buttons.forEach((btn, index) => {
-  dBtn1.classList.add('selected')
-  btn.addEventListener('click', () => {
-    if (btn.classList.contains('selected')) return;
+  fileMode.classList.add('selected');
+  btn.addEventListener('click', function() {
+    if (this.classList.contains('selected')) return;
     btnindicator.style.left = index === 0 ? '0%' : '50%';
     buttons.forEach(b => b.classList.remove('selected'));
     if (index === 0) {
@@ -25,7 +25,7 @@ buttons.forEach((btn, index) => {
       uploadWrapper.classList.remove('selected');
       textinput.classList.add('selected');
     }
-    btn.classList.add('selected');
+    this.classList.add('selected');
   });
 });
 
@@ -107,7 +107,7 @@ for (let i = 0; i < textareasHere.length; i++) {
 
 resultsBtn.addEventListener('click', function() {
   const name = document.getElementById('dropdown-text').textContent.trim();
-  const code = document.getElementById('textmodetxt').value;
+  const code = document.getElementById('textMode').value;
   if (!errorLoggerBEFORE(name, code)) {
     return
   };
