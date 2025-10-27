@@ -1,13 +1,13 @@
 import { setStatus, errorLoggerBEFORE, fileLogger } from '../api/errorLogger.js';
 import {} from '../api/copy.js'
 import { formatFileSize } from '../api/fileSizeFormat.js'
-import { selectedExt } from '../api/dropDownMenu.js'
+import { selectedExt, setSelectedExt } from '../api/dropDownMenu.js'
 const resultsBtn = document.getElementById('results-btn');
 const fileMode = document.getElementById('fileMode');
 const textMode = document.getElementById('textMode');
 const buttons = document.querySelectorAll('.dualbtn');
 const uploadbtn = document.getElementById('uploadZone');
-const textinput = document.getElementById('textMode');
+const textInput = document.getElementById('textmodetxt');
 const btnindicator = document.getElementById('btnIndicator')
 const uploadWrapper = document.getElementById('uploadWrapper')
 
@@ -18,12 +18,12 @@ buttons.forEach((btn, index) => {
     btnindicator.style.left = index === 0 ? '0%' : '50%';
     buttons.forEach(b => b.classList.remove('selected'));
     if (index === 0) {
-      textinput.classList.remove('selected');
+      textInput.classList.remove('selected');
       uploadWrapper.classList.add('selected');
     }
     else {
       uploadWrapper.classList.remove('selected');
-      textinput.classList.add('selected');
+      textInput.classList.add('selected');
     }
     this.classList.add('selected');
   });
@@ -80,6 +80,23 @@ fileInput.addEventListener('change', () => {
   
   sessionStorage.setItem("errorDebuggerFile", file)
   let data = sessionStorage.getItem("errorDebuggerFile")
+});
+
+fileMode.addEventListener("click", () => {
+  auto.classList.remove('deselect');
+});
+
+textMode.addEventListener("click", () => {
+  const auto = document.getElementById('auto');
+  const html = document.getElementById('html');
+  if (selectedExt === "auto") {
+    setSelectedExt("html");
+    auto.classList.remove('selected');
+    html.classList.add('selected');
+    const dropdownText = document.getElementById('dropdown-text');
+    dropdownText.textContent = "Html"
+  }
+  auto.classList.add('deselect');
 });
 
 let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));

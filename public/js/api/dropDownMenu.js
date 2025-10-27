@@ -6,6 +6,12 @@ const auto = document.getElementById('auto');
 //Gets selected Ext(only for errordebugger)
 export var selectedExt = "auto";
 
+//Helper function for changing selectedExt in other files
+export function setSelectedExt(ext) {
+  selectedExt = ext;
+  const extElement = document.getElementById(ext);
+  previousSelected = extElement;
+}
 //defines the previous selected bar here
 let previousSelected;
 

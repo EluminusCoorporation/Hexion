@@ -185,6 +185,11 @@ html {
   color: white;
 }
 
+#auto.deselect {
+  opacity: .5;
+  pointer-events: none;
+}
+
 .recommended {
   height: 15px;
   padding: 2px 5px 2px 5px;
