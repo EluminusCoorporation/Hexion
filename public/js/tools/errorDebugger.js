@@ -34,7 +34,7 @@ uploadbtn.addEventListener('click', () => {
     setStatus('error', 'Debugging failed', 'Select a language before uploading.')
     return false;
   };
-  setStatus('');
+  setStatus();
 })
 
 const uploadZone = document.getElementById('uploadZone');
@@ -84,6 +84,7 @@ fileInput.addEventListener('change', () => {
 
 fileMode.addEventListener("click", () => {
   auto.classList.remove('deselect');
+  textInput.value = null;
 });
 
 textMode.addEventListener("click", () => {
@@ -96,7 +97,13 @@ textMode.addEventListener("click", () => {
     const dropdownText = document.getElementById('dropdown-text');
     dropdownText.textContent = "Html"
   }
+  const fileNameLabel = document.getElementById('fileName');
+  const fileIcon = document.getElementById('fileIcon');
   auto.classList.add('deselect');
+  sessionStorage.removeItem('errorDebuggerFile');
+  fileNameLabel.textContent = 'Upload File';
+  fileIcon.classList.remove('bx', 'bx-file-code');
+  fileIcon.classList.add('fa-solid', 'fa-upload');
 });
 
 let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));
