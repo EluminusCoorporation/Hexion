@@ -251,14 +251,13 @@
 }
 
 .status-container {
-  position: absolute;
+  position: fixed;
   z-index: 20;
   top: -100vh;
   opacity: 0;
   margin: 1em;
   box-shadow: 0 2px 2px var(--shadow);
-  height: 80px;
-  padding: 5px;
+  padding: 1em;
   width: 300px;
   border-radius: 15px;
   visibility: hidden;

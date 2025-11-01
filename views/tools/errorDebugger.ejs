@@ -40,10 +40,14 @@
         </div>
         <ul class="dropdown-content" id="dropDownContent">
           <div>
-            <li><p class="select-item" id="auto" data-ext="auto">
-              <i class="bx bx-refresh-cw langIcon"></i>Auto<span class="recommended" id="spanR">recommended</span>
-            </p></li>
-            <li><p class="select-item" id="html" data-ext="html">
+            <li>
+              <p class="select-item" id="auto" data-ext="auto">
+                <i class="bx bx-refresh-cw langIcon"></i>
+                Auto
+                <span class="recommended" id="spanR">recommended</span>
+              </p>
+            </li>
+            <li><p class="select-item" data-ext="html" id="html">
               <i class="bxl bx-html5 langIcon"></i>
               Html
             </p></li>
@@ -108,10 +112,6 @@
       <%- include('../components/footer') -%>
     </main>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-<script>
-  eruda.init();
-</script>
 </body>
 
 </html>
