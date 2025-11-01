@@ -49,7 +49,7 @@ uploadZone.addEventListener('dragleave', () => {
   uploadZone.classList.remove('drag-over');
 });
 
-uploadZone.addEventListener('drop', (event) => {
+uploadZone.addEventListener('drop', async (event) => {
   event.preventDefault();
   uploadZone.classList.remove('drag-over');
   const files = event.dataTransfer.files;
@@ -63,11 +63,12 @@ uploadZone.addEventListener('drop', (event) => {
   fileIcon.classList.remove('fa-solid', 'fa-upload')
   fileIcon.classList.add('bx', 'bx-file-code');
   
-  sessionStorage.setItem("errorDebuggerFile", file)
-  let data = sessionStorage.getItem("errorDebuggerFile")
+  const code = await file.text();
+  
+  sessionStorage.setItem("code", code);
 });
 
-fileInput.addEventListener('change', () => {
+fileInput.addEventListener('change', async () => {
   const file = fileInput.files[0];
   if (!fileLogger(file)) return false;
   const fileNameLabel = document.getElementById('fileName');
@@ -78,13 +79,20 @@ fileInput.addEventListener('change', () => {
   fileIcon.classList.remove('fa-solid', 'fa-upload')
   fileIcon.classList.add('bx', 'bx-file-code');
   
-  sessionStorage.setItem("errorDebuggerFile", file)
-  let data = sessionStorage.getItem("errorDebuggerFile")
+  const code = await file.text()
+  
+  sessionStorage.setItem("code", code)
+});
+
+textinput.addEventListener("change", function() {
+  const code = this.value;
+  sessionStorage.setItem("code", code)
 });
 
 fileMode.addEventListener("click", () => {
   auto.classList.remove('deselect');
   textInput.value = null;
+  sessionStorage.removeItem("code");
 });
 
 textMode.addEventListener("click", () => {
@@ -104,6 +112,8 @@ textMode.addEventListener("click", () => {
   fileNameLabel.textContent = 'Upload File';
   fileIcon.classList.remove('bx', 'bx-file-code');
   fileIcon.classList.add('fa-solid', 'fa-upload');
+  
+  sessionStorage.removeItem("code");
 });
 
 let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));
@@ -130,23 +140,26 @@ for (let i = 0; i < textareasHere.length; i++) {
 }
 
 resultsBtn.addEventListener('click', function() {
+<<<<<<< Updated upstream
   const name = document.getElementById('dropdown-text').textContent.trim();
   const code = document.getElementById('textMode').value;
+=======
+  const type = document.getElementById('dropdown-text').textContent.trim();
+  const code = sessionStorage.getItem("code");
+>>>>>>> Stashed changes
   if (!errorLoggerBEFORE(name, code)) {
     return
   };
   
   let results;
   
-  function debuggingCode(name, text) {
-    if (name === "Html") {
-      
-    }
+  function debuggingCode(type, code) {
+    
     resultsInput.value = results;
     return
   };
   const resultsInput = document.getElementById('results');
   const resultsDiv = document.getElementById('resultsDiv')
   resultsDiv.style.display = "flex";
-  debuggingCode(name, code);
+  debuggingCode(type, code);
 });
