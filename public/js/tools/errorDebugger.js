@@ -82,6 +82,11 @@ fileInput.addEventListener('change', () => {
   let data = sessionStorage.getItem("errorDebuggerFile")
 });
 
+const htmlSelector = document.getElementById('html');
+htmlSelector.addEventListener("click", () => {
+  setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.")
+});
+
 let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));
 for (let i = 0; i < textareasHere.length; i++) {
   if (i != 0 && i % 2 == 1) {
