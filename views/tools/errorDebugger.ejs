@@ -79,7 +79,7 @@
             <p id="fileName" class="file-name">Upload File</p>
           </label>
         </div>
-        <textarea name="textToConvert" id="textmodetxt" placeholder="Code" class="ttc" maxlength="500"></textarea>
+        <textarea name="textToConvert" id="textmodetxt" placeholder="Code Block" class="ttc" maxlength="1500"></textarea>
       </div>
       
       <div class="flexbox-results" id="resultsDiv">
@@ -96,9 +96,9 @@
           </div>
         </div>
         <div class="error-switch">
-          <i class='bx bx-arrow-left-stroke arrows arrow1'></i>
-          <p>1 / 9</p>
-          <i class='bx bx-arrow-right-stroke arrows arrow2'></i>
+          <i class='bx bx-arrow-left-stroke arrows arrow1' id="errorGoBack"></i>
+          <p id="errorCounter"><span id="currentError">1</span> / <span id="totalErrors">0</span></p>
+          <i class='bx bx-arrow-right-stroke arrows arrow2' id="errorGoForward"></i>
         </div>
       </div>
       <div class="copy-alert-container" id="copyAlertContainer">
@@ -113,5 +113,4 @@
     </main>
   </div>
 </body>
-
 </html>

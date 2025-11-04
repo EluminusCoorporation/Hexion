@@ -84,7 +84,7 @@ fileInput.addEventListener('change', async () => {
   sessionStorage.setItem("code", code)
 });
 
-textinput.addEventListener("change", function() {
+textInput.addEventListener("change", function() {
   const code = this.value;
   sessionStorage.setItem("code", code)
 });
@@ -144,27 +144,104 @@ for (let i = 0; i < textareasHere.length; i++) {
   }
 }
 
-resultsBtn.addEventListener('click', function() {
-<<<<<<< Updated upstream
-  const name = document.getElementById('dropdown-text').textContent.trim();
-  const code = document.getElementById('textMode').value;
-=======
+resultsBtn.addEventListener('click', async () => {
   const type = document.getElementById('dropdown-text').textContent.trim();
   const code = sessionStorage.getItem("code");
->>>>>>> Stashed changes
-  if (!errorLoggerBEFORE(name, code)) {
+  if (!errorLoggerBEFORE(type, code)) {
     return
   };
   
   let results;
-  
-  function debuggingCode(type, code) {
+  const res = await fetch('/api/debugger', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type, code }),
+  });
+  const data = await res.json();
     
-    resultsInput.value = results;
+    
+  if (data.success === false) {
+    setStatus('alert', 'An unexpected error occured', data.report)
+    return;
+  }
+    
+  const report = data.report;
+  console.dir(report);
+  
+  const errorCount = report.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
+  
+  if (errorCount === 0) {
+    setStatus('success', 'No errors found', "No errors were detected in you're given code.");
     return
-  };
+  }
+  
+  sessionStorage.setItem("report", JSON.stringify(report))
+  
+  const arrows = document.querySelectorAll('.arrows');
+  
+  arrows.forEach((arrow) => arrow.classList.remove('disabled') );
+  if (errorCount === 1) {
+    arrows.forEach((arrow) => arrow.classList.add('disabled') );
+  }
+  
+  const errorGoBack = document.getElementById('errorGoBack');
+  errorGoBack.classList.add('disabled');
+  
+  const totalErrors = document.getElementById('totalErrors');
+  totalErrors.textContent = errorCount;
+  
   const resultsInput = document.getElementById('results');
-  const resultsDiv = document.getElementById('resultsDiv')
+  resultsInput.value = `${report[0].evidence}\n\n\nError: ${report[0].message}`;
+    for (let i = 0; i < textareasHere.length; i++) {
+    if (i != 0 && i % 2 == 1) {
+      textareasHere[i - 1].textContent = "1\n";
+      const numberOfLinesHereZ = Math.max(textareasHere[i].value.split("\n").length, 1);
+      for (let h = 1; h < numberOfLinesHereZ; h++) {
+        textareasHere[i - 1].textContent += (h + 1).toString() + "\n";
+      }
+      textareasHere[i - 1].setAttribute("cols", numberOfLinesHereZ.toString().length.toString());
+    }
+  }
+  
+  const resultsDiv = document.getElementById('resultsDiv');
   resultsDiv.style.display = "flex";
-  debuggingCode(type, code);
+});
+
+const errorGoForward = document.getElementById('errorGoForward');
+const errorGoBack = document.getElementById('errorGoBack');
+
+errorGoForward.addEventListener("click", () => {
+  const currentError = document.getElementById('currentError');
+  const totalErrors = document.getElementById('totalErrors');
+  
+  if (currentError.textContent === totalErrors.textContent) return;
+  
+  errorGoBack.classList.remove('disabled');
+  
+  var currentValue = parseInt(currentError.textContent) + 1;
+  currentError.textContent = currentValue;
+  
+  if (currentError.textContent === totalErrors.textContent) errorGoForward.classList.add('disabled')
+  
+  const resultsInput = document.getElementById('results');
+  const report = JSON.parse(sessionStorage.getItem("report"));
+  resultsInput.value = `${report[currentValue - 1].evidence}\n\n\nError: ${report[currentValue - 1].message}`;
+});
+
+errorGoBack.addEventListener("click", () => {
+  const currentError = document.getElementById('currentError');
+  const totalErrors = document.getElementById('totalErrors');
+  
+  if (currentError.textContent === "1") return;
+  
+  errorGoForward.classList.remove('disabled');
+  
+  var currentValue = parseInt(currentError.textContent) - 1;
+  currentError.textContent = currentValue;
+  
+  if (currentError.textContent === "1") errorGoBack.classList.add('disabled');
+  
+  const resultsInput = document.getElementById('results');
+  const report = JSON.parse(sessionStorage.getItem("report"));
+  resultsInput.value = `${report[currentValue - 1].evidence}\n\n\nError: ${report[currentValue - 1].message}`;
 });

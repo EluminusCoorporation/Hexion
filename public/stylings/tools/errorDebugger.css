@@ -361,7 +361,7 @@ html {
 
 .flexbox-results {
   width: 90%;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-self: center;
 }
@@ -450,7 +450,7 @@ html {
 .numbersPH {
   width: 20px;
   overflow: hidden;
-  color: var(--bg);
+  color: var(--text-muted);
 }
 
 .error-switch {
@@ -479,6 +479,11 @@ html {
   margin: .5em;
   transition: all .5s;
   border-radius: 50%;
+}
+
+.arrows.disabled {
+  opacity: .5;
+  pointer-events: none;
 }
 
 .arrow1 {
