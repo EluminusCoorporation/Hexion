@@ -1,5 +1,6 @@
 const express = require('express');
 const HTMLHint = require('htmlhint');
+const stylelint = require('stylelint')
 const router = express.Router();
 
 router.post('/debugger', async (req, res) => {
@@ -36,6 +37,11 @@ router.post('/debugger', async (req, res) => {
         "title-require": false
 }
       report = HTMLHint.HTMLHint.verify(code, config);
+    } else if (type === "Css") {
+      report = await stylelint.lint({
+        code: code,
+        config: { extends: 'stylelint-config-standard' },
+      });
     }
     
     else {

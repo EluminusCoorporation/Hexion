@@ -144,11 +144,21 @@ for (let i = 0; i < textareasHere.length; i++) {
   }
 }
 
+function setDebuggerContext(report, error, type) {
+  let context;
+  if (type === "Html") {
+    context = `${report[error].evidence}\n\n\nError: ${report[error].message} | ${report[error].line}:${report[error].col}`;
+  } else if (type === "Css") {
+    context = `${report.results[error].warnings[0].rule}\n\n\nError: ${report.results[error].warnings[0].text} | ${report.results[error].warnings[0].line}:${report.results[error].warnings[0].column}`
+  }
+  return context;
+}
+
 resultsBtn.addEventListener('click', async () => {
   const type = document.getElementById('dropdown-text').textContent.trim();
   const code = sessionStorage.getItem("code");
   if (!errorLoggerBEFORE(type, code)) {
-    return
+    return;
   };
   
   let results;
@@ -163,19 +173,25 @@ resultsBtn.addEventListener('click', async () => {
   if (data.success === false) {
     setStatus('alert', 'An unexpected error occured', data.report)
     return;
-  }
+  };
     
   const report = data.report;
   console.dir(report);
   
-  const errorCount = report.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
+  let errorCount;
+  
+  if (type === "Html") {
+    errorCount = report.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length
+  } else if (type === "Css") {
+    errorCount = report.results.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
+  }
   
   if (errorCount === 0) {
     setStatus('success', 'No errors found', "No errors were detected in you're given code.");
-    return
-  }
+    return;
+  };
   
-  sessionStorage.setItem("report", JSON.stringify(report))
+  sessionStorage.setItem("report", JSON.stringify(report));
   
   const arrows = document.querySelectorAll('.arrows');
   
@@ -191,7 +207,11 @@ resultsBtn.addEventListener('click', async () => {
   totalErrors.textContent = errorCount;
   
   const resultsInput = document.getElementById('results');
-  resultsInput.value = `${report[0].evidence}\n\n\nError: ${report[0].message}`;
+  
+  const errorContext = setDebuggerContext(report, 0, type);
+  
+  resultsInput.value = errorContext;
+  
     for (let i = 0; i < textareasHere.length; i++) {
     if (i != 0 && i % 2 == 1) {
       textareasHere[i - 1].textContent = "1\n";
@@ -221,11 +241,14 @@ errorGoForward.addEventListener("click", () => {
   var currentValue = parseInt(currentError.textContent) + 1;
   currentError.textContent = currentValue;
   
-  if (currentError.textContent === totalErrors.textContent) errorGoForward.classList.add('disabled')
+  if (currentError.textContent === totalErrors.textContent) errorGoForward.classList.add('disabled');
   
   const resultsInput = document.getElementById('results');
   const report = JSON.parse(sessionStorage.getItem("report"));
-  resultsInput.value = `${report[currentValue - 1].evidence}\n\n\nError: ${report[currentValue - 1].message}`;
+  
+  const errorContext = setDebuggerContext(report, currentValue - 1, type);
+  
+  resultsInput.value = errorContext;
 });
 
 errorGoBack.addEventListener("click", () => {
@@ -243,5 +266,8 @@ errorGoBack.addEventListener("click", () => {
   
   const resultsInput = document.getElementById('results');
   const report = JSON.parse(sessionStorage.getItem("report"));
-  resultsInput.value = `${report[currentValue - 1].evidence}\n\n\nError: ${report[currentValue - 1].message}`;
+  
+  const errorContext = setDebuggerContext(report, currentValue - 1, type);
+  
+  resultsInput.value = errorContext;
 });
