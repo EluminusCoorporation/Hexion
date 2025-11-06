@@ -102,9 +102,11 @@ textMode.addEventListener("click", () => {
     setSelectedExt("html");
     auto.classList.remove('selected');
     html.classList.add('selected');
+    const htmlName = html.innerHTML;
     const dropdownText = document.getElementById('dropdown-text');
-    dropdownText.textContent = "Html"
-  }
+    dropdownText.innerHTML = htmlName;
+    setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.");
+  };
   const fileNameLabel = document.getElementById('fileName');
   const fileIcon = document.getElementById('fileIcon');
   auto.classList.add('deselect');
@@ -118,7 +120,7 @@ textMode.addEventListener("click", () => {
 
 const htmlSelector = document.getElementById('html');
 htmlSelector.addEventListener("click", () => {
-  setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.")
+  setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.");
 });
 
 let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));
@@ -150,6 +152,8 @@ function setDebuggerContext(report, error, type) {
     context = `${report[error].evidence}\n\n\nError: ${report[error].message} | ${report[error].line}:${report[error].col}`;
   } else if (type === "Css") {
     context = `${report.results[error].warnings[0].rule}\n\n\nError: ${report.results[error].warnings[0].text} | ${report.results[error].warnings[0].line}:${report.results[error].warnings[0].column}`
+  } else if (type === "Java Script") {
+    context = `Error: ${report[0].messages[error].message} | ${report[0].messages[error].line}:${report[0].messages[error].column}`
   }
   return context;
 }
@@ -171,10 +175,10 @@ resultsBtn.addEventListener('click', async () => {
     
     
   if (data.success === false) {
-    setStatus('alert', 'An unexpected error occured', data.report)
+    setStatus('error', 'An unexpected error occured', data.report)
     return;
   };
-    
+  
   const report = data.report;
   console.dir(report);
   
@@ -184,6 +188,8 @@ resultsBtn.addEventListener('click', async () => {
     errorCount = report.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length
   } else if (type === "Css") {
     errorCount = report.results.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
+  } else if (type === "Java Script") {
+    errorCount = report[0].errorCount
   }
   
   if (errorCount === 0) {

@@ -104,7 +104,7 @@ html {
 
 .dropdown-text {
   gap: .5em;
-  color: var(--text-muted);
+  color: var(--text);
   user-select: none;
   display: flex;
   align-items: center;
