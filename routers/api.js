@@ -1,9 +1,11 @@
 // Gets the required modules
 const express = require('express');
+const logger = require('../utils/logger.js')
 //Debugger modules
 const HTMLHint = require('htmlhint');
 const stylelint = require('stylelint');
 const { ESLint } = require('eslint');
+const { spawnSync } = require('child_process');
 const router = express.Router();
 
 //Creates an POST router for the frontend to access
@@ -54,17 +56,27 @@ router.post('/debugger', async (req, res) => {
       });
     } else if (type === "Java Script") {
       const eslint = new ESLint({
+        //Sets this as the config
         overrideConfigFile: true,
         overrideConfig: {
-          //extends: 'eslint:recommended',
-          //env: { es2021: true, node: true },
+          //Some custon rules
           rules: {
+            //If no semi colon error
             semi: ['error', 'always'],
+            //If wrong usage of quotes warn
             quotes: ['warn', 'single'],
           },
         },
       });
       report = await eslint.lintText(code);
+    } else if (type === "Python") {
+      //Sets up ruff for debugging
+      const process = spawnSync("python3", ["-m", "flake8", "-"], {
+        input: code,
+        encoding: "utf-8",
+        });
+        //Checks for errors
+        if (process.status !== 0) report = process.stdout.toString()
     }
     
     else {

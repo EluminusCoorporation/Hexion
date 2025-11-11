@@ -154,14 +154,18 @@ function setDebuggerContext(report, error, type) {
     context = `${report.results[error].warnings[0].rule}\n\n\nError: ${report.results[error].warnings[0].text} | ${report.results[error].warnings[0].line}:${report.results[error].warnings[0].column}`
   } else if (type === "Java Script") {
     context = `Error: ${report[0].messages[error].message} | ${report[0].messages[error].line}:${report[0].messages[error].column}`
+  } else if (type === "Python") {
+    context = `Error: ${report}`;
   }
   return context;
 }
 
 resultsBtn.addEventListener('click', async () => {
+  const resultsDiv = document.getElementById('resultsDiv');
   const type = document.getElementById('dropdown-text').textContent.trim();
   const code = sessionStorage.getItem("code");
   if (!errorLoggerBEFORE(type, code)) {
+    resultsDiv.style.display = "none";
     return;
   };
   
@@ -180,9 +184,9 @@ resultsBtn.addEventListener('click', async () => {
   };
   
   const report = data.report;
-  console.dir(report);
+  console.dir(data);
   
-  let errorCount;
+  let errorCount = 0;
   
   if (type === "Html") {
     errorCount = report.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length
@@ -190,10 +194,13 @@ resultsBtn.addEventListener('click', async () => {
     errorCount = report.results.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
   } else if (type === "Java Script") {
     errorCount = report[0].errorCount
+  } else if (type === "Python") {
+    if (report) errorCount = 1;
   }
   
   if (errorCount === 0) {
     setStatus('success', 'No errors found', "No errors were detected in you're given code.");
+    resultsDiv.style.display = "none";
     return;
   };
   
@@ -229,7 +236,6 @@ resultsBtn.addEventListener('click', async () => {
     }
   }
   
-  const resultsDiv = document.getElementById('resultsDiv');
   resultsDiv.style.display = "flex";
 });
 

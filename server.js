@@ -2,6 +2,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 const rateLimit = require('express-rate-limit');
 //Imports the config
 const config = require('./config.json');
@@ -34,6 +35,24 @@ app.use(express.urlencoded({ extended: false, limit: "20mb" }));
 //Setup static directories
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
+
+//Checks & installs required python packages
+try {
+  // Check if flake8 exists
+  execSync("python3 -m flake8 --version", { stdio: "ignore" });
+  } catch {
+    logger.info("Installing dependencies...");
+    try {
+      // Install silently (suppress all logs)
+      execSync("python3 -m pip install --user flake8 -q", { stdio: "ignore" });
+
+      // Verify installation
+      execSync("python3 -m flake8 --version", { stdio: "ignore" });
+    } catch (err) {
+      logger.error("Could not install a few dependencies\n", err.message);
+      return;
+    }
+  }
 
 //Setting up rate limiters
 const limiter = rateLimit({
