@@ -6,6 +6,7 @@ const router = express.Router();
 const config = require('../config.json');
 
 router.get("/", (req, res) => {
+  //Redirects to tos
   res.redirect('/tos');
 });
 

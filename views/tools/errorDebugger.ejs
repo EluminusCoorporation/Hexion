@@ -51,24 +51,25 @@
               <i class="bxl bx-html5 langIcon"></i>
               Html
             </p></li>
-            <li><p class="select-item" data-ext="css">
+            <li><p class="select-item" id="css" data-ext="css">
               <i class="bxl bx-css3 langIcon"></i>
               Css
             </p></li>
-            <li><p class="select-item" data-ext="js">
+            <li><p class="select-item" id="javascript" data-ext="js">
               <i class="bxl bx-javascript langIcon"></i>
               Java Script
             </p></li>
-            <li><p class="select-item" data-ext="py">
+            <li><p class="select-item" id="python" data-ext="py">
               <i class="bxl bx-python langIcon"></i>Python
             </p></li>
           </div>
         </ul>
       </div>
+      
       <div class="buttonWrapper">
         <div class="buttonIndicator" id="btnIndicator"></div>
-        <button class="dualbtn dbtn1" id="dbtn1"><i class="bx bx-file-detail"></i>File mode</button>
-        <button class="dualbtn dbtn2" id="dbtn2"><i class="bx bx-edit-alt"></i>Text mode</button>
+        <button class="dualbtn dbtn1" id="fileMode"><i class="bx bx-file-detail"></i>File mode</button>
+        <button class="dualbtn dbtn2" id="textMode"><i class="bx bx-edit-alt"></i>Text mode</button>
       </div>
       <div class="switcherContainer">
         <div class="uploadWrapper selected" id="uploadWrapper">
@@ -78,7 +79,7 @@
             <p id="fileName" class="file-name">Upload File</p>
           </label>
         </div>
-        <textarea name="textToConvert" id="textmodetxt" placeholder="Code" class="ttc" maxlength="500"></textarea>
+        <textarea name="textToConvert" id="textmodetxt" placeholder="Code Block" class="ttc" maxlength="1500"></textarea>
       </div>
       
       <div class="flexbox-results" id="resultsDiv">
@@ -95,9 +96,9 @@
           </div>
         </div>
         <div class="error-switch">
-          <i class='bx bx-arrow-left-stroke arrows arrow1'></i>
-          <p>1 / 9</p>
-          <i class='bx bx-arrow-right-stroke arrows arrow2'></i>
+          <i class='bx bx-arrow-left-stroke arrows arrow1' id="errorGoBack"></i>
+          <p id="errorCounter"><span id="currentError">1</span> / <span id="totalErrors">0</span></p>
+          <i class='bx bx-arrow-right-stroke arrows arrow2' id="errorGoForward"></i>
         </div>
       </div>
       <div class="copy-alert-container" id="copyAlertContainer">
@@ -107,10 +108,12 @@
       <div class="results-btn-div">
         <button class="results-button" id="results-btn">Find Errors!</button>
       </div>
-      <button class="downloadbtn" id="uploadbtn"><i class="fa-solid fa-download"></i>Download File</button>
       <%- include('../components/footer') -%>
     </main>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+<script>
+  eruda.init();
+</script>
 </body>
-
 </html>

@@ -13,9 +13,10 @@ export function setStatus(type, title, message) {
   const statusMessage = document.getElementById('statusMessage');
   
   //If message is nothing it'll just close the status screen
-  if (message === null) {
+  if (!message) {
     statusContainer.classList.remove('active');
     statusMessage.textContent = null;
+    return;
   }
   
   //Enables the Status screen
@@ -62,7 +63,7 @@ export function errorLoggerBEFORE(name, text) {
     return false;
   };
   //Else clears the timeout and goes forward
-  setStatus('')
+  setStatus()
   return true;
 };
 
@@ -88,7 +89,7 @@ export function errorLoggerAFTER(text) {
     setStatus('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
     return false;
   }
-  setStatus('')
+  setStatus()
   //Else goes forward
   return true;
 };
@@ -118,7 +119,7 @@ export function fileLogger(file) {
       return false;
     }
     //Else continues
-    setStatus('')
+    setStatus()
     return true;
   }
   //Else checks if not supported
@@ -131,7 +132,7 @@ export function fileLogger(file) {
     setStatus('error', 'File Verification failed', 'File is too large');
     return false;
   }
-  setStatus('');
+  setStatus();
   //Else goes forward
   return true;
 }
