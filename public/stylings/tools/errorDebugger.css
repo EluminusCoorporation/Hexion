@@ -220,7 +220,6 @@ html {
   width: 50%;
   height: 100%;
   background: indianred;
-  border-radius: 8px;
   z-index: 1;
   margin: 0;
   transition: left .2s ease;
