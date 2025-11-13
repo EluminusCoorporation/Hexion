@@ -3,6 +3,7 @@
     "siteName": "Hexion",
     "domain": "https://hexion.dev",
     "port": 7000,
-    "onMaintenance": true
+    "onMaintenance": false,
+    "version": "v1.0-demo"
   }
 }

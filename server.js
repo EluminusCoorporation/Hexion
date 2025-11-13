@@ -1,5 +1,6 @@
 //Import Required modules
 const express = require('express');
+const figlet = require('figlet');
 const path = require('path');
 const { execSync } = require('child_process');
 const rateLimit = require('express-rate-limit');
@@ -24,6 +25,12 @@ const app = express();
 //Initialize the modules that require app to be Initialize first
 
 //The server starting process starts from here
+process.stdout.write('\x1Bc');
+console.log(figlet.textSync("Hexion", { font: "Standard" }));
+const version = config.general.version;
+const padLength = process.stdout.columns - version.length;
+console.log(" ".repeat(Math.max(0, padLength)) + version);
+
 logger.info('Starting Server...');
 if (config.general.onMaintenance === true) logger.info('Server starting under Maintenance Mode.')
 
