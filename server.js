@@ -1,9 +1,9 @@
-//Imports Required modules
+//Import Required modules
 const express = require('express');
 const path = require('path');
 const { execSync } = require('child_process');
 const rateLimit = require('express-rate-limit');
-//Imports the config
+//Import the config
 const config = require('./config.json');
 
 //Import routers
@@ -11,19 +11,21 @@ const api = require('./routers/api');
 const tools = require('./routers/tools');
 const documents = require('./routers/documents');
 
-//Imports in app Funcs
+//Import in-app middlewares
+const onMaintenance = require('./middleware/onMaintenance');
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
-//Initializes the logger module
+//Initialize the logger module
 const logger = require('./utils/logger');
 
-//Initializes the express app
+//Initialize the express app
 const app = express();
 
-//Initializes the modules that require app to be Initialize first
+//Initialize the modules that require app to be Initialize first
 
 //The server starting process starts from here
-logger.info('Starting Server');
+logger.info('Starting Server...');
+if (config.general.onMaintenance === true) logger.info('Server starting under Maintenance Mode.')
 
 //Set up view engine for express
 app.set("view engine", "ejs");
@@ -54,6 +56,9 @@ try {
     }
   }
 
+//Setting up in-app middlewares (before)
+app.use(onMaintenance);
+
 //Setting up rate limiters
 const limiter = rateLimit({
   windowMs: 60 * 1000,
@@ -71,7 +76,7 @@ app.get("/home", (req, res) => {
   const pageInfo = {
     title: "Home",
     description: "The official home page of hexion, here you will find all the information related to hexion once you get ready you can start you're journey on hexion.",
-    url: `${config.url}/home`
+    url: `${config.general.domain}/home`
   };
   res.render('home', pageInfo);
 });
@@ -79,7 +84,7 @@ app.get("/dashboard", (req, res) => {
   const pageInfo = {
     title: "Dashboard",
     description: "The dashboard of hexion, here you can access all our powerful tools to enpower you're projects.",
-    url: `${config.url}/dashboard`
+    url: `${config.general.domain}/dashboard`
   };
   res.render('dashboard', pageInfo);
 });
@@ -87,7 +92,7 @@ app.get("/donation", (req, res) => {
   const pageInfo = {
     title: "Donation",
     description: "The donation page of hexion, here you can donate us some of you're precious money to help us run this website longer for you developers.",
-    url: `${config.url}/donation`
+    url: `${config.general.url}/donation`
   };
   res.render('donation', pageInfo);
 });
@@ -95,7 +100,7 @@ app.get("/codeBook", (req, res) => {
   const pageInfo = {
     title: "Code Book",
     description: "The code book of hexion, here you will find all the information related to developing, coding, programming, computer science and much much more.",
-    url: `${config.url}/codeBook`
+    url: `${config.general.domain}/codeBook`
   };
   res.render('codeBook', pageInfo);
 });
@@ -103,7 +108,7 @@ app.get("/cources", (req, res) => {
   const pageInfo = {
     title: "Cources",
     description: "The official cources of hexion, here you will find many cources related to coding from simple to advance.",
-    url: `${config.url}/cources`
+    url: `${config.general.domain}/cources`
   };
   res.render('cources', pageInfo);
 });
@@ -113,7 +118,7 @@ app.use("/tools", tools);
 app.use("/documents", documents);
 app.use("/api", api);
 
-//Setup in-app middlewares
+//Setting up in-app middlewares (after)
 app.use(errorHandler);
 app.use(notFoundHandler);
 

@@ -6,7 +6,6 @@
 # Features #
 - **Error debugging**
 - **Gradiant generator**
-- **Error auto fixer**
 - **Decoding and Encoding**
 - **Encrypting and Decrypting**
 - **Image Worker**

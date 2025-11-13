@@ -120,11 +120,6 @@ textMode.addEventListener("click", () => {
 
 const htmlSelector = document.getElementById('html');
 htmlSelector.addEventListener("click", () => {
-  setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.");
-});
-
-const htmlSelector = document.getElementById('html');
-htmlSelector.addEventListener("click", () => {
   setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.")
 });
 

@@ -15,7 +15,7 @@ router.get("/encoder", (req, res) => {
   const pageInfo = {
     title: "Encoder",
     description: "The encoder tool of hexion, here you can encode any piece of text, you get chance to select from 10 different formats",
-    url: `${config.url}/encoder`
+    url: `${config.general.domain}/tools/encoder`
   };
   res.render('tools/encoder', pageInfo);
 });
@@ -24,7 +24,7 @@ router.get("/decoder", (req, res) => {
   const pageInfo = {
     title: "Decoder",
     description: "The decoder tool of hexion, here you can decode any piece of text, you get chance to select from 10 different formats",
-    url: `${config.url}/decoder`
+    url: `${config.general.domain}/tools/decoder`
   };
   res.render('tools/decoder', pageInfo);
 });
@@ -33,7 +33,7 @@ router.get("/encrypter", (req, res) => {
   const pageInfo = {
     title: "Encrypter",
     description: "The encrypter tool of hexion, here you can encrypt any piece of text, you get chance to select from 10 different formats",
-    url: `${config.url}/encrypter`
+    url: `${config.general.domain}/tools/encrypter`
   };
   res.render('tools/encrypter', pageInfo);
 });
@@ -41,7 +41,7 @@ router.get("/decrypter", (req, res) => {
   const pageInfo = {
     title: "Decrypter",
     description: "The decrypter tool of hexion, here you can decrypt any piece of text, you get chance to select from 10 different formats",
-    url: `${config.url}/decrypter`
+    url: `${config.general.domain}/tools/decrypter`
   };
   res.render('tools/decrypter', pageInfo);
 });
@@ -49,7 +49,7 @@ router.get("/errorDebugger", (req, res) => {
   const pageInfo = {
     title: "Error Debugger",
     description: "The Error Debugger, tool of hexion, here you can fix errors in you're code by simply typing the erroring code block or uploading the whole file, you get chance to select from 10 different languages",
-    url: `${config.url}/errorDebugger`
+    url: `${config.general.domain}/tools/errorDebugger`
   };
   res.render('tools/errorDebugger', pageInfo);
 });
@@ -57,7 +57,7 @@ router.get("/gradiantGenerator", (req, res) => {
   const pageInfo = {
     title: "Gradiant Generator",
     description: "The gradiant generator, tool of hexion, here you can add gradiant to any text make it beautiful, you get chance to fully customize you're text from just bolding it to underlining it",
-    url: `${config.url}/gradiantGenerator`
+    url: `${config.url}/tools/gradiantGenerator`
   };
   res.render('tools/gradiantGenerator', pageInfo);
 });

@@ -13,7 +13,7 @@ function errorHandler(err, req, res, next) {
     401: 'Unauthorized Access',
     402: 'Forbidden',
     404: 'Could not find page',
-    500: 'Internal server error'
+    500: 'Internal server error',
   };
   //Gets the correct message for the status code
   const message = messages[status];
@@ -27,4 +27,4 @@ function notFoundHandler(req, res, next) {
   res.status(404).render('error_handling/errorbody', { error: 'Could not find page', errorurl: req.url, errorcode: '404' });
 }
 
-module.exports = {errorHandler, notFoundHandler};
+module.exports = { errorHandler, notFoundHandler };
