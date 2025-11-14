@@ -190,7 +190,8 @@
   }
   
   .background-sidebar.open {
-    backdrop-filter: blur(5px);
+    background-color: black;
+    opacity: .2;
     visibility: visible;
   }
   
