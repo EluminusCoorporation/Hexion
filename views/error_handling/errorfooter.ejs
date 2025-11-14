@@ -1,2 +1,20 @@
 </body>
+<script>
+  function autoResizeHeader(header) {
+    const minSize = 2; // rem
+    const maxSize = 6.5; // rem
+    let fontSize = maxSize;
+
+    header.style.fontSize = fontSize + 'rem';
+
+    // Reduce size until it fits container width
+    while (header.scrollWidth > header.clientWidth && fontSize > minSize) {
+      fontSize -= 1;
+      header.style.fontSize = fontSize + 'rem';
+    };
+  };
+  
+  const header = document.getElementById('header');
+  autoResizeHeader(header);
+</script>
 </html>

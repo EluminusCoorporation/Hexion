@@ -27,7 +27,7 @@ const app = express();
 //The server starting process starts from here
 process.stdout.write('\x1Bc');
 console.log(figlet.textSync("Hexion", { font: "Standard" }));
-const version = config.general.version;
+const version = "© Eluminusco all rights served. " + config.general.version;
 const padLength = process.stdout.columns - version.length;
 console.log(" ".repeat(Math.max(0, padLength)) + version);
 
