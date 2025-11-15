@@ -22,16 +22,24 @@ const logger = require('./utils/logger');
 //Initialize the express app
 const app = express();
 
-//Initialize the modules that require app to be Initialize first
+//Initialize the modules that require app to be Initialized
 
 //The server starting process starts from here
+//clears the screen
 process.stdout.write('\x1Bc');
+
+//sends the banner
 console.log(figlet.textSync("Hexion", { font: "Standard" }));
-const version = "© Eluminusco all rights served. " + config.general.version;
-const padLength = process.stdout.columns - version.length;
-console.log(" ".repeat(Math.max(0, padLength)) + version);
+//sends the copyright & version
+const copyright = "© Eluminusco all rights served."
+const version = config.general.version;
+//Gets the total length of spaces to add
+const padLength = process.stdout.columns - version.length - copyright.length;
+//sends it
+console.log(copyright + " ".repeat(Math.max(0, padLength)) + version);
 
 logger.info('Starting Server...');
+//if on maintenance mode
 if (config.general.onMaintenance === true) logger.info('Server starting under Maintenance Mode.')
 
 //Set up view engine for express
@@ -47,9 +55,10 @@ app.use(express.static(path.join(__dirname, 'assets')));
 
 //Checks & installs required python packages
 try {
-  // Check if flake8 exists
+  // Check if external dependencies are missing
   execSync("python3 -m flake8 --version", { stdio: "ignore" });
   } catch {
+    //if not, install
     logger.info("Installing dependencies...");
     try {
       // Install silently (suppress all logs)
@@ -58,7 +67,7 @@ try {
       // Verify installation
       execSync("python3 -m flake8 --version", { stdio: "ignore" });
     } catch (err) {
-      logger.error("Could not install a few dependencies\n", err.message);
+      logger.error("Could not install a few dependencies\n\n", err.message);
       return;
     }
   }
