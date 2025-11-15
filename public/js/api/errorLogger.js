@@ -25,6 +25,7 @@ export function setStatus(type, title, message) {
   statusTitle.textContent = title;
   statusMessage.textContent = message;
   
+  //Sets the type of status code being used
   if (type === "success") {
     statusContainer.style.backgroundColor = "var(--success)";
     statusIcon.className = "bx bx-check-circle";

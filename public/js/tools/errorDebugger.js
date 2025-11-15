@@ -1,116 +1,180 @@
+//Import required functions
 import { setStatus, errorLoggerBEFORE, fileLogger } from '../api/errorLogger.js';
 import {} from '../api/copy.js'
 import { formatFileSize } from '../api/fileSizeFormat.js'
 import { selectedExt, setSelectedExt } from '../api/dropDownMenu.js'
+
+//import required elements
 const resultsBtn = document.getElementById('results-btn');
+
 const fileMode = document.getElementById('fileMode');
 const textMode = document.getElementById('textMode');
+
 const buttons = document.querySelectorAll('.dualbtn');
 const uploadbtn = document.getElementById('uploadZone');
 const textInput = document.getElementById('textmodetxt');
+
 const btnindicator = document.getElementById('btnIndicator')
 const uploadWrapper = document.getElementById('uploadWrapper')
 
+//Makes an event listener for the switchers
 buttons.forEach((btn, index) => {
+  //Makes filemode as the default
   fileMode.classList.add('selected');
+  //On click of any switcher
   btn.addEventListener('click', function() {
+    //If it is already selected return
     if (this.classList.contains('selected')) return;
+    
+    //change the switcher
     btnindicator.style.left = index === 0 ? '0%' : '50%';
+    //Deselect the other
     buttons.forEach(b => b.classList.remove('selected'));
+    //Activates their menus
+    //If its the first button
     if (index === 0) {
       textInput.classList.remove('selected');
       uploadWrapper.classList.add('selected');
     }
+    //if its the second button
     else {
       uploadWrapper.classList.remove('selected');
       textInput.classList.add('selected');
     }
+    //Adds the activates the clicked
     this.classList.add('selected');
   });
 });
 
+//special errorhandler for File Mode
 uploadbtn.addEventListener('click', () => {
+  //if not selected an language
   if (!selectedExt) {
     setStatus('error', 'Debugging failed', 'Select a language before uploading.')
     return false;
   };
+  //clear errors
   setStatus();
 })
 
 const uploadZone = document.getElementById('uploadZone');
 const fileInput = document.getElementById('fileUploader');
-// Click to open file dialog
+//when user drags a file
 uploadZone.addEventListener('dragover', (event) => {
+  //prevents the default
   event.preventDefault();
   uploadZone.classList.add('drag-over');
 });
 
+//When user leaves the file
 uploadZone.addEventListener('dragleave', () => {
   uploadZone.classList.remove('drag-over');
 });
 
+//When it drops the file
 uploadZone.addEventListener('drop', async (event) => {
+  //Prevent default action
   event.preventDefault();
+  
   uploadZone.classList.remove('drag-over');
+  
+  //Get the file
   const files = event.dataTransfer.files;
   const file = files[0];
+  
+  //Run file error handler
   if (!fileLogger(file)) return false;
+  
+  //Get file data
   const fileNameLabel = document.getElementById('fileName');
   const fileIcon = document.getElementById('fileIcon');
   const fileSize = formatFileSize(file.size)
   
+  //Sets file data
   fileNameLabel.textContent = file.name + ` (${fileSize})`;
   fileIcon.classList.remove('fa-solid', 'fa-upload')
   fileIcon.classList.add('bx', 'bx-file-code');
   
+  //Gets the text of the file
   const code = await file.text();
   
+  //stores it in the broswer
   sessionStorage.setItem("code", code);
 });
 
+//When uploads a file via click
 fileInput.addEventListener('change', async () => {
+  //Gets the file
   const file = fileInput.files[0];
+  
+  //Runs the file error handler
   if (!fileLogger(file)) return false;
+  
+  //Gets file data
   const fileNameLabel = document.getElementById('fileName');
   const fileIcon = document.getElementById('fileIcon');
   const fileSize = formatFileSize(file.size)
   
+  //Sets file data
   fileNameLabel.textContent = file.name + ` (${fileSize})`;
   fileIcon.classList.remove('fa-solid', 'fa-upload')
   fileIcon.classList.add('bx', 'bx-file-code');
   
+  //getd the text of the file
   const code = await file.text()
   
+  //Stores it in the broswer
   sessionStorage.setItem("code", code)
 });
 
+//Stores the input of the textarea
 textInput.addEventListener("change", function() {
   const code = this.value;
   sessionStorage.setItem("code", code)
 });
 
+//When file mode deactivates remove data
 fileMode.addEventListener("click", () => {
+  //if current selected ignore
+  if (fileMode.classList.contains('selected')) return;
+  
   auto.classList.remove('deselect');
   textInput.value = null;
   sessionStorage.removeItem("code");
 });
 
+//When text mode deactivates remove data
 textMode.addEventListener("click", () => {
+  //if current selected ignore
+  if (this.classList.contains('selected')) return;
+  
   const auto = document.getElementById('auto');
   const html = document.getElementById('html');
+  
+  //disable auto as an option
   if (selectedExt === "auto") {
     setSelectedExt("html");
+    
     auto.classList.remove('selected');
     html.classList.add('selected');
+    
     const htmlName = html.innerHTML;
     const dropdownText = document.getElementById('dropdown-text');
+    
     dropdownText.innerHTML = htmlName;
+    
+    //sends an alert
     setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.");
   };
   const fileNameLabel = document.getElementById('fileName');
   const fileIcon = document.getElementById('fileIcon');
+  
+  //deselect auto
   auto.classList.add('deselect');
+  
+  //removes the data
   sessionStorage.removeItem('errorDebuggerFile');
+  
   fileNameLabel.textContent = 'Upload File';
   fileIcon.classList.remove('bx', 'bx-file-code');
   fileIcon.classList.add('fa-solid', 'fa-upload');
@@ -118,11 +182,13 @@ textMode.addEventListener("click", () => {
   sessionStorage.removeItem("code");
 });
 
+//Sends an alert on usage of html
 const htmlSelector = document.getElementById('html');
 htmlSelector.addEventListener("click", () => {
   setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.")
 });
 
+//Custom editor like textarea lines
 let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));
 for (let i = 0; i < textareasHere.length; i++) {
   if (i != 0 && i % 2 == 1) {
@@ -146,8 +212,11 @@ for (let i = 0; i < textareasHere.length; i++) {
   }
 }
 
+//sets the results function
 function setDebuggerContext(report, error, type) {
+  //context used
   let context;
+  
   if (type === "Html") {
     context = `${report[error].evidence}\n\n\nError: ${report[error].message} | ${report[error].line}:${report[error].col}`;
   } else if (type === "Css") {
@@ -157,6 +226,7 @@ function setDebuggerContext(report, error, type) {
   } else if (type === "Python") {
     context = `Error: ${report}`;
   }
+  //returns it to the sender
   return context;
 }
 
@@ -164,28 +234,33 @@ resultsBtn.addEventListener('click', async () => {
   const resultsDiv = document.getElementById('resultsDiv');
   const type = document.getElementById('dropdown-text').textContent.trim();
   const code = sessionStorage.getItem("code");
+  //runs error handler
   if (!errorLoggerBEFORE(type, code)) {
     resultsDiv.style.display = "none";
     return;
   };
   
+  //sends the api request to the end point
   let results;
   const res = await fetch('/api/debugger', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ type, code }),
   });
+  //Gets the data
   const data = await res.json();
-    
-    
+  
+  //If its not successful send an error
   if (data.success === false) {
     setStatus('error', 'An unexpected error occured', data.report)
     return;
   };
   
+  //Get the error report & log it
   const report = data.report;
   console.dir(data);
   
+  //Let the default count be 0
   let errorCount = 0;
   
   if (type === "Html") {
@@ -198,17 +273,22 @@ resultsBtn.addEventListener('click', async () => {
     if (report) errorCount = 1;
   }
   
+  //if no errors found end
   if (errorCount === 0) {
     setStatus('success', 'No errors found', "No errors were detected in you're given code.");
     resultsDiv.style.display = "none";
     return;
   };
   
+  //stores the report for future in the broswer
   sessionStorage.setItem("report", JSON.stringify(report));
   
+  //Sets the arrows
   const arrows = document.querySelectorAll('.arrows');
   
+  //removes the disabled
   arrows.forEach((arrow) => arrow.classList.remove('disabled') );
+  //if one error disable both
   if (errorCount === 1) {
     arrows.forEach((arrow) => arrow.classList.add('disabled') );
   }
@@ -216,16 +296,17 @@ resultsBtn.addEventListener('click', async () => {
   const errorGoBack = document.getElementById('errorGoBack');
   errorGoBack.classList.add('disabled');
   
+  //set the total error count
   const totalErrors = document.getElementById('totalErrors');
   totalErrors.textContent = errorCount;
   
   const resultsInput = document.getElementById('results');
-  
   const errorContext = setDebuggerContext(report, 0, type);
-  
+  //sets the error
   resultsInput.value = errorContext;
   
-    for (let i = 0; i < textareasHere.length; i++) {
+  //refreshes line numbers
+  for (let i = 0; i < textareasHere.length; i++) {
     if (i != 0 && i % 2 == 1) {
       textareasHere[i - 1].textContent = "1\n";
       const numberOfLinesHereZ = Math.max(textareasHere[i].value.split("\n").length, 1);
@@ -236,49 +317,62 @@ resultsBtn.addEventListener('click', async () => {
     }
   }
   
+  //Enables the output display
   resultsDiv.style.display = "flex";
 });
 
 const errorGoForward = document.getElementById('errorGoForward');
 const errorGoBack = document.getElementById('errorGoBack');
 
+//Next error button
 errorGoForward.addEventListener("click", () => {
   const currentError = document.getElementById('currentError');
   const totalErrors = document.getElementById('totalErrors');
   
+  //if its meets a 1 error count return
   if (currentError.textContent === totalErrors.textContent) return;
   
+  //enable the previous error button
   errorGoBack.classList.remove('disabled');
   
+  //increases & sets the error count
   var currentValue = parseInt(currentError.textContent) + 1;
   currentError.textContent = currentValue;
   
   if (currentError.textContent === totalErrors.textContent) errorGoForward.classList.add('disabled');
   
+  //Gets the report
   const resultsInput = document.getElementById('results');
   const report = JSON.parse(sessionStorage.getItem("report"));
   
+  //sets the new report
   const errorContext = setDebuggerContext(report, currentValue - 1, type);
   
   resultsInput.value = errorContext;
 });
 
+//previous error button
 errorGoBack.addEventListener("click", () => {
   const currentError = document.getElementById('currentError');
   const totalErrors = document.getElementById('totalErrors');
   
+  //if meets a 1 error count return
   if (currentError.textContent === "1") return;
   
+  //enables next error button
   errorGoForward.classList.remove('disabled');
   
+  //decreases & sets the error count
   var currentValue = parseInt(currentError.textContent) - 1;
   currentError.textContent = currentValue;
   
   if (currentError.textContent === "1") errorGoBack.classList.add('disabled');
   
+  //gets the report
   const resultsInput = document.getElementById('results');
   const report = JSON.parse(sessionStorage.getItem("report"));
   
+  //sets the new report
   const errorContext = setDebuggerContext(report, currentValue - 1, type);
   
   resultsInput.value = errorContext;

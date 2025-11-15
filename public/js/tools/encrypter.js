@@ -1,15 +1,22 @@
+//Imports required functions
 import { setStatus, errorLoggerBEFORE } from '../api/errorLogger.js';
 import {} from '../api/dropDownMenu.js'
 import {} from '../api/copy.js'
 const resultsBtn = document.getElementById('results-btn');
 
+//Makes an event listener for results button
 resultsBtn.addEventListener('click', function() {
+  //Gets the text inputted
   const text = document.getElementById('ttc').value;
+  //Gets the format type
   const title = document.getElementById('dropdown-text');
+  
+  //runs the error handler
   if (!errorLoggerBEFORE(name, text)) {
     return
   };
   
+  //Encrypts the text
   function encryptingText(name, text, key = 3) {
     let results;
     
@@ -142,11 +149,17 @@ resultsBtn.addEventListener('click', function() {
         String.fromCharCode((((a * (c.toUpperCase().charCodeAt(0) - 65) + b) % 26) + 65)) : c
       ).join("");
     };
+    //Sets the value
     resultsInput.textContent = results;
     return;
   }
+  
   const resultsInput = document.getElementById('results');
   const resultsDiv = document.getElementById('resultsDiv')
+  
+  //Displays the output
   resultsDiv.style.display = "flex";
+  
+  //Encrypts the text through the function
   encryptingText(name, text);
 });

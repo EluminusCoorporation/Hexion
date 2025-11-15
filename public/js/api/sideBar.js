@@ -11,7 +11,7 @@ sideBarButton.addEventListener('click', () => {
   backgroundFilter.classList.toggle('open');
   sideBar.classList.toggle('open');
   
-  // Closes the opened sub Menus
+  // Closes the opened sub Menus on sidebar close
   subMenu.forEach((subMenus) => {
     const subMenuButton = subMenus.parentNode
     const subMenuToggler = subMenuButton.querySelector('.toggle-button');

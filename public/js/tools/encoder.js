@@ -1,15 +1,23 @@
+//Imports the required functions
 import { setStatus, errorLoggerBEFORE } from '../api/errorLogger.js';
 import {} from '../api/dropDownMenu.js'
 import {} from '../api/copy.js'
+
 const resultsBtn = document.getElementById('results-btn');
 
+//Makes an event listener for results button
 resultsBtn.addEventListener('click', function() {
+  //Getd the text inputted
   const text = document.getElementById('ttc').value;
+  //Gets the format type
   const title = document.getElementById('dropdown-text');
+  
+  //Runs the error handler
   if (!errorLoggerBEFORE(name, text)) {
     return;
   };
   
+  //Sets up the encoder
   function encodingText(name, text) {
     let results;
     
@@ -19,7 +27,7 @@ resultsBtn.addEventListener('click', function() {
     };
     if (name === "UTF-16") {
       function encodeUTF16(str) {
-        let encoder = new TextEncoder('utf-16le'); // Little-endian UTF-16
+        let encoder = new TextEncoder('utf-16le');
         return encoder.encode(str);
       }
       
@@ -30,12 +38,12 @@ resultsBtn.addEventListener('click', function() {
         let utf32Array = [];
         
         for (let char of str) {
-          let codePoint = char.codePointAt(0); // Get Unicode code point
+          let codePoint = char.codePointAt(0);
           utf32Array.push(
-            (codePoint >> 24) & 0xFF, // First byte
-            (codePoint >> 16) & 0xFF, // Second byte
-            (codePoint >> 8) & 0xFF, // Third byte
-            codePoint & 0xFF // Fourth byte
+            (codePoint >> 24) & 0xFF,
+            (codePoint >> 16) & 0xFF,
+            (codePoint >> 8) & 0xFF,
+            codePoint & 0xFF
           );
         }
         
@@ -49,22 +57,22 @@ resultsBtn.addEventListener('click', function() {
     }
     if (name === "ASCII") {
       function encodeASCII(text) {
-        return text.split('').map(char => char.charCodeAt(0)); // Convert each character to ASCII code
+        return text.split('').map(char => char.charCodeAt(0));
       }
       
       results = encodeASCII(text);
     }
     if (name === "EXTENDED ASCII") {
       function encodeExtendedASCII(text) {
-        return text.split('').map(char => char.charCodeAt(0)); // Same as ASCII but supports 0–255 range
+        return text.split('').map(char => char.charCodeAt(0));
       }
       results = encodeExtendedASCII(text);
     }
     if (name === "Binary") {
       function encodeBinary(text) {
         return text.split('')
-          .map(char => char.charCodeAt(0).toString(2).padStart(8, '0')) // Convert to binary (8-bit)
-          .join(' '); // Separate binary values with a space
+          .map(char => char.charCodeAt(0).toString(2).padStart(8, '0'))
+          .join(' ');
       }
       
       results = encodeBinary(text);
@@ -80,7 +88,6 @@ resultsBtn.addEventListener('click', function() {
     }
     
     if (name === "ISO 8859-1") {
-      // Encode a string to ISO-8859-1
       function encodeToISO88591(text) {
         return new TextEncoder("iso-8859-1").encode(text);
       }
@@ -133,11 +140,17 @@ resultsBtn.addEventListener('click', function() {
       }
       results = (encodeToMorse(text))
     }
+    //Sets the value
     resultsInput.textContent = results;
     return;
   };
+  
   const resultsInput = document.getElementById('results');
-  const resultsDiv = document.getElementById('resultsDiv')
+  const resultsDiv = document.getElementById('resultsDiv');
+  
+  //Displays the output
   resultsDiv.style.display = "flex";
+  
+  //Encodes the text
   encodingText(name, text);
 });

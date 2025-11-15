@@ -1,15 +1,22 @@
+//Imports required functions
 import { setStatus, errorLoggerBEFORE, errorLoggerAFTER } from '../api/errorLogger.js';
 import {} from '../api/dropDownMenu.js'
 import {} from '../api/copy.js'
 const resultsBtn = document.getElementById('results-btn');
 
+//Makes an event listener for results button
 resultsBtn.addEventListener('click', function() {
+  //Gets the text inputted
   const text = document.getElementById('ttc').value;
+  //Gets the format type
   const title = document.getElementById('dropdown-text');
+  
+  //Runs the error handler
   if (!errorLoggerBEFORE(name, text)) {
     return
   };
   
+  //the deryption function
   function decryptingText(name, text, key = 3) {
     let results;
     
@@ -117,7 +124,7 @@ resultsBtn.addEventListener('click', function() {
       
       for (let i = 0; i < text.length; i++) {
         if (row === 0 || row === rails - 1) directionDown = !directionDown;
-        rail[row][col++] = "*"; // Mark the path
+        rail[row][col++] = "*";
         row += directionDown ? 1 : -1;
       }
       
@@ -147,7 +154,7 @@ resultsBtn.addEventListener('click', function() {
         
         let decryptedText = text.split("").map((c, i) =>
           alphabet.includes(c) ?
-          alphabet[(alphabet.indexOf(c) - alphabet.indexOf(key[i]) + 26) % 26] // Reverse the shift
+          alphabet[(alphabet.indexOf(c) - alphabet.indexOf(key[i]) + 26) % 26]
           :
           c
         ).join("");
@@ -167,15 +174,21 @@ resultsBtn.addEventListener('click', function() {
         String.fromCharCode((((modInverse * (c.toUpperCase().charCodeAt(0) - 65 - b + 26)) % 26) + 65)) : c
       ).join("");
     };
+    //Sets the value
     resultsInput.textContent = results;
     return;
   }
+  
   const resultsInput = document.getElementById('results');
   const resultsDiv = document.getElementById('resultsDiv')
+  
+  //decrypts the text
   decryptingText(name, text);
-  const decryptedText = document.getElementById('results').value;
-  if (!errorLoggerAFTER(decryptedText)) {
+  
+  //Run the error handler
+  if (!errorLoggerAFTER(resultsInput.value)) {
     return false;
   };
+  //Displays the results output
   resultsDiv.style.display = "flex";
 });
