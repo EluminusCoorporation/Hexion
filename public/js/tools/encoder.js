@@ -148,9 +148,9 @@ resultsBtn.addEventListener('click', function() {
   const resultsInput = document.getElementById('results');
   const resultsDiv = document.getElementById('resultsDiv');
   
-  //Displays the output
-  resultsDiv.style.display = "flex";
-  
   //Encodes the text
   encodingText(name, text);
+  
+  //Displays the output
+  resultsDiv.style.display = "flex";
 });

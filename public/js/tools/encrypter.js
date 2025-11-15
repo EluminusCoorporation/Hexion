@@ -157,9 +157,9 @@ resultsBtn.addEventListener('click', function() {
   const resultsInput = document.getElementById('results');
   const resultsDiv = document.getElementById('resultsDiv')
   
-  //Displays the output
-  resultsDiv.style.display = "flex";
-  
   //Encrypts the text through the function
   encryptingText(name, text);
+  
+  //Displays the output
+  resultsDiv.style.display = "flex";
 });
