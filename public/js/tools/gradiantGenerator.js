@@ -53,6 +53,17 @@ colorDropdownmenu.addEventListener('click', () => {
   colorsGridContainer.classList.toggle('show');
 })
 
+//Updates the gradient
+function updateGradient() {
+  //Refreshes the colors
+  const colorNames = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
+  
+  //Updates the gradient accordingly
+  const gradientText = document.getElementById('previewText');
+  gradientText.style.background = `linear-gradient(to right, ${colorNames.join(", ")})`
+  gradientText.style.backgroundClip = "text";
+}
+
 //Creates an pickr
 function createPickr(el, color) {
   const colorNameContainer = el.nextElementSibling
@@ -89,7 +100,9 @@ function createPickr(el, color) {
     //Adds the colors on the viewer interface
     colorName.textContent = colorHex
     colorName.style.color = colorHex
+    updateGradient();
   })
+  updateGradient();
 }
 
 //For each container create an pickr

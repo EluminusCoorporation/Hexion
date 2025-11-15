@@ -391,11 +391,9 @@ html {
 }
 
 .preview-screen p {
-  background: linear-gradient(to right, springgreen);
   color: transparent;
   width: 100%;
   word-wrap: break-word;
-  background-clip: text;
 }
 
 .results-div i {
