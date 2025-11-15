@@ -53,13 +53,13 @@ router.get("/errorDebugger", (req, res) => {
   };
   res.render('tools/errorDebugger', pageInfo);
 });
-router.get("/gradiantGenerator", (req, res) => {
+router.get("/gradientGenerator", (req, res) => {
   const pageInfo = {
-    title: "Gradiant Generator",
-    description: "The gradiant generator, tool of hexion, here you can add gradiant to any text make it beautiful, you get chance to fully customize you're text from just bolding it to underlining it",
-    url: `${config.url}/tools/gradiantGenerator`
+    title: "Gradient Generator",
+    description: "The gradient generator, tool of hexion, here you can add gradient to any text make it beautiful, you get chance to fully customize you're text from just bolding it to underlining it",
+    url: `${config.url}/tools/gradientGenerator`
   };
-  res.render('tools/gradiantGenerator', pageInfo);
+  res.render('tools/gradientGenerator', pageInfo);
 });
 
 //Exports the router

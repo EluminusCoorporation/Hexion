@@ -5,7 +5,7 @@
 
 # Features #
 - **Error debugging**
-- **Gradiant generator**
+- **Gradient generator**
 - **Decoding and Encoding**
 - **Encrypting and Decrypting**
 - **Image Worker**
