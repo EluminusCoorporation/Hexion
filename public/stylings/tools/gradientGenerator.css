@@ -391,6 +391,7 @@ html {
 }
 
 .preview-screen p {
+  font-family: "Pixelify Sans", Sans-Serif;
   color: transparent;
   width: 100%;
   word-wrap: break-word;
