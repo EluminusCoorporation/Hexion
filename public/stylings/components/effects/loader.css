@@ -1,6 +1,7 @@
 .loader {
   position: fixed;
   inset: 0;
+  touch-action: none;
   background-color: var(--bg-dark);
   display: flex;
   justify-content: center;
