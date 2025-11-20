@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=format_overline" />
   <link rel="stylesheet" href="/stylings/tools/gradientGenerator.css">
   <link rel="stylesheet" href="/stylings/components/header.css">
   <link rel="stylesheet" href="/stylings/components/footer.css">
@@ -76,6 +77,14 @@
             <li><p class="select-item"><#rrggbb></p></li>
           </div>
         </ul>
+      </div>
+      <div class="styler-container" id="stylerContainer">
+        <label class="styler-label"><input type="checkbox" class="stylers" data-style="bold" /><i class='bx bx-bold icon'></i></label>
+        <label class="styler-label"><input type="checkbox" class="stylers" data-style="underline" /><i class='bx bx-underline icon'></i></label>
+        <label class="styler-label"><input type="checkbox" class="stylers" data-style="italic" /><i class='bx bx-italic icon'></i></label>
+        <label class="styler-label"><input type="checkbox" class="stylers" data-style="strikethrough" /><i class='bx bx-strikethrough icon'></i></label>
+        <label class="styler-label"><input type="checkbox" class="stylers" /><span class="material-symbols-outlined icon" data-style="overline">format_overline</span></label>
+        <label class="styler-label"><input type="checkbox" class="stylers" data-style="obfuscation" /><i class='bx bx-magic-wand icon'></i></label>
       </div>
       <input type="text" name="textToConvert" id="inputText" placeholder="Text" class="ttc" maxlength="50" value="Hexion" />
       

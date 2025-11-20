@@ -182,6 +182,44 @@ inputText.addEventListener('input', (event) => {
   previewText.textContent = text;
 });
 
+const stylers = document.querySelectorAll('.stylers');
+stylers.forEach((styler) => {
+  style.addEventListener("change", function(event) {
+    const gradientText = document.getElementById('previewText');
+    const stylerType = this.dataset.style;
+    if (this.checked) {
+      if (stylerType === "bold") {
+        gradientText.style.fontWeight = "bold";
+      } else if (stylerType === "underline") {
+        gradientText.style.textDecoration += " underline";
+      } else if (stylerType === "italic") {
+        gradientText.style.fontStyle = "italic";
+      } else if (stylerType === "strikethroug") {
+        gradientText.style.textDecoration += " line-through"
+      } else if (stylerType === "overline") {
+        gradientText.style.textDecoration += " overline"
+      } else if (stylerType === "obfuscation") {
+      
+      }
+    } else {
+      if (stylerType === "bold") {
+        gradientText.style.fontWeight = "none";
+      } else if (stylerType === "underline") {
+        gradientText.style.textDecoration += "none";
+      } else if (stylerType === "italic") {
+        gradientText.style.fontStyle = "none";
+      } else if (stylerType === "strikethroug") {
+        gradientText.style.textDecoration += "none"
+      } else if (stylerType === "overline") {
+        gradientText.style.textDecoration += "none"
+      } else if (stylerType === "obfuscation") {
+      
+      }
+    }
+    
+  });
+});
+
 //results button event listener
 resultsBtn.addEventListener('click', function() {
   //Gets the inputed 

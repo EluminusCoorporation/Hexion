@@ -336,6 +336,48 @@ html {
   border-radius: 7px;
 }
 
+.styler-container {
+  display: flex;
+  flex-direction: row;
+  gap: .5em;
+  justify-content: center;
+}
+
+.styler-label {
+  position: relative;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.styler-label .icon {
+  position: absolute;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+}
+
+.stylers {
+  appearance: none;
+  border-radius: .4em;
+  padding: 1em;
+  background-color: var(--bg);
+  box-shadow: 0 4px 4px var(--shadow);
+  border: 1px solid var(--border-muted);
+  transition: .5s all;
+}
+
+.stylers:checked {
+  box-shadow: 0 2px 2px var(--shadow);
+  border-bottom-width: .3em;
+}
+.stylers:checked ~ .icon {
+  color: var(--primary);
+}
+
 .ttc {
   border-radius: 15px;
   width: 75%;
