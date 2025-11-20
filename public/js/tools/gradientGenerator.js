@@ -168,6 +168,7 @@ colorsContainer.addEventListener('click', (event) => {
   if (event.target.classList.contains('delete-icon')) {
     const container = event.target.parentNode;
     container.remove();
+    updateGradient()
   }
 })
 
