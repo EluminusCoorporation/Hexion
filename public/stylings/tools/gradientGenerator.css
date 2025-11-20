@@ -433,7 +433,8 @@ html {
 }
 
 .preview-screen p {
-  font-family: "Pixelify Sans", Sans-Serif;
+  font-family: "Press Start 2P", system-ui;
+  font-size: .7em;
   color: transparent;
   width: 100%;
   word-wrap: break-word;
