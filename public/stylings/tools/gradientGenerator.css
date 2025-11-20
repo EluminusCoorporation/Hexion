@@ -358,6 +358,7 @@ html {
   display: flex;
   justify-self: center;
   align-self: center;
+  font-size: 1em;
 }
 
 .stylers {
@@ -432,12 +433,64 @@ html {
   box-shadow: 0 2px 2px var(--shadow);
 }
 
-.preview-screen p {
+.preview-text {
+  position: relative;
   font-family: "Press Start 2P", system-ui;
   font-size: .7em;
   color: transparent;
-  width: 100%;
   word-wrap: break-word;
+}
+
+.preview-text::after {
+  content: "";
+  display: none;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradientXXX);
+}
+
+.preview-text.underlined::after {
+  display: unset;
+}
+
+.preview-text::before {
+  content: "";
+  display: none;
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradientXXX);
+}
+
+.preview-text.overline::before {
+  display: unset;
+}
+
+.preview-text span {
+  position: relative;
+  background-clip: text !important;
+  background: var(--gradientXXX);
+}
+
+.preview-text span::after {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  background: var(--gradientXXX);
+}
+
+.preview-text.strike span::after {
+  display: unset;
 }
 
 .results-div i {

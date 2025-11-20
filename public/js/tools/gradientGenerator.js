@@ -60,8 +60,7 @@ function updateGradient() {
   
   //Updates the gradient accordingly
   const gradientText = document.getElementById('previewText');
-  gradientText.style.background = `linear-gradient(to right, ${colorNames.join(", ")})`
-  gradientText.style.backgroundClip = "text";
+  document.documentElement.style.setProperty("--gradientXXX", `linear-gradient(to right, ${colorNames.join(", ")})`)
 }
 
 //Creates an pickr
@@ -184,34 +183,35 @@ inputText.addEventListener('input', (event) => {
 
 const stylers = document.querySelectorAll('.stylers');
 stylers.forEach((styler) => {
-  style.addEventListener("change", function(event) {
+  styler.addEventListener("change", function(event) {
     const gradientText = document.getElementById('previewText');
+    const previewTextContainer = document.getElementById('previewText');
     const stylerType = this.dataset.style;
     if (this.checked) {
       if (stylerType === "bold") {
         gradientText.style.fontWeight = "bold";
       } else if (stylerType === "underline") {
-        gradientText.style.textDecoration += " underline";
+        previewTextContainer.classList.add("underlined");
       } else if (stylerType === "italic") {
         gradientText.style.fontStyle = "italic";
-      } else if (stylerType === "strikethroug") {
-        gradientText.style.textDecoration += " line-through"
+      } else if (stylerType === "strikethrough") {
+        previewTextContainer.classList.add("strike");
       } else if (stylerType === "overline") {
-        gradientText.style.textDecoration += " overline"
+        previewTextContainer.classList.add("overline");
       } else if (stylerType === "obfuscation") {
       
       }
     } else {
       if (stylerType === "bold") {
-        gradientText.style.fontWeight = "none";
+        gradientText.style.fontWeight = "unset";
       } else if (stylerType === "underline") {
-        gradientText.style.textDecoration += "none";
+        previewTextContainer.classList.remove("underlined");
       } else if (stylerType === "italic") {
-        gradientText.style.fontStyle = "none";
-      } else if (stylerType === "strikethroug") {
-        gradientText.style.textDecoration += "none"
+        gradientText.style.fontStyle = "unset";
+      } else if (stylerType === "strikethrough") {
+        previewTextContainer.classList.remove("strike");
       } else if (stylerType === "overline") {
-        gradientText.style.textDecoration += "none"
+        previewTextContainer.classList.remove("overline");
       } else if (stylerType === "obfuscation") {
       
       }
@@ -229,7 +229,7 @@ resultsBtn.addEventListener('click', function() {
     return;
   };
   
-  function encodingText(name, text) {
+  function generateOutput(name, text) {
     let results;
     
     resultsInput.textContent = results;
@@ -238,5 +238,5 @@ resultsBtn.addEventListener('click', function() {
   const resultsInput = document.getElementById('results');
   const resultsDiv = document.getElementById('resultsDiv')
   resultsDiv.style.display = "flex";
-  encodingText(name, text);
+  generateOutput(name, text);
 });
