@@ -14,7 +14,6 @@ Hexion • Developet tools
 
 //Import Required modules
 const express = require('express');
-const figlet = require('figlet');
 const favicon = require('serve-favicon');
 const path = require('path');
 const { execSync } = require('child_process');
@@ -34,6 +33,7 @@ const ASSETS_DIR = path.join(__dirname, 'assets');
 //Import in-app middlewares
 const onMaintenance = require('./middleware/onMaintenance');
 const setHeaders = require('./middleware/setHeaders');
+const consoleStartUp = require('./utils/consoleStartUp');
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
 //Initialize the logger module
@@ -42,20 +42,8 @@ const logger = require('./utils/logger');
 //Initialize the express app
 const app = express();
 
-//Initialize the modules that require app to be Initialized
-
-//clears the screen
-process.stdout.write('\x1Bc');
-
-//sends the banner
-console.log(figlet.textSync("Hexion", { font: "Standard" }));
-//sends the copyright & version
-const copyright = "© Eluminusco all rights served."
-const version = config.general.version;
-//Gets the total length of spaces to add
-const padLength = process.stdout.columns - version.length - copyright.length;
-//sends it
-console.log(copyright + " ".repeat(Math.max(0, padLength)) + version);
+//Sends the ascii art & info
+consoleStartUp();
 
 //The server starting process starts from here
 logger.info('Starting Server...');
