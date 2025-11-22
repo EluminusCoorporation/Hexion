@@ -5,7 +5,8 @@
   
   "keywords": [
     "Hexion",
-    "programmers",
+    "programming",
+    "coding",
     "tools"
   ],
   
@@ -18,9 +19,8 @@
     "type": "git",
     "url": "git+https://github.com/EluminusCoorporation/Hexion.git"
   },
-  
-  "license": "MIT",
-  "author": "magicdevm",
+
+  "author": "EluminusCo",
   "type": "NodeJS",
   "main": "server.js",
   
