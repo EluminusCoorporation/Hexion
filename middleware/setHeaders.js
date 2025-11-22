@@ -4,9 +4,9 @@ function setHeaders(req, res, next) {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('X-XSS-Protection', '1; mode=block');
-
-  res.setHeader("X-Powered-By", `Hexion`);
-  res.setHeader("X-Heliactyl", `Hexion v${config.version}`);
+  
+  res.setHeader("X-Powered-By", `EluminusCo`);
+  res.setHeader("X-Hexion", `Hexion v${config.general.version}`);
   next();
 };
 

@@ -154,6 +154,12 @@ const PORT = config.general.port || 8000;
 app.listen(PORT, () => {
   logger.info(`Server online on Port:${PORT}`);
 }).on('error', (error) => {
-  if (error.code === "EADDRINUSE") logger.error(`Port: ${config.port} is already in use`)
+  //if error is an port in use error, log
+  if (error.code === "EADDRINUSE") logger.error(`Port: ${config.general.port} is already in use`)
   logger.error(`Could not start server\n\n${error}`);
+});
+
+//If any other exceptions catch instead of crashing
+process.on('uncaughtException', (error) => {
+  logger.error('Uncaught Exception:', error);
 });
