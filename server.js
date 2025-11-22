@@ -166,5 +166,6 @@ const PORT = config.general.port || 8000;
 app.listen(PORT, () => {
   logger.info(`Server online on Port:${PORT}`);
 }).on('error', (error) => {
+  if (error.code === "EADDRINUSE") logger.error(`Port: ${config.port} is already in use`)
   logger.error(`Could not start server\n\n${error}`);
 });
