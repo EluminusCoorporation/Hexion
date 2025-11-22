@@ -1,6 +1,7 @@
 //Import Required modules
 const express = require('express');
 const figlet = require('figlet');
+const favicon = require('serve-favicon');
 const path = require('path');
 const { execSync } = require('child_process');
 const rateLimit = require('express-rate-limit');
@@ -11,6 +12,10 @@ const config = require('./config.json');
 const api = require('./routers/api');
 const tools = require('./routers/tools');
 const documents = require('./routers/documents');
+
+//Internal path
+const PUBLIC_DIR = path.join(__dirname, 'public');
+const ASSETS_DIR = path.join(__dirname, 'assets');
 
 //Import in-app middlewares
 const onMaintenance = require('./middleware/onMaintenance');
@@ -24,7 +29,6 @@ const app = express();
 
 //Initialize the modules that require app to be Initialized
 
-//The server starting process starts from here
 //clears the screen
 process.stdout.write('\x1Bc');
 
@@ -38,20 +42,23 @@ const padLength = process.stdout.columns - version.length - copyright.length;
 //sends it
 console.log(copyright + " ".repeat(Math.max(0, padLength)) + version);
 
+//The server starting process starts from here
 logger.info('Starting Server...');
+
 //if on maintenance mode
 if (config.general.onMaintenance === true) logger.info('Server starting under Maintenance Mode.')
 
 //Set up view engine for express
 app.set("view engine", "ejs");
 
+//Setup static directories
+app.use(express.static(PUBLIC_DIR));
+app.use(express.static(ASSETS_DIR));
+
 //Enable required middlewares
 app.use(express.json({ limit: "200mb" }));
 app.use(express.urlencoded({ extended: false, limit: "200mb" }));
-
-//Setup static directories
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'assets')));
+app.use(favicon(path.join(ASSETS_DIR, 'icons/favicon.ico')));
 
 //Checks & installs required python packages
 try {
