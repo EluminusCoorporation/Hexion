@@ -33,6 +33,7 @@ const ASSETS_DIR = path.join(__dirname, 'assets');
 
 //Import in-app middlewares
 const onMaintenance = require('./middleware/onMaintenance');
+const setHeaders = require('./middleware/setHeaders');
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
 //Initialize the logger module
@@ -95,6 +96,7 @@ try {
 
 //Setting up in-app middlewares (before)
 app.use(onMaintenance);
+app.use(setHeaders);
 
 //Setting up rate limiters
 const limiter = rateLimit({
