@@ -1,3 +1,17 @@
+/*
+
+Hexion • Developet tools
+
+ | | | | _____  _(_) ___  _ __
+ | |_| |/ _ \ \/ / |/ _ \| '_ \
+ |  _  |  __/>  <| | (_) | | | |
+ |_| |_|\___/_/\_\_|\___/|_| |_|
+ 
+© Eluminusco all rights served.       v1.0-demo
+*/
+
+"use strict";
+
 //Import Required modules
 const express = require('express');
 const figlet = require('figlet');
