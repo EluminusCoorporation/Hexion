@@ -2,10 +2,11 @@
 
 Hexion • Developet tools
 
- | | | | _____  _(_) ___  _ __
- | |_| |/ _ \ \/ / |/ _ \| '_ \
- |  _  |  __/>  <| | (_) | | | |
- |_| |_|\___/_/\_\_|\___/|_| |_|
+  _   _           _              
+ | | | | _____  _(_) ___  _ __   
+ | |_| |/ _ \ \/ / |/ _ \| '_ \  
+ |  _  |  __/>  <| | (_) | | | | 
+ |_| |_|\___/_/\_\_|\___/|_| |_| 
  
 © Eluminusco all rights served.       v1.0-demo
 */
@@ -103,7 +104,8 @@ app.get("/home", (req, res) => {
   const pageInfo = {
     title: "Home",
     description: "The official home page of hexion, here you will find all the information related to hexion once you get ready you can start you're journey on hexion.",
-    url: `${config.general.domain}/home`
+    url: `${config.general.domain}/home`,
+    path: "home"
   };
   res.render('home', pageInfo);
 });
@@ -111,7 +113,8 @@ app.get("/dashboard", (req, res) => {
   const pageInfo = {
     title: "Dashboard",
     description: "The dashboard of hexion, here you can access all our powerful tools to enpower you're projects.",
-    url: `${config.general.domain}/dashboard`
+    url: `${config.general.domain}/dashboard`,
+    path: "dashboard"
   };
   res.render('dashboard', pageInfo);
 });
@@ -119,7 +122,8 @@ app.get("/donation", (req, res) => {
   const pageInfo = {
     title: "Donation",
     description: "The donation page of hexion, here you can donate us some of you're precious money to help us run this website longer for you developers.",
-    url: `${config.general.url}/donation`
+    url: `${config.general.url}/donation`,
+    path: "donation"
   };
   res.render('donation', pageInfo);
 });
@@ -127,7 +131,8 @@ app.get("/codeBook", (req, res) => {
   const pageInfo = {
     title: "Code Book",
     description: "The code book of hexion, here you will find all the information related to developing, coding, programming, computer science and much much more.",
-    url: `${config.general.domain}/codeBook`
+    url: `${config.general.domain}/codeBook`,
+    path: "codeBook"
   };
   res.render('codeBook', pageInfo);
 });
@@ -135,7 +140,8 @@ app.get("/cources", (req, res) => {
   const pageInfo = {
     title: "Cources",
     description: "The official cources of hexion, here you will find many cources related to coding from simple to advance.",
-    url: `${config.general.domain}/cources`
+    url: `${config.general.domain}/cources`,
+    path: "cources"
   };
   res.render('cources', pageInfo);
 });

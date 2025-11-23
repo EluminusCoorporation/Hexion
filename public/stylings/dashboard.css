@@ -78,8 +78,6 @@ html {
   display: flex;
   padding-right: 25px;
   z-index: 2;
-  letter-spacing: .2em;
-  font-family: "Jockey One", sans-serif;
 }
 
 .toolboxes-container .tool a {

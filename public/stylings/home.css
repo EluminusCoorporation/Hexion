@@ -167,7 +167,6 @@ html {
   font-size: 2em;
   text-align: center;
   width: 100%;
-  font-family: "BHH Sans Bogle", sans-serif;
   text-shadow: 0 4px 1px var(--shadow);
 }
 
@@ -242,10 +241,6 @@ html {
   background-image: conic-gradient(purple 0deg, transparent 60deg, transparent 180deg, purple 180deg, transparent 240deg);
 }
 
-.features .feature h2 {
-  font-family: "Orbitron", sans-serif;
-}
-
 .features .feature p {
   color: var(--text-muted);
   margin-top: 2em;
@@ -318,7 +313,6 @@ html {
   font-size: 45px;
   line-height: 57px;
   color: var(--text);
-  font-family: "Jockey One", sans-serif;
 }
 
 .faq-heading p {
