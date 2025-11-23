@@ -7,7 +7,7 @@ function onMaintenance(req, res, next) {
     return;
   };
   
-  res.status(503).render('error_handling/errorbody', { error: `${config.general.siteName} is currently under maintenance.`, errorcode: "Maintenance", errorurl: "Please wait for a few hours and try again later." });
+  res.status(503).render('error_handling/errorbody', { error: { title: `${config.general.siteName} is currently under maintenance.`, message: 'Please wait for a few moments and try again later.'}, errorcode: "Maintenance", errorurl: config.general.domain });
 };
 
 module.exports = onMaintenance;
