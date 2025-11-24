@@ -1,30 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  font-family: 'poppins', Sans-Serif;
-  background-color: var(--bg-dark);
-  /* Prevents any scrolling issues */
-  box-sizing: border-box;
-}
-
-.container {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  min-height: 100vh;
-  /* Ensures the container takes the full height of the viewport */
-}
-
 .pageH2 {
   margin: 20px;
   background: linear-gradient(to right, transparent 5%, orangered, transparent 95%);

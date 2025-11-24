@@ -1,95 +1,46 @@
-<script src="/js/api/subMenu.js" defer></script>
-<script src="/js/api/sideBar.js" defer></script>
-<script src="/js/api/close.js" defer></script>
-<link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="background-sidebar" id="backgroundSideBar"></div>
-<header class="header-container">
-  <nav class="nav-bar">
-    <div class="header-name">
-      <i class="bx bx-menu-wider" id="sideBarButton"></i>
-      <img src="https://i.ibb.co/RksHmpP7/logo.webp" />
-      <h1>Hexion</h1>
-    </div>
-    <aside class="side-bar" id="sideBar">
-      <ul>
-        <li>
-          <a href="/dashboard" class="dashboard">
-            <i class="bx bx-dashboard-alt"></i>
-            Dashboard
-          </a>
-        </li>
-        <li class="sub-menu-button">
-          <span class="tools">
-            <i class="bx bx-spanner"></i>
-            Tools
-            <i class="bx bx-chevron-up toggle-button"></i>
-          </span>
-          <ul class="sub-menu">
-            <div>
-              <li>
-                <a href="/tools/encoder">
-                  Encoder
-                </a>
-              </li>
-              <li>
-                <a href="/tools/decoder">
-                  Decoder
-                </a>
-              </li>
-              <li>
-                <a href="/tools/encrypter">
-                  Encrypter
-                </a>
-              </li>
-              <li>
-                <a href="/tools/decrypter">
-                  Decrypter
-                </a>
-              </li>
-              <li>
-                <a href="/tools/errorDebugger">
-                  Error Debugger
-                </a>
-              </li>
-              <li>
-                <a href="/tools/gradientGenerator">
-                  Gradient Generator
-                </a>
-              </li>
-            </div>
-          </ul>
-        </li>
-        <li>
-          <a href="/donation" class="donation">
-            <i class='bx bxs-gift'></i>
-            Donation
-          </a>
-        </li>
-        <li>
-          <a href="/cources" class="cources">
-            <i class="bx bx-book-library"></i>
-            Cources
-          </a>
-        </li>
-        <li>
-          <a href="/codeBook" class="codebook">
-            <i class="bx bx-book-bookmark" /></i>
-            Code Book
-          </a>
-        </li>
-      </ul>
-    </aside>
-  </nav>
-</header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title><%= title %></title>
+  
+  <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+  <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  
+  <% if (typeof extraLinks !== "undefined") { %>
+    <%- extraLinks %>
+  <% } %>
+  
+  <link rel="stylesheet" href="/stylings/<%= path %>.css">
+  <link rel="stylesheet" href="/stylings/components/navbar.css" id="navbarLink">
+  <link rel="stylesheet" href="/stylings/components/footer.css">
+  <link rel="stylesheet" href="/stylings/components/effects/loader.css">
+  <link rel="stylesheet" href="/stylings/__global_variables__.css">
+  
+  <script src="/js/<%= path %>.js" type="module" defer></script>
+  <script src="/js/effects/loader.js" defer></script>
+  
+  <meta property="description" content=<%= description %>>
+  <meta property="keywords" content="Hexion, programming, coding, tools, free">
+  <meta property="author" content="EluminusCo"
+  >
+  <meta property="og:title" content="Hexion • <%= title %>">
+  <meta property="og:description" content=<%= description %>>
 
-<div class="status-container" id="statusContainer">
-  <div class="close-btn" id="closeButton">
-    <i class="bx bx-x"></i>
-  </div>
-  <div class="status-header">
-    <i id="statusIcon"></i>
-    <h5 class="status-title" id="statusTitle"></h5>
-  </div>
-  <p id="statusMessage"></p>
-</div>
+  <meta property="og:image" content="https://i.ibb.co/xKBYKNRz/Hexion-Banner.webp">
+  <meta property="og:url" content=<%= url %>>
+  <meta property="og:type" content="website">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Hexion • <%= title %>">
+  <meta property="twitter:description" content=<%= description %>>
+  <meta property="twitter:image" content="https://i.ibb.co/xKBYKNRz/Hexion-Banner.webp">
+</head>
