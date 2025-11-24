@@ -211,13 +211,14 @@ html {
     height: 100vh;
     visibility: hidden;
     z-index: 4;
+    opacity: 0;
     background: transparent;
+    background-color: black;
     transition: all ease .3s;
   }
   
   .background-sidebar.open {
-    background-color: black;
-    opacity: .2;
+    opacity: .4;
     visibility: visible;
   }
   
