@@ -1,24 +1,21 @@
 // Gets the required modules
-const express = require('express');
-const logger = require('../utils/logger.js')
+const express = require("express");
+const logger = require("../utils/logger.js");
 //Debugger modules
-const HTMLHint = require('htmlhint');
-const stylelint = require('stylelint');
-const { ESLint } = require('eslint');
-const { spawnSync } = require('child_process');
+const HTMLHint = require("htmlhint");
+const stylelint = require("stylelint");
+const { ESLint } = require("eslint");
+const { spawnSync } = require("child_process");
 const router = express.Router();
 
 //Creates an POST router for the frontend to access
-router.post('/debugger', async (req, res) => {
+router.post("/debugger", async (req, res) => {
   //Gets the json data sent from the frontend
-  const {
-    type,
-    code
-  } = req.body;
-  
+  const { type, code } = req.body;
+
   //Creates an report var to store debugger results
   let report;
-  
+
   try {
     //Searches for the type of debugger
     if (type === "Html") {
@@ -45,14 +42,14 @@ router.post('/debugger', async (req, res) => {
         "tag-pair": true,
         "tagname-lowercase": true,
         "title-require": false
-      }
+      };
       //Stores the results in the provided var
       report = HTMLHint.HTMLHint.verify(code, config);
     } else if (type === "Css") {
       report = await stylelint.lint({
         code: code,
         //Extended ruleset support
-        config: { extends: 'stylelint-config-standard' },
+        config: { extends: "stylelint-config-standard" }
       });
     } else if (type === "Java Script") {
       const eslint = new ESLint({
@@ -62,33 +59,31 @@ router.post('/debugger', async (req, res) => {
           //Some custon rules
           rules: {
             //If no semi colon error
-            semi: ['error', 'always'],
+            semi: ["error", "always"],
             //If wrong usage of quotes warn
-            quotes: ['warn', 'single'],
-          },
-        },
+            quotes: ["warn", "single"]
+          }
+        }
       });
       report = await eslint.lintText(code);
     } else if (type === "Python") {
       //Sets up ruff for debugging
       const process = spawnSync("python3", ["-m", "flake8", "-"], {
         input: code,
-        encoding: "utf-8",
-        });
-        //Checks for errors
-        if (process.status !== 0) report = process.stdout.toString()
-    }
-    
-    else {
+        encoding: "utf-8"
+      });
+      //Checks for errors
+      if (process.status !== 0) report = process.stdout.toString();
+    } else {
       //If language type is invalid throw error
       res.json({ success: false, report: "Invalid language type selected." });
-    };
+    }
     //Else send the report to the frontend
     res.json({ success: true, report: report });
-  } catch(err) {
+  } catch (err) {
     //If any unexpected errors found report them
     res.json({ success: false, report: err.message });
-  };
+  }
 });
 
 module.exports = router;
