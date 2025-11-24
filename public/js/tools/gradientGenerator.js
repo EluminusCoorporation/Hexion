@@ -175,49 +175,80 @@ colorsContainer.addEventListener('click', (event) => {
 const resultsBtn = document.getElementById('results-btn');
 
 const inputText = document.getElementById('inputText');
+const previewTextContainer = document.getElementById('previewTextContainer');
+
 //realtime input changer
 inputText.addEventListener('input', (event) => {
   const text = event.target.value;
-  const previewText = document.getElementById('previewText');
-  previewText.textContent = text;
+  
+  previewTextContainer.dataset.text = text;
+  previewTextContainer.textContent = text;
 });
+
+function startObfuscation(element) {
+  //Stores the text
+  const original = element.dataset.text
+  
+  //Random letters
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+  
+  //Time to update on
+  let interval = setInterval(() => {
+    let scrambled = "";
+    for (let i = 0; i < original.length; i++) {
+      //Random letters being replaced
+      scrambled += chars[Math.floor(Math.random() * chars.length)];
+    }
+    //Changes the content
+    element.textContent = scrambled;
+  }, 50);
+  
+  element._obfInterval = interval;
+}
+
+function stopObfuscation(element) {
+  //Stops the obfuscation
+  if (element._obfInterval) {
+    clearInterval(element._obfInterval);
+    element.textContent = element.dataset.text;
+  }
+}
 
 const stylers = document.querySelectorAll('.stylers');
 stylers.forEach((styler) => {
   styler.addEventListener("change", function(event) {
     const gradientText = document.getElementById('previewText');
-    const previewTextContainer = document.getElementById('previewText');
+    
     const stylerType = this.dataset.style;
     if (this.checked) {
       if (stylerType === "bold") {
         gradientText.style.fontWeight = "bold";
       } else if (stylerType === "underline") {
-        previewTextContainer.classList.add("underlined");
+        previewText.classList.add("underlined");
       } else if (stylerType === "italic") {
         gradientText.style.fontStyle = "italic";
       } else if (stylerType === "strikethrough") {
-        previewTextContainer.classList.add("strike");
+        previewText.classList.add("strike");
       } else if (stylerType === "overline") {
-        previewTextContainer.classList.add("overline");
+        previewText.classList.add("overline");
       } else if (stylerType === "obfuscation") {
-      
+        startObfuscation(previewTextContainer);
       }
     } else {
       if (stylerType === "bold") {
         gradientText.style.fontWeight = "unset";
       } else if (stylerType === "underline") {
-        previewTextContainer.classList.remove("underlined");
+        previewText.classList.remove("underlined");
       } else if (stylerType === "italic") {
         gradientText.style.fontStyle = "unset";
       } else if (stylerType === "strikethrough") {
-        previewTextContainer.classList.remove("strike");
+        previewText.classList.remove("strike");
       } else if (stylerType === "overline") {
-        previewTextContainer.classList.remove("overline");
+        previewText.classList.remove("overline");
       } else if (stylerType === "obfuscation") {
-      
+        stopObfuscation(previewTextContainer);
       }
     }
-    
   });
 });
 
