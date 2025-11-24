@@ -20,13 +20,13 @@ function errorHandler(err, req, res, next) {
   const errorInfo = errors[status];
   
   //Sends data to the frontend
-  res.status(status).render('error_handling/errorbody', { error: errorInfo, errorcode: status, errorurl: req.url });
+  res.status(status).render('error/errorbody', { error: errorInfo, errorcode: status, errorurl: req.url });
 }
 
 function notFoundHandler(req, res, next) {
   const errorInfo = errors[404];
   //separate middleware for 404
-  res.status(404).render('error_handling/errorbody', { error: errorInfo, errorurl: req.url, errorcode: '404' });
+  res.status(404).render('error/errorbody', { error: errorInfo, errorurl: req.url, errorcode: '404' });
 }
 
 module.exports = { errorHandler, notFoundHandler };
