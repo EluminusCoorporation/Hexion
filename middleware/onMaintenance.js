@@ -1,4 +1,5 @@
-const config = require("../config.json");
+const loadConfig = require("../utils/loadConfig");
+const config = loadConfig("./config.toml");
 
 function onMaintenance(req, res, next) {
   if (config.general.onMaintenance === false)

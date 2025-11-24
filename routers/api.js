@@ -1,11 +1,13 @@
 // Gets the required modules
 const express = require("express");
 const logger = require("../utils/logger.js");
+
 //Debugger modules
 const HTMLHint = require("htmlhint");
 const stylelint = require("stylelint");
 const { ESLint } = require("eslint");
 const { spawnSync } = require("child_process");
+
 const router = express.Router();
 
 //Creates an POST router for the frontend to access

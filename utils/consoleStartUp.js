@@ -1,5 +1,6 @@
 const figlet = require("figlet");
-const config = require("../config.json");
+const loadConfig = require("./loadConfig");
+const config = loadConfig("./config.toml");
 
 function consoleStartUp() {
   //clears the screen

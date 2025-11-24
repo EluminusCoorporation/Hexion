@@ -3,7 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 //Imports the config
-const config = require('../config.json');
+const loadConfig = require('../utils/loadConfig');
+const config = loadConfig("./config.toml");
 
 router.get("/", (req, res) => {
   //Redirects to tos

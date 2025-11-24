@@ -1,4 +1,5 @@
-const config = require("../config.json");
+const loadConfig = require("../utils/loadConfig");
+const config = loadConfig("./config.toml");
 
 function setHeaders(req, res, next) {
   res.setHeader('X-Content-Type-Options', 'nosniff');

@@ -20,7 +20,8 @@ const path = require('path');
 const { execSync } = require('child_process');
 const rateLimit = require('express-rate-limit');
 //Import the config
-const config = require('./config.json');
+const loadConfig = require('./utils/loadConfig');
+const config = loadConfig('./config.toml');
 
 //Import routers
 const api = require('./routers/api');
