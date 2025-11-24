@@ -11,9 +11,18 @@ html {
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-family: 'poppins', Sans-Serif;
+  font-family: 'Inter', Sans-Serif;
+  /* Prevents any scrolling issues */
   box-sizing: border-box;
   background-color: var(--bg-dark);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  /* Ensures the container takes the full height of the viewport */
 }
 
 .fade-in-d {
@@ -30,14 +39,6 @@ html {
 .fade-in-d.reversed {
   opacity: 0;
   transform: translateY(-30px);
-}
-
-.container {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  min-height: 100vh;
-  /* Ensures the container takes the full height of the viewport */
 }
 
 .image-wrapper {

@@ -11,7 +11,7 @@ html {
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-family: 'poppins', Sans-Serif;
+  font-family: 'Inter', Sans-Serif;
   /* Prevents any scrolling issues */
   box-sizing: border-box;
   background-color: var(--bg-dark);

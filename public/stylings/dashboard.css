@@ -48,13 +48,16 @@
 
 .toolboxes-container .tool h3 {
   font-size: 2em;
-  display: flex;
   padding-right: 25px;
   z-index: 2;
 }
 
 .toolboxes-container .tool a {
   z-index: 2;
+  display: flex;
+  gap: .5em;
+  text-decoration: none;
+  align-items: center;
 }
 
 .toolboxes-container .tool button {
@@ -150,7 +153,6 @@
 
 .toolboxes-container .tool button i {
   font-size: 1em;
-  margin-right: 8px;
   transition: transform .5s ease;
 }
 
@@ -158,15 +160,15 @@
   transform: rotate(-45deg);
 }
 
-#button-icon {
+.button-icon {
   transition: all .5s;
 }
 
-#button-text.active {
+.button-text.active {
   display: none;
 }
 
-#button-icon.active {
+.button-icon.active {
   font-size: 1.5em;
 }
 
@@ -197,7 +199,6 @@
 .tool-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: .5em;
   margin-bottom: 2em;
-  background-color: transparent !important;
 }
