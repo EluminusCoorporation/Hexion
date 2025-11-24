@@ -4,10 +4,10 @@
 Hexion an multi perpose website it provides tools used to help you create you're project faster. Getting tons of syntax error ? just use our errordebugging it will provide you with the an solution that will fix you're code, you can also learn in our pre built cources in these cources you can learn and write code, follow our simple cources and improve you're coding knowledge or if you want to encode/decode any text or encrypt/decrypt any code you can do that in our website.
 
 # Features
-- **Error debugging**
+- **Error debugger**
 - **Gradient generator**
-- **Decoding and Encoding**
-- **Encrypting and Decrypting**
+- **Decoder and Encoder**
+- **Encrypter and Decrypter**
 - **Image Worker**
 - **Html to app converter**
 - **Request Sender**
