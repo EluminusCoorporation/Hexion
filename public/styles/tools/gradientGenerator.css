@@ -398,6 +398,7 @@
   display: flex;
   padding: 15px;
   width: 75%;
+  overflow-y: scroll;
   align-items: center;
   background-color: var(--bg);
   border-bottom-right-radius: 15px;

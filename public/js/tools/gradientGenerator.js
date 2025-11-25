@@ -251,24 +251,3 @@ stylers.forEach((styler) => {
     }
   });
 });
-
-//results button event listener
-resultsBtn.addEventListener('click', function() {
-  //Gets the inputed 
-  const text = document.getElementById('inputText').value;
-  const title = document.getElementById('dropdown-text');
-  if (!errorLoggerBEFORE(name, text)) {
-    return;
-  };
-  
-  function generateOutput(name, text) {
-    let results;
-    
-    resultsInput.textContent = results;
-    return;
-  };
-  const resultsInput = document.getElementById('results');
-  const resultsDiv = document.getElementById('resultsDiv')
-  resultsDiv.style.display = "flex";
-  generateOutput(name, text);
-});
