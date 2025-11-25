@@ -10,13 +10,13 @@
   padding: 2px;
   background-color: white;
   font-size: .6em;
-  color: springgreen;
+  color: var(--secondary);
   border-radius: 3px;
 }
 
 .dashboard {
   background-color: var(--bg-light);
-  color: var(--primary) !important;
+  color: var(--secondary) !important;
 }
 
 .toolboxes-container {

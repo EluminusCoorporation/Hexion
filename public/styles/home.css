@@ -398,7 +398,7 @@ html {
 }
 
 .faq-box-question.active h4 {
-  color: var(--secondary);
+  color: var(--accent);
 }
 
 .faq-box-answer p {

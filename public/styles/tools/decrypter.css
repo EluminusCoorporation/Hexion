@@ -16,7 +16,7 @@
 
 .tools {
   background-color: var(--bg-light);
-  color: var(--primary) !important;
+  color: var(--secondary) !important;
 }
 
 .back-container {
@@ -147,7 +147,7 @@
 
 .select-item.selected {
   transform: translateX(2.5px);
-  background-color: var(--success);
+  background-color: var(--tertiary);
   color: white;
 }
 
