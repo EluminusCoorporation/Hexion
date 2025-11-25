@@ -1,3 +1,5 @@
+import { setStatus } from './errorLogger.js';
+
 document.addEventListener("DOMContentLoaded", () => {
   const toggleCopy = document.getElementById("copy-icon");
 
