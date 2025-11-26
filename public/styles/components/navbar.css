@@ -178,7 +178,7 @@ html {
   cursor: pointer;
 }
 
-@media(max-width: 700px) {
+@media(max-width: 1000px) {
   .nav-bar {
     background: none;
     backdrop-filter: blur(10px);

@@ -51,7 +51,9 @@ consoleStartUp();
 logger.info('Starting Server...');
 
 //if on maintenance mode
-if (config.general.onMaintenance === true) logger.info('Server starting under Maintenance Mode.')
+if (config.general.onMaintenance === true) {
+  logger.info('Server starting under Maintenance Mode.')
+}
 
 //Set up view engine for express
 app.set("view engine", "ejs");
