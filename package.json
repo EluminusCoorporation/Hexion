@@ -21,7 +21,7 @@
   "type": "NodeJS",
   "main": "server.js",
   "scripts": {
-    "start": "node --no-deprecation server.js"
+    "start:production": "node --no-deprecation server.js"
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
