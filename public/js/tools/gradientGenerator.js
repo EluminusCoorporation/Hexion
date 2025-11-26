@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
           event.target.classList.remove('bx-copy');
           event.target.classList.add('bx-check');
           
-          clearTimeout(timeout)
+          clearTimeout(timeout);
           
           // Setting up timeout
           timeout = setTimeout(() => {
@@ -109,13 +109,54 @@ document.querySelectorAll('.color-preview').forEach((el, i) => {
   createPickr(el, "#00FF7F")
 })
 
+function setUpMoverUp(el) {
+  //Gets the parent node of the parentNode of this button
+    const node = el.parentNode.parentNode;
+    const previousSibling = node.previousElementSibling;
+    const parent = node.parentNode;
+    if (node === parent.firstElementChild) return;
+      
+    //Changes the position
+    parent.insertBefore(node, previousSibling);
+    //Reloads the gradient
+    updateGradient();
+}
+
+function setUpMoverDown(el) {
+  //Gets the parent node of the parentNode of this button
+    const node = el.parentNode.parentNode;
+    const nextSibling = node.nextElementSibling;
+    if (nextSibling === null) return;
+      
+    const parent = node.parentNode;
+    //Changes the position
+    parent.insertBefore(node, nextSibling.nextElementSibling);
+    //Reloads the gradient
+    updateGradient();
+}
+
+const moveUp = document.querySelectorAll("#moveUp");
+const moveDown = document.querySelectorAll("#moveDown");
+
+moveUp.forEach((moverUp) => {
+  moverUp.addEventListener("click", function() {
+    setUpMoverUp(this);
+  });
+});
+
+moveDown.forEach((moverDown) => {
+  moverDown.addEventListener("click", function() {
+    setUpMoverDown(this);
+  });
+});
+
 let errorTimeout;
 
 const addColorButton = document.getElementById('addColorButton');
 //add color button
 addColorButton.addEventListener('click', () => {
   const colorsContainer = document.getElementById('colorsContainer');
-  const colorContainer = document.getElementById('colorContainer');
+  const colorContainer = document.querySelector('.use-as-clone');
   
   //copies the original container
   const clonedContainer = colorContainer.cloneNode(true);
@@ -156,8 +197,23 @@ addColorButton.addEventListener('click', () => {
   //creates the pickr
   createPickr(el, "#000000")
   
+  //Reloads the movers
+  const moveUp = clonedContainer.querySelector("#moveUp");
+  const moveDown = clonedContainer.querySelector("#moveDown");
+
+  moveUp.addEventListener("click", function() {
+    setUpMoverUp(this);
+  });
+  
+  moveDown.addEventListener("click", function() {
+    setUpMoverDown(this);
+  });
+  
   //adds the color
   colorsContainer.appendChild(clonedContainer);
+  
+  //Update the required factors
+  updateGradient();
 });
 
 const colorsContainer = document.getElementById('colorsContainer');
