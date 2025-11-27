@@ -10,7 +10,7 @@ function consoleStartUp() {
   console.log(figlet.textSync("Hexion", { font: "Standard" }));
   //sends the copyright & version
   const copyright = "© Eluminusco all rights served.";
-  const version = config.general.version;
+  const version = 'v' + config.general.version;
   //Gets the total length of spaces to add
   const padLength = process.stdout.columns - version.length - copyright.length;
 

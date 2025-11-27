@@ -11,4 +11,4 @@ siteName = "Hexion"
 domain = "https://hexion.dev"
 port = 7000
 onMaintenance = false
-version = "v1.0.0-demo"
+version = "1.0.0-demo"

@@ -1,6 +1,5 @@
 // Gets the required modules
 const express = require("express");
-const logger = require("../utils/logger.js");
 
 //Debugger modules
 const HTMLHint = require("htmlhint");

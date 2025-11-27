@@ -16,6 +16,7 @@ Hexion • Developet tools
 //Import Required modules
 const express = require('express');
 const favicon = require('serve-favicon');
+const chalk = require('chalk');
 const path = require('path');
 const { execSync } = require('child_process');
 const rateLimit = require('express-rate-limit');
@@ -38,9 +39,6 @@ const setHeaders = require('./middleware/setHeaders');
 const consoleStartUp = require('./utils/consoleStartUp');
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
-//Initialize the logger module
-const logger = require('./utils/logger');
-
 //Initialize the express app
 const app = express();
 
@@ -48,11 +46,11 @@ const app = express();
 consoleStartUp();
 
 //The server starting process starts from here
-logger.info('Starting Server...');
+console.log(chalk.white(chalk.bold.yellow('[server]') + ' Starting Server...'));
 
 //if on maintenance mode
 if (config.general.onMaintenance === true) {
-  logger.info('Server starting under Maintenance Mode.')
+  console.log(chalk.white(chalk.bold.yellow('[server]') + ' Starting under Maintenance Mode.'))
 }
 
 //Set up view engine for express
@@ -73,7 +71,7 @@ try {
   execSync("python3 -m flake8 --version", { stdio: "ignore" });
   } catch {
     //if not, install
-    logger.info("Installing dependencies...");
+    console.log(chalk.white(chalk.bokd.yellow('[server]') + " Installing dependencies..."));
     try {
       // Install silently (suppress all logs)
       execSync("python3 -m pip install --user flake8 -q", { stdio: "ignore" });
@@ -81,8 +79,8 @@ try {
       // Verify installation
       execSync("python3 -m flake8 --version", { stdio: "ignore" });
     } catch (err) {
-      logger.error("Could not install a few dependencies\n\n", err.message);
-      return;
+      console.error(chalk.yellow(chalk.bold.yellow('[server]') + " Could not install a few dependencies\n\n"), chalk.gray(err.message));
+      throw err;
     }
   }
 
@@ -161,14 +159,14 @@ app.use(notFoundHandler);
 //Starts the server
 const PORT = config.general.port || 8000;
 app.listen(PORT, () => {
-  logger.info(`Server online on Port:${PORT}`);
+  console.log(chalk.gray(`Hexion v${config.general.version} - webserver online on Port:${PORT}`));
 }).on('error', (error) => {
   //if error is an port in use error, log
-  if (error.code === "EADDRINUSE") logger.error(`Port: ${config.general.port} is already in use`)
-  logger.error(`Could not start server\n\n${error}`);
+  if (error.code === "EADDRINUSE") console.error(chalk.red(chalk.bold.yellow('[server]') + ` Port: ${config.general.port} is already in use`)) 
+  else console.error(chalk.red(chalk.bold.yellow('[server]') + ` Could not start server\n\n${error}`));
 });
 
 //If any other exceptions catch instead of crashing
 process.on('uncaughtException', (error) => {
-  logger.error('Uncaught Exception:', error);
+  console.error(chalk.red(chalk.bold.yellow('[server]') + ' Uncaught Exception:\n\n'), chalk.gray(error));
 });

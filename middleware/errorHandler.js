@@ -1,5 +1,3 @@
-const logger = require('../utils/logger');
-
 //error info for all status codes
 const errors = {
   400: { title: 'Bad Request', message: 'Please input correct values.' },
@@ -11,7 +9,7 @@ const errors = {
 
 function errorHandler(err, req, res, next) {
   //Logs the error stack for debugging purposes
-  logger.error(err.stack);
+  console.error(chalk.gray(err.stack));
   
   //Gets the status code
   const status = err.status || 500;

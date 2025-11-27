@@ -1,5 +1,4 @@
 const fs = require('fs');
-const logger = require('./logger');
 const toml = require('@iarna/toml');
 
 //Sets an placeholder config
@@ -19,7 +18,7 @@ function loadConfig(path= 'config.toml') {
     return config;
   } catch (err) {
     //Throw error if error occured
-    logger.error('An error occured, while reading or parsing the config.\n\n', err);
+    console.error(chalk.white(chalk.bold.blue('[config]') + ' An error occured, while reading or parsing the config.\n\n'), chalk.gray(err));
     throw err;
   };
 };
