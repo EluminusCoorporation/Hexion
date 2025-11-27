@@ -56,6 +56,9 @@ if (config.general.onMaintenance === true) {
 //Set up view engine for express
 app.set("view engine", "ejs");
 
+//Set it to trust proxies
+app.set("trust proxy", true)
+
 //Setup static directories
 app.use(express.static(PUBLIC_DIR));
 app.use(express.static(ASSETS_DIR));
