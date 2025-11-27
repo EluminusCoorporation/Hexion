@@ -18,7 +18,7 @@
     "url": "git+https://github.com/EluminusCoorporation/Hexion.git"
   },
   "author": "EluminusCo",
-  "type": "NodeJS",
+  "type": "CommonJS",
   "main": "server.js",
   "scripts": {
     "start:production": "node --no-deprecation server.js"
