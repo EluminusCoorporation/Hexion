@@ -1,20 +1,27 @@
-const figlet = require("figlet");
+const path = require('path');
+const fs = require('fs');
 const loadConfig = require("./loadConfig");
 const config = loadConfig("./config.toml");
 
 function consoleStartUp() {
   //clears the screen
   process.stdout.write("\x1Bc");
-
+  
+  process.stdout.write('='.repeat(30) + '\n');
   //sends the banner
-  console.log(figlet.textSync("Hexion", { font: "Standard" }));
+  const asciiPath = path.join(__dirname, '../assets', 'ascii-art.txt');
+  let asciiArt = fs.readFileSync(asciiPath, 'utf8');
+  process.stdout.write(asciiArt);
+  
   //sends the copyright & version
-  const copyright = "© Eluminusco all rights served.";
+  const copyright = "© Eluminusco all rights served."
   const version = 'v' + config.general.version;
   //Gets the total length of spaces to add
   const padLength = process.stdout.columns - version.length - copyright.length;
 
-  console.log(copyright + " ".repeat(Math.max(0, padLength)) + version);
+  process.stdout.write('\n' + copyright + " ".repeat(Math.max(0, padLength)) + version + '\n\n');
+  
+  process.stdout.write('='.repeat(30) + '\n');
 }
 
 module.exports = consoleStartUp;

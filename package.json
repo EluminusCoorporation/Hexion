@@ -30,7 +30,6 @@
     "eslint": "^9.39.1",
     "express": "^5.1.0",
     "express-rate-limit": "^8.1.0",
-    "figlet": "^1.9.3",
     "htmlhint": "^1.7.1",
     "serve-favicon": "^2.5.1",
     "stylelint": "^16.25.0",
