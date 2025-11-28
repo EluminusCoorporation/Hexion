@@ -1,3 +1,5 @@
+const chalk = require('chalk');
+
 //error info for all status codes
 const errors = {
   400: { title: 'Bad Request', message: 'Please input correct values.' },
