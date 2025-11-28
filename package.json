@@ -18,6 +18,7 @@
     "url": "git+https://github.com/EluminusCoorporation/Hexion.git"
   },
   "author": "EluminusCo",
+  "License": "Proprietary",
   "type": "CommonJS",
   "main": "server.js",
   "scripts": {
