@@ -77,7 +77,7 @@
   height: 100%;
   background: transparent;
   border: none;
-  outline: none;
+  outline-color: transparent;
   border: 2px solid var(--text);
   border-radius: 40px;
   font-size: 16px;

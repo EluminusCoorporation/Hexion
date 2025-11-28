@@ -120,7 +120,7 @@
   gap: .3em;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  outline: none;
+  outline-color: transparent;
   font-size: .8em;
   position: relative;
 }
@@ -206,7 +206,7 @@
   padding: 15px;
   border-radius: 8px;
   border: none;
-  outline: none;
+  outline-color: transparent;
   z-index: 2;
   cursor: pointer;
   display: flex;
@@ -295,7 +295,7 @@
   background-color: var(--bg);
   box-shadow: 0 2px 2px var(--shadow);
   margin: 15px;
-  outline: none;
+  outline-color: transparent;
   position: absolute;
   transition: all ease .3s;
 }
@@ -404,7 +404,7 @@
   margin: 0;
   background: var(--bg);
   resize: none;
-  outline: none;
+  outline-color: transparent;
   font-size: 13px;
 }
 
@@ -447,7 +447,7 @@
   position: absolute;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  outline: none;
+  outline-color: transparent;
   margin: .5em;
   transition: all .5s;
   border-radius: 50%;
@@ -516,7 +516,7 @@
   color: white;
   font-size: 1em;
   font-weight: bold;
-  outline: none;
+  outline-color: transparent;
   margin: 15px;
   cursor: pointer;
   transition: all .3s;
