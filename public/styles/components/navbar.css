@@ -117,7 +117,7 @@ html {
   position: relative;
   flex-direction: row;
   text-decoration: none;
-  color: var(--text);
+  color: var(--text-muted);
   gap: .5em;
   cursor: pointer;
   padding: 1em 1.5em;
@@ -131,6 +131,7 @@ html {
 }
 
 .nav-bar .side-bar ul li a:hover, .nav-bar .side-bar ul li span:hover {
+  color: var(--text);
   background-color: var(--bg-light);
 }
 
