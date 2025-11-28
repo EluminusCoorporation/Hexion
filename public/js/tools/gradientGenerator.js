@@ -60,7 +60,7 @@ function updateGradient() {
   
   //Updates the gradient accordingly
   const gradientText = document.getElementById('previewText');
-  document.documentElement.style.setProperty("--gradientXXX", `linear-gradient(to right, ${colorNames.join(", ")})`)
+  document.documentElement.style.setProperty("--gradientXXX", `linear-gradient(in oklch to right, ${colorNames.join(", ")})`)
 }
 
 //Creates an pickr
