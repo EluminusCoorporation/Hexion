@@ -74,7 +74,7 @@ try {
   execSync("python3 -m flake8 --version", { stdio: "ignore" });
   } catch {
     //if not, install
-    console.log(chalk.white(chalk.bokd.yellow('[server]') + " Installing dependencies..."));
+    console.log(chalk.white(chalk.bold.yellow('[server]') + " Installing dependencies..."));
     try {
       // Install silently (suppress all logs)
       execSync("python3 -m pip install --user flake8 -q", { stdio: "ignore" });
