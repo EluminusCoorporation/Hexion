@@ -13,4 +13,5 @@ jobs:
         with:
           node-version: 24
       - run: npm ci
-      - run: npm run start
+      - run: nohup npm start &
+      - run: npm test
