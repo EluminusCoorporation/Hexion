@@ -1,0 +1,16 @@
+name: Push Continue Inegration
+
+on:
+  push:
+    branches: [ v1 ]
+
+jobs:
+  push_tester:
+    runs_on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node_version: 24
+      - run: npm ci
+      - run: npm run start
