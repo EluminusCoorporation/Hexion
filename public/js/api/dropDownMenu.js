@@ -4,7 +4,7 @@ const dropDownContent = document.getElementById("dropDownContent");
 const dropDownIcon = document.getElementById("ddIcon");
 const auto = document.getElementById("auto");
 //Gets selected Ext(only for errordebugger)
-export var selectedExt = "auto";
+export let selectedExt = "auto";
 
 //Helper function for changing selectedExt in other files
 export function setSelectedExt(ext) {

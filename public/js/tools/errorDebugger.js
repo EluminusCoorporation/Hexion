@@ -336,7 +336,7 @@ errorGoForward.addEventListener("click", () => {
   errorGoBack.classList.remove('disabled');
   
   //increases & sets the error count
-  var currentValue = parseInt(currentError.textContent) + 1;
+  let currentValue = parseInt(currentError.textContent) + 1;
   currentError.textContent = currentValue;
   
   if (currentError.textContent === totalErrors.textContent) errorGoForward.classList.add('disabled');
@@ -363,7 +363,7 @@ errorGoBack.addEventListener("click", () => {
   errorGoForward.classList.remove('disabled');
   
   //decreases & sets the error count
-  var currentValue = parseInt(currentError.textContent) - 1;
+  let currentValue = parseInt(currentError.textContent) - 1;
   currentError.textContent = currentValue;
   
   if (currentError.textContent === "1") errorGoBack.classList.add('disabled');
