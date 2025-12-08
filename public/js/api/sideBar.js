@@ -36,13 +36,7 @@ sideBarButton.addEventListener("click", () => {
 });
 
 // Event listener for closing on outside click
-backgroundFilter.addEventListener("click", () => {
-  sideBarClose();
-});
+backgroundFilter.addEventListener("click", sideBarClose);
 
 // Event listener for closing on redirect
-links.forEach((link, i) => {
-  link.addEventListener("click", () => {
-    sideBarClose();
-  });
-});
+links.forEach((link, i) => link.addEventListener("click", sideBarClose));
