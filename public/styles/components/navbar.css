@@ -194,7 +194,7 @@ html {
     background-color: var(--bg);
     transform: translateX(-100%);
     z-index: 5;
-    width: 200px;
+    width: max(200px, 35%);
     overflow-x: hidden;
     overflow-y: scroll;
     visibility: hidden;
@@ -252,7 +252,7 @@ html {
   
   .nav-bar .side-bar ul li a, .nav-bar .side-bar ul li span {
     box-sizing: border-box;
-    padding: 1em 1em;
+    padding: 1em 1em 1em min(3em, 7%);
     width: 100%;
   }
   
