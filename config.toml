@@ -5,7 +5,6 @@
 # ======================================================
 # General Configurations
 # ======================================================
-
 [general]
 siteName = "Hexion"
 domain = "https://hexion.dev"
