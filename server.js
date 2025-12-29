@@ -56,8 +56,11 @@ if (config.general.onMaintenance === true) {
 //Set up view engine for express
 app.set("view engine", "ejs");
 
-//Set it to trust proxies
-app.set("trust proxy", true)
+// find if its an proxy or an direct connection
+app.set('trust proxy', (ip) => {
+  if (ip === '127.0.0.1' || ip === '123.123.123.123') return true // trusted IPs
+  else return false
+});
 
 //Setup static directories
 app.use(express.static(PUBLIC_DIR));
