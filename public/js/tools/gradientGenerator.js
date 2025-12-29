@@ -53,6 +53,37 @@ colorDropdownmenu.addEventListener('click', () => {
   colorsGridContainer.classList.toggle('show');
 })
 
+// Updates the output
+async function refreshOutput() {
+  const results = document.getElementById('results');
+  
+  // get important parameters
+  const colors = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
+  const input = document.getElementById('inputText').value;
+  const type = document.getElementById("dropdown-text").textContent;
+  
+  //Send the request to the backend
+  const res = await fetch('/api/gradient', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type, input, colors })
+  });
+  
+  //check if res is ok
+  if (!res.ok) {
+    setStatus('error', 'Gradient Error', 'An unexpected error occured: ' + res.status);
+    return;
+  }
+  
+  const data = await res.json();
+  
+  if (data.error && data.error === true) {
+    setStatus('error', 'Gradient error', 'An unexpected error occured: ' + data.output);
+    return;
+  }
+  results.textContent = data.output;
+}
+
 //Updates the gradient
 function updateGradient() {
   //Refreshes the colors
@@ -61,6 +92,9 @@ function updateGradient() {
   //Updates the gradient accordingly
   const gradientText = document.getElementById('previewText');
   document.documentElement.style.setProperty("--gradientXXX", `linear-gradient(in oklch to right, ${colorNames.join(", ")})`)
+  
+  // Get the updated output
+  refreshOutput();
 }
 
 //Creates an pickr
@@ -218,10 +252,10 @@ addColorButton.addEventListener('click', () => {
 
 const colorsContainer = document.getElementById('colorsContainer');
 
-//if its delete icon
 colorsContainer.addEventListener('click', (event) => {
-  //deletes the color
+  //if its delete icon
   if (event.target.classList.contains('delete-icon')) {
+    //deletes the color
     const container = event.target.parentNode;
     container.remove();
     updateGradient()

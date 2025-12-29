@@ -7,6 +7,9 @@ const stylelint = require("stylelint");
 const { ESLint } = require("eslint");
 const { spawnSync } = require("child_process");
 
+//gradient modules
+const chroma = require('chroma-js');
+
 const router = express.Router();
 
 //Creates an POST router for the frontend to access
@@ -85,6 +88,30 @@ router.post("/debugger", async (req, res) => {
     //If any unexpected errors found report them
     res.json({ success: false, report: err.message });
   }
+});
+
+router.post("/gradient", (req, res) => {
+  const { type, input, colors } = req.body;
+
+  let output;
+  
+  try {
+    if (type === "#rrggbb") {
+      const scale = chroma.scale(colors).mode("lab");
+
+      output = [...input].map((char, i) => {
+        const t = input.length === 1 ? 0 : i / (input.length - 1);
+        const color = scale(t).hex();
+        return `${color}${char}`;
+      }).join("");
+    } else {
+      res.json({ output: 'No options matched.', error: true })
+    }
+  } catch (error) {
+    res.status(500).json({ output: error, error: true });
+  };
+  
+  res.json({ output: output });
 });
 
 module.exports = router;

@@ -252,7 +252,7 @@
   display: flex;
   user-select: none;
   align-items: center;
-  color: var(--text-muted);
+  color: var(--text);
   font-weight: bold;
   font-size: .8em;
 }
@@ -519,6 +519,7 @@
 .results-div {
   display: inline-block;
   position: relative;
+  margin-bottom: 2em;
 }
 
 .results {
