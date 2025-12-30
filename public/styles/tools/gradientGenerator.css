@@ -437,6 +437,8 @@
   font-family: "Press Start 2P", system-ui;
   font-size: .7em;
   color: transparent;
+  background-clip: text !important;
+  background: var(--gradientXXX);
   word-wrap: break-word;
 }
 
@@ -459,27 +461,6 @@
   content: "";
   display: none;
   position: absolute;
-  top: -6px;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradientXXX);
-}
-
-.preview-text.overline::before {
-  display: unset;
-}
-
-.preview-text span {
-  position: relative;
-  background-clip: text !important;
-  background: var(--gradientXXX);
-}
-
-.preview-text span::after {
-  content: "";
-  display: none;
-  position: absolute;
   top: 50%;
   right: 0;
   left: 0;
@@ -488,7 +469,7 @@
   background: var(--gradientXXX);
 }
 
-.preview-text.strike span::after {
+.preview-text.strike::before {
   display: unset;
 }
 

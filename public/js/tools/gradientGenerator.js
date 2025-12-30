@@ -71,7 +71,6 @@ async function refreshOutput() {
     "underline": false,
     "italic": false,
     "strikethrough": false,
-    "overline": false,
     "obfuscation": false,
   };
   
@@ -112,7 +111,6 @@ function updateGradient() {
   const colorNames = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
   
   //Updates the gradient accordingly
-  const gradientText = document.getElementById('previewText');
   document.documentElement.style.setProperty("--gradientXXX", `linear-gradient(in oklch to right, ${colorNames.join(", ")})`)
   
   // Get the updated output
@@ -287,14 +285,14 @@ colorsContainer.addEventListener('click', (event) => {
 const resultsBtn = document.getElementById('results-btn');
 
 const inputText = document.getElementById('inputText');
-const previewTextContainer = document.getElementById('previewTextContainer');
+const previewText = document.getElementById('previewText');
 
 //realtime input changer
 inputText.addEventListener('input', (event) => {
   const text = event.target.value;
   
-  previewTextContainer.dataset.text = text;
-  previewTextContainer.textContent = text;
+  previewText.dataset.text = text;
+  previewText.textContent = text;
 });
 
 function startObfuscation(element) {
@@ -329,36 +327,30 @@ function stopObfuscation(element) {
 const stylers = document.querySelectorAll('.stylers');
 stylers.forEach((styler) => {
   styler.addEventListener("change", function(event) {
-    const gradientText = document.getElementById('previewText');
-    
     const stylerType = this.dataset.style;
     if (this.checked) {
       if (stylerType === "bold") {
-        gradientText.style.fontWeight = "bold";
+        previewText.style.fontWeight = "bold";
       } else if (stylerType === "underline") {
         previewText.classList.add("underlined");
       } else if (stylerType === "italic") {
-        gradientText.style.fontStyle = "italic";
+        previewText.style.fontStyle = "italic";
       } else if (stylerType === "strikethrough") {
         previewText.classList.add("strike");
-      } else if (stylerType === "overline") {
-        previewText.classList.add("overline");
       } else if (stylerType === "obfuscation") {
-        startObfuscation(previewTextContainer);
+        startObfuscation(previewText);
       }
     } else {
       if (stylerType === "bold") {
-        gradientText.style.fontWeight = "unset";
+        previewText.style.fontWeight = "unset";
       } else if (stylerType === "underline") {
         previewText.classList.remove("underlined");
       } else if (stylerType === "italic") {
-        gradientText.style.fontStyle = "unset";
+        previewText.style.fontStyle = "unset";
       } else if (stylerType === "strikethrough") {
         previewText.classList.remove("strike");
-      } else if (stylerType === "overline") {
-        previewText.classList.remove("overline");
       } else if (stylerType === "obfuscation") {
-        stopObfuscation(previewTextContainer);
+        stopObfuscation(previewText);
       }
     }
     refreshOutput();

@@ -98,14 +98,13 @@ function getStylers(options) {
     "underline": "&n",
     "italic": "&o",
     "strikethrough": "&m",
-    "overline": "",
     "obfuscation": "&k",
   };
   
   //stylers will be set here
   let stylers = "";
   
-  // get the stylers tuat are selected
+  // get the stylers that are selected
   const trueOptions = Object.keys(options).filter(key => options[key] === true);
   
   // apply the stylers
@@ -143,7 +142,7 @@ router.post("/gradient", (req, res) => {
       // Make the color pallete
       const scale = chroma.scale(colors).mode("lab");
       
-      // add it ond by one
+      // add it one by one
       output = [...input].map((char, i) => {
         // apply one color pallete on one word
         const t = input.length === 1 ? 0 : i / (input.length - 1);

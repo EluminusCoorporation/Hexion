@@ -64,7 +64,7 @@ router.get("/gradientGenerator", (req, res) => {
     title: "Gradient Generator",
     description: "The gradient generator, tool of hexion, here you can add gradient to any text make it beautiful, you get chance to fully customize you're text from just bolding it to underlining it",
     url: `${config.url}/tools/gradientGenerator`,
-    extraLinks: "<link href='https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap' rel='stylesheet'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css'><link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=format_overline'>",
+    extraLinks: "<link href='https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap' rel='stylesheet'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css'>",
     path: "tools/gradientGenerator"
   };
   res.render('tools/gradientGenerator', pageInfo);
