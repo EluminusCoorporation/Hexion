@@ -15,6 +15,17 @@ export function setSelectedExt(ext) {
 //defines the previous selected bar here
 let previousSelected;
 
+export function selectItem(element) {
+  element.classList.add('selected');
+  previousSelected = element;
+};
+
+let functionToRun;
+
+export function setFunction(func) {
+  functionToRun = func;
+};
+
 //Enables auto as default (only for errordebugger)
 if (auto) {
   auto.classList.add("selected");
@@ -56,6 +67,8 @@ dropDownMenu.addEventListener("click", function () {
       event.target.classList.add("selected");
       //sets previously selected again
       previousSelected = event.target;
+      
+      if (functionToRun) functionToRun();
       return;
     }
   });

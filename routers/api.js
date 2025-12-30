@@ -131,6 +131,28 @@ router.post("/gradient", (req, res) => {
         // return the value
         return `${color}${stylers}${char}`;
       }).join("");
+    } else if (type === "<#rrggbb>") {
+      // Make the color pallete
+      const scale = chroma.scale(colors).mode("lab");
+      
+      // add it ond by one
+      output = [...input].map((char, i) => {
+        // the stylers
+        let stylers = "";
+        
+        // apply one color pallete on one word
+        const t = input.length === 1 ? 0 : i / (input.length - 1);
+        const color = '<' + scale(t).hex() + '>';
+        
+        // get the stylers tuat are selected
+        const trueOptions = Object.keys(options).filter(key => options[key] === true);
+        
+        // apply the stylers
+        trueOptions.forEach((option) => stylers += stylerFormats[option]);
+        
+        // return the value
+        return `${color}${stylers}${char}`;
+      }).join("");
     } else {
       res.json({ output: 'No options matched.', error: true })
       return;
