@@ -90,15 +90,30 @@ router.post("/debugger", async (req, res) => {
   }
 });
 
-// Styler formats
-const stylerFormats = {
-  "bold": "&l",
-  "underline": "&n",
-  "italic": "&o",
-  "strikethrough": "&m",
-  "overline": "",
-  "obfuscation": "&k",
-};
+
+function getStylers(options) {
+  // Styler formats
+  const stylerFormats = {
+    "bold": "&l",
+    "underline": "&n",
+    "italic": "&o",
+    "strikethrough": "&m",
+    "overline": "",
+    "obfuscation": "&k",
+  };
+  
+  //stylers will be set here
+  let stylers = "";
+  
+  // get the stylers tuat are selected
+  const trueOptions = Object.keys(options).filter(key => options[key] === true);
+  
+  // apply the stylers
+  trueOptions.forEach((option) => stylers += stylerFormats[option]);
+  
+  //return the stylers
+  return stylers;
+}
 
 // POST gradient endpoint
 router.post("/gradient", (req, res) => {
@@ -115,21 +130,14 @@ router.post("/gradient", (req, res) => {
       
       // add it ond by one
       output = [...input].map((char, i) => {
-        // the stylers
-        let stylers = "";
-        
         // apply one color pallete on one word
         const t = input.length === 1 ? 0 : i / (input.length - 1);
         const color = '&' + scale(t).hex();
         
-        // get the stylers tuat are selected
-        const trueOptions = Object.keys(options).filter(key => options[key] === true);
-        
-        // apply the stylers
-        trueOptions.forEach((option) => stylers += stylerFormats[option]);
+        const styler = getStylers(options);
         
         // return the value
-        return `${color}${stylers}${char}`;
+        return `${color}${styler}${char}`;
       }).join("");
     } else if (type === "<#rrggbb>") {
       // Make the color pallete
@@ -137,21 +145,14 @@ router.post("/gradient", (req, res) => {
       
       // add it ond by one
       output = [...input].map((char, i) => {
-        // the stylers
-        let stylers = "";
-        
         // apply one color pallete on one word
         const t = input.length === 1 ? 0 : i / (input.length - 1);
         const color = '<' + scale(t).hex() + '>';
         
-        // get the stylers tuat are selected
-        const trueOptions = Object.keys(options).filter(key => options[key] === true);
-        
-        // apply the stylers
-        trueOptions.forEach((option) => stylers += stylerFormats[option]);
+        const styler = getStylers(options);
         
         // return the value
-        return `${color}${stylers}${char}`;
+        return `${color}${styler}${char}`;
       }).join("");
     } else {
       res.json({ output: 'No options matched.', error: true })
