@@ -61,12 +61,30 @@ async function refreshOutput() {
   const colors = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
   const input = document.getElementById('inputText').value;
   const type = document.getElementById("dropdown-text").textContent;
+  // default options(none)
+  const options = {
+    "bold": false,
+    "underline": false,
+    "italic": false,
+    "strikethrough": false,
+    "overline": false,
+    "obfuscation": false,
+  };
+  
+  // Check if any stylers are enabled and update the options
+  const stylerCheckBoxes = [...document.querySelectorAll('.styler-label input')]
+  stylerCheckBoxes.forEach((checkbox) => {
+    if (!checkbox.checked) return;
+    
+    const styleType = checkbox.dataset.style;
+    options[styleType] = true;
+  });
   
   //Send the request to the backend
   const res = await fetch('/api/gradient', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type, input, colors })
+    body: JSON.stringify({ type, input, colors, options })
   });
   
   //check if res is ok
@@ -339,5 +357,6 @@ stylers.forEach((styler) => {
         stopObfuscation(previewTextContainer);
       }
     }
+    refreshOutput();
   });
 });

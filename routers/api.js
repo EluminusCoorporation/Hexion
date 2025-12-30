@@ -90,25 +90,55 @@ router.post("/debugger", async (req, res) => {
   }
 });
 
-router.post("/gradient", (req, res) => {
-  const { type, input, colors } = req.body;
+// Styler formats
+const stylerFormats = {
+  "bold": "&l",
+  "underline": "&n",
+  "italic": "&o",
+  "strikethrough": "&m",
+  "overline": "",
+  "obfuscation": "&k",
+};
 
+// POST gradient endpoint
+router.post("/gradient", (req, res) => {
+  // Get the necessary values
+  const { type, input, colors, options } = req.body;
+  
   let output;
   
   try {
-    if (type === "#rrggbb") {
+    // find the type
+    if (type === "&#rrggbb") {
+      // Make the color pallete
       const scale = chroma.scale(colors).mode("lab");
-
+      
+      // add it ond by one
       output = [...input].map((char, i) => {
+        // the stylers
+        let stylers = "";
+        
+        // apply one color pallete on one word
         const t = input.length === 1 ? 0 : i / (input.length - 1);
-        const color = scale(t).hex();
-        return `${color}${char}`;
+        const color = '&' + scale(t).hex();
+        
+        // get the stylers tuat are selected
+        const trueOptions = Object.keys(options).filter(key => options[key] === true);
+        
+        // apply the stylers
+        trueOptions.forEach((option) => stylers += stylerFormats[option]);
+        
+        // return the value
+        return `${color}${stylers}${char}`;
       }).join("");
     } else {
       res.json({ output: 'No options matched.', error: true })
+      return;
     }
   } catch (error) {
     res.status(500).json({ output: error, error: true });
+    console.error(error);
+    return;
   };
   
   res.json({ output: output });
