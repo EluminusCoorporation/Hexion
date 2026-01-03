@@ -297,6 +297,33 @@ router.post("/gradient", (req, res) => {
 
       // return the value
       output = `${styler}${color}`;
+    } else if (type === "§x§r§r§g§g§b§b") {
+      //list of mc colors(legacy)
+      const mcLegacyColors = {
+        "§0": [0, 0, 0], // Black
+        "§1": [0, 0, 170], // Dark Blue
+        "§2": [0, 170, 0], // Dark Green
+        "§3": [0, 170, 170], // Dark Aqua
+        "§4": [170, 0, 0], // Dark Red
+        "§5": [170, 0, 170], // Dark Purple
+        "§6": [255, 170, 0], // Gold
+        "§7": [170, 170, 170], // Gray
+        "§8": [85, 85, 85], // Dark Gray
+        "§9": [85, 85, 255], // Blue
+        "§a": [85, 255, 85], // Green
+        "§b": [85, 255, 255], // Aqua
+        "§c": [255, 85, 85], // Red
+        "§d": [255, 85, 255], // Light Purple
+        "§e": [255, 255, 85], // Yellow
+        "§f": [255, 255, 255] // White
+      };
+      
+      // create the gradient
+      const color = multiStopGradient(mcLegacyColors, input, colors);
+      const styler = getStylers(options);
+
+      // return the value
+      output = `${styler}${color}`;
     } else {
       res.json({ output: "No options matched.", error: true });
       return;
