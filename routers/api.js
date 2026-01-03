@@ -8,7 +8,7 @@ const { ESLint } = require("eslint");
 const { spawnSync } = require("child_process");
 
 //gradient modules
-const chroma = require('chroma-js');
+const chroma = require("chroma-js");
 
 const router = express.Router();
 
@@ -80,7 +80,10 @@ router.post("/debugger", async (req, res) => {
       if (process.status !== 0) report = process.stdout.toString();
     } else {
       //If language type is invalid throw error
-      res.json({ success: false, report: "Invalid language type selected." });
+      res.json({
+        success: false,
+        report: "Invalid language type selected."
+      });
     }
     //Else send the report to the frontend
     res.json({ success: true, report: report });
@@ -90,79 +93,220 @@ router.post("/debugger", async (req, res) => {
   }
 });
 
-
 function getStylers(options) {
   // Styler formats
   const stylerFormats = {
-    "bold": "&l",
-    "underline": "&n",
-    "italic": "&o",
-    "strikethrough": "&m",
-    "obfuscation": "&k",
+    bold: "&l",
+    underline: "&n",
+    italic: "&o",
+    strikethrough: "&m",
+    obfuscation: "&k"
   };
-  
+
   //stylers will be set here
   let stylers = "";
-  
+
   // get the stylers that are selected
   const trueOptions = Object.keys(options).filter(key => options[key] === true);
-  
+
   // apply the stylers
-  trueOptions.forEach((option) => stylers += stylerFormats[option]);
-  
+  trueOptions.forEach(option => (stylers += stylerFormats[option]));
+
   //return the stylers
   return stylers;
+}
+
+// helper function to convert hex to rgb
+function hexToRgb(hex) {
+  // remove #
+  hex = hex.replace("#", "");
+  // convert to hex
+  return [
+    parseInt(hex.substring(0, 2), 16),
+    parseInt(hex.substring(2, 4), 16),
+    parseInt(hex.substring(4, 6), 16),
+  ];
+}
+
+// helper function to distribute ketters evenly
+function splitText(length, segments) {
+  const base = Math.floor(length / segments);
+  const remainder = length % segments;
+
+  return Array.from({ length: segments }, (_, i) =>
+    base + (i < remainder ? 1 : 0)
+  );
+}
+
+// helper function to distribute colors evenly
+function interpolate(start, end, steps) {
+  return Array.from({ length: steps }, (_, i) => {
+    const t = i / (steps - 1);
+    return [
+      Math.round(start[0] + (end[0] - start[0]) * t),
+      Math.round(start[1] + (end[1] - start[1]) * t),
+      Math.round(start[2] + (end[2] - start[2]) * t),
+    ];
+  });
+}
+
+// helper functio to fix light levels in colors
+function colorDistance([r, g, b], [cr, cg, cb]) {
+  return (
+    0.3 * (r - cr) ** 2 +
+    0.59 * (g - cg) ** 2 +
+    0.11 * (b - cb) ** 2
+  );
+}
+
+// helper function to get the closest mc variants
+function closestKMcColors(colorPallete, rgb, k = 3) {
+  return Object.entries(colorPallete)
+    .map(([code, mcRgb]) => ({
+      code,
+      distance: colorDistance(rgb, mcRgb),
+    }))
+    .sort((a, b) => a.distance - b.distance)
+    .slice(0, k);
+}
+
+// helper function to fix color weights
+function normalizeWeights(colors) {
+  const total = colors.reduce(
+    (sum, c) => sum + 1 / (c.distance + 1),
+    0
+  );
+
+  return colors.map(c => ({
+    code: c.code,
+    weight: (1 / (c.distance + 1)) / total,
+  }));
+}
+
+// helper function to distribute the correctcolor weight
+function selectWeightedColor(weights, index) {
+  let acc = 0;
+  const t = (index % 100) / 100;
+
+  for (const w of weights) {
+    acc += w.weight;
+    if (t <= acc) return w.code;
+  }
+
+  return weights[0].code;
+}
+
+// helper function to create the gradient
+function multiStopGradient(
+  colorPallete,
+  text,
+  hexStops,
+  k = 3
+) {
+  const segments = hexStops.length - 1;
+  const distribution = splitText(text.length, segments);
+
+  let index = 0;
+  let output = "";
+
+  for (let s = 0; s < segments; s++) {
+    const startRgb = hexToRgb(hexStops[s]);
+    const endRgb = hexToRgb(hexStops[s + 1]);
+    const chars = distribution[s];
+
+    const gradient = interpolate(startRgb, endRgb, chars);
+
+    gradient.forEach(rgb => {
+      const nearest = closestKMcColors(colorPallete, rgb, k);
+      const weighted = normalizeWeights(nearest);
+      const color = selectWeightedColor(weighted, index);
+      output += color + text[index++];
+    });
+  }
+
+  return output;
 }
 
 // POST gradient endpoint
 router.post("/gradient", (req, res) => {
   // Get the necessary values
   const { type, input, colors, options } = req.body;
-  
+
   let output;
-  
+
   try {
     // find the type
     if (type === "&#rrggbb") {
       // Make the color pallete
       const scale = chroma.scale(colors).mode("lab");
-      
-      // add it ond by one
-      output = [...input].map((char, i) => {
-        // apply one color pallete on one word
-        const t = input.length === 1 ? 0 : i / (input.length - 1);
-        const color = '&' + scale(t).hex();
-        
-        const styler = getStylers(options);
-        
-        // return the value
-        return `${color}${styler}${char}`;
-      }).join("");
+
+      // add it one by one
+      output = [...input]
+        .map((char, i) => {
+          // apply one color pallete on one word
+          const t = input.length === 1 ? 0 : i / (input.length - 1);
+          const color = "&" + scale(t).hex();
+
+          const styler = getStylers(options);
+
+          // return the value
+          return `${color}${styler}${char}`;
+        })
+        .join("");
     } else if (type === "<#rrggbb>") {
       // Make the color pallete
       const scale = chroma.scale(colors).mode("lab");
-      
+
       // add it one by one
-      output = [...input].map((char, i) => {
-        // apply one color pallete on one word
-        const t = input.length === 1 ? 0 : i / (input.length - 1);
-        const color = '<' + scale(t).hex() + '>';
-        
-        const styler = getStylers(options);
-        
-        // return the value
-        return `${color}${styler}${char}`;
-      }).join("");
+      output = [...input]
+        .map((char, i) => {
+          // apply one color pallete on one word
+          const t = input.length === 1 ? 0 : i / (input.length - 1);
+          const color = "<" + scale(t).hex() + ">";
+
+          const styler = getStylers(options);
+
+          // return the value
+          return `${color}${styler}${char}`;
+        })
+        .join("");
+    } else if (type === "&x&r&r&g&g&b&b") {
+      //list of mc colors(legacy)
+      const mcLegacyColors = {
+        "&0": [0, 0, 0], // Black
+        "&1": [0, 0, 170], // Dark Blue
+        "&2": [0, 170, 0], // Dark Green
+        "&3": [0, 170, 170], // Dark Aqua
+        "&4": [170, 0, 0], // Dark Red
+        "&5": [170, 0, 170], // Dark Purple
+        "&6": [255, 170, 0], // Gold
+        "&7": [170, 170, 170], // Gray
+        "&8": [85, 85, 85], // Dark Gray
+        "&9": [85, 85, 255], // Blue
+        "&a": [85, 255, 85], // Green
+        "&b": [85, 255, 255], // Aqua
+        "&c": [255, 85, 85], // Red
+        "&d": [255, 85, 255], // Light Purple
+        "&e": [255, 255, 85], // Yellow
+        "&f": [255, 255, 255] // White
+      };
+      
+      // create the gradient
+      const color = multiStopGradient(mcLegacyColors, input, colors);
+      const styler = getStylers(options);
+
+      // return the value
+      output = `${styler}${color}`;
     } else {
-      res.json({ output: 'No options matched.', error: true })
+      res.json({ output: "No options matched.", error: true });
       return;
     }
   } catch (error) {
     res.status(500).json({ output: error, error: true });
     console.error(error);
     return;
-  };
-  
+  }
+
   res.json({ output: output });
 });
 

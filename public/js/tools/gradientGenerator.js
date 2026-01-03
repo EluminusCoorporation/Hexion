@@ -111,7 +111,7 @@ function updateGradient() {
   const colorNames = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
   
   //Updates the gradient accordingly
-  document.documentElement.style.setProperty("--gradientXXX", `linear-gradient(in oklch to right, ${colorNames.join(", ")})`)
+  document.documentElement.style.setProperty("--gradientXXX", `linear-gradient(to right, ${colorNames.join(", ")})`)
   
   // Get the updated output
   refreshOutput();
