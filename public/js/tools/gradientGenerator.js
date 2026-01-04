@@ -313,6 +313,8 @@ inputText.addEventListener('input', (event) => {
   
   previewText.dataset.text = text;
   previewText.textContent = text;
+  
+  refreshOutput();
 });
 
 function startObfuscation(element) {
