@@ -57,6 +57,8 @@ colorDropdownmenu.addEventListener('click', () => {
   colorsGridContainer.classList.toggle('show');
 })
 
+const optionsCheckbox = document.querySelectorAll(".toggle");
+
 // Updates the output
 async function refreshOutput() {
   const results = document.getElementById('results');
@@ -65,8 +67,8 @@ async function refreshOutput() {
   const colors = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
   const input = document.getElementById('inputText').value;
   const type = document.getElementById("dropdown-text").textContent;
-  // default options(none)
-  const options = {
+  // default styles(none)
+  const styles = {
     "bold": false,
     "underline": false,
     "italic": false,
@@ -74,20 +76,34 @@ async function refreshOutput() {
     "obfuscation": false,
   };
   
+  // default options(none)
+  const options = {
+    trim: false,
+    lowercaseHex: false
+  };
+  
+  optionsCheckbox.forEach((checkbox) => {
+    if (!checkbox.checked) return;
+    
+    const optionType = checkbox.dataset.type;
+    options[optionType] = true;
+  });
+    
+  
   // Check if any stylers are enabled and update the options
   const stylerCheckBoxes = [...document.querySelectorAll('.styler-label input')]
   stylerCheckBoxes.forEach((checkbox) => {
     if (!checkbox.checked) return;
     
     const styleType = checkbox.dataset.style;
-    options[styleType] = true;
+    styles[styleType] = true;
   });
   
   //Send the request to the backend
   const res = await fetch('/api/gradient', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type, input, colors, options })
+    body: JSON.stringify({ type, input, colors, styles, options })
   });
   
   //check if res is ok
@@ -104,6 +120,10 @@ async function refreshOutput() {
   }
   results.textContent = data.output;
 }
+
+optionsCheckbox.forEach((checkbox) => {
+  checkbox.addEventListener("change", () => refreshOutput())
+});
 
 //Updates the gradient
 function updateGradient() {

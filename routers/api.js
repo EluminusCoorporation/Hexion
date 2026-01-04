@@ -230,27 +230,37 @@ function multiStopGradient(
 // POST gradient endpoint
 router.post("/gradient", (req, res) => {
   // Get the necessary values
-  const { type, input, colors, options } = req.body;
+  const { type, input, colors, styles, options } = req.body;
 
   let output;
+  let userInput = input;
 
   try {
+    if (options.trim) {
+      userInput = userInput.trim().replace(/\s+/g, ' ');
+    }
+    
     // find the type
     if (type === "&#rrggbb") {
       // Make the color pallete
       const scale = chroma.scale(colors).mode("lab");
 
       // add it one by one
-      output = [...input]
+      output = [...userInput]
         .map((char, i) => {
           // apply one color pallete on one word
-          const t = input.length === 1 ? 0 : i / (input.length - 1);
+          const t = userInput.length === 1 ? 0 : i / (userInput.length - 1);
           const color = "&" + scale(t).hex();
+          let filteredColor = color;
+          
+          if (options.lowercaseHex) {
+            filteredColor = color.toLowerCase();
+          };
 
-          const styler = getStylers(options);
+          const styler = getStylers(styles);
 
           // return the value
-          return `${color}${styler}${char}`;
+          return `${filteredColor}${styler}${char}`;
         })
         .join("");
     } else if (type === "<#rrggbb>") {
@@ -258,16 +268,21 @@ router.post("/gradient", (req, res) => {
       const scale = chroma.scale(colors).mode("lab");
 
       // add it one by one
-      output = [...input]
+      output = [...userInput]
         .map((char, i) => {
           // apply one color pallete on one word
-          const t = input.length === 1 ? 0 : i / (input.length - 1);
+          const t = userInput.length === 1 ? 0 : i / (userInput.length - 1);
           const color = "<" + scale(t).hex() + ">";
-
-          const styler = getStylers(options);
+          let filteredColor = color;
+          
+          if (options.lowercaseHex) {
+            filteredColor = color.toLowerCase();
+          };
+          
+          const styler = getStylers(styles);
 
           // return the value
-          return `${color}${styler}${char}`;
+          return `${filteredColor}${styler}${char}`;
         })
         .join("");
     } else if (type === "&x&r&r&g&g&b&b") {
@@ -292,8 +307,8 @@ router.post("/gradient", (req, res) => {
       };
       
       // create the gradient
-      const color = multiStopGradient(mcLegacyColors, input, colors);
-      const styler = getStylers(options);
+      const color = multiStopGradient(mcLegacyColors, userInput, colors);
+      const styler = getStylers(styles);
 
       // return the value
       output = `${styler}${color}`;
@@ -319,7 +334,7 @@ router.post("/gradient", (req, res) => {
       };
       
       // create the gradient
-      const color = multiStopGradient(mcLegacyColors, input, colors);
+      const color = multiStopGradient(mcLegacyColors, userInput, colors);
       const styler = getStylers(options);
 
       // return the value
