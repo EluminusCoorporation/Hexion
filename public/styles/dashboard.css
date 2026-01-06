@@ -151,6 +151,18 @@
   color: purple;
 }
 
+.tool:nth-child(7) {
+  color: hotpink;
+}
+
+.tool:nth-child(7) button {
+  background: hotpink
+}
+
+.tool:nth-child(7) button:hover {
+  color: hotpink;
+}
+
 .toolboxes-container .tool button i {
   font-size: 1em;
   transition: transform .5s ease;

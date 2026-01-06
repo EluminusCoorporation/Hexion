@@ -1,11 +1,9 @@
 //Imports the required functions
 import { setStatus, errorLoggerBEFORE } from '../api/errorLogger.js';
-import { selectItem, setFunction } from '../api/dropDownMenu.js'
+import { setFunction } from '../api/dropDownMenu.js'
 import {} from '../api/copy.js'
 
 let timeout;
-
-selectItem(document.querySelector('.special'));
 
 document.addEventListener('DOMContentLoaded', () => {
   //event listener for each color

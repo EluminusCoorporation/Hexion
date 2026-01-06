@@ -1,7 +1,5 @@
 //Gets required imports
-const dropDownMenu = document.getElementById("dropDownMenu");
-const dropDownContent = document.getElementById("dropDownContent");
-const dropDownIcon = document.getElementById("ddIcon");
+const dropDownMenu = document.querySelectorAll("#dropDownMenu");
 const auto = document.getElementById("auto");
 //Gets selected Ext(only for errordebugger)
 export let selectedExt = "auto";
@@ -10,21 +8,13 @@ export let selectedExt = "auto";
 export function setSelectedExt(ext) {
   selectedExt = ext;
   const extElement = document.getElementById(ext);
-  previousSelected = extElement;
 }
-//defines the previous selected bar here
-let previousSelected;
-
-export function selectItem(element) {
-  element.classList.add('selected');
-  previousSelected = element;
-};
 
 let functionToRun;
 
 export function setFunction(func) {
   functionToRun = func;
-};
+}
 
 //Enables auto as default (only for errordebugger)
 if (auto) {
@@ -33,43 +23,46 @@ if (auto) {
 }
 
 //event listener for click
-dropDownMenu.addEventListener("click", function () {
-  //Enables Stylers
-  dropDownContent.classList.toggle("show");
-  dropDownIcon.classList.toggle("active");
+dropDownMenu.forEach(el => {
+  el.addEventListener("click", function () {
+    const dropDownContent = el.querySelector("#dropDownContent");
+    const dropDownIcon = el.querySelector("#ddIcon");
 
-  //Makes a event listener for all Items
-  dropDownContent.addEventListener("click", event => {
-    if (event.target.classList.contains("select-item")) {
-      const itemSelect = document.getElementById("dropdown-text");
-      const span = document.getElementById("spanR");
-      //Sets Selected Ext
-      selectedExt = event.target.dataset.ext;
-      name = event.target.innerHTML;
-      //Removes recommended tag
-      if (span) {
-        let removeSpanTC = event.target.cloneNode(true);
-        removeSpanTC.querySelector("#spanR")?.remove();
-        name = removeSpanTC.innerHTML.trim();
+    //Enables Stylers
+    dropDownContent.classList.toggle("show");
+    dropDownIcon.classList.toggle("active");
+
+    //Makes a event listener for all Items
+    dropDownContent.addEventListener("click", event => {
+      if (event.target.classList.contains("select-item")) {
+        const itemSelect = el.querySelector("#dropdown-text");
+        const span = el.querySelector("#spanR");
+        //Sets Selected Ext
+        selectedExt = event.target.dataset.ext;
+        name = event.target.innerHTML;
+        //Removes recommended tag
+        if (span) {
+          let removeSpanTC = event.target.cloneNode(true);
+          removeSpanTC.querySelector("#spanR")?.remove();
+          name = removeSpanTC.innerHTML.trim();
+        }
+        //Ignores if name is Same as the selected one
+        if (name === itemSelect.textContent) return;
+        //Else starts the process
+        else {
+          itemSelect.style.color = "var(--text)";
+          itemSelect.innerHTML = name;
+        }
+        //Sets previous selected to Not selected
+        const selectedItems = dropDownContent.querySelectorAll('.selected');
+        selectedItems.forEach(item => item.classList.remove('selected'))
+        
+        //adds selected
+        event.target.classList.add("selected");
+        
+        if (functionToRun) functionToRun();
+        return;
       }
-      //Ignores if name is Same as the selected one
-      if (name === itemSelect.textContent) return;
-      //Else starts the process
-      else {
-        itemSelect.style.color = "var(--text)";
-        itemSelect.innerHTML = name;
-      }
-      //Sets previous selected to Not selected
-      if (previousSelected) {
-        previousSelected.classList.remove("selected");
-      }
-      //adds selected
-      event.target.classList.add("selected");
-      //sets previously selected again
-      previousSelected = event.target;
-      
-      if (functionToRun) functionToRun();
-      return;
-    }
+    });
   });
 });
