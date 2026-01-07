@@ -11,7 +11,7 @@
       <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
         <p>Back to dashboard</p>
       </a>
-      <h2 class="pageH2"><i class='bx bx-code'></i>Request Sender <span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h2>
+      <h2 class="pageH2"><i class='bx bx-wifi'></i>Request Sender <span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h2>
       
       <div class="info-container">
         <p><b>Note:</b> That all of this information must exactly match you're backend's configuration.</p>
@@ -19,7 +19,7 @@
       
       <div class="dropdown-container" id="dropDownMenu" data-id="RequestTypeSelector">
         <div class="head-i">
-          <h3 class="dropdown-text" id="dropdown-text">Type Selector</h3>
+          <h3 class="dropdown-text type" id="dropdown-text">Type Selector</h3>
           <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
         </div>
         
@@ -33,11 +33,11 @@
         </ul>
       </div>
       
-      <input type="text" name="textToConvert" id="ttc" placeholder="Url" class="ttc" maxlength="500" />
+      <input type="text" name="textToConvert" id="ttc" placeholder="Url" class="ttc" maxlength="50" />
       
       <div class="dropdown-container input-selectors" id="dropDownMenu" data-id="ContentTypeSelector">
         <div class="head-i">
-          <h3 class="dropdown-text" id="dropdown-text">Content-Type</h3>
+          <h3 class="dropdown-text content" id="dropdown-text">Content-Type</h3>
           <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
         </div>
         <ul class="dropdown-content" id="dropDownContent">
@@ -54,7 +54,7 @@
       </div>
       <div class="dropdown-container input-selectors" id="dropDownMenu" data-id="AcceptTypeSelector">
         <div class="head-i">
-          <h3 class="dropdown-text" id="dropdown-text">Accept(optional)</h3>
+          <h3 class="dropdown-text accept" id="dropdown-text">Accept (Optional)</h3>
           <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
         </div>
         <ul class="dropdown-content" id="dropDownContent">
@@ -72,13 +72,13 @@
       
       <div class="flexbox-content">
         <div class="content-div">
-          <textarea name="body" id="contentBody" class="content-body" rows="12" cols="80" placeholder="Body......{}"></textarea>
+          <textarea name="body" id="contentBody" class="content-body" rows="12" cols="80" placeholder="Body......{}">{}</textarea>
         </div>
       </div>
       
       <div class="flexbox-results" id="resultsDiv">
         <div class="results-div">
-          <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Results"></textarea>
+          <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Response"></textarea>
           <i class='bx bx-copy' id="copy-icon"></i>
         </div>
       </div>
@@ -92,6 +92,8 @@
       <%- include('../components/footer') -%>
     </main>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script>
 </body>
 
 </html>

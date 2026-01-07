@@ -236,6 +236,7 @@
 
 .flexbox-results {
   display: none;
+  margin-top: 3em;
   justify-content: center;
 }
 

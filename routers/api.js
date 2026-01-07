@@ -352,4 +352,9 @@ router.post("/gradient", (req, res) => {
   res.json({ output: output });
 });
 
+router.post("/test", (req, res) => {
+  const { time } = req.body
+  res.json({ 'complete': time })
+});
+
 module.exports = router;
