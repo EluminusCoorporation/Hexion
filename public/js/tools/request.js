@@ -7,6 +7,7 @@ const resultsBtn = document.getElementById("results-btn");
 
 //Makes an event listener for results button
 resultsBtn.addEventListener("click", async function () {
+  toggleLoader(true);
   const url = document.getElementById('ttc').value;
   
   const type = document.querySelector('.type').textContent.toUpperCase();
@@ -62,5 +63,6 @@ resultsBtn.addEventListener("click", async function () {
     setStatus('error', 'Request Sender failed', 'An error occured on sending request: ' + error)
   })
   .finally(() => {
+    toggleLoader(false);
   });
 });
