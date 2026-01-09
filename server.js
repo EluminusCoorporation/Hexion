@@ -176,3 +176,11 @@ app.listen(PORT, () => {
 process.on('uncaughtException', (error) => {
   console.error(chalk.red(chalk.bold.yellow('[server]') + ' Uncaught Exception:\n\n'), chalk.gray(error));
 });
+
+// if any unhandled promise rejections
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:');
+  console.error(promise);
+  console.error('Reason:');
+  console.error(reason);
+});
