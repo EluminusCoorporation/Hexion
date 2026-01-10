@@ -10,10 +10,10 @@ export function setSelectedExt(ext) {
   const extElement = document.getElementById(ext);
 }
 
-let functionToRun;
+let actionRegistry = {};
 
 export function setFunction(func) {
-  functionToRun = func;
+  actionRegistry[func.name] = func;
 }
 
 //Enables auto as default (only for errordebugger)
@@ -54,14 +54,19 @@ dropDownMenu.forEach(el => {
           itemSelect.innerHTML = name;
         }
         //Sets previous selected to Not selected
-        const selectedItems = dropDownContent.querySelectorAll('.selected');
-        selectedItems.forEach(item => item.classList.remove('selected'))
-        
+        const selectedItems = dropDownContent.querySelectorAll(".selected");
+        selectedItems.forEach(item => item.classList.remove("selected"));
+
         //adds selected
         event.target.classList.add("selected");
-        
-        if (functionToRun) functionToRun();
-        return;
+
+        const actionName = el.dataset.action;
+        const action = actionRegistry[actionName];
+
+        // silent runner
+        if (typeof action === "function") {
+          action();
+        }
       }
     });
   });

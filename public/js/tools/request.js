@@ -1,7 +1,37 @@
 //Imports the required functions
 import { setStatus, errorLoggerBEFORE } from "../api/errorLogger.js";
-import {} from "../api/dropDownMenu.js";
+import { setFunction } from "../api/dropDownMenu.js";
 import {} from "../api/copy.js";
+
+function refreshBody() {
+  const requestBodyType = document.querySelector('.body-type');
+  const bodyField = document.getElementById('contentBody');
+  
+  switch (requestBodyType.textContent) {
+    case 'application/json':
+      bodyField.value = "{}"
+      bodyField.placeholder = '{ "key": "value" }'
+      break;
+    case 'application/x-www-form-urlencoded':
+      bodyField.value = ""
+      bodyField.placeholder = 'key=value'
+      break;
+    case 'application/xml':
+      bodyField.value = ""
+      bodyField.placeholder = '<data></data>'
+      break;
+    case 'text/plain':
+      bodyField.value = ""
+      bodyField.placeholder = 'your data here!'
+      break;
+    default:
+      bodyField.value = ""
+      bodyField.placeholder = 'body'
+      break;
+  }
+}
+
+setFunction(refreshBody);
 
 const resultsBtn = document.getElementById("results-btn");
 
