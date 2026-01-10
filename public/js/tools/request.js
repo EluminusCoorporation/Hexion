@@ -5,6 +5,18 @@ import {} from "../api/copy.js";
 
 const resultsBtn = document.getElementById("results-btn");
 
+document.querySelectorAll('.toggle').forEach((el) => {
+  el.addEventListener("change", () => {
+    const elementToEnable = document.getElementById(el.dataset.el);
+    
+    if (!elementToEnable) {
+      console.error('Element to enable does not exists')
+    }
+    
+    elementToEnable.style.display = el.checked ? 'flex' : 'none';
+  });
+})
+
 //Makes an event listener for results button
 resultsBtn.addEventListener("click", function () {
   toggleLoader(true);
@@ -16,6 +28,9 @@ resultsBtn.addEventListener("click", function () {
 
   const bodyValue = document.getElementById("contentBody").value;
   const body = JSON.parse(bodyValue);
+  
+  const auth = document.querySelector('.authToggler');
+  const authField = document.getElementById('auth');
   
   if (type === "GET") {
     if (!url) {
@@ -43,7 +58,11 @@ resultsBtn.addEventListener("click", function () {
 
   const fetchObject = {
     method: type,
-    headers: { "Content-Type": content, ...(accept && { Accepts: accept }) },
+    headers: { 
+      "Content-Type": content, 
+      ...(accept && { Accepts: accept }), 
+      ...(auth.checked && { Authorization: `Bearer ${authField.value}` })
+    },
     body: JSON.stringify({ ...body })
   };
 
