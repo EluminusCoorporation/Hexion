@@ -32,6 +32,16 @@ resultsBtn.addEventListener("click", function () {
   const auth = document.querySelector('.authToggler');
   const authField = document.getElementById('auth');
   
+  if (!url.startsWith('http')) {
+    setStatus('error', 'Request sender failed', 'Cannot request internal api')
+    return;
+  }
+  
+  if (url.startsWith('http://localhost')) {
+    setStatus('error', 'Request Sender failed', 'Cannot request LocalHosts')
+    return;
+  }
+  
   if (type === "GET") {
     if (!url) {
       setStatus(
@@ -55,7 +65,7 @@ resultsBtn.addEventListener("click", function () {
   if (typeof body !== "object") {
     setStatus('error', 'Request Sender failed', 'The given body is invalid')
   }
-
+  
   const fetchObject = {
     method: type,
     headers: { 
