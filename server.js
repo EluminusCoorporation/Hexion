@@ -31,7 +31,6 @@ const documents = require('./routers/documents');
 
 //Internal path
 const PUBLIC_DIR = path.join(__dirname, 'public');
-const ASSETS_DIR = path.join(__dirname, 'assets');
 
 //Import in-app middlewares
 const onMaintenance = require('./middleware/onMaintenance');
@@ -64,12 +63,11 @@ app.set('trust proxy', (ip) => {
 
 //Setup static directories
 app.use(express.static(PUBLIC_DIR));
-app.use(express.static(ASSETS_DIR));
 
 //Enable required middlewares
 app.use(express.json({ limit: "200mb" }));
 app.use(express.urlencoded({ extended: false, limit: "200mb" }));
-app.use(favicon(path.join(ASSETS_DIR, 'icons/favicon.ico')));
+app.use(favicon(path.join(PUBLIC_DIR, 'assets/icons/favicon.ico')));
 
 //Checks & installs required python packages
 try {

@@ -9,7 +9,7 @@ function consoleStartUp() {
   
   process.stdout.write('='.repeat(30) + '\n');
   //sends the banner
-  const asciiPath = path.join(__dirname, '../assets', 'ascii-art.txt');
+  const asciiPath = path.join(__dirname, '../public/assets', 'ascii-art.txt');
   let asciiArt = fs.readFileSync(asciiPath, 'utf8');
   process.stdout.write(asciiArt);
   
