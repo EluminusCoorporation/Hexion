@@ -74,6 +74,7 @@ router.get("/request", (req, res) => {
   const pageInfo = {
     title: "Request Sender",
     description: "The request sender tool of hexion, with this tool you can send an request to any of you're apis for testing purposes we support all types POST, GET, PUT and DELETE with the option to provide different types of inputs",
+    extraLinks: "<script src='https://kit.fontawesome.com/57901f661d.js' crossorigin='anonymous' defer></script>",
     url: `${config.general.domain}/tools/request`,
     path: "tools/request"
   };
