@@ -9,23 +9,18 @@ function refreshBody() {
   
   switch (requestBodyType.textContent) {
     case 'application/json':
-      bodyField.value = "{}"
       bodyField.placeholder = '{ "key": "value" }'
       break;
     case 'application/x-www-form-urlencoded':
-      bodyField.value = ""
       bodyField.placeholder = 'key=value'
       break;
     case 'application/xml':
-      bodyField.value = ""
       bodyField.placeholder = '<data></data>'
       break;
     case 'text/plain':
-      bodyField.value = ""
       bodyField.placeholder = 'your data here!'
       break;
     default:
-      bodyField.value = ""
       bodyField.placeholder = 'body'
       break;
   }
