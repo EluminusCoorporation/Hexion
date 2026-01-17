@@ -324,12 +324,21 @@
   color: white;
 }
 
+.recommend-container {
+  position: relative;
+}
+
 .recommended {
+  position: absolute;
+  top: 50%;
+  right: .5em;
+  transform: translateY(-50%);
   height: 15px;
-  padding: 2px 5px 2px 5px;
-  align-self: center;
+  padding: 2px 5px;
+  font-size: .6em !important;
+  align-items: center;
   font-size: .7em;
-  background: var(--primary);
+  background-color: var(--primary);
   color: white;
   border-radius: 7px;
 }

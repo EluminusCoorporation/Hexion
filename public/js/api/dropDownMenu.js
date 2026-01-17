@@ -39,13 +39,7 @@ dropDownMenu.forEach(el => {
         const span = el.querySelector("#spanR");
         //Sets Selected Ext
         selectedExt = event.target.dataset.ext;
-        let name = event.target.innerHTML;
-        // Removes recommended tag
-        if (span) {
-          let removeSpanTC = event.target.cloneNode(true);
-          removeSpanTC.querySelector("#spanR")?.remove();
-          name = removeSpanTC.innerHTML.trim();
-        }
+        const name = event.target.innerHTML;
         // Ignores if name is Same as the selected one
         if (name === itemSelect.dataset.selected) return;
         // Else starts the process
