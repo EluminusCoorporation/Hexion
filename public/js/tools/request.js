@@ -38,8 +38,24 @@ function checkTypes() {
   }
 }
 
+function checkAuthType() {
+  const authType = document.querySelector('.auth-type').dataset.selected;
+  const auth = document.getElementById('auth');
+  
+  if (authType === "Bearer Token") {
+    auth.placeholder = "Token";
+  } else if (authType === "Basic Auth") {
+    auth.placeholder = "username:password";
+  } else if (authType === "Custom") {
+    auth.placeholder = "Authorization";
+  } else {
+    auth.placeholder = "";
+  };
+};
+
 setFunction(refreshBody);
 setFunction(checkTypes);
+setFunction(checkAuthType);
 
 const resultsBtn = document.getElementById("results-btn");
 
@@ -72,6 +88,7 @@ resultsBtn.addEventListener("click", async () => {
     const bodyValue = document.getElementById("contentBody").value;
 
     const auth = document.querySelector(".authToggler");
+    const authType = document.querySelector('.auth-type').dataset.selected;
     const authField = document.getElementById("auth");
     
     // check if all values are present
@@ -96,7 +113,15 @@ resultsBtn.addEventListener("click", async () => {
       
       if (typeof body !== "object") throw new Error("The given body is invalid");
     }
-
+    
+    let authValue;
+    
+    if (auth.checked && authField && authType) {
+      if (authType === "Bearer Token") authValue = `bearer ${authField}`;
+      else if (authType === "Basic Auth") authValue = `basic ${authField}`;
+      else authValue = authField;
+    }
+    
     const fetchObject = {
       method: type,
       headers: {
@@ -104,7 +129,7 @@ resultsBtn.addEventListener("click", async () => {
         // only send accept if user has provided one
         ...(accept && { Accepts: accept }),
         // only send auth if user has checked it and provided one
-        ...(auth.checked && authField && { Authorization: `Bearer ${authField.value}` })
+        ...(authValue && { Authorization: authValue })
       },
       // only send body if user has provided one
       ...(body && { body: JSON.stringify({ ...body })}),

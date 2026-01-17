@@ -75,13 +75,28 @@
           <!-- From Uiverse.io by andrew-demchenk0 --> 
           <div class="option-content">
             <label class="switch">
-              <input class="toggle authToggler" type="checkbox" data-el="auth">
+              <input class="toggle authToggler" type="checkbox" data-el="authContainer">
               <span class="slider"></span>
               <span class="card-side"></span>
             </label>
             <p class="option-name">Authorization Bearer</p>
           </div>
-          <input type="text" name="authKey" id="auth" placeholder="Bearer Token" class="toggler-el ttc"/>
+          <div id="authContainer" class="toggler-el">
+            <div class="dropdown-container" id="dropDownMenu" data-action="checkAuthType">
+              <div class="head-i">
+                <h3 class="dropdown-text auth-type" id="dropdown-text" data-selected="">Type Selector</h3>
+                <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+              </div>
+              <ul class="dropdown-content" id="dropDownContent">
+                <div>
+                  <li><p class="select-item">Bearer Token</p></li>
+                  <li><p class="select-item">Basic Auth</p></li>
+                  <li><p class="select-item">Custom</p></li>
+                </div>
+              </ul>
+            </div>
+            <input type="text" name="authKey" id="auth" placeholder="Bearer Token" class="ttc"/>
+          </div>
         </div>
       </div>
       <div>
