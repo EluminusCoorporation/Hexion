@@ -75,14 +75,9 @@ resultsBtn.addEventListener("click", async () => {
     const authField = document.getElementById("auth");
     
     // check if all values are present
-    if (type === "GET") {
-      if (!url) {
-        throw new Error("You've not filled in all the fields.");
-      }
-    } else {
-      if (!url || !content) {
-        throw new Error("You've not filled in all the fields.");
-      }
+    if (!url) throw new Error("You've not filled in all the fields.");
+    if (type !== "GET") {
+      if (!content) throw new Error("You've not filled in all the fields.");
     }
     
     // check if its trying to ping internal api
@@ -99,9 +94,7 @@ resultsBtn.addEventListener("click", async () => {
     if (bodyValue) {
       body = JSON.parse(bodyValue);
       
-      if (typeof body !== "object") {
-        throw new Error("The given body is invalid");
-      }
+      if (typeof body !== "object") throw new Error("The given body is invalid");
     }
 
     const fetchObject = {
@@ -118,14 +111,14 @@ resultsBtn.addEventListener("click", async () => {
     };
     
     // remove certain attributes if its an GET request
-    if (type === "GET" && fetchObject.body || fetchObject.headers) {
+    if (type === "GET") {
       delete fetchObject.body;
       delete fetchObject.headers;
     }
     
     // Display the sent headers for debugging purposes
     document.getElementById("headerContainer").style.display = "flex";
-    document.getElementById("headers").textContent = JSON.stringify(fetchObject);
+    document.getElementById("headers").textContent = JSON.stringify(fetchObject, null, 2);
       
     // make the actual fetch request
     const response = await fetch(url, fetchObject);
@@ -138,7 +131,7 @@ resultsBtn.addEventListener("click", async () => {
     
     // set the sent data for display
     const results = document.getElementById("results");
-    results.textContent = JSON.stringify(data);
+    results.textContent = JSON.stringify(data, null, 2);
     
     // display the data
     const resultsDiv = document.getElementById("resultsDiv");
