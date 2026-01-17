@@ -1,10 +1,10 @@
-//Gets required imports
+// Gets required imports
 const dropDownMenu = document.querySelectorAll("#dropDownMenu");
 const auto = document.getElementById("auto");
-//Gets selected Ext(only for errordebugger)
+// Gets selected Ext
 export let selectedExt = "auto";
 
-//Helper function for changing selectedExt in other files
+// Helper function for changing selectedExt in other files
 export function setSelectedExt(ext) {
   selectedExt = ext;
   const extElement = document.getElementById(ext);
@@ -19,24 +19,22 @@ export function setFunction(func) {
 //Enables auto as default (only for errordebugger)
 if (auto) {
   auto.classList.add("selected");
-  previousSelected = auto;
 }
 
-//event listener for click
+// make an listener for each dropdown
 dropDownMenu.forEach(el => {
   el.addEventListener("click", function () {
     const dropDownContent = el.querySelector("#dropDownContent");
     const dropDownIcon = el.querySelector("#ddIcon");
 
-    //Enables Stylers
+    // Enables Stylers
     dropDownContent.classList.toggle("show");
     dropDownIcon.classList.toggle("active");
 
-    //Makes a event listener for all Items
+    // Makes a event listener for all Items
     dropDownContent.addEventListener("click", event => {
       if (event.target.classList.contains("select-item")) {
         const itemSelect = el.querySelector("#dropdown-text");
-        const span = el.querySelector("#spanR");
         //Sets Selected Ext
         selectedExt = event.target.dataset.ext;
         const name = event.target.innerHTML;
@@ -46,9 +44,9 @@ dropDownMenu.forEach(el => {
         else {
           itemSelect.style.color = "var(--text)";
           itemSelect.innerHTML = name;
-          itemSelect.dataset.selected = name;
+          itemSelect.dataset.selected = event.target.textContent;
         }
-        // Sets previous selected to Not selected
+        // Unselects the previously selected item
         const selectedItems = dropDownContent.querySelectorAll(".selected");
         selectedItems.forEach(item => item.classList.remove("selected"));
 
