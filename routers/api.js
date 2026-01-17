@@ -12,7 +12,7 @@ const chroma = require("chroma-js");
 
 const router = express.Router();
 
-//Creates an POST router for the frontend to access
+// POST /api/debugger - Debugs the given code
 router.post("/debugger", async (req, res) => {
   //Gets the json data sent from the frontend
   const { type, code } = req.body;
@@ -80,16 +80,14 @@ router.post("/debugger", async (req, res) => {
       if (process.status !== 0) report = process.stdout.toString();
     } else {
       //If language type is invalid throw error
-      res.json({
-        success: false,
-        report: "Invalid language type selected."
-      });
+      throw new Error("Invalid language type selected.")
     }
     //Else send the report to the frontend
     res.json({ success: true, report: report });
-  } catch (err) {
+  } catch (error) {
     //If any unexpected errors found report them
-    res.json({ success: false, report: err.message });
+    console.error(error)
+    res.json({ success: false, report: error });
   }
 });
 
@@ -227,7 +225,7 @@ function multiStopGradient(
   return output;
 }
 
-// POST gradient endpoint
+// POST /api/gradient - Generates an gradient output for usage
 router.post("/gradient", (req, res) => {
   // Get the necessary values
   const { type, input, colors, styles, options } = req.body;
@@ -340,16 +338,14 @@ router.post("/gradient", (req, res) => {
       // return the value
       output = `${styler}${color}`;
     } else {
-      res.json({ output: "No options matched.", error: true });
-      return;
+      throw new Error("No options matched.")
     }
+    
+    res.json({ output: output });
   } catch (error) {
     res.status(500).json({ output: error, error: true });
     console.error(error);
-    return;
   }
-
-  res.json({ output: output });
 });
 
 router.post("/time", (req, res) => {
