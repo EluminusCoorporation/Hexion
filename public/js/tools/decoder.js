@@ -14,7 +14,7 @@ resultsBtn.addEventListener("click", function () {
   //Gets the text inputed
   const text = document.getElementById("ttc").value;
   //Gets the type selected
-  const name = document.getElementById("dropdown-text").textContent;
+  const name = document.getElementById("dropdown-text").dataset.selected;
   //Rund errorhandler
   if (!errorLoggerBEFORE(name, text)) {
     return false;

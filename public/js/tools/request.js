@@ -51,11 +51,11 @@ resultsBtn.addEventListener("click", async () => {
     let body;
     const url = document.getElementById("ttc").value;
 
-    const type = document.querySelector(".type").textContent.toUpperCase();
+    const type = document.querySelector(".type").dataset.selected?.toUpperCase();
     const content = document
       .querySelector(".content")
-      .textContent.toLowerCase();
-    const accept = document.querySelector(".accept").textContent.toLowerCase();
+      .dataset.selected?.toLowerCase();
+    const accept = document.querySelector(".accept").dataset.selected?.toLowerCase();
     const bodyValue = document.getElementById("contentBody").value;
 
     const auth = document.querySelector(".authToggler");

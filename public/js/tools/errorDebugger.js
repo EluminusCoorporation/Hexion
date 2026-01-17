@@ -144,7 +144,7 @@ fileMode.addEventListener("click", () => {
 });
 
 //When text mode deactivates remove data
-textMode.addEventListener("click", () => {
+textMode.addEventListener("click", function() {
   //if current selected ignore
   if (this.classList.contains('selected')) return;
   
@@ -161,6 +161,7 @@ textMode.addEventListener("click", () => {
     const htmlName = html.innerHTML;
     const dropdownText = document.getElementById('dropdown-text');
     
+    dropdownText.dataset.selected = "HTML";
     dropdownText.innerHTML = htmlName;
     
     //sends an alert
@@ -232,7 +233,7 @@ function setDebuggerContext(report, error, type) {
 
 resultsBtn.addEventListener('click', async () => {
   const resultsDiv = document.getElementById('resultsDiv');
-  const type = document.getElementById('dropdown-text').textContent.trim();
+  const type = document.getElementById('dropdown-text').dataset.selected.trim();
   const code = sessionStorage.getItem("code");
   //runs error handler
   if (!errorLoggerBEFORE(type, code)) {

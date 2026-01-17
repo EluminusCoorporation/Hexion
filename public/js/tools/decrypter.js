@@ -13,7 +13,7 @@ resultsBtn.addEventListener("click", function () {
   //Gets the text inputted
   const text = document.getElementById("ttc").value;
   //Gets the format type
-  const name = document.getElementById("dropdown-text").textContent;
+  const name = document.getElementById("dropdown-text").dataset.selected;
 
   //Runs the error handler
   if (!errorLoggerBEFORE(name, text)) {

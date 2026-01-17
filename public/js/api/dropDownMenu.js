@@ -40,33 +40,32 @@ dropDownMenu.forEach(el => {
         //Sets Selected Ext
         selectedExt = event.target.dataset.ext;
         let name = event.target.innerHTML;
-        //Removes recommended tag
+        // Removes recommended tag
         if (span) {
           let removeSpanTC = event.target.cloneNode(true);
           removeSpanTC.querySelector("#spanR")?.remove();
           name = removeSpanTC.innerHTML.trim();
         }
-        //Ignores if name is Same as the selected one
-        if (name === itemSelect.textContent) return;
-        //Else starts the process
+        // Ignores if name is Same as the selected one
+        if (name === itemSelect.dataset.selected) return;
+        // Else starts the process
         else {
           itemSelect.style.color = "var(--text)";
           itemSelect.innerHTML = name;
+          itemSelect.dataset.selected = name;
         }
-        //Sets previous selected to Not selected
+        // Sets previous selected to Not selected
         const selectedItems = dropDownContent.querySelectorAll(".selected");
         selectedItems.forEach(item => item.classList.remove("selected"));
 
-        //adds selected
+        // adds selected
         event.target.classList.add("selected");
 
         const actionName = el.dataset.action;
         const action = actionRegistry[actionName];
 
         // silent runner
-        if (typeof action === "function") {
-          action();
-        }
+        if (typeof action === "function") action();
       }
     });
   });
