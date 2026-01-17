@@ -20,10 +20,10 @@
   "author": "EluminusCo",
   "License": "Proprietary",
   "type": "CommonJS",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"All Tests Completed!\" && exit 0",
-    "start": "node --no-deprecation server.js"
+    "start": "node --no-deprecation ."
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
