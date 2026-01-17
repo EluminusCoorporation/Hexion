@@ -320,6 +320,12 @@
   background: var(--bg-light);
 }
 
+.flexbox-header {
+  display: none;
+  margin-top: .5em;
+  justify-content: center;
+}
+
 .flexbox-results {
   display: none;
   margin-top: 3em;

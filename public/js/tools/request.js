@@ -62,13 +62,15 @@ resultsBtn.addEventListener("click", function () {
   const auth = document.querySelector('.authToggler');
   const authField = document.getElementById('auth');
   
-  if (!url.startsWith('http')) {
+  /* if (!url.startsWith('https')) {
     setStatus('error', 'Request sender failed', 'Cannot request internal api')
+    toggleLoader(false);
     return;
-  }
+  } */
   
   if (url.startsWith('http://localhost')) {
     setStatus('error', 'Request Sender failed', 'Cannot request LocalHosts')
+    toggleLoader(false);
     return;
   }
   
@@ -79,6 +81,7 @@ resultsBtn.addEventListener("click", function () {
         "Fields Required",
         "You've not filled in all the fields"
       );
+      toggleLoader(false);
       return;
     }
   } else {
@@ -88,12 +91,15 @@ resultsBtn.addEventListener("click", function () {
         "Fields Required",
         "You've not filled in all the fields"
       );
+      toggleLoader(false);
       return;
     }
   }
   
   if (typeof body !== "object") {
     setStatus('error', 'Request Sender failed', 'The given body is invalid')
+    toggleLoader(false);
+    return
   }
   
   const fetchObject = {
@@ -110,6 +116,9 @@ resultsBtn.addEventListener("click", function () {
     delete fetchObject.body;
     delete fetchObject.headers;
   }
+  
+  document.getElementById('headerContainer').style.display = "flex";
+  document.getElementById('headers').textContent = JSON.stringify(fetchObject);
   
   fetch(url, fetchObject)
     .then(response => {

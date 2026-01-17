@@ -353,8 +353,7 @@ router.post("/gradient", (req, res) => {
 });
 
 router.post("/time", (req, res) => {
-  const { time } = req.body
-  res.json({ 'complete': time })
+  res.json({ 'complete': "sadesath" })
 });
 
 module.exports = router;
