@@ -7,7 +7,7 @@ function refreshBody() {
   const requestBodyType = document.querySelector(".body-type");
   const bodyField = document.getElementById("contentBody");
 
-  switch (requestBodyType.textContent) {
+  switch (requestBodyType.dataset.selected) {
     case "application/json":
       bodyField.placeholder = '{ "key": "value" }';
       break;
@@ -26,7 +26,20 @@ function refreshBody() {
   }
 }
 
+function checkTypes() {
+  const type = document.querySelector('.type').dataset.selected;
+  
+  if (type === "GET") {
+    document.querySelectorAll('.input-selectors').forEach((input) => input.style.display = "none");
+    document.getElementById('contentBody').style.display = "none";
+  } else {
+    document.querySelectorAll('.input-selectors').forEach((input) => input.style.display = "flex");
+    document.getElementById('contentBody').style.display = "flex";
+  }
+}
+
 setFunction(refreshBody);
+setFunction(checkTypes);
 
 const resultsBtn = document.getElementById("results-btn");
 
@@ -105,7 +118,7 @@ resultsBtn.addEventListener("click", async () => {
     };
     
     // remove certain attributes if its an GET request
-    if (type === "GET") {
+    if (type === "GET" && fetchObject.body || fetchObject.headers) {
       delete fetchObject.body;
       delete fetchObject.headers;
     }
