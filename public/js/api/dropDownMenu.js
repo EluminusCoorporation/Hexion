@@ -1,24 +1,9 @@
 // Gets required imports
 const dropDownMenu = document.querySelectorAll("#dropDownMenu");
-const auto = document.getElementById("auto");
-// Gets selected Ext
-export let selectedExt = "auto";
-
-// Helper function for changing selectedExt in other files
-export function setSelectedExt(ext) {
-  selectedExt = ext;
-  const extElement = document.getElementById(ext);
-}
 
 let actionRegistry = {};
-
 export function setFunction(func) {
   actionRegistry[func.name] = func;
-}
-
-//Enables auto as default (only for errordebugger)
-if (auto) {
-  auto.classList.add("selected");
 }
 
 // make an listener for each dropdown
@@ -35,8 +20,6 @@ dropDownMenu.forEach(el => {
     dropDownContent.addEventListener("click", event => {
       if (event.target.classList.contains("select-item")) {
         const itemSelect = el.querySelector("#dropdown-text");
-        //Sets Selected Ext
-        selectedExt = event.target.dataset.ext;
         const name = event.target.innerHTML;
         // Ignores if name is Same as the selected one
         if (name === itemSelect.dataset.selected) return;

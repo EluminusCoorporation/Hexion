@@ -1,4 +1,5 @@
-import { selectedExt } from './dropDownMenu.js'
+import { selectedExt } from '../tools/errorDebugger.js'
+
 //Sets an status timeout temp var
 let statusTimeout;
 //Global setStatus func

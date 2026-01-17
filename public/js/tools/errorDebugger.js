@@ -2,7 +2,25 @@
 import { setStatus, errorLoggerBEFORE, fileLogger } from '../api/errorLogger.js';
 import {} from '../api/copy.js'
 import { formatFileSize } from '../api/fileSizeFormat.js'
-import { selectedExt, setSelectedExt } from '../api/dropDownMenu.js'
+import { setFunction } from '../api/dropDownMenu.js'
+
+export let selectedExt = "auto";
+
+function selectExtension() {
+  const type = document.getElementById('dropdown-text').dataset.selected.toLowerCase();
+  switch (type) {
+    case 'html':
+    case 'auto':
+    case 'css':
+      selectedExt = type;
+    case 'javascript':
+      selectedExt = 'js';
+    case 'python':
+      selectedExt = 'py';
+  };
+}
+
+setFunction(selectExtension);
 
 //import required elements
 const resultsBtn = document.getElementById('results-btn');
@@ -153,7 +171,7 @@ textMode.addEventListener("click", function() {
   
   //disable auto as an option
   if (selectedExt === "auto") {
-    setSelectedExt("html");
+    selectedExt = "html";
     
     auto.classList.remove('selected');
     html.classList.add('selected');
