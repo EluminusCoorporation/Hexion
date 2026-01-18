@@ -26,7 +26,7 @@ function errorHandler(err, req, res, next) {
 function notFoundHandler(req, res, next) {
   const errorInfo = errors[404];
   //separate middleware for 404
-  res.status(404).render('error/errorbody', { error: errorInfo, errorurl: req.url, errorcode: '404' });
+  res.status(404).render('error/error', { error: errorInfo, errorurl: req.url, errorcode: '404' });
 }
 
 module.exports = { errorHandler, notFoundHandler };
