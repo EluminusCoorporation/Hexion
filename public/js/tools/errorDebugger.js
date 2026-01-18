@@ -317,7 +317,7 @@ resultsBtn.addEventListener('click', async () => {
   
   //set the total error count
   const totalErrors = document.getElementById('totalErrors');
-  totalErrors.textContent = errorCount;
+  totalErrors.textContent = `${errorCount}`;
   
   const resultsInput = document.getElementById('results');
   const errorContext = setDebuggerContext(report, 0, type);
@@ -356,7 +356,7 @@ errorGoForward.addEventListener("click", () => {
   
   //increases & sets the error count
   let currentValue = parseInt(currentError.textContent) + 1;
-  currentError.textContent = currentValue;
+  currentError.textContent = `${currentValue}`;
   
   if (currentError.textContent === totalErrors.textContent) errorGoForward.classList.add('disabled');
   
@@ -383,7 +383,7 @@ errorGoBack.addEventListener("click", () => {
   
   //decreases & sets the error count
   let currentValue = parseInt(currentError.textContent) - 1;
-  currentError.textContent = currentValue;
+  currentError.textContent = `${currentValue}`;
   
   if (currentError.textContent === "1") errorGoBack.classList.add('disabled');
   
