@@ -70,7 +70,7 @@
   padding: .6em !important;
   width: fit-content !important;
   height: 100%;
-  border: none;
+  border: none !important;
   margin: 0 !important;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
@@ -83,7 +83,7 @@
 
 .url-input {
   padding: .7em !important;
-  border: none;
+  border: none !important;
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
   margin: 0 !important;

@@ -4,7 +4,7 @@ import {} from '../api/copy.js'
 import { formatFileSize } from '../api/fileSizeFormat.js'
 import { setFunction } from '../api/dropDownMenu.js'
 
-export let selectedExt = "auto";
+let selectedExt = "auto";
 
 function selectExtension() {
   const type = document.getElementById('dropdown-text').dataset.selected.toLowerCase();
@@ -102,6 +102,22 @@ uploadZone.addEventListener('drop', async (event) => {
   
   //Run file error handler
   if (!fileLogger(file)) return false;
+    //checks if selectedExt is auto
+  if (selectedExt === "auto") {
+    //Checks if Extension is supported
+    if (!supportedExtensions.includes(fileExtension)) {
+      setStatus('error', 'File Upload failed', 'File Extension not supported by our service');
+      return false;
+    }
+    //Else continues
+    setStatus()
+    return true;
+  }
+  //Else checks if not supported
+  else if (fileExtension !== selectedExt) {
+    setStatus('error', 'File Upload failed', `File Extension not supported by the language you have selected (.${selectedExt})`);
+    return false;
+  }
   
   //Get file data
   const fileNameLabel = document.getElementById('fileName');

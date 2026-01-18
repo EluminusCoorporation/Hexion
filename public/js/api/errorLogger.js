@@ -1,5 +1,3 @@
-import { selectedExt } from '../tools/errorDebugger.js'
-
 //Sets an status timeout temp var
 let statusTimeout;
 //Global setStatus func
@@ -113,22 +111,6 @@ export function fileLogger(file) {
     setStatus('error', 'File Upload failed', 'Something went wrong did you select a file?');
     return false;
   };
-  //Sets selectedExt as auto
-  if (selectedExt === "auto") {
-    //Checks if Extension is supported
-    if (!supportedExtensions.includes(fileExtension)) {
-      setStatus('error', 'File Upload failed', 'File Extension not supported by our service');
-      return false;
-    }
-    //Else continues
-    setStatus()
-    return true;
-  }
-  //Else checks if not supported
-  else if (fileExtension !== selectedExt) {
-    setStatus('error', 'File Upload failed', `File Extension not supported by the language you have selected (.${selectedExt})`);
-    return false;
-  }
   //Checks if file size exceeds the file size, limit
   if (file.size > 15728670) {
     setStatus('error', 'File Verification failed', 'File is too large');
