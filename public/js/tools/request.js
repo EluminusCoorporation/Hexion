@@ -89,7 +89,7 @@ resultsBtn.addEventListener("click", async () => {
 
     const auth = document.querySelector(".authToggler");
     const authType = document.querySelector('.auth-type').dataset.selected;
-    const authField = document.getElementById("auth");
+    const authField = document.getElementById("auth").value;
     
     // check if all values are present
     if (!url) throw new Error("You've not filled in all the fields.");
@@ -118,7 +118,7 @@ resultsBtn.addEventListener("click", async () => {
     
     if (auth.checked && authField && authType) {
       if (authType === "Bearer Token") authValue = `bearer ${authField}`;
-      else if (authType === "Basic Auth") authValue = `basic ${authField}`;
+      else if (authType === "Basic Auth") authValue = 'basic ' + btoa(authField);
       else authValue = authField;
     }
     
