@@ -4,38 +4,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <title><%= title %></title>
-  
+
   <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
   <link rel="icon" type="image/webp" sizes="16x16" href="/assets/icons/favicon-16x16.webp">
   <link rel="icon" type="image/webp" sizes="32x32" href="/assets/icons/favicon-32x32.webp">
-  
+
   <link rel="stylesheet" href="/styles/<%= path %>.css">
-  <link rel="stylesheet" href="/styles/components/navbar.css" id="navbarLink">
+  <link rel="stylesheet" href="/styles/components/navbar.css">
   <link rel="stylesheet" href="/styles/components/footer.css">
   <link rel="stylesheet" href="/styles/components/effects/loader.css">
   <link rel="stylesheet" href="/styles/__global_variables__.css">
-  
+
   <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
   <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  
+
   <% if (typeof extraLinks !== "undefined") { %>
     <%- extraLinks %>
   <% } %>
-  
+
   <script src="/js/<%= path %>.js" type="module" defer></script>
   <script src="/js/effects/loader.js" defer></script>
-  
+
   <meta property="description" content=<%= description %>>
   <meta property="keywords" content="Hexion, programming, coding, tools, free">
   <meta property="author" content="EluminusCo">
   <meta property="robots" content="index, follow">
-  
+
   <meta property="og:title" content="Hexion • <%= title %>">
   <meta property="og:description" content=<%= description %>>
 
@@ -47,4 +47,60 @@
   <meta property="twitter:title" content="Hexion • <%= title %>">
   <meta property="twitter:description" content=<%= description %>>
   <meta property="twitter:image" content="https://i.ibb.co/xKBYKNRz/Hexion-Banner.webp">
+  <style id="navbarLink">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      font-family: 'Inter', Sans-Serif;
+      box-sizing: border-box;
+      background-color: var(--bg-dark);
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+
+    .addiv {
+      position: relative;
+      display: flex;
+      justify-self: center;
+      align-items: center;
+      height: 50px;
+      width: 90%;
+      background: transparent;
+      border-radius: 5px;
+      margin: 15px;
+      padding: 10px;
+      backdrop-filter: blur(5px);
+      border: 1px solid var(--border-muted);
+      box-shadow: 0 4px 2px var(--shadow);
+    }
+
+    .addiv p {
+      color: var(--text);
+      text-align: center;
+    }
+
+    .pageH2 {
+      color: white;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+  </style>
 </head>
