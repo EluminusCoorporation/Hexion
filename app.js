@@ -65,7 +65,15 @@ app.set('trust proxy', (ip) => {
 app.use(express.static(PUBLIC_DIR));
 
 //Enable required middlewares
-app.use(express.json({ limit: "200mb" }));
+app.use(express.json({
+  inflate: true,
+  limit: "1mb",
+  reviver: null,
+  strict: true,
+  type: "application/json",
+  verify: undefined,
+}));
+
 app.use(express.urlencoded({ extended: false, limit: "200mb" }));
 app.use(favicon(path.join(PUBLIC_DIR, 'assets/icons/favicon.ico')));
 
