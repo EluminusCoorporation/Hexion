@@ -18,6 +18,7 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const chalk = require('chalk');
 const path = require('path');
+const fs = require('fs');
 const { execSync } = require('child_process');
 const rateLimit = require('express-rate-limit');
 //Import the config
@@ -62,10 +63,12 @@ app.set('trust proxy', (ip) => {
 });
 
 //Setup static directories
-app.use(express.static(PUBLIC_DIR, {
-  maxAge: '1d',
-  immutable: true
-}));
+if (fs.existsSync(PUBLIC_DIR)) {
+  app.use(express.static(PUBLIC_DIR, {
+    maxAge: '1d',
+    immutable: true
+  }));
+}
 
 //Enable required middlewares
 app.use(express.json({
