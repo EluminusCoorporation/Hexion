@@ -20,7 +20,7 @@ function errorHandler(err, req, res, next) {
   const errorInfo = errors[status];
   
   //Sends data to the frontend
-  res.status(status).render('error/errorbody', { error: errorInfo, errorcode: status, errorurl: req.url });
+  res.status(status).render('error/error', { error: errorInfo, errorcode: status, errorurl: req.url });
 }
 
 function notFoundHandler(req, res, next) {
