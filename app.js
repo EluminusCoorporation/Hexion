@@ -62,7 +62,10 @@ app.set('trust proxy', (ip) => {
 });
 
 //Setup static directories
-app.use(express.static(PUBLIC_DIR));
+app.use(express.static(PUBLIC_DIR, {
+  maxAge: '1d',
+  immutable: true
+}));
 
 //Enable required middlewares
 app.use(express.json({
