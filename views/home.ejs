@@ -1,8 +1,5 @@
 <%- include('components/header') -%>
 
-<body>
-  <div class="container">
-    <%- include('components/effects/loader') -%>
     <header class="image-wrapper fade-in-d">
       <div class="branding-container">
         <img src="/assets/icons/favicon.ico" class="logoimg" draggable="false">
@@ -130,14 +127,34 @@
           </div>
         </section>
         <%- include('components/footer') -%>
-      </main>
-    </div>
+    
+<script>
+// Observer is used to detect if user has loaded the page
+const observer = new
+IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    // if user is loading the element areas
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      entry.target.classList.remove("reversed");
+    } else 
+    {
+      //Does that in reverse
+      entry.target.classList.remove("show");
+      entry.target.classList.add("reversed")
+    }
+  });
+  // Set the threshold
+}, { threshold: 0.2 });
+
+// Gets all the elements with the specific className
+document.querySelectorAll('.fade-in-d').forEach(el => observer.observe(el));
+</script>
+    
     <!--function Import-->
     <script src="/js/api/faq.js" defer></script>
-    <script src="/js/effects/incoming.js" defer></script>
     
     <!--disabling header css-->
-    <script>document.getElementById("navbarLink").disabled = true</script>
-</body>
-
-</html>
+    <script>
+      document.getElementById("navbarLink").disabled = true
+    </script>

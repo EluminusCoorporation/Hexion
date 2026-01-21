@@ -33,7 +33,7 @@
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity .6s ease-in-out, visibility .6s ease-in-out, background .6s ease-in-out, backdrop-filter .6s ease-in-out;
+  transition: all 300ms ease-in-out;
   z-index: 100;
 }
 
@@ -45,7 +45,7 @@
   width: 270px;
   height: 450px;
   border-radius: 10px;
-  transform: scale(0);
+  transform: scale(95);
   transition: transform .5s ease-out;
   box-shadow: 0 6px 6px var(--shadow);
   border: 1px solid var(--border);

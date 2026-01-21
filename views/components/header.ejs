@@ -28,7 +28,6 @@
   <% } %>
 
   <script src="/js/<%= path %>.js" type="module" defer></script>
-  <script src="/js/effects/loader.js" defer></script>
 
   <meta property="description" content=<%= description %>>
   <meta property="keywords" content="Hexion, programming, coding, tools, free">
@@ -103,3 +102,24 @@
     }
   </style>
 </head>
+
+<body>
+    <div class="container">
+      <div class="loader" id="loader">
+        <svg class="circular" viewBox="25 25 50 50">
+          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3.5" stroke-miterlimit="10"></circle>
+        </svg>
+      </div>
+      
+      <script>
+        // Loads the Loading screen when the user loads the page
+        function toggleLoader(value) {
+          if (value === true) document.getElementById("loader").classList.remove("fade-out");
+          if (value === false) document.getElementById("loader").classList.add("fade-out");
+        }
+
+        window.onload = function() {
+          //adds the required classList
+          toggleLoader(false)
+        };
+      </script>
