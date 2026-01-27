@@ -23,7 +23,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"All Tests Completed!\" && exit 0",
-    "start": "node --no-deprecation ."
+    "start": "node ."
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
