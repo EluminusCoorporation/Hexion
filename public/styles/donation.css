@@ -45,7 +45,7 @@
   width: 270px;
   height: 450px;
   border-radius: 10px;
-  transform: scale(95);
+  transform: scale(.95);
   transition: transform .5s ease-out;
   box-shadow: 0 6px 6px var(--shadow);
   border: 1px solid var(--border);
