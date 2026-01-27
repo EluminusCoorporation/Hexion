@@ -4,9 +4,7 @@ const loadConfig = require("./loadConfig");
 const config = loadConfig("./config.toml");
 
 function consoleStartUp() {
-  //clears the screen
-  process.stdout.write("\x1Bc");
-  
+  // designer borders around
   process.stdout.write('='.repeat(30) + '\n');
   //sends the banner
   const asciiPath = path.join(__dirname, '../public/assets', 'ascii-art.txt');
@@ -21,6 +19,7 @@ function consoleStartUp() {
 
   process.stdout.write('\n' + copyright + " ".repeat(Math.max(0, padLength)) + version + '\n\n');
   
+  // designer borders around
   process.stdout.write('='.repeat(30) + '\n');
 }
 

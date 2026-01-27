@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= errorcode %></title>
+  <link rel="stylesheet" href="/styles/error/error.css">
+  <link rel="stylesheet" href="/styles/__global_variables__.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div class="container">
+    <div class="container-404">
+      <h1 class="error-code" id="header"><%= errorcode %></h1>
+      <p class="error-title"><%= error.title %></p>
+      <p class="error-message"><%= error.message %></p>
+      <p class="error-url"><span class="request-type">GET: </span><%= errorurl %></p>
+      <a href="/dashboard">
+        <button class="back-button">
+          <i class="bx bx-arrow-out-up-left-square"></i>
+          <p>Go Back</p>
+        </button>
+      </a>
+    </div>
+  </div>
+<script>
+  function autoResizeHeader(header) {
+    const minSize = 2.5; // rem
+    const maxSize = 6; // rem
+    let fontSize = maxSize;
+
+    header.style.fontSize = fontSize + 'rem';
+
+    // Reduce size until it fits container width
+    while (header.scrollWidth > header.clientWidth && fontSize > minSize) {
+      fontSize -= 1;
+      header.style.fontSize = fontSize + 'rem';
+    };
+  };
+  
+  const header = document.getElementById('header');
+  autoResizeHeader(header);
+</script>
+</body>
+</html>
