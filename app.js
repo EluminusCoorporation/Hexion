@@ -45,14 +45,6 @@ const app = express();
 //Sends the ascii art & info
 consoleStartUp();
 
-// adds the missing functions
-if (typeof btoa === "undefined") {
-  global.btoa = (str) => Buffer.from(str, "binary").toString("base64");
-}
-if (typeof atob === "undefined") {
-  global.atob = (b64Encoded) => Buffer.from(b64Encoded, "base64").toString("binary");
-}
-
 //The server starting process starts from here
 console.log(chalk.white(chalk.bold.yellow('[server]') + ' Starting Server...'));
 
@@ -201,6 +193,5 @@ process.on('uncaughtException', (error) => {
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:');
   console.error(promise);
-  console.error('Reason:');
-  console.error(reason);
+  console.error('Reason: ' + reason);
 });
