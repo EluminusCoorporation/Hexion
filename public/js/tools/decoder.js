@@ -109,10 +109,8 @@ resultsBtn.addEventListener("click", function () {
       " ": "/" // Space separator
     };
 
-    const reverseMorseCodeMap = Object.fromEntries(
-      Object.entries(morseCodeMap).map(([k, v]) => [v, k])
-    );
-     results = morseCode
+    const reverseMorseCodeMap = Object.fromEntries(Object.entries(morseCodeMap).map(([k, v]) => [v, k]));
+     results = text
       .split(/[\s,]+/)
       .map(code => reverseMorseCodeMap[text] || "")
       .join("");
