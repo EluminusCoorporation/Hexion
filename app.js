@@ -64,10 +64,7 @@ app.set('trust proxy', (ip) => {
 
 //Setup static directories
 if (fs.existsSync(PUBLIC_DIR)) {
-  app.use(express.static(PUBLIC_DIR, {
-    maxAge: '1d',
-    immutable: true
-  }));
+  app.use(express.static(PUBLIC_DIR));
 }
 
 //Enable required middlewares
