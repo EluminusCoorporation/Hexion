@@ -88,6 +88,7 @@ resultsBtn.addEventListener("click", async () => {
     const bodyValue = document.getElementById("contentBody").value;
 
     const auth = document.querySelector(".authToggler");
+    const timeout = document.querySelector(".timeoutToggler");
     const authType = document.querySelector('.auth-type').dataset.selected;
     const authField = document.getElementById("auth").value;
     
@@ -122,7 +123,7 @@ resultsBtn.addEventListener("click", async () => {
         // only send auth if user has checked it and provided one
         ...(authValue && { "Authorization": authValue })
       },
-      timeout: 60000, // 1 minute
+      ...(!timeout && { timeout: 60000 }), // 1 minute
       // only send body if user has provided one
       ...(body && { data: { ...body } }),
     };
