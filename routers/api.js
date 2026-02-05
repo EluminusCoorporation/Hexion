@@ -231,12 +231,30 @@ function multiStopGradient(
 // POST /api/gradient - Generates an gradient output for usage
 router.post("/gradient", (req, res) => {
   // Get the necessary values
-  const { type, input, colors, styles, options } = req.body;
-
+  const { 
+    type, 
+    input, 
+    colors, 
+    styles = {
+      "bold": false,
+      "underline": false,
+      "italic": false,
+      "strikethrough": false,
+      "obfuscation": false,
+    }, 
+    options = {
+      trim: false,
+      lowercaseHex: false
+    }
+  } = req.body;
+  
   let output;
   let userInput = input;
 
   try {
+    // checks if all parameters exists
+    if (!type || !input || !colors) throw new Error('The required parameters were not passed.');
+    
     if (options.trim) {
       userInput = userInput.trim().replace(/\s+/g, ' ');
     }
@@ -340,14 +358,13 @@ router.post("/gradient", (req, res) => {
 
       // return the value
       output = `${styler}${color}`;
-    } else {
-      throw new Error("No options matched.")
-    }
+    } else throw new Error("No options matched.")
+    
+    if (!output) throw new Error('Responsed output is empty, did you enter the correct info?')
     
     res.json({ output: output });
   } catch (error) {
-    res.status(500).json({ output: error, error: true });
-    console.error(error);
+    res.status(400).json({ message: error.message });
   }
 });
 

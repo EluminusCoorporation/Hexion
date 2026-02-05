@@ -59,64 +59,69 @@ const optionsCheckbox = document.querySelectorAll(".toggle");
 
 // Updates the output
 async function refreshOutput() {
-  const results = document.getElementById('results');
+  try {
+    const results = document.getElementById('results');
   
-  // get important parameters
-  const colors = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
-  const input = document.getElementById('inputText').value;
-  const type = document.getElementById("dropdown-text").dataset.selected;
-  // default styles(none)
-  const styles = {
-    "bold": false,
-    "underline": false,
-    "italic": false,
-    "strikethrough": false,
-    "obfuscation": false,
-  };
-  
-  // default options(none)
-  const options = {
-    trim: false,
-    lowercaseHex: false
-  };
-  
-  optionsCheckbox.forEach((checkbox) => {
-    if (!checkbox.checked) return;
+    // get important parameters
+    const colors = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
+    const input = document.getElementById('inputText').value;
+    const type = document.getElementById("dropdown-text").dataset.selected;
     
-    const optionType = checkbox.dataset.type;
-    options[optionType] = true;
-  });
+    // default styles(none)
+    const styles = {
+      "bold": false,
+      "underline": false,
+      "italic": false,
+      "strikethrough": false,
+      "obfuscation": false,
+    };
+  
+    // default options(none)
+    const options = {
+      trim: false,
+      lowercaseHex: false
+    };
+  
+    optionsCheckbox.forEach((checkbox) => {
+      if (!checkbox.checked) return;
+    
+      const optionType = checkbox.dataset.type;
+      options[optionType] = true;
+    });
     
   
-  // Check if any stylers are enabled and update the options
-  const stylerCheckBoxes = [...document.querySelectorAll('.styler-label input')]
-  stylerCheckBoxes.forEach((checkbox) => {
-    if (!checkbox.checked) return;
+    // Check if any stylers are enabled and update the options
+    const stylerCheckBoxes = [...document.querySelectorAll('.styler-label input')]
+    stylerCheckBoxes.forEach((checkbox) => {
+      if (!checkbox.checked) return;
     
-    const styleType = checkbox.dataset.style;
-    styles[styleType] = true;
-  });
+      const styleType = checkbox.dataset.style;
+      styles[styleType] = true;
+    });
   
-  //Send the request to the backend
-  const res = await fetch('/api/gradient', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type, input, colors, styles, options })
-  });
+    //Send the request to the backend
+    const res = await fetch('/api/gradient', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type, input, colors, styles, options })
+    });
   
-  //check if res is ok
-  if (!res.ok) {
-    setStatus('error', 'Gradient Error', 'An unexpected error occured: ' + res.status);
-    return;
+    // checks if response exists
+    if (!res) throw new Error('No response from our internal server, try again later.');
+  
+    //check if res is ok
+    if (!res.ok) {
+      const errorMessage = ((await res.json()).message) || "An unknown error occured.";
+      throw new Error(errorMessage);
+    };
+  
+    const data = await res.json();
+
+    results.textContent = data.output;
+  } catch (error) {
+    setStatus("error", "Gradient Generator Failed", error)
+    console.error('An error occured while generating gradient: \n' + error)
   }
-  
-  const data = await res.json();
-  
-  if (data.error && data.error === true) {
-    setStatus('error', 'Gradient error', 'An unexpected error occured: ' + data.output);
-    return;
-  }
-  results.textContent = data.output;
 }
 
 optionsCheckbox.forEach((checkbox) => {
@@ -130,7 +135,6 @@ function updateGradient() {
   
   //Updates the gradient accordingly
   document.documentElement.style.setProperty("--gradientXXX", `linear-gradient(to right, ${colorNames.join(", ")}`)
-  
   // Get the updated output
   refreshOutput();
 }
