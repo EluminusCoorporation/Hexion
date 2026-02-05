@@ -25,4 +25,4 @@ To Start the project locally
 
 ## Creators
 - [@MagicDevM](https://www.github.com/MagicDevM)
-- [@SirCube](https://github.com/EluminusOrg)
+- [@SirCube](https://github.com/SirCubeSAC)
