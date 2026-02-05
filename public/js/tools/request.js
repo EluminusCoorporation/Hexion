@@ -97,16 +97,6 @@ resultsBtn.addEventListener("click", async () => {
       if (!content) throw new Error("You've not filled in all the fields.");
     }
     
-    // check if its trying to ping internal api
-    /* if (!url.startsWith('https')) {
-    throw new Error("Cannot request internal api.")
-    } */
-    
-    // check if its trying to ping localhosts
-    if (url.startsWith("http://localhost")) {
-      throw new Error("Cannot request Localhosts.");
-    }
-    
     // check if the given body is an usable object
     if (bodyValue) {
       body = JSON.parse(bodyValue);
@@ -122,37 +112,49 @@ resultsBtn.addEventListener("click", async () => {
       else authValue = authField;
     }
     
-    const fetchObject = {
-      method: type,
+    const header = {
+      method: type.toLowerCase(),
+      url: url,
       headers: {
         "Content-Type": content,
         // only send accept if user has provided one
-        ...(accept && { Accepts: accept }),
+        ...(accept && { "Accepts": accept }),
         // only send auth if user has checked it and provided one
-        ...(authValue && { Authorization: authValue })
+        ...(authValue && { "Authorization": authValue })
       },
+      timeout: 60000, // 1 minute
       // only send body if user has provided one
-      ...(body && { body: JSON.stringify({ ...body })}),
+      ...(body && { data: { ...body } }),
     };
     
     // remove certain attributes if its an GET request
     if (type === "GET") {
-      delete fetchObject.body;
-      delete fetchObject.headers;
+      delete header.data;
+      delete header.headers;
     }
     
     // Display the sent headers for debugging purposes
     document.getElementById("headerContainer").style.display = "flex";
-    document.getElementById("headers").textContent = JSON.stringify(fetchObject, null, 2);
+    document.getElementById("headers").textContent = JSON.stringify(header, null, 2);
       
     // make the actual fetch request
-    const response = await fetch(url, fetchObject);
-    // throw error if request fails
-    if (!response.ok) throw new Error(`${response.status}`);
+    const responseInternal = await fetch("/api/request", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url, header })
+    })
     
-    const data = await response.json();
+    if (!responseInternal) throw new Error('No response from our internal server, try again later.')
+    
+    if (!responseInternal.ok) {
+      const errorMessage = (await responseInternal.json()).message || "An unknown error occured.";
+      throw new Error(errorMessage);
+    }
+    
+    const data = await responseInternal.json();
+    
     // throw error if data has error attribute
-    if (data.error) throw new Error(data.error);
+    if (!data) throw new Error('No response body sent from your url.');
     
     // set the sent data for display
     const results = document.getElementById("results");
@@ -164,7 +166,7 @@ resultsBtn.addEventListener("click", async () => {
   } catch (error) {
     // catch every error and display
     setStatus("error", "Request Sender Failed", error);
-    console.error("An error occured while requesting api " + error)
+    console.error("An error occured while requesting url " + error)
   } finally {
     // disable the loader at the end no matter whats the result
     toggleLoader(false);

@@ -1,14 +1,17 @@
 // Gets the required modules
 const express = require("express");
 
-//Debugger modules
+// Debugger modules
 const HTMLHint = require("htmlhint");
 const stylelint = require("stylelint");
 const { ESLint } = require("eslint");
 const { spawnSync } = require("child_process");
 
-//gradient modules
+// Gradient modules
 const chroma = require("chroma-js");
+
+// Request Sender modules
+const axios = require("axios");
 
 const router = express.Router();
 
@@ -348,8 +351,23 @@ router.post("/gradient", (req, res) => {
   }
 });
 
-router.post("/time", (req, res) => {
-  res.json({ 'complete': "sadesath" })
+router.post("/request", async (req, res) => {
+  const { url, header } = req.body;
+  
+  try {
+    // check if its trying to ping internal api
+    if (!url.startsWith('https')) throw new Error("Cannot request internal api.");
+    
+    // check if its trying to ping localhosts
+    if (url.startsWith("http://localhost")) throw new Error("Cannot request Localhosts.");
+  
+    const response = await axios(header);
+  
+    if (!response) throw new Error('No response from your url.');
+    res.json(response.data);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 });
 
 module.exports = router;
