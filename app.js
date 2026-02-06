@@ -1,6 +1,6 @@
 /*
 
-Hexion • Developet tools
+Hexion • Developer tools
 
   _    _           _              
  | | | | _____  _(_) ___  _ __   
@@ -8,7 +8,7 @@ Hexion • Developet tools
  |  _  |  __/>  <| | (_) | | | | 
  |_| |_|\___/_/\_\_|\___/|_| |_| 
  
-© Eluminusco all rights served.       v1.0-demo
+© Eluminusco all rights served.       v1.0.0-demo
 */
 
 "use strict";
