@@ -3,8 +3,6 @@ const toml = require('@iarna/toml');
 
 //Sets an placeholder config
 let config = null;
-//Watcher to watch over the file changes
-let watcher = null;
 
 function loadConfig(path= 'config.toml') {
   try {
