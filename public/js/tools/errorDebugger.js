@@ -1,8 +1,8 @@
 //Import required functions
-import { setStatus, errorLoggerBEFORE, fileLogger } from '../api/errorLogger.js';
-import {} from '../api/copy.js'
-import { formatFileSize } from '../api/fileSizeFormat.js'
-import { setFunction } from '../api/dropDownMenu.js'
+import { setStatus, errorLoggerBEFORE, fileLogger } from '../utils/errorLogger.js';
+import {} from '../utils/copy.js'
+import { formatFileSize } from '../utils/fileSizeFormat.js'
+import { setFunction } from '../utils/dropDownMenu.js'
 
 let selectedExt = "auto";
 
@@ -278,7 +278,7 @@ resultsBtn.addEventListener('click', async () => {
   
     //sends the api request to the end point
     let results;
-    const res = await fetch('/api/debugger', {
+    const res = await fetch('/utils/debugger', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ type, code }),

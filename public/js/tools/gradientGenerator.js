@@ -1,7 +1,7 @@
 //Imports the required functions
-import { setStatus, errorLoggerBEFORE } from '../api/errorLogger.js';
-import { setFunction } from '../api/dropDownMenu.js'
-import {} from '../api/copy.js'
+import { setStatus, errorLoggerBEFORE } from '../utils/errorLogger.js';
+import { setFunction } from '../utils/dropDownMenu.js'
+import {} from '../utils/copy.js'
 
 let timeout;
 
@@ -100,7 +100,7 @@ async function refreshOutput() {
     });
   
     //Send the request to the backend
-    const res = await fetch('/api/gradient', {
+    const res = await fetch('/utils/gradient', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ type, input, colors, styles, options })

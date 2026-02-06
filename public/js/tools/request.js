@@ -1,7 +1,7 @@
 //Imports the required functions
-import { setStatus, errorLoggerBEFORE } from "../api/errorLogger.js";
-import { setFunction } from "../api/dropDownMenu.js";
-import {} from "../api/copy.js";
+import { setStatus, errorLoggerBEFORE } from "../utils/errorLogger.js";
+import { setFunction } from "../utils/dropDownMenu.js";
+import {} from "../utils/copy.js";
 
 function refreshBody() {
   const requestBodyType = document.querySelector(".body-type");
@@ -139,7 +139,7 @@ resultsBtn.addEventListener("click", async () => {
     document.getElementById("headers").textContent = JSON.stringify(header, null, 2);
       
     // make the actual fetch request
-    const responseInternal = await fetch("/api/request", {
+    const responseInternal = await fetch("/utils/request", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url, header })

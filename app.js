@@ -109,7 +109,7 @@ const limiter = rateLimit({
   max: 60,
   message: { error: "Too many requests, slow down." }
 });
-app.use("/api/", limiter);
+app.use("/utils/", limiter);
 
 //Route setup
 // Returns / to /home
