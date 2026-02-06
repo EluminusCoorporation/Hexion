@@ -8,6 +8,6 @@
 [general]
 siteName = "SiteName"
 domain = "https://example.com"
-port = 7000
+port = 3000
 onMaintenance = false
 version = "1.0.0-demo"
