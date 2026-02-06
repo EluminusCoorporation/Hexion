@@ -142,3 +142,6 @@ vite.config.ts.timestamp-*
 test.html
 test.css
 test.js
+
+# config file
+config.toml
