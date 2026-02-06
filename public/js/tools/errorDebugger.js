@@ -266,94 +266,102 @@ function setDebuggerContext(report, error, type) {
 }
 
 resultsBtn.addEventListener('click', async () => {
-  const resultsDiv = document.getElementById('resultsDiv');
-  const type = document.getElementById('dropdown-text').dataset.selected.trim();
-  const code = sessionStorage.getItem("code");
-  //runs error handler
-  if (!errorLoggerBEFORE(type, code)) {
-    resultsDiv.style.display = "none";
-    return;
-  };
+  try {
+    const resultsDiv = document.getElementById('resultsDiv');
+    const type = document.getElementById('dropdown-text').dataset.selected.trim();
+    const code = sessionStorage.getItem("code");
+    //runs error handler
+    if (!errorLoggerBEFORE(type, code)) {
+      resultsDiv.style.display = "none";
+      return;
+    };
   
-  //sends the api request to the end point
-  let results;
-  const res = await fetch('/api/debugger', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type, code }),
-  });
-  //Gets the data
-  const data = await res.json();
+    //sends the api request to the end point
+    let results;
+    const res = await fetch('/api/debugger', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type, code }),
+    });
+    
+    if (!res) throw new Error('Server is unreachable please try later.');
+    
+    if (!res.ok) {
+      const errorMessage = ((await res.json()).message) || "An unknown error occured.";
+      throw new Error(errorMessage);
+    };
+    //Gets the data
+    const data = await res.json();
+    
+    if (!data) throw new Error('The response from our server was empty, retry debugging.')
   
-  //If its not successful send an error
-  if (data.success === false) {
-    setStatus('error', 'An unexpected error occured', data.report)
-    return;
-  };
+    //Get the error report & log it
+    const report = data.report;
+    console.dir(data);
   
-  //Get the error report & log it
-  const report = data.report;
-  console.dir(data);
+    //Let the default count be 0
+    let errorCount = 0;
   
-  //Let the default count be 0
-  let errorCount = 0;
-  
-  if (type === "Html") {
-    errorCount = report.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length
-  } else if (type === "Css") {
-    errorCount = report.results.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
-  } else if (type === "Java Script") {
-    errorCount = report[0].errorCount
-  } else if (type === "Python") {
-    if (report) errorCount = 1;
-  }
-  
-  //if no errors found end
-  if (errorCount === 0) {
-    setStatus('success', 'No errors found', "No errors were detected in you're given code.");
-    resultsDiv.style.display = "none";
-    return;
-  };
-  
-  //stores the report for future in the broswer
-  sessionStorage.setItem("report", JSON.stringify(report));
-  
-  //Sets the arrows
-  const arrows = document.querySelectorAll('.arrows');
-  
-  //removes the disabled
-  arrows.forEach((arrow) => arrow.classList.remove('disabled') );
-  //if one error disable both
-  if (errorCount === 1) {
-    arrows.forEach((arrow) => arrow.classList.add('disabled') );
-  }
-  
-  const errorGoBack = document.getElementById('errorGoBack');
-  errorGoBack.classList.add('disabled');
-  
-  //set the total error count
-  const totalErrors = document.getElementById('totalErrors');
-  totalErrors.textContent = `${errorCount}`;
-  
-  const resultsInput = document.getElementById('results');
-  const errorContext = setDebuggerContext(report, 0, type);
-  //sets the error
-  resultsInput.value = errorContext;
-  
-  //refreshes line numbers
-  for (let i = 0; i < textareasHere.length; i++) {
-    if (i != 0 && i % 2 == 1) {
-      textareasHere[i - 1].textContent = "1\n";
-      const numberOfLinesHereZ = Math.max(textareasHere[i].value.split("\n").length, 1);
-      for (let h = 1; h < numberOfLinesHereZ; h++) {
-        textareasHere[i - 1].textContent += (h + 1).toString() + "\n";
-      }
-      textareasHere[i - 1].setAttribute("cols", numberOfLinesHereZ.toString().length.toString());
+    if (type === "Html") {
+      errorCount = report.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length
+    } else if (type === "Css") {
+      errorCount = report.results.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
+    } else if (type === "Java Script") {
+      errorCount = report[0].errorCount
+    } else if (type === "Python") {
+      if (report) errorCount = 1;
     }
-  }
   
-  //Enables the output display
-  resultsDiv.style.display = "flex";
+    //if no errors found end
+    if (errorCount === 0) {
+      setStatus('success', 'No errors found', "No errors were detected in you're given code.");
+      resultsDiv.style.display = "none";
+      return;
+    };
+  
+    //stores the report for future in the broswer
+    sessionStorage.setItem("report", JSON.stringify(report));
+  
+    //Sets the arrows
+    const arrows = document.querySelectorAll('.arrows');
+  
+    //removes the disabled
+    arrows.forEach((arrow) => arrow.classList.remove('disabled') );
+    //if one error disable both
+    if (errorCount === 1) {
+      arrows.forEach((arrow) => arrow.classList.add('disabled') );
+    }
+  
+    const errorGoBack = document.getElementById('errorGoBack');
+    errorGoBack.classList.add('disabled');
+  
+    //set the total error count
+    const totalErrors = document.getElementById('totalErrors');
+    totalErrors.textContent = `${errorCount}`;
+  
+    const resultsInput = document.getElementById('results');
+    const errorContext = setDebuggerContext(report, 0, type);
+    //sets the error
+    resultsInput.value = errorContext;
+  
+    //refreshes line numbers
+    for (let i = 0; i < textareasHere.length; i++) {
+      if (i != 0 && i % 2 == 1) {
+        textareasHere[i - 1].textContent = "1\n";
+        const numberOfLinesHereZ = Math.max(textareasHere[i].value.split("\n").length, 1);
+        for (let h = 1; h < numberOfLinesHereZ; h++) {
+          textareasHere[i - 1].textContent += (h + 1).toString() + "\n";
+        }
+        textareasHere[i - 1].setAttribute("cols", numberOfLinesHereZ.toString().length.toString());
+      }
+    }
+  
+    //Enables the output display
+    resultsDiv.style.display = "flex";
+  } catch (error) {
+    console.error('An error occurred while debugging your code: ' + error);
+    setStatus('error', 'Debugger Failed', error);
+  };
 });
 
 const errorGoForward = document.getElementById('errorGoForward');

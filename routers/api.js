@@ -24,6 +24,9 @@ router.post("/debugger", async (req, res) => {
   let report;
 
   try {
+    // checks if required parameters exist
+    if (!type || !code) throw new Error("The required parameters were not passed.")
+    
     //Searches for the type of debugger
     if (type === "Html") {
       //Config for the rule set being used by the module (refer to the module docs for the list)
@@ -85,12 +88,14 @@ router.post("/debugger", async (req, res) => {
       //If language type is invalid throw error
       throw new Error("Invalid language type selected.")
     }
-    //Else send the report to the frontend
-    res.json({ success: true, report: report });
+    // check if report has matter
+    if (!report) throw new Error('The server responded with nothing, something went wrong.');
+    
+    // send the report to the frontend
+    res.json({ report: report });
   } catch (error) {
     //If any unexpected errors found report them
-    console.error(error)
-    res.json({ success: false, report: error });
+    res.status(400).json({ message: error });
   }
 });
 
@@ -129,7 +134,7 @@ function hexToRgb(hex) {
   ];
 }
 
-// helper function to distribute ketters evenly
+// helper function to distribute letters evenly
 function splitText(length, segments) {
   const base = Math.floor(length / segments);
   const remainder = length % segments;
