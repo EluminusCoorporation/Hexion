@@ -28,7 +28,8 @@
     </main>
   </div>
 <script>
-  function autoResizeHeader(header) {
+  function autoResizeHeader() {
+    const header = document.getElementById('header');
     const minSize = 2.5; // rem
     const maxSize = 6; // rem
     let fontSize = maxSize;
@@ -42,8 +43,7 @@
     };
   };
   
-  const header = document.getElementById('header');
-  autoResizeHeader(header);
+  autoResizeHeader();
 </script>
 </body>
 </html>
