@@ -7,16 +7,19 @@ import { setFunction } from '../utils/dropDownMenu.js'
 let selectedExt = "auto";
 
 function selectExtension() {
-  const type = document.getElementById('dropdown-text').dataset.selected.toLowerCase();
+  const type = document.getElementById('dropdown-text').dataset.selected.toLowerCase().trim();
+  
   switch (type) {
-    case 'html':
     case 'auto':
+    case 'html':
     case 'css':
       selectedExt = type;
-    case 'javascript':
+    case 'java script':
       selectedExt = 'js';
     case 'python':
       selectedExt = 'py';
+    default:
+      selectedExt = type;
   };
 }
 
@@ -40,7 +43,7 @@ fileMode.addEventListener("click", function() {
   //if current selected ignore
   if (this.classList.contains('selected')) return;
   
-  auto.classList.remove('deselect');
+  auto.classList.remove('disable');
   textInput.value = null;
   sessionStorage.removeItem("code");
 });
@@ -73,7 +76,7 @@ textMode.addEventListener("click", function() {
   const fileIcon = document.getElementById('fileIcon');
   
   //deselect auto
-  auto.classList.add('deselect');
+  auto.classList.add('disable');
   
   //removes the data
   sessionStorage.removeItem('errorDebuggerFile');
