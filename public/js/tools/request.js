@@ -147,6 +147,15 @@ resultsBtn.addEventListener("click", async () => {
     
     if (!responseInternal) throw new Error('No response from our internal server, try again later.')
     
+    // checks if response is an valid json
+    const contentType = res.headers.get('content-type');
+    if (contentType && !contentType.includes('application/json')) {
+      throw new Error('Unexpected server response.');
+      
+      const text = res.text();
+      console.error('An unexpected response from the server.\n\nRESPONSE: ' + text);
+    };
+    
     if (!responseInternal.ok) {
       const errorMessage = (await responseInternal.json()).message || "An unknown error occured.";
       throw new Error(errorMessage);

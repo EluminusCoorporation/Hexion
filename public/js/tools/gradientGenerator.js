@@ -108,14 +108,25 @@ async function refreshOutput() {
   
     // checks if response exists
     if (!res) throw new Error('No response from our internal server, try again later.');
-  
+    
+    // checks if response is an valid json
+    const contentType = res.headers.get('content-type');
+    if (contentType && !contentType.includes('application/json')) {
+      throw new Error('Unexpected server response.');
+      
+      const text = res.text();
+      console.error('An unexpected response from the server.\n\nRESPONSE: ' + text);
+    };
+    
     //check if res is ok
     if (!res.ok) {
       const errorMessage = ((await res.json()).message) || "An unknown error occured.";
       throw new Error(errorMessage);
     };
-  
+    
     const data = await res.json();
+    
+    if (!data) throw new Error("Our server's response was empty?")
 
     results.textContent = data.output;
   } catch (error) {

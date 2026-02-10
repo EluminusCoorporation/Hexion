@@ -286,6 +286,15 @@ resultsBtn.addEventListener('click', async () => {
     
     if (!res) throw new Error('Server is unreachable please try later.');
     
+    // checks if response is an valid json
+    const contentType = res.headers.get('content-type');
+    if (contentType && !contentType.includes('application/json')) {
+      throw new Error('Unexpected server response.');
+      
+      const text = res.text();
+      console.error('An unexpected response from the server.\n\nRESPONSE: ' + text);
+    };
+    
     if (!res.ok) {
       const errorMessage = ((await res.json()).message) || "An unknown error occured.";
       throw new Error(errorMessage);
