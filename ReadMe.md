@@ -20,14 +20,16 @@ Hexion an multi perpose website it provides tools used to help you create you're
 ### Requirements:
   - NodeJS ^25
 
-To Start the project locally
-
+To Start the project locally:
 ```bash
 npm run start
 ```
 
 ## Compatibility
 * Our project is created compatible with every device & broswer its made with components that dont require good hardware or good internet just a coding setup so what are you waiting for, search **[Hexion](https://hexion.dev)** and find our website ready to be used.
+
+## Licence
+(c) 2024 EluminusCo. All rights reserved. Licensed under the Proprietary License.
 
 ## Creators
 - [@MagicDevM](https://www.github.com/MagicDevM)
