@@ -224,7 +224,6 @@
 }
 
 .copy-alert-container {
-  height: 10px;
   position: fixed;
   display: flex;
   justify-self: center;
@@ -234,7 +233,7 @@
   visibility: hidden;
   gap: 3px;
   margin: 15px;
-  padding: 5px;
+  padding: .5em .9em;
   color: var(--text);
   font-weight: bold;
   font-size: .7em;

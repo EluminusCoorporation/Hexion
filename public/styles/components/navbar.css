@@ -140,7 +140,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
     visibility: hidden;
-    transition: all ease .3s;
+    transition: all ease-in-out .3s;
   }
   
   .nav-bar .side-bar.open {
@@ -243,8 +243,7 @@
 }
 
 .close-btn {
-  width: 20px;
-  height: 20px;
+  padding: 1em;
   position: absolute;
   color: white;
   align-items: center;

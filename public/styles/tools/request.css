@@ -306,6 +306,10 @@
   flex-direction: column;
 }
 
+.authEl {
+  margin: .3em;
+}
+
 .content-div {
   display: flex;
   justify-self: center;

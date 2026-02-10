@@ -107,14 +107,13 @@
 }
 
 .color-container {
-  height: 75px;
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 25px;
   border-radius: 15px 15px 0 15px;
-  padding: 10px;
+  padding: .7em;
   overflow: hidden;
   border: 1px solid var(--border);
   background: linear-gradient(0deg, var(--bg), var(--bg-light));

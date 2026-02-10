@@ -32,156 +32,14 @@
 .toolboxes-container .tool {
   background: linear-gradient(0deg, var(--bg), var(--bg-light));
   box-shadow: 0 4px 4px var(--shadow);
-  border: 1px solid var(--border);
-  border-top: 1px solid var(--highlight);
+  border-top: .6px solid var(--highlight);
   border-radius: 10px;
   align-items: center;
+  justify-content: center;
   display: flex;
   padding: 1em;
   flex-direction: column;
   position: relative;
-}
-
-.toolboxes-container .tool i {
-  font-size: 2em;
-}
-
-.toolboxes-container .tool h3 {
-  font-size: 2em;
-  padding-right: 25px;
-  z-index: 2;
-}
-
-.toolboxes-container .tool a {
-  z-index: 2;
-  display: flex;
-  gap: .5em;
-  text-decoration: none;
-  align-items: center;
-}
-
-.toolboxes-container .tool button {
-  border: none;
-  color: white;
-  border-radius: 25px;
-  width: 190px;
-  height: 40px;
-  cursor: pointer;
-  transition: background-color .8s ease, color .8s ease, border .8s ease, transform .2s ease;
-  user-select: none;
-  font-size: 1em;
-  overflow: hidden;
-}
-
-.tool button:hover {
-  font-weight: bold;
-  background: transparent !important;
-  transform: scale(.9);
-}
-
-.tool:nth-child(1) {
-  color: springgreen;
-}
-
-.tool:nth-child(1) button {
-  background-color: springgreen;
-}
-
-.tool:nth-child(1) button:hover {
-  color: springgreen;
-}
-
-.tool:nth-child(2) {
-  color: lawngreen;
-}
-
-.tool:nth-child(2) button {
-  background: lawngreen;
-}
-
-.tool:nth-child(2) button:hover {
-  color: lawngreen;
-}
-
-.tool:nth-child(3) {
-  color: orange;
-}
-
-.tool:nth-child(3) button {
-  background: orange;
-}
-
-.tool:nth-child(3) button:hover {
-  color: orange;
-}
-
-.tool:nth-child(4) {
-  color: orangered;
-}
-
-.tool:nth-child(4) button {
-  background: orangered;
-}
-
-.tool:nth-child(4) button:hover {
-  color: orangered;
-}
-
-.tool:nth-child(5) {
-  color: indianred;
-}
-
-.tool:nth-child(5) button {
-  background: indianred;
-}
-
-.tool:nth-child(5) button:hover {
-  color: indianred;
-}
-
-.tool:nth-child(6) {
-  color: purple;
-}
-
-.tool:nth-child(6) button {
-  background: purple;
-}
-
-.tool:nth-child(6) button:hover {
-  color: purple;
-}
-
-.tool:nth-child(7) {
-  color: hotpink;
-}
-
-.tool:nth-child(7) button {
-  background: hotpink
-}
-
-.tool:nth-child(7) button:hover {
-  color: hotpink;
-}
-
-.toolboxes-container .tool button i {
-  font-size: 1em;
-  transition: transform .5s ease;
-}
-
-.toolboxes-container .tool button:hover .button-icon {
-  transform: rotate(-45deg);
-}
-
-.button-icon {
-  transition: all .5s;
-}
-
-.button-text.active {
-  display: none;
-}
-
-.button-icon.active {
-  font-size: 1.5em;
 }
 
 .toolboxes-container .tool::before {
@@ -213,4 +71,103 @@
   align-items: center;
   gap: .5em;
   margin-bottom: 2em;
+}
+
+.toolboxes-container .tool i {
+  font-size: 2em;
+}
+
+.toolboxes-container .tool h3 {
+  font-size: 2em;
+  z-index: 2;
+}
+
+.toolboxes-container .tool a {
+  z-index: 2;
+  display: flex;
+  gap: .5em;
+  text-decoration: none;
+  align-items: center;
+}
+
+.toolboxes-container .tool button {
+  border: none;
+  color: white;
+  border-radius: 25px;
+  width: 190px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color .8s ease, color .8s ease, border .8s ease, transform .2s ease;
+  user-select: none;
+  font-size: 1em;
+  overflow: hidden;
+}
+
+.tool button:hover {
+  transform: scale(.93);
+}
+
+.tool:nth-child(1) {
+  color: springgreen;
+}
+
+.tool:nth-child(1) button {
+  background-color: springgreen;
+}
+
+.tool:nth-child(2) {
+  color: lawngreen;
+}
+
+.tool:nth-child(2) button {
+  background: lawngreen;
+}
+
+.tool:nth-child(3) {
+  color: orange;
+}
+
+.tool:nth-child(3) button {
+  background: orange;
+}
+
+.tool:nth-child(4) {
+  color: orangered;
+}
+
+.tool:nth-child(4) button {
+  background: orangered;
+}
+
+.tool:nth-child(5) {
+  color: indianred;
+}
+
+.tool:nth-child(5) button {
+  background: indianred;
+}
+
+.tool:nth-child(6) {
+  color: purple;
+}
+
+.tool:nth-child(6) button {
+  background: purple;
+}
+
+.tool:nth-child(7) {
+  color: hotpink;
+}
+
+.tool:nth-child(7) button {
+  background: hotpink
+}
+
+.toolboxes-container .tool button i {
+  font-size: 1em;
+  transition: transform .5s ease;
+}
+
+.toolboxes-container .tool button:hover .button-icon {
+  transform: rotate(-45deg);
 }
