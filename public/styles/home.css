@@ -43,15 +43,14 @@ html {
 }
 
 .image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3em;
+  gap: 3em;
   position: relative;
-  width: 100%;
-  height: 450px;
-  pointer-events: none;
+  background-color: var(--bg-light);
   /* Adjust the height of the image container */
-}
-
-.image-wrapper * {
-  pointer-events: auto;
 }
 
 .image-wrapper::after {
@@ -85,63 +84,34 @@ html {
   text-align: center;
 }
 
-.adspecial {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 40%;
-  left: 50%;
-  margin: 0;
-}
-
 .branding-container {
-  position: absolute;
+  display: flex;
   width: 100%;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg);
   height: 125px;
   overflow: hidden;
-  background: transparent;
-  border: 2px solid var(--border);
-  border-bottom: 2px solid var(--highlight);
-  backdrop-filter: blur(5px);
   border-radius: 0 0 50% 50%;
 }
 
 .logoimg {
   height: 50px;
   width: 50px;
-  margin-top: 30px;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  position: absolute;
   border-radius: 50%;
 }
 
-.mainimg {
-  z-index: -1;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: relative;
-  user-select: none;
-  opacity: .5;
-  /* Ensures the image covers the container without distortion */
-}
-
 .MainHeader {
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 60%;
-  position: absolute;
   color: transparent;
   font-size: 3em;
   color: var(--primary);
 }
 
+.image-wrapper a {
+  width: fit-content
+}
+
 .starting-btn {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 60%;
   background-color: transparent;
   border: none;
   height: 35px;
@@ -161,8 +131,6 @@ html {
 }
 
 .header-message {
-  position: absolute;
-  margin-top: 320px;
   color: white;
   font-weight: bold;
   font-size: 2em;
