@@ -22,7 +22,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-dark: /* oklch(0.1 0 0) */oklch(0.17 0.0015 17.26);
-    --bg: oklch(0.20 0 0);
+    --bg: oklch(0.20 0.0015 17.26);
     --bg-light: oklch(0.22 0.0015 17.26);
     --text: oklch(0.96 0 0);
     --text-muted: oklch(0.76 0 0);
