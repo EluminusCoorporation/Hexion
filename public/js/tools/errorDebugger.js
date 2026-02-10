@@ -267,6 +267,8 @@ function setDebuggerContext(report, error, type) {
 
 resultsBtn.addEventListener('click', async () => {
   try {
+    toggleLoader(true);
+    
     const resultsDiv = document.getElementById('resultsDiv');
     const type = document.getElementById('dropdown-text').dataset.selected.trim();
     const code = sessionStorage.getItem("code");
@@ -370,6 +372,8 @@ resultsBtn.addEventListener('click', async () => {
   } catch (error) {
     console.error('An error occurred while debugging your code: ' + error);
     setStatus('error', 'Debugger Failed', error);
+  } finally {
+    toggleLoader(false);
   };
 });
 
