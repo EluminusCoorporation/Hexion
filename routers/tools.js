@@ -54,7 +54,7 @@ router.get("/errorDebugger", (req, res) => {
   const pageInfo = {
     title: "Error Debugger",
     description: "The Error Debugger, tool of hexion, here you can fix errors in you're code by simply typing the erroring code block or uploading the whole file, you get chance to select from 10 different languages",
-    extraLinks: "<script src='https://kit.fontawesome.com/57901f661d.js' crossorigin='anonymous' defer></script>",
+    imports: "<script src='https://kit.fontawesome.com/57901f661d.js' crossorigin='anonymous' defer></script>",
     url: `${config.general.domain}/tools/errorDebugger`,
     path: "tools/errorDebugger"
   };
@@ -65,7 +65,7 @@ router.get("/gradientGenerator", (req, res) => {
     title: "Gradient Generator",
     description: "The gradient generator, tool of hexion, here you can add gradient to any text make it beautiful, you get chance to fully customize you're text from just bolding it to underlining it",
     url: `${config.url}/tools/gradientGenerator`,
-    extraLinks: "<link href='https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap' rel='stylesheet'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css'>",
+    imports: "<link href='https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap' rel='stylesheet'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css'>",
     path: "tools/gradientGenerator"
   };
   res.render('tools/gradientGenerator', pageInfo);
