@@ -139,7 +139,7 @@ resultsBtn.addEventListener("click", async () => {
     document.getElementById("headers").textContent = JSON.stringify(header, null, 2);
       
     // make the actual fetch request
-    const responseInternal = await fetch("/utils/request", {
+    const responseInternal = await fetch("/api/request", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url, header })

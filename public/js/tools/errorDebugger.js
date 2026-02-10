@@ -278,7 +278,7 @@ resultsBtn.addEventListener('click', async () => {
   
     //sends the api request to the end point
     let results;
-    const res = await fetch('/utils/debugger', {
+    const res = await fetch('/api/debugger', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ type, code }),

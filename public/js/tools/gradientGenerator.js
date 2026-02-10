@@ -100,7 +100,7 @@ async function refreshOutput() {
     });
   
     //Send the request to the backend
-    const res = await fetch('/utils/gradient', {
+    const res = await fetch('/api/gradient', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ type, input, colors, styles, options })
@@ -112,10 +112,10 @@ async function refreshOutput() {
     // checks if response is an valid json
     const contentType = res.headers.get('content-type');
     if (contentType && !contentType.includes('application/json')) {
-      throw new Error('Unexpected server response.');
-      
-      const text = res.text();
+      const text = await res.text();
       console.error('An unexpected response from the server.\n\nRESPONSE: ' + text);
+      
+      throw new Error('Unexpected server response.');
     };
     
     //check if res is ok

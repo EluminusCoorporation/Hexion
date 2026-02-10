@@ -11,7 +11,7 @@ const errors = {
 
 function errorHandler(err, req, res, next) {
   //Logs the error stack for debugging purposes
-  console.error(chalk.gray(err.stack));
+  console.error(chalk.red(err.stack));
   
   //Gets the status code
   const status = err.status || 500;

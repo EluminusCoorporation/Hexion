@@ -15,7 +15,7 @@ const axios = require("axios");
 
 const router = express.Router();
 
-// POST /utils/debugger - Debugs the given code
+// POST /api/debugger - Debugs the given code
 router.post("/debugger", async (req, res) => {
   //Gets the json data sent from the frontend
   const { type, code } = req.body;
@@ -233,7 +233,7 @@ function multiStopGradient(
   return output;
 }
 
-// POST /utils/gradient - Generates an gradient output for usage
+// POST /api/gradient - Generates an gradient output for usage
 router.post("/gradient", (req, res) => {
   // Get the necessary values
   const { 
@@ -373,6 +373,7 @@ router.post("/gradient", (req, res) => {
   }
 });
 
+// POST /api/request - Requests an external api
 router.post("/request", async (req, res) => {
   const { url, header } = req.body;
   
