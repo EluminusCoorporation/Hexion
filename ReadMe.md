@@ -18,11 +18,13 @@ Hexion an multi perpose website it provides tools used to help you create you're
 ## Usage
 
 ### Requirements:
-- NodeJS Minimum:25
+  - NodeJS ^25
 
 To Start the project locally
 
-`npm run start:production`
+```bash
+npm run start
+```
 
 ## Compatibility
 * Our project is created compatible with every device & broswer its made with components that dont require good hardware or good internet just a coding setup so what are you waiting for, search **[Hexion](https://hexion.dev)** and find our website ready to be used.
