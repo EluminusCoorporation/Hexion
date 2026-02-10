@@ -35,6 +35,56 @@ const textInput = document.getElementById('textmodetxt');
 const btnindicator = document.getElementById('btnIndicator')
 const uploadWrapper = document.getElementById('uploadWrapper')
 
+//When file mode deactivates remove data
+fileMode.addEventListener("click", function() {
+  //if current selected ignore
+  if (this.classList.contains('selected')) return;
+  
+  auto.classList.remove('deselect');
+  textInput.value = null;
+  sessionStorage.removeItem("code");
+});
+
+//When text mode deactivates remove data
+textMode.addEventListener("click", function() {
+  //if current selected ignore
+  if (this.classList.contains('selected')) return;
+  
+  const auto = document.getElementById('auto');
+  const html = document.getElementById('html');
+  
+  //disable auto as an option
+  if (selectedExt === "auto") {
+    selectedExt = "html";
+    
+    auto.classList.remove('selected');
+    html.classList.add('selected');
+    
+    const htmlName = html.innerHTML;
+    const dropdownText = document.getElementById('dropdown-text');
+    
+    dropdownText.dataset.selected = "HTML";
+    dropdownText.innerHTML = htmlName;
+    
+    //sends an alert
+    setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.");
+  };
+  const fileNameLabel = document.getElementById('fileName');
+  const fileIcon = document.getElementById('fileIcon');
+  
+  //deselect auto
+  auto.classList.add('deselect');
+  
+  //removes the data
+  sessionStorage.removeItem('errorDebuggerFile');
+  
+  fileNameLabel.textContent = 'Upload File';
+  fileIcon.classList.remove('bx', 'bx-file-code');
+  fileIcon.classList.add('fa-solid', 'fa-upload');
+  
+  sessionStorage.removeItem("code");
+});
+
 //Makes an event listener for the switchers
 buttons.forEach((btn, index) => {
   //Makes filemode as the default
@@ -165,56 +215,6 @@ fileInput.addEventListener('change', async () => {
 textInput.addEventListener("change", function() {
   const code = this.value;
   sessionStorage.setItem("code", code)
-});
-
-//When file mode deactivates remove data
-fileMode.addEventListener("click", () => {
-  //if current selected ignore
-  if (fileMode.classList.contains('selected')) return;
-  
-  auto.classList.remove('deselect');
-  textInput.value = null;
-  sessionStorage.removeItem("code");
-});
-
-//When text mode deactivates remove data
-textMode.addEventListener("click", function() {
-  //if current selected ignore
-  if (this.classList.contains('selected')) return;
-  
-  const auto = document.getElementById('auto');
-  const html = document.getElementById('html');
-  
-  //disable auto as an option
-  if (selectedExt === "auto") {
-    selectedExt = "html";
-    
-    auto.classList.remove('selected');
-    html.classList.add('selected');
-    
-    const htmlName = html.innerHTML;
-    const dropdownText = document.getElementById('dropdown-text');
-    
-    dropdownText.dataset.selected = "HTML";
-    dropdownText.innerHTML = htmlName;
-    
-    //sends an alert
-    setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.");
-  };
-  const fileNameLabel = document.getElementById('fileName');
-  const fileIcon = document.getElementById('fileIcon');
-  
-  //deselect auto
-  auto.classList.add('deselect');
-  
-  //removes the data
-  sessionStorage.removeItem('errorDebuggerFile');
-  
-  fileNameLabel.textContent = 'Upload File';
-  fileIcon.classList.remove('bx', 'bx-file-code');
-  fileIcon.classList.add('fa-solid', 'fa-upload');
-  
-  sessionStorage.removeItem("code");
 });
 
 //Sends an alert on usage of html
