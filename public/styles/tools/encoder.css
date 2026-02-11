@@ -56,11 +56,8 @@
   box-shadow: 0 2px 2px var(--shadow);
   padding: 15px;
   border-radius: 15px;
-  display: flex;
-  justify-self: center;
   margin: .7em 0;
   font-weight: bold;
-  flex-direction: column;
   transition: all ease .5s;
   overflow: hidden;
 }
@@ -167,8 +164,6 @@
 
 .ttc {
   border-radius: 15px;
-  display: flex;
-  justify-self: center;
   padding: 15px;
   border: 1px solid var(--border);
   border-top: 1px solid var(--highlight);
