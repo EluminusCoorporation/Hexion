@@ -23,6 +23,7 @@
   display: flex;
   padding: .3em 1em .3em 1em;
   width: max-content;
+  margin-left: calc(50% - 50vw);
   flex-direction: row;
   color: var(--text);
   background-color: var(--bg);

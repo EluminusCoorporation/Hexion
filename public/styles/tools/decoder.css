@@ -22,6 +22,7 @@
 .back-container {
   display: flex;
   padding: .3em 1em .3em 1em;
+  margin-left: calc(50% - 50vw);
   width: max-content;
   flex-direction: row;
   color: var(--text);
