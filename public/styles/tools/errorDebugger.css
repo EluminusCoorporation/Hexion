@@ -59,13 +59,9 @@
   border-top: 1px solid var(--highlight);
   box-shadow: 0 2px 2px var(--shadow);
   padding: 15px;
-  width: 75%;
   border-radius: 15px;
-  display: flex;
-  justify-self: center;
-  margin: 15px;
+  margin: .7em 0;
   font-weight: bold;
-  flex-direction: column;
   transition: all ease .5s;
   overflow: hidden;
 }
@@ -185,8 +181,7 @@
 .buttonWrapper {
   position: relative;
   display: flex;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin: .9em 0;
   justify-self: center;
   border: 1.6px solid indianred;
   background-color: var(--bg);
@@ -210,7 +205,7 @@
 
 .dualbtn {
   font-weight: bold;
-  width: 147px;
+  width: 50%;
   height: 42.3px;
   padding: 15px;
   border-radius: 8px;
@@ -290,20 +285,18 @@
 
 .ttc {
   visibility: hidden;
+  flex: 1;
   right: -100vw;
   resize: none;
-  justify-self: center;
   height: 150px;
-  text-wrap: nowrap;
   border-radius: 15px;
-  width: 75%;
   padding: 15px;
   border: 1px solid var(--border);
   border-top: 1px solid var(--highlight);
   color: var(--text);
   background-color: var(--bg);
   box-shadow: 0 2px 2px var(--shadow);
-  margin: 15px;
+  margin: .7em 0;
   outline-color: transparent;
   position: absolute;
   transition: all ease .3s;
@@ -324,8 +317,8 @@
 .results-div i {
   position: absolute;
   top: 0;
-  color: var(--text);
   right: 0;
+  color: var(--text);
   font-size: 1em;
   z-index: 2;
   cursor: pointer;
@@ -341,10 +334,9 @@
 }
 
 .flexbox-results {
-  width: 90%;
   display: none;
+  flex: 1;
   flex-direction: column;
-  justify-self: center;
 }
 
 .results-div {
