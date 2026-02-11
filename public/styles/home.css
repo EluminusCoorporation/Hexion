@@ -94,6 +94,7 @@ main {
   background: transparent;
   border-radius: 5px;
   padding: 10px;
+  margin: 1em 0;
   border: 1px solid var(--border-muted);
   box-shadow: 0 4px 1px var(--shadow);
 }

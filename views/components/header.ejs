@@ -63,6 +63,10 @@
       box-sizing: border-box;
       background-color: var(--bg-dark);
     }
+    
+    body {
+      padding: 0 1em;
+    }
 
     .container {
       position: relative;
@@ -70,20 +74,24 @@
       margin: 0 auto;
       min-height: 100vh;
     }
+    
+    main {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 0;
+    }
 
     .addiv {
       position: relative;
-      display: flex;
-      justify-self: center;
-      align-items: center;
       height: 50px;
-      width: 90%;
+      flex: 1;
       background: transparent;
       border-radius: 5px;
-      margin: 15px;
       padding: 10px;
+      margin: 1em 0;
       border: 1px solid var(--border-muted);
-      box-shadow: 0 4px 2px var(--shadow);
+      box-shadow: 0 4px 1px var(--shadow);
     }
 
     .addiv p {

@@ -1,4 +1,6 @@
 .header-container {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   position: sticky;
   top: 0;
   display: flex;
