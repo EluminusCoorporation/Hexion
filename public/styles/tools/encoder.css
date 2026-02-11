@@ -55,11 +55,10 @@
   border-top: 1px solid var(--highlight);
   box-shadow: 0 2px 2px var(--shadow);
   padding: 15px;
-  width: 75%;
   border-radius: 15px;
   display: flex;
   justify-self: center;
-  margin: 15px;
+  margin: .7em 0;
   font-weight: bold;
   flex-direction: column;
   transition: all ease .5s;
@@ -168,7 +167,6 @@
 
 .ttc {
   border-radius: 15px;
-  width: 75%;
   display: flex;
   justify-self: center;
   padding: 15px;
@@ -177,7 +175,7 @@
   color: var(--text);
   background-color: var(--bg);
   box-shadow: 0 2px 2px var(--shadow);
-  margin: 15px;
+  margin: .7em 0;
   outline-color: transparent;
   position: relative;
 }
@@ -188,47 +186,41 @@
   padding-left: 5px;
 }
 
-.results-div i {
+.flexbox-results i {
   position: absolute;
   top: 0;
-  color: var(--text);
   right: 0;
+  color: var(--text);
   font-size: 1em;
   z-index: 2;
   cursor: pointer;
   padding: 5px;
   border-radius: 50%;
-  user-select: none;
   transition: all .5s;
-  margin: .3em;
+  margin: 1em .5em;
 }
 
-.results-div i:hover {
+.flexbox-results i:hover {
   background: var(--bg-light);
 }
 
 .flexbox-results {
   display: none;
-  justify-content: center;
-}
-
-.results-div {
-  display: inline-block;
   position: relative;
+  flex: 1;
 }
 
 .results {
   position: relative;
   resize: none;
-  width: fit-content;
-  max-width: 75vw;
-  position: relative;
+  flex: 1;
   min-height: 200px;
   padding: 15px;
   box-shadow: 0px 4px 6px var(--shadow);
   color: var(--text);
   background: linear-gradient(0deg, var(--bg), var(--bg-light));
   border: none;
+  margin-top: 1em;
   border-radius: 15px;
 }
 
