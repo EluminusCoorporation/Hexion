@@ -53,13 +53,13 @@ export function setStatus(type, title, message) {
 export function errorLoggerBEFORE(name, text) {
   //Checks if name is not provided
   if (name === "") {
-    setStatus('error', 'Process failed', 'Please select a language')
+    setStatus('error', 'Process failed', 'Please fill in all the fields.')
     return false;
   };
   
   //Checks if text is not provided
   if (text === "") {
-    setStatus('error', 'Process failed', 'Text cannot be empty!');
+    setStatus('error', 'Process failed', '. fieldsm');
     return false;
   };
   //Else clears the timeout and goes forward
