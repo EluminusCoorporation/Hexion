@@ -18,12 +18,23 @@ html {
   background-color: var(--bg-dark);
 }
 
+body {
+  padding: 0 1em;
+}
+
 .container {
   position: relative;
   width: 100%;
   margin: 0 auto;
   min-height: 100vh;
   /* Ensures the container takes the full height of the viewport */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 
 .fade-in-d {
@@ -44,13 +55,19 @@ html {
 
 .image-wrapper {
   display: flex;
+  margin-top: 1em;
+  border-radius: .5em .5em 0 0;
+  padding: .5em;
   flex-direction: column;
-  align-items: center;
-  padding-bottom: 3em;
   gap: 3em;
+  pointer-events: none;
   position: relative;
   background-color: var(--bg-light);
   /* Adjust the height of the image container */
+}
+
+.image-wrapper * {
+  pointer-events: auto;
 }
 
 .image-wrapper::after {
@@ -63,18 +80,20 @@ html {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 70%, var(--bg-dark) 100%)
 }
 
+.image-wrapper a {
+  display: flex;
+  text-decoration: none;
+  align-self: center;
+  max-width: fit-content;
+}
+
 .addiv {
   position: relative;
-  display: flex;
-  justify-self: center;
-  align-items: center;
   height: 50px;
-  width: 90%;
+  flex: 1;
   background: transparent;
   border-radius: 5px;
   padding: 10px;
-  margin: 15px 0;
-  z-index: 2;
   border: 1px solid var(--border-muted);
   box-shadow: 0 4px 1px var(--shadow);
 }
@@ -86,7 +105,6 @@ html {
 
 .branding-container {
   display: flex;
-  width: 100%;
   flex-direction: column;
   align-items: center;
   background-color: var(--bg);
@@ -95,20 +113,10 @@ html {
   border-radius: 0 0 50% 50%;
 }
 
-.logoimg {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-}
-
 .MainHeader {
   color: transparent;
   font-size: 3em;
   color: var(--primary);
-}
-
-.image-wrapper a {
-  width: fit-content
 }
 
 .starting-btn {
@@ -127,7 +135,7 @@ html {
 
 .starting-btn:hover {
   box-shadow: 0 4px 4px hsla(150, 100%, 50%, 0.15);
-  transform: translate(-50%, -60%);
+  transform: translateY(-3px)
 }
 
 .header-message {
@@ -135,18 +143,18 @@ html {
   font-weight: bold;
   font-size: 2em;
   text-align: center;
-  width: 100%;
+  margin-bottom: 1.5em;
   text-shadow: 0 4px 1px var(--shadow);
 }
 
-.header-special {
+.header-message span {
   color: transparent;
   position: relative;
   background: linear-gradient(to right, var(--primary), var(--secondary));
   background-clip: text;
 }
 
-.header-special::after {
+.header-message span::after {
   content: "";
   position: absolute;
   left: 0;
@@ -157,7 +165,7 @@ html {
 }
 
 .features {
-  padding: 1.5em;
+  padding: 1.5em .5em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   position: relative;
@@ -297,8 +305,9 @@ html {
 }
 
 .faq-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   gap: 1em;
   margin-top: 4em;
 }
