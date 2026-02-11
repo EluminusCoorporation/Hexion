@@ -169,8 +169,8 @@
 .flexbox-results i {
   position: absolute;
   top: 0;
-  color: var(--text);
   right: 0;
+  color: var(--text);
   font-size: 1em;
   z-index: 2;
   cursor: pointer;
