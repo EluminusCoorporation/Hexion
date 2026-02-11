@@ -48,21 +48,16 @@
 }
 
 .info-container {
-  display: flex;
-  justify-self: center;
   padding: 1em;
   background-color: hsla(208, 100%, 44.12%, 0.4);
   border: 1px solid hsl(208, 100%, 44.12%);
   color: var(--text);
-  width: 75%;
   font-size: .8em;
-  margin-bottom: .3em;
+  margin-bottom: 1.5em;
 }
 
 .url-container {
-  width: 85%;
   display: flex;
-  justify-self: center;
   flex-direction: row;
 }
 
@@ -86,6 +81,7 @@
   border: none !important;
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
+  flex: 1;
   margin: 0 !important;
   max-height: fit-content;
 }
@@ -98,13 +94,9 @@
   border-top: 1px solid var(--highlight);
   box-shadow: 0 2px 2px var(--shadow);
   padding: 15px;
-  width: 75%;
   border-radius: 15px;
-  display: flex;
-  justify-self: center;
-  margin: 1em 0;
+  margin: .7em 0;
   font-weight: bold;
-  flex-direction: column;
   transition: all ease .5s;
   overflow: hidden;
 }
@@ -191,17 +183,13 @@
 
 .ttc {
   border-radius: 15px;
-  width: 75%;
-  display: flex;
-  justify-self: center;
   padding: 15px;
   border: 1px solid var(--border);
   border-top: 1px solid var(--highlight);
   color: var(--text);
   background-color: var(--bg);
   box-shadow: 0 2px 2px var(--shadow);
-  margin: 1em 0;
-  margin-bottom: 3em;
+  margin: .7em 0;
   outline-color: transparent;
   position: relative;
 }
@@ -219,9 +207,7 @@
 }
 
 .options-container {
-  width: 75%;
   display: flex;
-  justify-self: center;
   justify-content: center;
   padding: .5em;
   text-align: center;
@@ -312,16 +298,12 @@
 
 .content-div {
   display: flex;
-  justify-self: center;
   position: relative;
 }
 
 .content-body {
   position: relative;
   resize: none;
-  width: fit-content;
-  max-width: 75vw;
-  position: relative;
   min-height: 200px;
   padding: 15px;
   margin-top: 3em;
@@ -338,11 +320,11 @@
   padding-left: 5px;
 }
 
-.results-div i {
+.flexbox-results i {
   position: absolute;
   top: 0;
-  color: var(--text);
   right: 0;
+  color: var(--text);
   font-size: 1em;
   z-index: 2;
   cursor: pointer;
@@ -353,33 +335,25 @@
   margin: .3em;
 }
 
-.results-div i:hover {
+.flexbox-results i:hover {
   background: var(--bg-light);
 }
 
 .flexbox-header {
   display: none;
-  margin-top: .5em;
   justify-content: center;
 }
 
 .flexbox-results {
   display: none;
-  margin-top: 3em;
-  justify-content: center;
-}
-
-.results-div {
-  display: inline-block;
+  margin-top: .5em;
   position: relative;
+  justify-content: center;
 }
 
 .results {
   position: relative;
   resize: none;
-  width: fit-content;
-  max-width: 75vw;
-  position: relative;
   min-height: 200px;
   padding: 15px;
   box-shadow: 0px 4px 6px var(--shadow);
