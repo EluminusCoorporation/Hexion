@@ -321,6 +321,16 @@
   padding-left: 5px;
 }
 
+.flexbox-header {
+  display: none;
+}
+
+.flexbox-results {
+  display: none;
+  margin-top: .5em;
+  position: relative;
+}
+
 .flexbox-results i {
   position: absolute;
   top: 0;
@@ -331,25 +341,12 @@
   cursor: pointer;
   padding: 5px;
   border-radius: 50%;
-  user-select: none;
   transition: all .5s;
-  margin: .3em;
+  margin: 1em .5em;
 }
 
 .flexbox-results i:hover {
   background: var(--bg-light);
-}
-
-.flexbox-header {
-  display: none;
-  justify-content: center;
-}
-
-.flexbox-results {
-  display: none;
-  margin-top: .5em;
-  position: relative;
-  justify-content: center;
 }
 
 .results {

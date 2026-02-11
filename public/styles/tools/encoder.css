@@ -182,6 +182,11 @@
   padding-left: 5px;
 }
 
+.flexbox-results {
+  display: none;
+  position: relative;
+}
+
 .flexbox-results i {
   position: absolute;
   top: 0;
@@ -198,12 +203,6 @@
 
 .flexbox-results i:hover {
   background: var(--bg-light);
-}
-
-.flexbox-results {
-  display: none;
-  position: relative;
-  flex: 1;
 }
 
 .results {
