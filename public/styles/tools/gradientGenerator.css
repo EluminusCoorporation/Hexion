@@ -52,12 +52,11 @@
 }
 
 .color-pallete-container {
-  padding: 10px 30px;
+  flex: 1;
 }
 
 .color-dropdownmenu {
   display: flex;
-  width: max-content;
   user-select: none;
   flex-direction: row;
   align-content: center;
@@ -231,13 +230,9 @@
   border-top: 1px solid var(--highlight);
   box-shadow: 0 2px 2px var(--shadow);
   padding: 15px;
-  width: 75%;
   border-radius: 15px;
-  display: flex;
-  justify-self: center;
-  margin: 15px;
+  margin: .7em 0;
   font-weight: bold;
-  flex-direction: column;
   transition: all ease .5s;
   overflow: hidden;
 }
@@ -387,16 +382,13 @@
 
 .ttc {
   border-radius: 15px;
-  width: 75%;
-  display: flex;
-  justify-self: center;
   padding: 15px;
   border: 1px solid var(--border);
   border-top: 1px solid var(--highlight);
   color: var(--text);
   background-color: var(--bg);
   box-shadow: 0 2px 2px var(--shadow);
-  margin: 15px;
+  margin: .7em 0;
   outline-color: transparent;
   position: relative;
 }
@@ -408,10 +400,9 @@
 }
 
 .options-container {
-  width: 75%;
   display: flex;
-  justify-self: center;
-  justify-content: center;
+  margin: 1.2em 0;
+  flex: 1;
   padding: .5em;
   text-align: center;
   gap: .5em;
@@ -484,15 +475,14 @@
 }
 
 .preview-screen-container {
-  width: 100%;
-  display: grid;
-  place-items: center;
-  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: .7em 0;
 }
 
 .preview-header {
   padding: 15px;
-  width: 75%;
   color: var(--text);
   font-weight: bold;
   font-size: .6em;
@@ -506,7 +496,6 @@
 .preview-screen {
   display: flex;
   padding: 15px;
-  width: 75%;
   overflow-y: scroll;
   align-items: center;
   background-color: var(--bg);
@@ -557,11 +546,11 @@
   display: unset;
 }
 
-.results-div i {
+.flexbox-results i {
   position: absolute;
   top: 0;
-  color: var(--text);
   right: 0;
+  color: var(--text);
   font-size: 1em;
   z-index: 2;
   cursor: pointer;
@@ -572,27 +561,19 @@
   margin: .3em;
 }
 
-.results-div i:hover {
+.flexbox-results i:hover {
   background: var(--bg-light);
 }
 
 .flexbox-results {
   display: flex;
-  justify-content: center;
-}
-
-.results-div {
-  display: inline-block;
+  margin-bottom: 1em;
   position: relative;
-  margin-bottom: 2em;
 }
 
 .results {
   position: relative;
   resize: none;
-  width: fit-content;
-  max-width: 75vw;
-  position: relative;
   min-height: 200px;
   padding: 15px;
   box-shadow: 0px 4px 6px var(--shadow);

@@ -97,10 +97,8 @@
       </div>
       
       <div class="flexbox-results" id="resultsDiv">
-        <div class="results-div">
-          <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Results"></textarea>
-          <i class='bx bx-copy' id="copy-icon"></i>
-        </div>
+        <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Results"></textarea>
+        <i class='bx bx-copy' id="copy-icon"></i>
       </div>
       <div class="copy-alert-container" id="copyAlertContainer">
         <i class="bx bx-clipboard-check"></i>
@@ -108,4 +106,6 @@
       </div>
     <!--Module imports-->
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script>
     <%- include('../components/footer') -%>
