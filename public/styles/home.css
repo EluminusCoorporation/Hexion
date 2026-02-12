@@ -149,6 +149,7 @@ main {
 }
 
 .header-message span {
+  text-shadow: none;
   color: transparent;
   position: relative;
   background: linear-gradient(to right, var(--primary), var(--secondary));
@@ -261,7 +262,8 @@ main {
 }
 
 #faq {
-  padding: 3em 2em 10em 2em;
+  padding: 1em;
+  margin-bottom: 2em;
   pointer-events: none;
   position: relative;
 }
@@ -400,10 +402,4 @@ main {
 .faq-box-answer.active {
   visibility: visible;
   grid-template-rows: 1fr;
-}
-
-@media (prefers-color-scheme: light) {
-  .mainimg {
-    opacity: 1;
-  }
 }

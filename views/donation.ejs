@@ -8,9 +8,11 @@
       <div class="donation-container">
         <p>Donation is another way for us to make money apart from the ads, these two are the main reasons on how this website runs so to contribute to run this website full of developer tools forever ,donate now.</p>
         <h3>Payment Methods: Paypal</h3>
-        <button class="donation-btn" id="donation-btn">Donate now!</button>
+        
+        <button class="donation-btn" id="donationBtn">Donate now!</button>
+        
         <div class="donation-menu-container" id="donationMenuContainer">
-          <div id="donation-menu" class="donationMenu">
+          <div id="donationMenu" class="donation-menu">
             <div class="close-btn" id="closeBtn">
               <i class="bx bx-x"></i>
             </div>
@@ -25,13 +27,13 @@
   <script defer>
 // Necessary element imports
 const donationBtn = document.getElementById("donationBtn");
+const donationMenuContainer = document.getElementById("donationMenuContainer");
 const donationMenu = document.getElementById("donationMenu");
-const donationMenuDiv = document.getElementById("donationMenuContainer");
 const closeBtn = document.getElementById("closeBtn");
 
 donationBtn.addEventListener("click", () => {
   // Activates the donation menu
-  donationMenuDiv.classList.add("active");
+  donationMenuContainer.classList.add("active");
   donationMenu.classList.add("active");
   document.body.classList.add("no-scroll");
 });
@@ -39,7 +41,7 @@ donationBtn.addEventListener("click", () => {
 // Close button used to close the donation menu
 closeBtn.addEventListener("click", () => {
   // Deactivates the donation menu
-  donationMenuDiv.classList.remove("active");
+  donationMenuContainer.classList.remove("active");
   donationMenu.classList.remove("active");
   document.body.classList.remove("no-scroll");
 });
