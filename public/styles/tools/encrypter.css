@@ -56,11 +56,10 @@
   color: var(--text-muted);
   background-color: var(--bg);
   position: relative;
-  border: 1px solid var(--border);
-  border-top: 1px solid var(--highlight);
+  border-top: .5px solid var(--highlight);
   box-shadow: 0 2px 2px var(--shadow);
   padding: 15px;
-  border-radius: 15px;
+  border-radius: .2em;
   margin: .7em 0;
   font-weight: bold;
   transition: all ease .5s;
@@ -87,7 +86,6 @@
   display: block;
   position: absolute;
   align-self: center;
-  padding-right: 5px;
   right: 0;
   transition: all .3s;
 }
@@ -168,14 +166,12 @@
 }
 
 .ttc {
-  border-radius: 15px;
+  border-radius: 2em;
   padding: 15px;
   border: 1px solid var(--border);
-  border-top: 1px solid var(--highlight);
   color: var(--text);
   background-color: var(--bg);
   box-shadow: 0 2px 2px var(--shadow);
-  margin: .7em 0;
   outline-color: transparent;
   position: relative;
 }
@@ -188,6 +184,7 @@
 
 .flexbox-results {
   display: none;
+  margin-top: 2em;
   position: relative;
 }
 
@@ -202,7 +199,7 @@
   padding: 5px;
   border-radius: 50%;
   transition: all .5s;
-  margin: 1em .5em;
+  margin: .3em;
 }
 
 .flexbox-results i:hover {
@@ -218,7 +215,6 @@
   color: var(--text);
   background: linear-gradient(0deg, var(--bg), var(--bg-light));
   border: none;
-  margin-top: 1em;
   border-radius: 15px;
 }
 

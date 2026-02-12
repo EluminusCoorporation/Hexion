@@ -56,11 +56,10 @@
   color: var(--text-muted);
   background-color: var(--bg);
   position: relative;
-  border: 1px solid var(--border);
-  border-top: 1px solid var(--highlight);
+  border-top: .5px solid var(--highlight);
   box-shadow: 0 2px 2px var(--shadow);
   padding: 15px;
-  border-radius: 15px;
+  border-radius: .2em;
   margin: .7em 0;
   font-weight: bold;
   transition: all ease .5s;
@@ -70,6 +69,10 @@
 .head-i {
   display: flex;
   position: relative;
+}
+
+.head-i h3 i {
+  font-size: 1.2em;
 }
 
 .dropdown-text {
@@ -88,7 +91,6 @@
   display: block;
   position: absolute;
   align-self: center;
-  padding-right: 5px;
   right: 0;
   transition: all .3s;
 }
@@ -129,10 +131,6 @@
 .dropdown-content.show {
   visibility: visible;
   grid-template-rows: 1fr;
-}
-
-.langIcon {
-  font-size: 2em;
 }
 
 .select-item {
@@ -176,18 +174,17 @@
   font-size: .7em;
   background-color: var(--primary);
   color: white;
-  border-radius: 7px;
+  border-radius: 2em;
 }
 
 .buttonWrapper {
   position: relative;
   display: flex;
-  margin: .9em 0;
-  justify-self: center;
+  margin: .5em 0 1em 0;
   border: 1.6px solid indianred;
   background-color: var(--bg);
   box-shadow: 0 2px 2px var(--shadow);
-  border-radius: 10px;
+  border-radius: 2em;
   overflow: hidden !important;
 }
 
@@ -207,8 +204,7 @@
 .dualbtn {
   font-weight: bold;
   width: 50%;
-  height: 42.3px;
-  padding: 15px;
+  padding: .8em;
   border-radius: 8px;
   border: none;
   outline-color: transparent;
@@ -231,12 +227,12 @@
 
 .switcherContainer {
   display: flex;
+  margin-bottom: .5em;
   justify-content: center;
   flex-direction: row;
 }
 
 .uploadWrapper {
-  margin: 1em;
   position: absolute;
   left: -100vw;
   visibility: hidden;
@@ -293,11 +289,9 @@
   border-radius: 15px;
   padding: 15px;
   border: 1px solid var(--border);
-  border-top: 1px solid var(--highlight);
   color: var(--text);
   background-color: var(--bg);
   box-shadow: 0 2px 2px var(--shadow);
-  margin: .7em 0;
   outline-color: transparent;
   position: absolute;
   transition: all ease .3s;
@@ -315,6 +309,24 @@
   padding-left: 5px;
 }
 
+.flexbox-results {
+  display: none;
+  flex: 1;
+  margin-top: 2em;
+  flex-direction: column;
+}
+
+.results-div {
+  position: relative;
+  display: inline-block;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--bg);
+  padding: 50px 1em 25px 1em;
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
+}
+
 .results-div i {
   position: absolute;
   top: 0;
@@ -326,31 +338,14 @@
   padding: 5px;
   border-radius: 50%;
   user-select: none;
-  transition: all .5s;
   margin: .3em;
+  transition: all .5s;
 }
 
 .results-div i:hover {
   background: var(--bg-light);
 }
 
-.flexbox-results {
-  display: none;
-  flex: 1;
-  flex-direction: column;
-}
-
-.results-div {
-  position: relative;
-  display: inline-block;
-  justify-content: center;
-  background-color: var(--bg);
-  padding: 50px 25px 25px 25px;
-  border-radius: 15px 15px 0 0;
-  border: 1px solid var(--border);
-  border-top: 1px solid var(--highlight);
-  border-bottom: none;
-}
 
 .ball-container {
   position: absolute;

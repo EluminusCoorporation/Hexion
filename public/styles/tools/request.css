@@ -59,6 +59,9 @@
 
 .url-container {
   display: flex;
+  border-top: .5px solid var(--highlight);
+  margin-bottom: 1.3em;
+  border-radius: 15px;
   flex-direction: row;
 }
 
@@ -96,7 +99,6 @@
   box-shadow: 0 2px 2px var(--shadow);
   padding: 15px;
   border-radius: 15px;
-  margin: .7em 0;
   font-weight: bold;
   transition: all ease .5s;
   overflow: hidden;
@@ -121,7 +123,6 @@
   display: block;
   position: absolute;
   align-self: center;
-  padding-right: 5px;
   right: 0;
   transition: all .3s;
 }
@@ -204,10 +205,12 @@
 .input-selectors {
   border: 1px dashed var(--border);
   border-radius: .4em;
+  margin: .5em 0;
   color: var(--text) !important;
 }
 
 .options-container {
+  margin: 1.3em 0;
   display: flex;
   justify-content: center;
   padding: .5em;
@@ -307,7 +310,6 @@
   resize: none;
   min-height: 200px;
   padding: 15px;
-  margin-top: 3em;
   box-shadow: 0px 4px 6px var(--shadow);
   color: var(--text);
   background: var(--bg);
@@ -323,11 +325,12 @@
 
 .flexbox-header {
   display: none;
+  margin: 2em;
 }
 
 .flexbox-results {
   display: none;
-  margin-top: .5em;
+  margin-top: .3em;
   position: relative;
 }
 
