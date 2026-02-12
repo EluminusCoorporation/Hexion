@@ -30,9 +30,8 @@
 }
 
 .header-name img {
-  height: 2em;
-  width: 2em;
-  padding: .2em;
+  height: 35px;
+  width: 35px;
   background-color: var(--text);
   border-radius: 50%;
 }

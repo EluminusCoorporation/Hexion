@@ -114,6 +114,11 @@ main {
   border-radius: 0 0 50% 50%;
 }
 
+.branding-container img {
+  height: 50px;
+  width: 50px;
+}
+
 .MainHeader {
   color: transparent;
   font-size: 3em;
