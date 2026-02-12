@@ -9,14 +9,135 @@
   <link rel="stylesheet" href="/styles/__global_variables__.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-family: 'poppins', Sans-Serif;
+  box-sizing: border-box;
+  background-color: var(--bg-dark);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  /* Ensures the container takes the full height of the viewport */
+}
+
+.error-container {
+  width: 60%;
+  text-align: center;
+  padding: 2em;
+  border-radius: 1em;
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--highlight);
+  background: linear-gradient(0deg, var(--bg), var(--bg-light));
+  box-shadow: 0 4px 4px var(--shadow);
+  transition: all .3s;
+}
+
+.error-container:hover {
+  transform: translateY(-.1em);
+}
+
+.error-code {
+  text-align: center;
+  font-size: clamp(2.5rem, calc(5vw + 1rem), 6rem);
+  color: var(--text);
+}
+
+.error-title {
+  font-family: Monospace, Sans-Serif;
+  color: var(--text);
+  font-weight: bold;
+  font-size: clamp(.50rem, calc(2vw + 1rem), 1.3rem);
+}
+
+.error-stack {
+  margin-top: .3em;
+  color: var(--text-muted);
+  font-size: clamp(.25rem, calc(1vw + 1rem), 1rem);
+}
+
+.error-url {
+  margin-top: 1em;
+  padding: .5em;
+  width: 100%;
+  font-family: "Segoe UI", Sans-Serif;
+  color: var(--text-muted);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: .5em;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  text-decoration: underline;
+  text-decoration-color: var(--text-muted);
+}
+
+.error-url .request-type {
+  font-weight: bold;
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+}
+
+.back-button {
+  width: 100px;
+  height: 50px;
+  display: inline-flex;
+  background-color: var(--bg-light);
+  color: var(--text);
+  flex-direction: row;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: .5em;
+  margin-top: 1.5em;
+  transition: all 500ms;
+}
+
+.back-button i {
+  align-self: center;
+  font-size: 1em;
+}
+
+.back-button:hover {
+  transform: scale(.9);
+}
+  </style>
 </head>
 <body>
   <div class="container">
     <main>
       <div class="error-container">
         <h1 class="error-code" id="header"><%= errorcode %></h1>
-        <p class="error-title"><%= error.title %></p>
-        <p class="error-stack"><%= error.message %></p>
+        <p class="error-title"><%= error.title =%></p>
+        <p class="error-stack"><%= error.message =%></p>
         <p class="error-url"><span class="request-type">GET: </span><%= errorurl %></p>
         <a href="/dashboard">
           <button class="back-button">
@@ -45,5 +166,6 @@
   
   autoResizeHeader();
 </script>
+
 </body>
 </html>
