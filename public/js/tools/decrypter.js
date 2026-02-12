@@ -11,9 +11,9 @@ const resultsBtn = document.getElementById("results-btn");
 //Makes an event listener for results button
 resultsBtn.addEventListener("click", function () {
   //Gets the text inputted
-  const text = document.getElementById("ttc").value;
+  const text = document.getElementById("inputContainer").value;
   //Gets the format type
-  const name = document.getElementById("dropdown-text").dataset.selected;
+  const name = document.getElementById("dropdownSelected").dataset.selected;
 
   //Runs the error handler
   if (!errorLoggerBEFORE(name, text)) {
@@ -201,7 +201,7 @@ resultsBtn.addEventListener("click", function () {
   }
 
   const resultsInput = document.getElementById("results");
-  const resultsDiv = document.getElementById("resultsDiv");
+  const resultsDiv = document.getElementById("resultsContainer");
 
   //Sets the value
   resultsInput.textContent = results;

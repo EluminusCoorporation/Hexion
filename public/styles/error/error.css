@@ -29,7 +29,7 @@ html {
   /* Ensures the container takes the full height of the viewport */
 }
 
-.container-404 {
+.error-container {
   width: 60%;
   text-align: center;
   padding: 2em;
@@ -41,7 +41,7 @@ html {
   transition: all .3s;
 }
 
-.container-404:hover {
+.error-container:hover {
   transform: translateY(-.1em);
 }
 
@@ -58,7 +58,7 @@ html {
   font-size: clamp(.50rem, calc(2vw + 1rem), 1.3rem);
 }
 
-.error-message {
+.error-stack {
   margin-top: .3em;
   color: var(--text-muted);
   font-size: clamp(.25rem, calc(1vw + 1rem), 1rem);

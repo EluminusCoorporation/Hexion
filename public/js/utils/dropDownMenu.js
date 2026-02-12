@@ -10,7 +10,7 @@ export function setFunction(func) {
 dropDownMenu.forEach(el => {
   el.addEventListener("click", function () {
     const dropDownContent = el.querySelector("#dropDownContent");
-    const dropDownIcon = el.querySelector("#ddIcon");
+    const dropDownIcon = el.querySelector("#dropdownIcon");
 
     // Enables Stylers
     dropDownContent.classList.toggle("show");
@@ -19,7 +19,7 @@ dropDownMenu.forEach(el => {
     // Makes a event listener for all Items
     dropDownContent.addEventListener("click", event => {
       if (event.target.classList.contains("select-item")) {
-        const itemSelect = el.querySelector("#dropdown-text");
+        const itemSelect = el.querySelector("#dropdownSelected");
         const name = event.target.innerHTML;
         // Ignores if name is Same as the selected one
         if (name === itemSelect.dataset.selected) return;

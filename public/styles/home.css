@@ -37,18 +37,18 @@ main {
   min-width: 0;
 }
 
-.fade-in-d {
+.fader {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity .4s ease-out, transform .4s ease-out;
 }
 
-.fade-in-d.show {
+.fader.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.fade-in-d.reversed {
+.fader.reversed {
   opacity: 0;
   transform: translateY(-30px);
 }
@@ -87,7 +87,7 @@ main {
   max-width: fit-content;
 }
 
-.addiv {
+.ad-container {
   position: relative;
   height: 50px;
   flex: 1;
@@ -99,7 +99,7 @@ main {
   box-shadow: 0 4px 1px var(--shadow);
 }
 
-.addiv p {
+.ad-container p {
   color: var(--text);
   text-align: center;
 }

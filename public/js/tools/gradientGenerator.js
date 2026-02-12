@@ -65,7 +65,7 @@ async function refreshOutput() {
     // get important parameters
     const colors = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
     const input = document.getElementById('inputText').value;
-    const type = document.getElementById("dropdown-text").dataset.selected;
+    const type = document.getElementById("dropdownSelected").dataset.selected;
     
     // default styles(none)
     const styles = {

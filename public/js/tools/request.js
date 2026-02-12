@@ -33,8 +33,8 @@ function checkTypes() {
     document.querySelectorAll('.input-selectors').forEach((input) => input.style.display = "none");
     document.getElementById('contentBody').style.display = "none";
   } else {
-    document.querySelectorAll('.input-selectors').forEach((input) => input.style.display = "flex");
-    document.getElementById('contentBody').style.display = "flex";
+    document.querySelectorAll('.input-selectors').forEach((input) => input.style.display = "block");
+    document.getElementById('contentBody').style.display = "block";
   }
 }
 
@@ -78,7 +78,7 @@ resultsBtn.addEventListener("click", async () => {
     toggleLoader(true);
     
     let body;
-    const url = document.getElementById("ttc").value;
+    const url = document.getElementById("inputContainer").value;
 
     const type = document.querySelector(".type").dataset.selected?.toUpperCase();
     const content = document
@@ -171,7 +171,7 @@ resultsBtn.addEventListener("click", async () => {
     results.textContent = JSON.stringify(data, null, 2);
     
     // display the data
-    const resultsDiv = document.getElementById("resultsDiv");
+    const resultsDiv = document.getElementById("resultsContainer");
     resultsDiv.style.display = "flex";
   } catch (error) {
     // catch every error and display

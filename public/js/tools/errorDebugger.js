@@ -7,7 +7,7 @@ import { setFunction } from '../utils/dropDownMenu.js'
 let selectedExt = "auto";
 
 function selectExtension() {
-  const type = document.getElementById('dropdown-text').dataset.selected.toLowerCase().trim();
+  const type = document.getElementById('dropdownSelected').dataset.selected.toLowerCase().trim();
   
   switch (type) {
     case 'auto':
@@ -64,7 +64,7 @@ textMode.addEventListener("click", function() {
     html.classList.add('selected');
     
     const htmlName = html.innerHTML;
-    const dropdownText = document.getElementById('dropdown-text');
+    const dropdownText = document.getElementById('dropdownSelected');
     
     dropdownText.dataset.selected = "HTML";
     dropdownText.innerHTML = htmlName;
@@ -272,8 +272,8 @@ resultsBtn.addEventListener('click', async () => {
   try {
     toggleLoader(true);
     
-    const resultsDiv = document.getElementById('resultsDiv');
-    const type = document.getElementById('dropdown-text').dataset.selected.trim();
+    const resultsDiv = document.getElementById('resultsContainer');
+    const type = document.getElementById('dropdownSelected').dataset.selected.trim();
     const code = sessionStorage.getItem("code");
     //runs error handler
     if (!errorLoggerBEFORE(type, code)) {

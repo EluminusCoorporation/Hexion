@@ -1,4 +1,4 @@
-.pageH2 {
+.page-header {
   margin: 20px;
   background: linear-gradient(to right, transparent 5%, indianred, transparent 95%);
 }
@@ -66,16 +66,16 @@
   overflow: hidden;
 }
 
-.head-i {
+.dropdown-header-container {
   display: flex;
   position: relative;
 }
 
-.head-i h3 i {
+.dropdown-header-container h3 i {
   font-size: 1.2em;
 }
 
-.dropdown-text {
+.dropdown-selected {
   gap: .5em;
   color: var(--text);
   user-select: none;
@@ -85,7 +85,7 @@
   font-size: .8em;
 }
 
-.dd-i {
+.dropdown-icon {
   font-size: 35px;
   font-weight: none;
   display: block;
@@ -95,7 +95,7 @@
   transition: all .3s;
 }
 
-.dd-i.active {
+.dropdown-icon.active {
   transform: rotate(180deg);
 }
 
@@ -280,7 +280,7 @@
   white-space: nowrap;
 }
 
-.ttc {
+.input-container {
   visibility: hidden;
   flex: 1;
   right: -100vw;
@@ -297,13 +297,13 @@
   transition: all ease .3s;
 }
 
-.ttc.selected {
+.input-container.selected {
   position: relative;
   right: 0;
   visibility: visible;
 }
 
-.ttc::placeholder {
+.input-container::placeholder {
   color: var(--text-muted);
   font-weight: bold;
   padding-left: 5px;

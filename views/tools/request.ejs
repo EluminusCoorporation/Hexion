@@ -1,13 +1,13 @@
 <%- include('../components/header') -%>
     <%- include('../components/navbar') -%>
     <main>
-      <div class="addiv">
+      <div class="ad-container">
         <p>Ad space here</p>
       </div>
       <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
         <p>Back to dashboard</p>
       </a>
-      <h2 class="pageH2"><i class='bx bx-wifi'></i>Request Sender <span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h2>
+      <h2 class="page-header"><i class='bx bx-wifi'></i>Request Sender <span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h2>
       
       <div class="info-container">
         <p><b>Note:</b> That all of this information must exactly match you're backend's configuration.</p>
@@ -15,9 +15,9 @@
       
       <div class="url-container">
         <div class="dropdown-container request-type" id="dropDownMenu" data-action="checkTypes">
-          <div class="head-i">
-            <h3 class="dropdown-text type" id="dropdown-text" data-selected="">Type</h3>
-            <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+          <div class="dropdown-header-container">
+            <h3 class="dropdown-selected type" id="dropdownSelected" data-selected="">Type</h3>
+            <i class='bx bx-chevron-down dropdown-icon' id="dropdownIcon"></i>
           </div>
         
           <ul class="dropdown-content" id="dropDownContent">
@@ -29,13 +29,13 @@
             </div>
           </ul>
         </div>
-        <input type="text" name="textToConvert" id="ttc" placeholder="Url" class="ttc url-input" maxlength="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+        <input type="text" name="textToConvert" id="inputContainer" placeholder="Url" class="input-container url-input" maxlength="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       </div>
       
       <div class="dropdown-container input-selectors" id="dropDownMenu" data-action="refreshBody">
-        <div class="head-i">
-          <h3 class="dropdown-text content body-type" id="dropdown-text" dataset-selected="">Content-Type</h3>
-          <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+        <div class="dropdown-header-container">
+          <h3 class="dropdown-selected content body-type" id="dropdownSelected" dataset-selected="">Content-Type</h3>
+          <i class='bx bx-chevron-down dropdown-icon' id="dropdownIcon"></i>
         </div>
         <ul class="dropdown-content" id="dropDownContent">
           <div>
@@ -50,9 +50,9 @@
         </ul>
       </div>
       <div class="dropdown-container input-selectors" id="dropDownMenu" data-id="AcceptTypeSelector">
-        <div class="head-i">
-          <h3 class="dropdown-text accept" id="dropdown-text" dataset-selected="">Accept (Optional)</h3>
-          <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+        <div class="dropdown-header-container">
+          <h3 class="dropdown-selected accept" id="dropdownSelected" dataset-selected="">Accept (Optional)</h3>
+          <i class='bx bx-chevron-down dropdown-icon' id="dropdownIcon"></i>
         </div>
         <ul class="dropdown-content" id="dropDownContent">
           <div>
@@ -80,9 +80,9 @@
           </div>
           <div id="authContainer" class="toggler-el">
             <div class="dropdown-container authEl" id="dropDownMenu" data-action="checkAuthType">
-              <div class="head-i">
-                <h3 class="dropdown-text auth-type" id="dropdown-text" data-selected="">Type Selector</h3>
-                <i class='bx bx-chevron-down dd-i' id="ddIcon"></i>
+              <div class="dropdown-header-container">
+                <h3 class="dropdown-selected auth-type" id="dropdownSelected" data-selected="">Type Selector</h3>
+                <i class='bx bx-chevron-down dropdown-icon' id="dropdownIcon"></i>
               </div>
               <ul class="dropdown-content" id="dropDownContent">
                 <div>
@@ -92,7 +92,7 @@
                 </div>
               </ul>
             </div>
-            <input type="text" name="authKey" id="auth" placeholder="Bearer Token" class="ttc authEl"/>
+            <input type="text" name="authKey" id="auth" placeholder="Bearer Token" class="input-container authEl"/>
           </div>
         </div>
         <div class="option-container">
@@ -117,7 +117,7 @@
           <textarea name="headers" id="headers" class="content-body" rows="12" cols="80" placeholder="Headers"></textarea>
       </div>
       
-      <div class="flexbox-results" id="resultsDiv">
+      <div class="flexbox-results" id="resultsContainer">
         <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Response"></textarea>
         <i class='bx bx-copy' id="copy-icon"></i>
       </div>

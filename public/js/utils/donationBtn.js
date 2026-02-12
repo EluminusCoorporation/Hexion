@@ -1,8 +1,8 @@
 // Necessary element imports
-const donationBtn = document.getElementById("donation-btn");
-const donationMenu = document.getElementById("donation-menu");
-const donationMenuDiv = document.getElementById("donation-menu-div");
-const closeBtn = document.getElementById("close-btn");
+const donationBtn = document.getElementById("donationBtn");
+const donationMenu = document.getElementById("donationMenu");
+const donationMenuDiv = document.getElementById("donationMenuContainer");
+const closeBtn = document.getElementById("closeBtn");
 
 donationBtn.addEventListener("click", () => {
   // Activates the donation menu
