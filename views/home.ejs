@@ -124,8 +124,6 @@
             </div>
           </div>
         </section>
-        <%- include('components/footer') -%>
-    
 <script>
 // Observer is used to detect if user has loaded the page
 const observer = new IntersectionObserver((entries) => {
@@ -149,8 +147,4 @@ document.querySelectorAll('.fader').forEach(el => observer.observe(el));
     
     <!--function Import-->
     <script src="/js/utils/faq.js" defer></script>
-    
-    <!--disabling header css-->
-    <script>
-      document.getElementById("navbarLink").disabled = true
-    </script>
+        <%- include('components/footer') -%>
