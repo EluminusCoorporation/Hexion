@@ -69,6 +69,7 @@
 .tool-header {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: .5em;
   margin-bottom: 2em;
 }
@@ -78,6 +79,7 @@
 }
 
 .toolboxes-container .tool h3 {
+  width: min-content;
   font-size: 2em;
   z-index: 2;
 }
