@@ -143,24 +143,6 @@ app.get("/donation", (req, res) => {
   };
   res.render('donation', pageInfo);
 });
-app.get("/codeBook", (req, res) => {
-  const pageInfo = {
-    title: "Code Book",
-    description: "The code book of hexion, here you will find all the information related to developing, coding, programming, computer science and much much more.",
-    url: `${config.general.domain}/codeBook`,
-    path: "codeBook"
-  };
-  res.render('codeBook', pageInfo);
-});
-app.get("/cources", (req, res) => {
-  const pageInfo = {
-    title: "Cources",
-    description: "The official cources of hexion, here you will find many cources related to coding from simple to advance.",
-    url: `${config.general.domain}/cources`,
-    path: "cources"
-  };
-  res.render('cources', pageInfo);
-});
 
 //Load routers
 app.use("/tools", tools);
