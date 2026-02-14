@@ -51,8 +51,16 @@
 .uploader-container {
   display: flex;
   flex-direction: column;
-  gap: .5em;
-  justify-content: center;
+  gap: 1em;
+  align-items: center;
+}
+
+.uploader-container img {
+  display: none;
+  max-width: 100%;
+  max-height: 100px;
+  outline: none;
+  border: 1px solid var(--border);
 }
 
 .file-upload-input {

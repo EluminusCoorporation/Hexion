@@ -3,75 +3,66 @@ import { setStatus, errorLoggerBEFORE,fileLogger } from "../utils/errorLogger.js
 import {} from "../utils/dropDownMenu.js";
 import {} from "../utils/copy.js";
 
+// Placeholder for image
+let image = null;
+
 const uploadZone = document.getElementById('uploadZone');
 const fileInput = document.getElementById('fileUploader');
-//when user drags a file
+// when user drags a file
 uploadZone.addEventListener('dragover', (event) => {
   //prevents the default
   event.preventDefault();
   uploadZone.classList.add('drag-over');
 });
 
-//When user leaves the file
+// When user leaves the dragged file
 uploadZone.addEventListener('dragleave', () => {
   uploadZone.classList.remove('drag-over');
 });
 
-//When it drops the file
-uploadZone.addEventListener('drop', async (event) => {
-  //Prevent default action
+function handleFile(file) {
+  try {
+    // Run file error handler
+    if (!fileLogger(file)) return false;
+    // checks if its an image
+    if (!file.type.startsWith('image/')) throw new Error('The uploaded file is not an usable image.');
+    
+    // Sets file data
+    document.getElementById('fileName').textContent = 'Reupload Image';
+    
+    // save the image
+    image = file;
+    
+    // Sets the showcase image
+    const imageShowcase = document.getElementById('imageShowcase');
+    imageShowcase.src = URL.createObjectURL(file);
+    imageShowcase.style.display = "flex";
+    // Revoke the url after the image loads
+    imageShowcase.onload = () => URL.revokeObjectURL(imageShowcase.src);
+  } catch(error) {
+    setStatus('error', 'Image Uploader Failed', error);
+    console.log('An error occured while uploading the image: ' + error)
+  }
+}
+
+// When user drops the dragged file
+uploadZone.addEventListener('drop', (event) => {
+  // Prevent default action
   event.preventDefault();
-  
   uploadZone.classList.remove('drag-over');
   
-  //Get the file
-  const files = event.dataTransfer.files;
-  const file = files[0];
-  
-  //Run file error handler
-  if (!fileLogger(file)) return false;
-    //checks if selectedExt is auto
-  
-  //Get file data
-  const fileNameLabel = document.getElementById('fileName');
-  const fileIcon = document.getElementById('fileIcon');
-  const fileSize = formatFileSize(file.size)
-  
-  //Sets file data
-  fileNameLabel.textContent = file.name + ` (${fileSize})`;
-  fileIcon.classList.remove('fa-solid', 'fa-upload')
-  fileIcon.classList.add('bx', 'bx-file-code');
-  
-  //Gets the text of the file
-  const code = await file.text();
-  
-  //stores it in the broswer
-  sessionStorage.setItem("code", code);
+  // handle the image
+  handleFile(event.dataTransfer.files[0]);
 });
 
 //When uploads a file via click
-fileInput.addEventListener('change', async () => {
-  //Gets the file
-  const file = fileInput.files[0];
-  
-  //Runs the file error handler
-  if (!fileLogger(file)) return false;
-  
-  //Gets file data
-  const fileNameLabel = document.getElementById('fileName');
-  const fileIcon = document.getElementById('fileIcon');
-  const fileSize = formatFileSize(file.size)
-  
-  //Sets file data
-  fileNameLabel.textContent = file.name + ` (${fileSize})`;
-  fileIcon.classList.remove('fa-solid', 'fa-upload')
-  fileIcon.classList.add('bx', 'bx-file-code');
-  
-  //getd the text of the file
-  const code = await file.text()
-  
-  //Stores it in the broswer
-  sessionStorage.setItem("code", code)
+fileInput.addEventListener('change', () => {
+  // handle the image
+  handleFile(fileInput.files[0]);
+});
+
+document.getElementById('imageShowcase').addEventListener("error", function() {
+  this.style.display = "none";
 });
 
 const resultsBtn = document.getElementById("results-btn");
