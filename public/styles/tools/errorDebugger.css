@@ -158,11 +158,11 @@
   pointer-events: none;
 }
 
-.recommend-container {
+.tag-container {
   position: relative;
 }
 
-.recommended {
+.tag {
   position: absolute;
   top: 50%;
   right: .5em;

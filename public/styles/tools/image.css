@@ -142,11 +142,11 @@
   color: white;
 }
 
-.recommend-container {
+.tag-container {
   position: relative;
 }
 
-.recommended {
+.tag {
   position: absolute;
   top: 50%;
   right: .5em;
@@ -159,6 +159,10 @@
   background-color: var(--primary);
   color: white;
   border-radius: 7px;
+}
+
+.unstable {
+  background-color: var(--danger) !important;
 }
 
 .copy-alert-container {
