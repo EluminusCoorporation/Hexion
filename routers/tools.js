@@ -85,6 +85,7 @@ router.get("/image", (req, res) => {
   const pageInfo = {
     title: "Image Converter",
     description: "The image converter tool of hexion, with this tool you can compress or convert any images of you're wish to any format that we support",
+    imports: "<script src='https://kit.fontawesome.com/57901f661d.js' crossorigin='anonymous' defer></script>",
     url: `${config.general.domain}/tools/image`,
     path: "tools/image"
   };

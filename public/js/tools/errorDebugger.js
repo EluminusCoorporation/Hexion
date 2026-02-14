@@ -197,6 +197,22 @@ fileInput.addEventListener('change', async () => {
   //Runs the file error handler
   if (!fileLogger(file)) return false;
   
+  if (selectedExt === "auto") {
+    //Checks if Extension is supported
+    if (!supportedExtensions.includes(fileExtension)) {
+      setStatus('error', 'File Upload failed', 'File Extension not supported by our service');
+      return false;
+    }
+    //Else continues
+    setStatus()
+    return true;
+  }
+  //Else checks if not supported
+  else if (fileExtension !== selectedExt) {
+    setStatus('error', 'File Upload failed', `File Extension not supported by the language you have selected (.${selectedExt})`);
+    return false;
+  }
+  
   //Gets file data
   const fileNameLabel = document.getElementById('fileName');
   const fileIcon = document.getElementById('fileIcon');

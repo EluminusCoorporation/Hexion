@@ -1,7 +1,78 @@
 //Imports the required functions
-import { setStatus, errorLoggerBEFORE } from "../utils/errorLogger.js";
+import { setStatus, errorLoggerBEFORE,fileLogger } from "../utils/errorLogger.js";
 import {} from "../utils/dropDownMenu.js";
 import {} from "../utils/copy.js";
+
+const uploadZone = document.getElementById('uploadZone');
+const fileInput = document.getElementById('fileUploader');
+//when user drags a file
+uploadZone.addEventListener('dragover', (event) => {
+  //prevents the default
+  event.preventDefault();
+  uploadZone.classList.add('drag-over');
+});
+
+//When user leaves the file
+uploadZone.addEventListener('dragleave', () => {
+  uploadZone.classList.remove('drag-over');
+});
+
+//When it drops the file
+uploadZone.addEventListener('drop', async (event) => {
+  //Prevent default action
+  event.preventDefault();
+  
+  uploadZone.classList.remove('drag-over');
+  
+  //Get the file
+  const files = event.dataTransfer.files;
+  const file = files[0];
+  
+  //Run file error handler
+  if (!fileLogger(file)) return false;
+    //checks if selectedExt is auto
+  
+  //Get file data
+  const fileNameLabel = document.getElementById('fileName');
+  const fileIcon = document.getElementById('fileIcon');
+  const fileSize = formatFileSize(file.size)
+  
+  //Sets file data
+  fileNameLabel.textContent = file.name + ` (${fileSize})`;
+  fileIcon.classList.remove('fa-solid', 'fa-upload')
+  fileIcon.classList.add('bx', 'bx-file-code');
+  
+  //Gets the text of the file
+  const code = await file.text();
+  
+  //stores it in the broswer
+  sessionStorage.setItem("code", code);
+});
+
+//When uploads a file via click
+fileInput.addEventListener('change', async () => {
+  //Gets the file
+  const file = fileInput.files[0];
+  
+  //Runs the file error handler
+  if (!fileLogger(file)) return false;
+  
+  //Gets file data
+  const fileNameLabel = document.getElementById('fileName');
+  const fileIcon = document.getElementById('fileIcon');
+  const fileSize = formatFileSize(file.size)
+  
+  //Sets file data
+  fileNameLabel.textContent = file.name + ` (${fileSize})`;
+  fileIcon.classList.remove('fa-solid', 'fa-upload')
+  fileIcon.classList.add('bx', 'bx-file-code');
+  
+  //getd the text of the file
+  const code = await file.text()
+  
+  //Stores it in the broswer
+  sessionStorage.setItem("code", code)
+});
 
 const resultsBtn = document.getElementById("results-btn");
 
