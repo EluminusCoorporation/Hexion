@@ -7,7 +7,18 @@
     "programming",
     "coding",
     "free",
-    "tools"
+    "encoding",
+    "decoding",
+    "tools",
+    "errordebugger",
+    "debugger",
+    "gradientgenerator",
+    "requestsender",
+    "htmltoappconvertor",
+    "linters",
+    "imageconverter",
+    "imagecompresser",
+    "toolbox"
   ],
   "homepage": "https://github.com/EluminusCoorporation/Hexion#readme",
   "bugs": {
