@@ -163,6 +163,14 @@
   background: hotpink
 }
 
+.tool:nth-child(8) {
+  color: darkgray
+}
+
+.tool:nth-child(8) button {
+  background: darkgray
+}
+
 .toolboxes-container .tool button i {
   font-size: 1em;
   transition: transform .5s ease;

@@ -81,5 +81,15 @@ router.get("/request", (req, res) => {
   res.render('tools/request', pageInfo);
 });
 
+router.get("/image", (req, res) => {
+  const pageInfo = {
+    title: "Image Converter",
+    description: "The image converter tool of hexion, with this tool you can compress or convert any images of you're wish to any format that we support",
+    url: `${config.general.domain}/tools/image`,
+    path: "tools/image"
+  };
+  res.render('tools/image', pageInfo);
+});
+
 //Exports the router
 module.exports = router;
