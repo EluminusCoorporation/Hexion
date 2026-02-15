@@ -76,6 +76,7 @@ app.use(express.json({
   type: "application/json",
   verify: undefined,
 }));
+app.use(express.text());
 
 app.use(express.urlencoded({ extended: false, limit: "200mb" }));
 app.use(favicon(path.join(PUBLIC_DIR, 'assets/icons/favicon.ico')));
