@@ -27,6 +27,8 @@ router.post("/debugger", async (req, res) => {
     // checks if required parameters exist
     if (!type || !code) throw new Error("The required parameters were not passed.")
     
+    if (typeof code !== "string") throw new Error("Invalid code parameter, expected string.")
+    
     //Searches for the type of debugger
     if (type === "Html") {
       //Config for the rule set being used by the module (refer to the module docs for the list)
