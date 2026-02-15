@@ -78,7 +78,7 @@ app.use(express.json({
 }));
 app.use(express.text());
 
-app.use(express.urlencoded({ extended: false, limit: "200mb" }));
+app.use(express.urlencoded({ extended: false, limit: "1mb" }));
 app.use(favicon(path.join(PUBLIC_DIR, 'assets/icons/favicon.ico')));
 
 //Checks & installs required python packages
