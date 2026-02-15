@@ -4,6 +4,10 @@ import {} from '../utils/copy.js'
 import { formatFileSize } from '../utils/fileSizeFormat.js'
 import { setFunction } from '../utils/dropDownMenu.js'
 
+// Placeholders
+let code = null;
+let report = null;
+
 let selectedExt = "auto";
 
 function selectExtension() {
@@ -45,7 +49,7 @@ fileMode.addEventListener("click", function() {
   
   auto.classList.remove('disable');
   textInput.value = null;
-  sessionStorage.removeItem("code");
+  code = null;
 });
 
 //When text mode deactivates remove data
@@ -78,14 +82,11 @@ textMode.addEventListener("click", function() {
   //deselect auto
   auto.classList.add('disable');
   
-  //removes the data
-  sessionStorage.removeItem('errorDebuggerFile');
-  
   fileNameLabel.textContent = 'Upload File';
   fileIcon.classList.remove('bx', 'bx-file-code');
   fileIcon.classList.add('fa-solid', 'fa-upload');
   
-  sessionStorage.removeItem("code");
+  code = null;
 });
 
 //Makes an event listener for the switchers
@@ -157,10 +158,10 @@ async function handleFile(file) {
     fileIcon.classList.add('bx', 'bx-file-code');
     
     // Gets the text of the file
-    const code = await file.text();
+    const fileText = await file.text();
     
     // stores it in the browser
-    sessionStorage.setItem("code", code);
+    code = fileText;
   } catch(error) {
     setStatus('error', 'File Uploader Failed', error);
     console.error('An error occured while uploading file: ' + error);
@@ -200,8 +201,8 @@ fileInput.addEventListener('change', () => {
 
 //Stores the input of the textarea
 textInput.addEventListener("change", function() {
-  const code = this.value;
-  sessionStorage.setItem("code", code)
+  const textInputed = this.value;
+  code = textInputed;
 });
 
 //Sends an alert on usage of html
@@ -258,7 +259,6 @@ resultsBtn.addEventListener('click', async () => {
     
     const resultsDiv = document.getElementById('resultsContainer');
     const type = document.getElementById('dropdownSelected').dataset.selected.trim();
-    const code = sessionStorage.getItem("code");
     //runs error handler
     if (!errorLoggerBEFORE(type, code)) {
       resultsDiv.style.display = "none";
@@ -266,7 +266,6 @@ resultsBtn.addEventListener('click', async () => {
     };
   
     //sends the api request to the end point
-    let results;
     const res = await fetch('/api/debugger', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -280,7 +279,7 @@ resultsBtn.addEventListener('click', async () => {
     if (contentType && !contentType.includes('application/json')) {
       throw new Error('Unexpected server response.');
       
-      const text = res.text();
+      const text = await res.text();
       console.error('An unexpected response from the server.\n\nRESPONSE: ' + text);
     };
     
@@ -294,20 +293,20 @@ resultsBtn.addEventListener('click', async () => {
     if (!data) throw new Error('The response from our server was empty, retry debugging.')
   
     //Get the error report & log it
-    const report = data.report;
+    const fileReport = data.report;
     console.dir(data);
   
     //Let the default count be 0
     let errorCount = 0;
   
     if (type === "Html") {
-      errorCount = report.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length
+      errorCount = fileReport.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length
     } else if (type === "Css") {
-      errorCount = report.results.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
+      errorCount = fileReport.results.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
     } else if (type === "Java Script") {
-      errorCount = report[0].errorCount
+      errorCount = fileReport[0].errorCount
     } else if (type === "Python") {
-      if (report) errorCount = 1;
+      if (fileReport) errorCount = 1;
     }
   
     //if no errors found end
@@ -318,17 +317,15 @@ resultsBtn.addEventListener('click', async () => {
     };
   
     //stores the report for future in the broswer
-    sessionStorage.setItem("report", JSON.stringify(report));
+    report = fileReport;
   
     //Sets the arrows
     const arrows = document.querySelectorAll('.arrows');
   
     //removes the disabled
-    arrows.forEach((arrow) => arrow.classList.remove('disabled') );
+    arrows.forEach((arrow) => arrow.classList.remove('disabled'));
     //if one error disable both
-    if (errorCount === 1) {
-      arrows.forEach((arrow) => arrow.classList.add('disabled') );
-    }
+    if (errorCount === 1) arrows.forEach((arrow) => arrow.classList.add('disabled'));
   
     const errorGoBack = document.getElementById('errorGoBack');
     errorGoBack.classList.add('disabled');
@@ -338,7 +335,7 @@ resultsBtn.addEventListener('click', async () => {
     totalErrors.textContent = `${errorCount}`;
   
     const resultsInput = document.getElementById('results');
-    const errorContext = setDebuggerContext(report, 0, type);
+    const errorContext = setDebuggerContext(fileReport, 0, type);
     //sets the error
     resultsInput.value = errorContext;
   
@@ -369,6 +366,8 @@ const errorGoBack = document.getElementById('errorGoBack');
 
 //Next error button
 errorGoForward.addEventListener("click", () => {
+  const type = document.getElementById('dropdownSelected').dataset.selected.trim();
+  
   const currentError = document.getElementById('currentError');
   const totalErrors = document.getElementById('totalErrors');
   
@@ -386,7 +385,6 @@ errorGoForward.addEventListener("click", () => {
   
   //Gets the report
   const resultsInput = document.getElementById('results');
-  const report = JSON.parse(sessionStorage.getItem("report"));
   
   //sets the new report
   const errorContext = setDebuggerContext(report, currentValue - 1, type);
@@ -396,6 +394,8 @@ errorGoForward.addEventListener("click", () => {
 
 //previous error button
 errorGoBack.addEventListener("click", () => {
+  const type = document.getElementById('dropdownSelected').dataset.selected.trim();
+  
   const currentError = document.getElementById('currentError');
   const totalErrors = document.getElementById('totalErrors');
   
@@ -413,7 +413,6 @@ errorGoBack.addEventListener("click", () => {
   
   //gets the report
   const resultsInput = document.getElementById('results');
-  const report = JSON.parse(sessionStorage.getItem("report"));
   
   //sets the new report
   const errorContext = setDebuggerContext(report, currentValue - 1, type);

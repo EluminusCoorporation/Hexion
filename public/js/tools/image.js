@@ -41,7 +41,7 @@ function handleFile(file) {
     imageShowcase.onload = () => URL.revokeObjectURL(imageShowcase.src);
   } catch(error) {
     setStatus('error', 'Image Uploader Failed', error);
-    console.log('An error occured while uploading the image: ' + error)
+    console.error('An error occured while uploading the image: ' + error)
   }
 }
 
