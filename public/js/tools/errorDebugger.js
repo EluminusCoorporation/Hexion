@@ -127,6 +127,45 @@ uploadbtn.addEventListener('click', () => {
   //clear errors
   setStatus();
 })
+// Supported Extension list.
+const supportedExtensions = ["py", "js", "html", "css"]
+
+async function handleFile(file) {
+  try {
+    // Run file error handler
+    if (!fileLogger(file)) return false;
+    
+    // File's Extension
+    const fileExtension = file.name.split('.').pop().toLowerCase();
+    
+      // checks if selectedExt is auto
+    if (selectedExt === "auto") {
+      // Checks if Extension is supported
+      if (!supportedExtensions.includes(fileExtension)) throw new Error('File Extension not supported by our service')
+    }
+    // Else checks if not supported
+    else if (fileExtension !== selectedExt) throw new Error(`File Extension not supported by the language you have selected (.${selectedExt})`);
+    
+    // Get file data
+    const fileNameLabel = document.getElementById('fileName');
+    const fileIcon = document.getElementById('fileIcon');
+    const fileSize = formatFileSize(file.size)
+    
+    // Sets file data
+    fileNameLabel.textContent = file.name + ` (${fileSize})`;
+    fileIcon.classList.remove('fa-solid', 'fa-upload')
+    fileIcon.classList.add('bx', 'bx-file-code');
+    
+    // Gets the text of the file
+    const code = await file.text();
+    
+    // stores it in the browser
+    sessionStorage.setItem("code", code);
+  } catch(error) {
+    setStatus('error', 'File Uploader Failed', error);
+    console.error('An error occured while uploading file: ' + error);
+  }
+}
 
 const uploadZone = document.getElementById('uploadZone');
 const fileInput = document.getElementById('fileUploader');
@@ -143,91 +182,20 @@ uploadZone.addEventListener('dragleave', () => {
 });
 
 //When it drops the file
-uploadZone.addEventListener('drop', async (event) => {
+uploadZone.addEventListener('drop', (event) => {
   //Prevent default action
   event.preventDefault();
   
   uploadZone.classList.remove('drag-over');
   
-  //Get the file
-  const files = event.dataTransfer.files;
-  const file = files[0];
-  
-  //Run file error handler
-  if (!fileLogger(file)) return false;
-    //checks if selectedExt is auto
-  if (selectedExt === "auto") {
-    //Checks if Extension is supported
-    if (!supportedExtensions.includes(fileExtension)) {
-      setStatus('error', 'File Upload failed', 'File Extension not supported by our service');
-      return false;
-    }
-    //Else continues
-    setStatus()
-    return true;
-  }
-  //Else checks if not supported
-  else if (fileExtension !== selectedExt) {
-    setStatus('error', 'File Upload failed', `File Extension not supported by the language you have selected (.${selectedExt})`);
-    return false;
-  }
-  
-  //Get file data
-  const fileNameLabel = document.getElementById('fileName');
-  const fileIcon = document.getElementById('fileIcon');
-  const fileSize = formatFileSize(file.size)
-  
-  //Sets file data
-  fileNameLabel.textContent = file.name + ` (${fileSize})`;
-  fileIcon.classList.remove('fa-solid', 'fa-upload')
-  fileIcon.classList.add('bx', 'bx-file-code');
-  
-  //Gets the text of the file
-  const code = await file.text();
-  
-  //stores it in the broswer
-  sessionStorage.setItem("code", code);
+  // handle the file
+  handleFile(event.dataTransfer.files[0]);
 });
 
 //When uploads a file via click
-fileInput.addEventListener('change', async () => {
-  //Gets the file
-  const file = fileInput.files[0];
-  
-  //Runs the file error handler
-  if (!fileLogger(file)) return false;
-  
-  if (selectedExt === "auto") {
-    //Checks if Extension is supported
-    if (!supportedExtensions.includes(fileExtension)) {
-      setStatus('error', 'File Upload failed', 'File Extension not supported by our service');
-      return false;
-    }
-    //Else continues
-    setStatus()
-    return true;
-  }
-  //Else checks if not supported
-  else if (fileExtension !== selectedExt) {
-    setStatus('error', 'File Upload failed', `File Extension not supported by the language you have selected (.${selectedExt})`);
-    return false;
-  }
-  
-  //Gets file data
-  const fileNameLabel = document.getElementById('fileName');
-  const fileIcon = document.getElementById('fileIcon');
-  const fileSize = formatFileSize(file.size)
-  
-  //Sets file data
-  fileNameLabel.textContent = file.name + ` (${fileSize})`;
-  fileIcon.classList.remove('fa-solid', 'fa-upload')
-  fileIcon.classList.add('bx', 'bx-file-code');
-  
-  //getd the text of the file
-  const code = await file.text()
-  
-  //Stores it in the broswer
-  sessionStorage.setItem("code", code)
+fileInput.addEventListener('change', () => {
+  // handle the file
+  handleFile(fileInput.files[0]);
 });
 
 //Stores the input of the textarea

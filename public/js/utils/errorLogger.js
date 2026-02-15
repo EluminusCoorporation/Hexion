@@ -104,8 +104,6 @@ export function fileLogger(file) {
   const fileSize = file.size;
   //File extension
   const fileExtension = fileName.split('.').pop().toLowerCase();
-  //Extensions supported
-  const supportedExtensions = ["py", "js", "html", "css"]
   //Checks if file exists (2nd way)
   if (file.length === 0) {
     setStatus('error', 'File Upload failed', 'Something went wrong did you select a file?');
