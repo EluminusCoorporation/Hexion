@@ -45,7 +45,7 @@
     "eslint": "^9.39.1",
     "express": "^5.1.0",
     "express-rate-limit": "^8.1.0",
-    "htmlhint": "^1.8.1",
+    "htmlhint": "^1.9.1",
     "serve-favicon": "^2.5.1",
     "stylelint": "^17.3.0",
     "stylelint-config-standard": "^40.0.0"
