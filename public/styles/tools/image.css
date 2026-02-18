@@ -211,6 +211,53 @@
   border-radius: 7px;
 }
 
+.range-container {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  margin: 1em 0;
+  font-size: .75em;
+  font-weight: bold;
+  color: white;
+}
+
+.range-count {
+  padding: .3em;
+  font-size: .8em;
+  background-color: var(--bg-light);
+  color: var(--text-muted);
+}
+
+.ranges {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--bg);
+  outline: none;
+  height: 10px;
+}
+
+.ranges::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-color: var(--secondary);
+}
+
+.ranges::-moz-range-thumb {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-color: var(--secondary);
+}
+
+.ranges::-moz-range-progress {
+  background-color: var(--bg-light);
+}
+
 .copy-alert-container {
   height: 10px;
   position: fixed;
