@@ -1,7 +1,6 @@
 //Imports the required functions
 import { setStatus, errorLoggerBEFORE,fileLogger } from "../utils/errorLogger.js";
 import {} from "../utils/dropDownMenu.js";
-import {} from "../utils/copy.js";
 
 // Placeholder for image
 let image = null;
