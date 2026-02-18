@@ -221,7 +221,7 @@
   color: white;
 }
 
-.range-count {
+.range-progress {
   padding: .3em;
   font-size: .8em;
   background-color: var(--bg-light);

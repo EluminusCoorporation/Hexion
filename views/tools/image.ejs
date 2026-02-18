@@ -37,7 +37,7 @@
       </div>
       
       <div class="range-container">
-        <label>Quality <span id="rangeCount" class="range-count">60%</span></label>
+        <label>Quality <span id="rangeCount" class="range-progress">0%</span></label>
         <input id="qualityRange" class="ranges" type="range" min="0" max="100" value="0">
       </div>
       
@@ -48,4 +48,6 @@
       <div class="results-btn-div">
         <button class="results-button" id="results-btn">Convert!</button>
       </div>
+      <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script>
       <%- include('../components/footer') -%>

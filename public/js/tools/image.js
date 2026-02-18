@@ -65,6 +65,15 @@ document.getElementById('imageShowcase').addEventListener("error", function() {
   this.style.display = "none";
 });
 
+const ranges = document.querySelectorAll('.ranges');
+ranges.forEach(range => {
+  range.addEventListener("input", function() {
+    const rangeContainer = this.parentNode;
+    const rangeProgress = rangeContainer.querySelector('.range-progress');
+    rangeProgress.textContent = this.value + '%';
+  });
+});
+
 const resultsBtn = document.getElementById("results-btn");
 
 //Makes an event listener for results button
