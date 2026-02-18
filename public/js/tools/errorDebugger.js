@@ -73,8 +73,8 @@ textMode.addEventListener("click", function() {
     dropdownText.dataset.selected = "HTML";
     dropdownText.innerHTML = htmlName;
     
-    //sends an alert
-    setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.");
+    // shows an informatory alert
+    document.getElementById('infoContainer').style.display = "block";
   };
   const fileNameLabel = document.getElementById('fileName');
   const fileIcon = document.getElementById('fileIcon');
@@ -206,9 +206,11 @@ textInput.addEventListener("change", function() {
 });
 
 //Sends an alert on usage of html
-const htmlSelector = document.getElementById('html');
-htmlSelector.addEventListener("click", () => {
-  setStatus("info", "General Information", "Using html does not automatically debug the style & script elements inside the html, you need to redebug them in their respective types.")
+document.getElementById('dropDownContent').addEventListener("click", (event) => {
+  // shows an informatory alert
+  if (event.target === document.getElementById('html')) document.getElementById('infoContainer').style.display = "block";
+  // else hide it
+  else document.getElementById('infoContainer').style.display = "none";
 });
 
 //Custom editor like textarea lines

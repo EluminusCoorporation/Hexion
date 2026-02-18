@@ -52,6 +52,16 @@
   transform: translateX(-6px);
 }
 
+.info-container {
+  display: none;
+  padding: 1em;
+  background-color: hsla(208, 100%, 44.12%, 0.4);
+  border: 1px solid hsl(208, 100%, 44.12%);
+  color: var(--text);
+  font-size: .8em;
+  margin-bottom: 1.5em;
+}
+
 .dropdown-container {
   color: var(--text-muted);
   background-color: var(--bg);
