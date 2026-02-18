@@ -211,10 +211,6 @@
   border-radius: 7px;
 }
 
-.unstable {
-  background-color: var(--danger) !important;
-}
-
 .copy-alert-container {
   height: 10px;
   position: fixed;
