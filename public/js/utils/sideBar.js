@@ -3,6 +3,8 @@ const sideBarButton = document.getElementById("sideBarButton");
 const sideBar = document.getElementById("sideBar");
 const backgroundFilter = document.getElementById("backgroundSideBar");
 
+if (!sideBar) return;
+
 const subMenu = document.querySelectorAll(".sub-menu");
 const links = document.querySelectorAll(".nav-bar .side-bar ul li a");
 

@@ -2,9 +2,10 @@ import { setStatus } from './errorLogger.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const toggleCopy = document.getElementById("copy-icon");
+  
+  if (!toggleCopy) return;
 
   let timeout;
-
   toggleCopy.addEventListener("click", function () {
     // Get the latest value on click
     const resultsInput = document.getElementById("results").value;

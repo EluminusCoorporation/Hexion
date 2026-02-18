@@ -1,5 +1,6 @@
 // Necessary element import
 const faq = document.querySelectorAll(".faq-box-question");
+if (!faq) return;
 
 // Makes it usable
 faq.forEach((faqs, i) => {

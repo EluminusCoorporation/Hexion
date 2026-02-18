@@ -1,6 +1,8 @@
 // Gets required imports
 const dropDownMenu = document.querySelectorAll("#dropDownMenu");
 
+if (!dropDownMenu) return;
+
 let actionRegistry = {};
 export function setFunction(func) {
   actionRegistry[func.name] = func;
