@@ -3,7 +3,7 @@ name: Continue Integration
 on:
   push:
     branches: 
-      - '**'
+      - 'v1'
   pull_request:
     branches: 
       - '**'
