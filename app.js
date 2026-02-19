@@ -9,6 +9,7 @@ Hexion • Developer tools
  |_| |_|\___/_/\_\_|\___/|_| |_| 
  
 © Eluminusco all rights served.       v1.0.0-demo
+
 */
 
 "use strict";
@@ -63,9 +64,7 @@ app.set('trust proxy', (ip) => {
 });
 
 //Setup static directories
-if (fs.existsSync(PUBLIC_DIR)) {
-  app.use(express.static(PUBLIC_DIR));
-}
+if (fs.existsSync(PUBLIC_DIR)) app.use(express.static(PUBLIC_DIR));
 
 //Enable required middlewares
 app.use(express.json({
