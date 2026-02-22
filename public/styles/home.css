@@ -174,7 +174,7 @@ main {
 .features {
   padding: 1.5em .5em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   position: relative;
   justify-content: center;
   gap: 2em;
@@ -313,9 +313,8 @@ main {
 }
 
 .faq-content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 1em;
   margin-top: 4em;
 }
