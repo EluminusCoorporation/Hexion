@@ -1,5 +1,5 @@
 //Imports the required functions
-import { setStatus, errorLoggerBEFORE,fileLogger } from "../utils/errorLogger.js";
+import { setStatus ,fileLogger } from "../utils/errorLogger.js";
 import {} from "../utils/dropDownMenu.js";
 
 // Placeholder for image
@@ -23,6 +23,7 @@ function handleFile(file) {
   try {
     // Run file error handler
     if (!fileLogger(file)) return false;
+    
     // checks if its an image
     if (!file.type.startsWith('image/')) throw new Error('The uploaded file is not an usable image.');
     
@@ -76,107 +77,44 @@ ranges.forEach(range => {
 const resultsBtn = document.getElementById("results-btn");
 
 //Makes an event listener for results button
-resultsBtn.addEventListener("click", function () {
-  //Getd the text inputted
-  const text = document.getElementById("inputContainer").value;
-  //Gets the format type
-  const name = document.getElementById("dropdownSelected").dataset.selected;
-
-  //Runs the error handler
-  if (!errorLoggerBEFORE(name, text)) {
-    return;
+resultsBtn.addEventListener("click", async function () {
+  // temporary canvas variable
+  let canvas;
+  try {
+    toggleLoader(true);
+    // Gets the format type
+    const type = document.getElementById("dropdownSelected").dataset.selected.toLowerCase();
+    // convert the value to 0-1 instead of 25-100%
+    const quality = document.getElementById('qualityRange').value / 100;
+  
+    // Runs the error handler
+    if (!type) throw new Error('No converter file-type selected!');
+    if (!quality) throw new Error('No converter quality specified!');
+    if (!image) throw new Error('No Image uploaded!');
+    
+    // start conversion process
+    // creates a bitmap of the image
+    const bitmap = await createImageBitmap(image);
+    
+    // creates an temporary canvas to draw the image
+    canvas = document.createElement('canvas');
+    // set the size of the canvas relative to image(bitmap)
+    canvas.width = bitmap.width;
+    canvas.height = bitmap.height;
+    
+    // Get the context to draw the image
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(bitmap, 0, 0);
+    
+    // finally convert the image in the canvas by redrawing it in the specified format
+    const blob = await new Promise(res => canvas.toBlob(res, `image/${type}`, quality));
+    console.log(blob);
+  } catch(error) {
+    setStatus('error', 'Image Converter Failed', error);
+    console.error('Failed to convert image: ' + error);
+  } finally {
+    // delete the canvas
+    canvas.remove();
+    toggleLoader(false);
   }
-  let results;
-
-  if (name === "UTF-8") {
-    let encoder = new TextEncoder();
-    results = encoder.encode(text);
-  } else if (name === "UTF-16") {
-    let encoder = new TextEncoder("utf-16le");
-    results = encoder.encode(text);
-  } else if (name === "UTF-32") {
-    let utf32Array = [];
-
-    for (let char of text) {
-      let codePoint = char.codePointAt(0);
-      utf32Array.push(
-        (codePoint >> 24) & 0xff,
-        (codePoint >> 16) & 0xff,
-        (codePoint >> 8) & 0xff,
-        codePoint & 0xff
-      );
-    }
-    results = new Uint8Array(text);
-  } else if (name === "Base 64") {
-    results = btoa(text);
-  } else if (name === "ASCII") {
-    results = text.split("").map(char => char.charCodeAt(0));
-  } else if (name === "EXTENDED ASCII") {
-    results = text.split("").map(char => char.charCodeAt(0));
-  } else if (name === "Binary") {
-    results = text
-      .split("")
-      .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"))
-      .join(" ");
-  } else if (name === "Shift Jis") {
-    const encoder = new TextEncoder("shift-jis");
-    results = encoder.encode(text);
-  } else if (name === "ISO 8859-1") {
-    results = new TextEncoder("iso-8859-1").encode(text);
-  } else if (name === "Morse Code") {
-    const morseCodeMap = {
-      A: ".-",
-      B: "-...",
-      C: "-.-.",
-      D: "-..",
-      E: ".",
-      F: "..-.",
-      G: "--.",
-      H: "....",
-      I: "..",
-      J: ".---",
-      K: "-.-",
-      L: ".-..",
-      M: "--",
-      N: "-.",
-      O: "---",
-      P: ".--.",
-      Q: "--.-",
-      R: ".-.",
-      S: "...",
-      T: "-",
-      U: "..-",
-      V: "...-",
-      W: ".--",
-      X: "-..-",
-      Y: "-.--",
-      Z: "--..",
-      0: "-----",
-      1: ".----",
-      2: "..---",
-      3: "...--",
-      4: "....-",
-      5: ".....",
-      6: "-....",
-      7: "--...",
-      8: "---..",
-      9: "----.",
-      " ": "/" // Space separator
-    };
-
-    results = text
-      .toUpperCase()
-      .split("")
-      .map(char => morseCodeMap[char] || "")
-      .join(" ");
-  }
-
-  const resultsInput = document.getElementById("results");
-  const resultsDiv = document.getElementById("resultsContainer");
-
-  //Sets the value
-  resultsInput.textContent = results;
-
-  //Displays the output
-  resultsDiv.style.display = "flex";
 });
