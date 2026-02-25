@@ -6,7 +6,7 @@ export function setFunction(func) {
   actionRegistry[func.name] = func;
 }
 
-if (dropdown) {
+if (dropDownMenu) {
   // make an listener for each dropdown
   dropDownMenu.forEach(el => {
     el.addEventListener("click", function () {
