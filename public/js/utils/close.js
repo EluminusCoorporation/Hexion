@@ -3,8 +3,6 @@ const closeButton = document.getElementById("closeButton");
 const statusContainer = document.getElementById("statusContainer");
 const statusMessage = document.getElementById("statusMessage");
 
-if (!closeButton) return;
-
 //Closes the status bar
 closeButton.addEventListener("click", () => {
   statusContainer.classList.remove("active");
