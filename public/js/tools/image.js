@@ -78,8 +78,6 @@ const resultsBtn = document.getElementById("results-btn");
 
 //Makes an event listener for results button
 resultsBtn.addEventListener("click", async function () {
-  // temporary canvas variable
-  let canvas;
   try {
     toggleLoader(true);
     // Gets the format type
@@ -102,7 +100,7 @@ resultsBtn.addEventListener("click", async function () {
     const bitmap = await createImageBitmap(image);
     
     // creates an temporary canvas to draw the image
-    canvas = document.createElement('canvas');
+    const canvas = document.createElement('canvas');
     // set the size of the canvas relative to image(bitmap)
     canvas.width = bitmap.width;
     canvas.height = bitmap.height;
@@ -118,8 +116,6 @@ resultsBtn.addEventListener("click", async function () {
     setStatus('error', 'Image Converter Failed', error);
     console.error('Failed to convert image: ' + error);
   } finally {
-    // delete the canvas
-    canvas.remove();
     toggleLoader(false);
   }
 });
