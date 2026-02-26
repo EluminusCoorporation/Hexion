@@ -258,6 +258,13 @@
   background-color: var(--bg-light);
 }
 
+.image-editor-container {
+  display: flex;
+  margin-top: 1em;
+  flex-direction: column;
+  gap: .5em;
+}
+
 .input-label-container {
   display: flex;
   flex-direction: column;

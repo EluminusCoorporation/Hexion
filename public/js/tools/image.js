@@ -89,6 +89,8 @@ resultsBtn.addEventListener("click", async function () {
     
     const resizeX = document.getElementById('resizeXInput').value;
     const resizeY = document.getElementById('resizeYInput').value;
+    const cropX = document.getElementById('resizeXInput').value;
+    const cropY = document.getElementById('resizeYInput').value;
   
     // Runs the error handler
     if (!type) throw new Error('No converter file-type selected!');
@@ -107,7 +109,7 @@ resultsBtn.addEventListener("click", async function () {
     
     // Get the context to draw the image
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(bitmap, null, null, null, null, 0, 0, resizeX, resizeY);
+    ctx.drawImage(bitmap, 0, 0, cropX, cropY, 0, 0, resizeX, resizeY);
     
     // finally convert the image in the canvas by redrawing it in the specified format
     const blob = await new Promise(res => canvas.toBlob(res, `image/${type}`, quality));
