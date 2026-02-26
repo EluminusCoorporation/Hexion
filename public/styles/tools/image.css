@@ -258,6 +258,54 @@
   background-color: var(--bg-light);
 }
 
+.input-label-container {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  width: 100%;
+  color: white;
+}
+
+.input-label-container label {
+  font-size: .75em;
+  font-weight: bold;
+}
+
+.double-input-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2.5em minmax(0, 1fr);
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--bg);
+  border-radius: 2em;
+  border: 1px solid var(--border);
+}
+
+.double-input-container span {
+  padding: 1em;
+  font-weight: 1000;
+  align-content: center;
+  text-align: center;
+  font-size: .8em;
+  background: linear-gradient(to right, transparent 0%, var(--bg-dark) 15%, var(--bg-dark) 85%, transparent 100%);
+  box-shadow: 0 2px 2px var(--shadow);
+}
+
+.input-container {
+  padding: 1em;
+  overflow-x: auto;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  outline-color: transparent;
+}
+
+.input-container::placeholder {
+  color: var(--text-muted);
+  font-weight: bold;
+  padding-left: 5px;
+}
+
 .copy-alert-container {
   height: 10px;
   position: fixed;
