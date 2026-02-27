@@ -76,10 +76,17 @@ ranges.forEach(range => {
 
 const resultsBtn = document.getElementById("results-btn");
 
+// Create an temporary downloadUrl variable
+let downloadUrl = null;
+
 //Makes an event listener for results button
 resultsBtn.addEventListener("click", async function () {
   try {
     toggleLoader(true);
+    
+    // revoke any old image download url
+    if (downloadUrl) URL.revokeObjectURL(downloadUrl);
+    
     // Gets the format type
     const type = document.getElementById("dropdownSelected").dataset.selected.toLowerCase();
     // convert the value to 0-1 instead of 25-100%
@@ -111,10 +118,21 @@ resultsBtn.addEventListener("click", async function () {
     
     // finally convert the image in the canvas by redrawing it in the specified format
     const blob = await new Promise(res => canvas.toBlob(res, `image/${type}`, quality));
-    console.log(blob);
+    console.log('Successfully converted image: ' + blob);
+    
+    // Create an download link
+    downloadUrl = URL.createObjectURL(blob);
+    
+    // Assign the url to the download button
+    const downloadButton = document.getElementById('imageDownloadButton');
+    const sanitizedFileName = image.name.replace(/\.[^/.]+$/, "");
+    downloadButton.style.display = "flex";
+    downloadButton.href = downloadUrl;
+    downloadButton.download = sanitizedFileName + '-convertedTo-' + type;
   } catch(error) {
     setStatus('error', 'Image Converter Failed', error);
     console.error('Failed to convert image: ' + error);
+    downloadButton.style.display = "none";
   } finally {
     toggleLoader(false);
   }

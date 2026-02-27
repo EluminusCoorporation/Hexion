@@ -313,6 +313,31 @@
   padding-left: 5px;
 }
 
+.download-button {
+  display: none;
+  flex-direction: row;
+  text-decoration: none;
+  align-self: center;
+  border-radius: 2em;
+  padding: .75em 1.5em;
+  margin-top: 2em;
+  font-size: .9em;
+  cursor: pointer;
+  font-weight: bold;
+  justify-content: center;
+  color: var(--text);
+  border: none;
+  gap: .5em;
+  background-color: deepskyblue;
+  width: fit-content;
+  max-width: 75%;
+  transition: all .3s ease-in-out
+}
+
+.download-button:hover {
+  transform: scale(.9);
+}
+
 .copy-alert-container {
   height: 10px;
   position: fixed;
