@@ -90,12 +90,7 @@ resultsBtn.addEventListener("click", async function () {
     // Gets the format type
     const type = document.getElementById("dropdownSelected").dataset.selected.toLowerCase();
     // convert the value to 0-1 instead of 25-100%
-    const quality = document.getElementById('qualityRange').value / 100;
-    
-    const resizeX = document.getElementById('resizeXInput').value || null;
-    const resizeY = document.getElementById('resizeYInput').value || null;
-    const cropX = document.getElementById('resizeXInput').value || null;
-    const cropY = document.getElementById('resizeYInput').value || null;
+    const quality = (document.getElementById('qualityRange') || 0).value / 100;
   
     // Runs the error handler
     if (!type) throw new Error('No converter file-type selected!');
@@ -106,19 +101,28 @@ resultsBtn.addEventListener("click", async function () {
     // creates a bitmap of the image
     const bitmap = await createImageBitmap(image);
     
+    // Get the customization options
+    const resizeX = document.getElementById('resizeXInput').value || bitmap.width;
+    const resizeY = document.getElementById('resizeYInput').value || bitmap.height;
+    const cropX = document.getElementById('resizeXInput').value || bitmap.width;
+    const cropY = document.getElementById('resizeYInput').value || bitmap.height;
+    
     // creates an temporary canvas to draw the image
     const canvas = document.createElement('canvas');
     // set the size of the canvas relative to image(bitmap)
-    canvas.width = bitmap.width;
-    canvas.height = bitmap.height;
+    canvas.width = bitmap.width || 0;
+    canvas.height = bitmap.height || 0;
     
     // Get the context to draw the image
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(bitmap, null, null, cropX, cropY, null, null, resizeX, resizeY);
+    ctx.drawImage(bitmap, 0, 0, cropX, cropY, 0, 0, resizeX, resizeY);
     
     // finally convert the image in the canvas by redrawing it in the specified format
     const blob = await new Promise(res => canvas.toBlob(res, `image/${type}`, quality));
-    console.log('Successfully converted image: ' + blob);
+    if (!blob) throw new Error("Image blob couldn't be created.")
+    
+    console.log('Successfully converted image: ');
+    console.dir(blob);
     
     // Create an download link
     downloadUrl = URL.createObjectURL(blob);
