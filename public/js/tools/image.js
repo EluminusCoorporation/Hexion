@@ -132,7 +132,7 @@ resultsBtn.addEventListener("click", async function () {
     const sanitizedFileName = image.name.replace(/\.[^/.]+$/, "");
     downloadButton.style.display = "flex";
     downloadButton.href = downloadUrl;
-    downloadButton.download = sanitizedFileName + '-convertedTo-' + type;
+    downloadButton.download = `${sanitizedFileName}-hexion-${type}-${Math.random()}`;
   } catch(error) {
     setStatus('error', 'Image Converter Failed', error);
     console.error('Failed to convert image: ' + error);
