@@ -102,16 +102,16 @@ resultsBtn.addEventListener("click", async function () {
     const bitmap = await createImageBitmap(image);
     
     // Get the customization options
-    const resizeX = document.getElementById('resizeXInput').value || bitmap.width;
-    const resizeY = document.getElementById('resizeYInput').value || bitmap.height;
-    const cropX = document.getElementById('resizeXInput').value || bitmap.width;
-    const cropY = document.getElementById('resizeYInput').value || bitmap.height;
+    const resizeX = document.getElementById('resizeXInput').value || bitmap.width || 0;
+    const resizeY = document.getElementById('resizeYInput').value || bitmap.height || 0;
+    const cropX = document.getElementById('cropXInput').value || bitmap.width || 0;
+    const cropY = document.getElementById('cropYInput').value || bitmap.height || 0;
     
     // creates an temporary canvas to draw the image
     const canvas = document.createElement('canvas');
     // set the size of the canvas relative to image(bitmap)
-    canvas.width = bitmap.width || 0;
-    canvas.height = bitmap.height || 0;
+    canvas.width = resizeX;
+    canvas.height = resizeY;
     
     // Get the context to draw the image
     const ctx = canvas.getContext('2d');
