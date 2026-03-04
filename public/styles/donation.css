@@ -1,8 +1,3 @@
-.no-scroll {
-  overflow: hidden;
-  height: 100vh;
-}
-
 .donation {
   background-color: var(--bg-light);
   color: var(--secondary) !important;
@@ -43,68 +38,78 @@
   margin: 0;
 }
 
-.donation-container h3 {
+.donation-container span {
   text-decoration: underline;
   font-size: 1em;
 }
 
 .donation-menu-container {
+  visibility: hidden;
   position: fixed;
   top: 0;
   left: 0;
   inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  visibility: hidden;
+  z-index: 11;
+  background-color: hsla(0, 0%, 0%, 0);
+  align-content: center;
   transition: all 300ms ease-in-out;
-  z-index: 100;
-}
-
-/* The popup itself */
-.donation-menu {
-  background: transparent;
-  padding: 0;
-  display: flex;
-  flex: 1;
-  padding: 1.5em;
-  max-width: 300px;
-  height: 450px;
-  border-radius: 10px;
-  transform: scale(.95);
-  transition: transform .5s ease-in-out;
-  box-shadow: 0 6px 6px var(--shadow);
-  border: 1px solid var(--border);
-  flex-direction: column;
-  color: var(--text-muted);
-  border-top-right-radius: 0 !important;
-  background: linear-gradient(0deg, var(--bg), var(--bg-light));
 }
 
 /* When popup is active */
 .donation-menu-container.active {
-  opacity: 1;
   visibility: visible;
-  background-color: hsla(0, 0%, 0%, .5)
+  background-color: hsla(0, 0%, 0%, 0.30);
   /* Dark overlay */
 }
 
+/* The popup itself */
+.donation-menu {
+  position: relative;
+  display: flex;
+  visibility: hidden;
+  max-height: 90%;
+  transform: scale(.95);
+  opacity: 0;
+  justify-self: center;
+  justify-content: center;
+  flex-direction: column;
+  width: min(32rem, 85%);
+  padding: 1em;
+  border-radius: .5em;
+  background-color: var(--bg-light);
+  color: white;
+  box-shadow: 0 6px 6px var(--shadow);
+  transition: all 300ms ease-in-out;
+}
+
 .donation-menu.active {
+  visibility: visible;
   transform: scale(1);
+  opacity: 1;
   /* Animates from small to full size */
 }
 
-.donation-menu h2 {
-  font-size: 2em;
+.payment-close-btn {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  border-radius: .15em;
+  cursor: pointer;
+  background-color: var(--bg-light);
+  font-size: 1.5em;
   color: var(--text);
-  text-align: center;
-  margin-top: 5px;
+  padding: .2em;
+}
+
+.donation-menu h3 {
+  font-size: 1em;
+  
+  margin-bottom: 1em;
 }
 
 .donation-menu .inputs {
   position: relative;
-  margin: 2em 0;
+  margin-top: .5em;
   gap: .8em;
   display: flex;
   flex-direction: column;
@@ -112,14 +117,13 @@
 }
 
 .inputs input {
-  height: 50px;
-  background: transparent;
+  background: var(--bg);
   border: none;
   outline-color: transparent;
   border: 2px solid var(--border);
-  border-radius: 40px;
-  font-size: 16px;
-  padding: 5px 20px 5px 20px;
+  border-radius: .7em;
+  font-size: 1em;
+  padding: .7em 1em;
   color: var(--text);
 }
 
@@ -133,22 +137,6 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
-}
-
-.close-btn {
-  position: absolute;
-  padding: 1em;
-  background-color: var(--danger);
-  color: white;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 10px;
-  top: 0;
-  right: 0;
-  user-select: none;
-  cursor: pointer;
 }
 
 .donation-btn {
