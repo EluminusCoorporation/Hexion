@@ -51,10 +51,30 @@
         </div>
         <div class="input-label-container">
           <label>Crop:</label>
-          <div class="double-input-container">
-            <input type="number" name="textToConvert" id="cropXInput" placeholder="CropX" class="input-container"/>
-            <span>X</span>
-            <input type="number" name="textToConvert" id="cropYInput" placeholder="CropY" class="input-container"/>
+          <button id="cropMenuButton" class="crop-menu-button">Open Cropper</button>
+          
+          <div class="cropper-menu-container" id="cropperMenuContainer">
+            <div class="cropper-menu" id="cropperMenu">
+              <i class="bx bx-x cropper-close-button" id="cropperCloseButton" role="button"></i>
+              <h3>Image Cropper</h3>
+              <div class="loader-fallback">
+                <i class="bx bx-refresh-ccw"></i>
+              </div>
+              <div class="no-content-fallback">
+                <i class="bx bx-x"></i>
+                <h4>No Image Uploaded</h4>
+                <p>No uploaded image was found, please upload an image.</p>
+              </div>
+              <div class="image-container">
+                <img id="cropperImage">
+                <div class="image-metrics-container">
+                  <div class="image-metric"><span>X:</span><p id="xField">NaH</p></div>
+                  <div class="image-metric"><span>Y:</span><p id="yField">NaH</p></div>
+                  <div class="image-metric"><span>Width:</span><p id="widthField">NaH</p></div>
+                  <div class="image-metric"><span>Height:</span><p id="heightField">NaH</p></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -69,3 +89,5 @@
         <button class="results-button" id="results-btn">Convert!</button>
       </div>
       <%- include('../components/footer') -%>
+      
+      

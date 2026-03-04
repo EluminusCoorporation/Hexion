@@ -1,9 +1,11 @@
 //Imports the required functions
-import { setStatus ,fileLogger } from "../utils/errorLogger.js";
+import { setStatus, fileLogger } from "../utils/errorLogger.js";
 import {} from "../utils/dropDownMenu.js";
+import Cropper from "https://unpkg.com/cropperjs@1.6.2/dist/cropper.esm.js";
 
 // Placeholder for image
 let image = null;
+let cropper = null;
 
 const uploadZone = document.getElementById('uploadZone');
 const fileInput = document.getElementById('fileUploader');
@@ -20,6 +22,8 @@ uploadZone.addEventListener('dragleave', () => {
 });
 
 function handleFile(file) {
+  // if same image return
+  if (file === image) return;
   try {
     // Run file error handler
     if (!fileLogger(file)) return false;
@@ -39,9 +43,34 @@ function handleFile(file) {
     imageShowcase.style.display = "flex";
     // Revoke the url after the image loads
     imageShowcase.onload = () => URL.revokeObjectURL(imageShowcase.src);
+    
+    // Assign the image to the cropper menu
+    const cropperImage = document.getElementById('cropperImage');
+    // Assign the url & remove it after it loads
+    cropperImage.src = URL.createObjectURL(file);
+    
+    // if cropper is already constructed replace the image
+    if (cropper) cropper.replace(cropperImage.src);
+    // else construct a new Cropper
+    else {
+      cropperImage.onload = () => {
+        // Initialize the cropper
+        cropper = new Cropper(document.getElementById('cropperImage'), {
+          viewMode: 1,
+          rotatable: false,
+          scalable: false,
+          zoomable: false,
+          movable: false,
+          background: false,
+          autoCrop: false
+        });
+        // Ensure url is revoked after cropper loads
+        cropper.ready(() => URL.revokeObjectURL(cropperImage.src));
+      }
+    }
   } catch(error) {
     setStatus('error', 'Image Uploader Failed', error);
-    console.error('An error occured while uploading the image: ' + error)
+    console.error('An error occured while uploading the image: ' + error);
   }
 }
 
@@ -74,8 +103,52 @@ ranges.forEach(range => {
   });
 });
 
-const resultsBtn = document.getElementById("results-btn");
+document.getElementById('cropMenuButton').addEventListener("click", () => {
+  const loader = document.getElementById('cropperMenu').querySelector('.loader-fallback');
+  try {
+    loader.style.display = "flex";
+    
+    const cropperContainer = document.getElementById('cropperMenuContainer');
+    const cropperMenu = document.getElementById('cropperMenu');
+    const cropperContent = cropperMenu.querySelector('.cropper-menu-content');
+    
+    // Show the menu
+    cropperContainer.classList.add('active');
+    cropperMenu.classList.add('active');
+    
+    // Apply the noContentFallback
+    const noContentFallback = cropperMenu.querySelector('.no-content-fallback');
+    if (!image) noContentFallback.style.display = "flex";
+    else noContentFallback.style.display = "none";
+  } catch(error) {
+    setStatus('error', 'Image Converter Failed', error);
+    console.log('Failed to convert image: ' + error)
+  } finally {
+    loader.style.display = "none";
+  }
+});
 
+document.getElementById('cropperCloseButton').addEventListener("click", () => {
+  const cropperContainer = document.getElementById('cropperMenuContainer');
+  const cropperMenu = document.getElementById('cropperMenu');
+  
+  // Close the menu
+  cropperContainer.classList.remove('active');
+  cropperMenu.classList.remove('active');
+  cropperMenu.querySelector('.loader-fallback').style.display = "none";
+});
+
+document.getElementById('cropperImage').addEventListener("crop", event => {
+  const data = event.detail;
+  
+  // update the values
+  document.getElementById('xField').textContent = data.x.toFixed(2);
+  document.getElementById('yField').textContent = data.y.toFixed(2);
+  document.getElementById('widthField').textContent = data.width.toFixed(2);
+  document.getElementById('heightField').textContent = data.height.toFixed(2);
+})
+
+const resultsBtn = document.getElementById("results-btn");
 // Create an temporary downloadUrl variable
 let downloadUrl = null;
 
@@ -102,10 +175,15 @@ resultsBtn.addEventListener("click", async function () {
     const bitmap = await createImageBitmap(image);
     
     // Get the customization options
+    const data = cropper.getData();
+    
     const resizeX = document.getElementById('resizeXInput').value || bitmap.width || 0;
     const resizeY = document.getElementById('resizeYInput').value || bitmap.height || 0;
-    const cropX = document.getElementById('cropXInput').value || bitmap.width || 0;
-    const cropY = document.getElementById('cropYInput').value || bitmap.height || 0;
+    
+    const cropX = data.x || 0;
+    const cropY = data.y || 0;
+    const cropWidth = data.width || bitmap.width || 0;
+    const cropHeight = data.height || bitmap.height || 0;
     
     // creates an temporary canvas to draw the image
     const canvas = document.createElement('canvas');
@@ -115,7 +193,7 @@ resultsBtn.addEventListener("click", async function () {
     
     // Get the context to draw the image
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(bitmap, 0, 0, cropX, cropY, 0, 0, resizeX, resizeY);
+    ctx.drawImage(bitmap, cropX, cropY, cropWidth, cropHeight, 0, 0, resizeX, resizeY);
     
     // finally convert the image in the canvas by redrawing it in the specified format
     const blob = await new Promise(res => canvas.toBlob(res, `image/${type}`, quality));

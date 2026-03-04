@@ -11,7 +11,7 @@
 }
 
 .circular {
-  animation: rotate 2s linear infinite;
+  animation: spin 2s linear infinite;
   height: 165px;
   transform-origin: center center;
   width: 165px;
@@ -31,7 +31,7 @@
   stroke-linecap: round;
 }
 
-@keyframes rotate {
+@keyframes spin {
   100% {
     transform: rotate(360deg);
   }
