@@ -468,6 +468,15 @@
   white-space: nowrap;
 }
 
+.cropper-point {
+  background-color: var(--primary) !important;
+  border-radius: 50%;
+}
+
+.cropper-line {
+  background-color: var(--secondary) !important;
+}
+
 .input-container {
   padding: 1em;
   overflow-x: auto;
