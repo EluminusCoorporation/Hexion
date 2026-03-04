@@ -65,7 +65,7 @@ function handleFile(file) {
           autoCrop: false
         });
         // Ensure url is revoked after cropper loads
-        cropper.ready(() => URL.revokeObjectURL(cropperImage.src));
+        cropperImage.addEventListener('ready', () => URL.revokeObjectURL(cropperImage.src));
       }
     }
   } catch(error) {
