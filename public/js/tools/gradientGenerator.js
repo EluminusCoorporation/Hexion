@@ -2,6 +2,7 @@
 import { setStatus, errorLoggerBEFORE } from '../utils/errorLogger.js';
 import { setFunction } from '../utils/dropDownMenu.js'
 import {} from '../utils/copy.js'
+import "https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js";
 
 let timeout;
 
