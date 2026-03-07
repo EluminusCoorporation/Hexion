@@ -22,7 +22,7 @@ Hexion an multi perpose website it provides tools used to help you create you're
 
 1. Install dependencies
 ```bash
-npm install --production
+npm ci
 ```
 
 2. Start the project locally:
