@@ -11,3 +11,15 @@ export function formatFileSize(bytes) {
   //Return the formatted value
   return `${value.toFixed(2)} ${units[i]}`;
 }
+
+export function afterTransition(el, callback) {
+  // Make handler for event listener usage
+  const handler = event => {
+    // Remove event listener
+    el.removeEventListener("transitionend", handler);
+    // Run the callback
+    callback(event);
+  }
+  
+  el.addEventListener("transitionend", handler);
+}

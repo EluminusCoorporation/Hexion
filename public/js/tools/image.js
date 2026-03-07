@@ -1,6 +1,7 @@
 //Imports the required functions
 import { setStatus, fileLogger } from "../handlers/errorLogger.js";
 import {} from "../handlers/dropDownMenu.js";
+import { afterTransition } from "../handlers/utils.js";
 import Cropper from "https://unpkg.com/cropperjs@1.6.2/dist/cropper.esm.js";
 
 // Placeholder for image
@@ -110,7 +111,6 @@ document.getElementById('cropMenuButton').addEventListener("click", () => {
     
     const cropperContainer = document.getElementById('cropperMenuContainer');
     const cropperMenu = document.getElementById('cropperMenu');
-    const cropperContent = cropperMenu.querySelector('.cropper-menu-content');
     
     // Apply the noContentFallback
     const noContentFallback = cropperMenu.querySelector('.no-content-fallback');
@@ -134,22 +134,18 @@ document.getElementById('cropperCloseButton').addEventListener("click", () => {
   const cropperContainer = document.getElementById('cropperMenuContainer');
   const cropperMenu = document.getElementById('cropperMenu');
   
-  
   // Close the menu
   cropperContainer.classList.remove('active');
   cropperMenu.classList.remove('active');
   
   // Close the fallbacks once transition is complete
-  cropperMenu.addEventListener("transitionend", function handler(event) {
+  afterTransition(cropperMenu, event => {
     if (event.target !== cropperMenu) return;
     // Enable the content
     cropperMenu.querySelector('.image-container').style.display = "flex";
     
     cropperMenu.querySelector('.no-content-fallback').style.display = "none";
     cropperMenu.querySelector('.loader-fallback').style.display = "none";
-    
-    // remove the event listener after use
-    cropperMenu.removeEventListener("transitionend", handler);
   });
 });
 
