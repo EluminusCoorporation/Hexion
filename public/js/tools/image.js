@@ -1,6 +1,6 @@
 //Imports the required functions
-import { setStatus, fileLogger } from "../utils/errorLogger.js";
-import {} from "../utils/dropDownMenu.js";
+import { setStatus, fileLogger } from "../handlers/errorLogger.js";
+import {} from "../handlers/dropDownMenu.js";
 import Cropper from "https://unpkg.com/cropperjs@1.6.2/dist/cropper.esm.js";
 
 // Placeholder for image

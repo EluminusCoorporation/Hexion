@@ -1,7 +1,7 @@
 //Imports required functions
-import { setStatus, errorLoggerBEFORE } from "../utils/errorLogger.js";
-import {} from "../utils/dropDownMenu.js";
-import {} from "../utils/copy.js";
+import { setStatus, errorLoggerBEFORE } from "../handlers/errorLogger.js";
+import {} from "../handlers/dropDownMenu.js";
+import {} from "../handlers/copy.js";
 const resultsBtn = document.getElementById("results-btn");
 
 //Makes an event listener for results button

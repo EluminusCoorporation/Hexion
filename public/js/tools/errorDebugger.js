@@ -1,8 +1,8 @@
 //Import required functions
-import { setStatus, errorLoggerBEFORE, fileLogger } from '../utils/errorLogger.js';
-import {} from '../utils/copy.js'
-import { formatFileSize } from '../utils/fileSizeFormat.js'
-import { setFunction } from '../utils/dropDownMenu.js'
+import { setStatus, errorLoggerBEFORE, fileLogger } from '../handlers/errorLogger.js';
+import {} from '../handlers/copy.js'
+import { formatFileSize } from '../handlers/utils.js'
+import { setFunction } from '../handlers/dropDownMenu.js'
 
 // Placeholders
 let code = null;

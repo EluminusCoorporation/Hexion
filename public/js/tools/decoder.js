@@ -3,9 +3,9 @@ import {
   setStatus,
   errorLoggerBEFORE,
   errorLoggerAFTER
-} from "../utils/errorLogger.js";
-import {} from "../utils/copy.js";
-import {} from "../utils/dropDownMenu.js";
+} from "../handlers/errorLogger.js";
+import {} from "../handlers/copy.js";
+import {} from "../handlers/dropDownMenu.js";
 
 const resultsBtn = document.getElementById("results-btn");
 
