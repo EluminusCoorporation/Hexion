@@ -31,7 +31,7 @@ npm run start
 ```
 
 ## Licence
-(c) 2024 EluminusCo. All rights reserved. Licensed under the Proprietary License.
+(c) 2026 EluminusCo. All rights reserved. Licensed under the Proprietary License.
 
 ## Creators
 - [@MagicDevM](https://www.github.com/MagicDevM)
