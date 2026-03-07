@@ -424,7 +424,7 @@
   display: none;
   width: 100%;
   flex-direction: column;
-  gap: 1em;
+  gap: .5em;
 }
 
 .image-container {

@@ -56,7 +56,7 @@ function handleFile(file) {
       cropperImage.onload = () => {
         // Initialize the cropper
         cropper = new Cropper(document.getElementById('cropperImage'), {
-          viewMode: 1,
+          viewMode: 2,
           rotatable: false,
           scalable: false,
           zoomable: false,
@@ -112,14 +112,16 @@ document.getElementById('cropMenuButton').addEventListener("click", () => {
     const cropperMenu = document.getElementById('cropperMenu');
     const cropperContent = cropperMenu.querySelector('.cropper-menu-content');
     
+    // Apply the noContentFallback
+    const noContentFallback = cropperMenu.querySelector('.no-content-fallback');
+    if (!image) {
+      noContentFallback.style.display = "flex";
+      cropperMenu.querySelector('.image-container').style.display = "none";
+    }
+    
     // Show the menu
     cropperContainer.classList.add('active');
     cropperMenu.classList.add('active');
-    
-    // Apply the noContentFallback
-    const noContentFallback = cropperMenu.querySelector('.no-content-fallback');
-    if (!image) noContentFallback.style.display = "flex";
-    else noContentFallback.style.display = "none";
   } catch(error) {
     setStatus('error', 'Image Converter Failed', error);
     console.log('Failed to convert image: ' + error)
@@ -132,10 +134,23 @@ document.getElementById('cropperCloseButton').addEventListener("click", () => {
   const cropperContainer = document.getElementById('cropperMenuContainer');
   const cropperMenu = document.getElementById('cropperMenu');
   
+  
   // Close the menu
   cropperContainer.classList.remove('active');
   cropperMenu.classList.remove('active');
-  cropperMenu.querySelector('.loader-fallback').style.display = "none";
+  
+  // Close the fallbacks once transition is complete
+  cropperMenu.addEventListener("transitionend", function handler(event) {
+    if (event.target !== cropperMenu) return;
+    // Enable the content
+    cropperMenu.querySelector('.image-container').style.display = "flex";
+    
+    cropperMenu.querySelector('.no-content-fallback').style.display = "none";
+    cropperMenu.querySelector('.loader-fallback').style.display = "none";
+    
+    // remove the event listener after use
+    cropperMenu.removeEventListener("transitionend", handler);
+  });
 });
 
 document.getElementById('cropperImage').addEventListener("crop", event => {
@@ -197,7 +212,7 @@ resultsBtn.addEventListener("click", async function () {
     
     // finally convert the image in the canvas by redrawing it in the specified format
     const blob = await new Promise(res => canvas.toBlob(res, `image/${type}`, quality));
-    if (!blob) throw new Error("Image blob couldn't be created.")
+    if (!blob) throw new Error("Image blob couldn't be created.");
     
     console.log('Successfully converted image: ');
     console.dir(blob);
