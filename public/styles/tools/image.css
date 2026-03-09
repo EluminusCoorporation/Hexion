@@ -439,6 +439,15 @@
   outline: none;
 }
 
+.cropper-point {
+  background-color: var(--primary) !important;
+  border-radius: 50%;
+}
+
+.cropper-line {
+  background-color: var(--secondary) !important;
+}
+
 .image-metrics-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -468,13 +477,20 @@
   white-space: nowrap;
 }
 
-.cropper-point {
-  background-color: var(--primary) !important;
-  border-radius: 50%;
+.clear-button {
+  color: var(--text);
+  padding: .5em;
+  border-radius: 2em;
+  margin-top: .5em;
+  background-color: var(--bg);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
 }
 
-.cropper-line {
-  background-color: var(--secondary) !important;
+.clear-button:hover {
+  transform: scale(.95);
 }
 
 .input-container {

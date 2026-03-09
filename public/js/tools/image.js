@@ -149,6 +149,8 @@ document.getElementById('cropperCloseButton').addEventListener("click", () => {
   });
 });
 
+document.getElementById('clearButton').addEventListener("click", () => cropper.clear());
+
 document.getElementById('cropperImage').addEventListener("crop", event => {
   const data = event.detail;
   
