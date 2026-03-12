@@ -57,12 +57,14 @@ function handleFile(file) {
       cropperImage.onload = () => {
         // Initialize the cropper
         cropper = new Cropper(document.getElementById('cropperImage'), {
-          viewMode: 2,
+          viewMode: 1,
           rotatable: false,
           scalable: false,
           zoomable: false,
           movable: false,
           background: false,
+          responsive: true,
+          restore: true,
           autoCrop: false
         });
         // Ensure url is revoked after cropper loads
@@ -86,10 +88,7 @@ uploadZone.addEventListener('drop', (event) => {
 });
 
 //When uploads a file via click
-fileInput.addEventListener('change', () => {
-  // handle the image
-  handleFile(fileInput.files[0]);
-});
+fileInput.addEventListener('change', () => handleFile(fileInput.files[0]));
 
 document.getElementById('imageShowcase').addEventListener("error", function() {
   this.style.display = "none";
@@ -200,7 +199,7 @@ resultsBtn.addEventListener("click", async function () {
     
     // creates an temporary canvas to draw the image
     const canvas = document.createElement('canvas');
-    // set the size of the canvas relative to image(bitmap)
+    // Set the size of the canvas relative to image(bitmap)
     canvas.width = resizeX;
     canvas.height = resizeY;
     
@@ -230,5 +229,5 @@ resultsBtn.addEventListener("click", async function () {
     downloadButton.style.display = "none";
   } finally {
     toggleLoader(false);
-  }
+  };
 });
