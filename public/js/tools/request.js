@@ -114,7 +114,7 @@ resultsBtn.addEventListener("click", async () => {
     }
     
     const header = {
-      method: type.toLowerCase(),
+      method: type,
       url: url,
       headers: {
         "Content-Type": content,
@@ -134,7 +134,7 @@ resultsBtn.addEventListener("click", async () => {
       delete header.headers;
     }
     
-    // Display the sent headers for debugging purposes
+    // Display the headers used for debugging purposes
     document.getElementById("headerContainer").style.display = "flex";
     document.getElementById("headers").textContent = JSON.stringify(header, null, 2);
       

@@ -60,7 +60,7 @@
   display: flex;
   border-top: .5px solid var(--highlight);
   margin-bottom: 1.3em;
-  border-radius: 15px;
+  border-radius: 2em;
   flex-direction: row;
 }
 

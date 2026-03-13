@@ -68,6 +68,9 @@ async function refreshOutput() {
     const input = document.getElementById('inputText').value;
     const type = document.getElementById("dropdownSelected").dataset.selected;
     
+    // If input is empty return
+    if (!input) return;
+    
     // default styles(none)
     const styles = {
       "bold": false,
@@ -92,10 +95,10 @@ async function refreshOutput() {
     
   
     // Check if any stylers are enabled and update the options
-    const stylerCheckBoxes = [...document.querySelectorAll('.styler-label input')]
+    const stylerCheckBoxes = [...document.querySelectorAll('.styler-label input')];
     stylerCheckBoxes.forEach((checkbox) => {
       if (!checkbox.checked) return;
-    
+      
       const styleType = checkbox.dataset.style;
       styles[styleType] = true;
     });
@@ -108,6 +111,7 @@ async function refreshOutput() {
     });
   
     // checks if response exists
+    if (!res) throw new Error('No response from our internal server, try again later.');
     if (!res) throw new Error('No response from our internal server, try again later.');
     
     // checks if response is an valid json

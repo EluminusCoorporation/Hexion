@@ -158,7 +158,7 @@ function interpolate(start, end, steps) {
   });
 }
 
-// helper functio to fix light levels in colors
+// helper function to fix light levels in colors
 function colorDistance([r, g, b], [cr, cg, cb]) {
   return (
     0.3 * (r - cr) ** 2 +
@@ -191,7 +191,7 @@ function normalizeWeights(colors) {
   }));
 }
 
-// helper function to distribute the correctcolor weight
+// helper function to distribute the correct color weight
 function selectWeightedColor(weights, index) {
   let acc = 0;
   const t = (index % 100) / 100;
@@ -312,8 +312,8 @@ router.post("/gradient", (req, res) => {
         })
         .join("");
     } else if (type === "&x&r&r&g&g&b&b") {
-      //list of mc colors(legacy)
-      const mcLegacyColors = {
+      //list of mc colors
+      const mcColors = {
         "&0": [0, 0, 0], // Black
         "&1": [0, 0, 170], // Dark Blue
         "&2": [0, 170, 0], // Dark Green
@@ -333,7 +333,7 @@ router.post("/gradient", (req, res) => {
       };
       
       // create the gradient
-      const color = multiStopGradient(mcLegacyColors, userInput, colors);
+      const color = multiStopGradient(mcColors, userInput, colors);
       const styler = getStylers(styles);
 
       // return the value
@@ -361,13 +361,13 @@ router.post("/gradient", (req, res) => {
       
       // create the gradient
       const color = multiStopGradient(mcLegacyColors, userInput, colors);
-      const styler = getStylers(options);
+      const styler = getStylers(styles);
 
       // return the value
       output = `${styler}${color}`;
     } else throw new Error("No options matched.")
     
-    if (!output) throw new Error('Responsed output is empty, did you enter the correct info?')
+    if (!output) throw new Error('Output is empty, did you enter the correct info?');
     
     res.json({ output: output });
   } catch (error) {
