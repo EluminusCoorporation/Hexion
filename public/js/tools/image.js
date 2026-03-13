@@ -1,7 +1,7 @@
 //Imports the required functions
 import { setStatus, fileLogger } from "../handlers/errorLogger.js";
 import {} from "../handlers/dropDownMenu.js";
-import { afterTransition } from "../handlers/utils.js";
+import { formatFileSize, afterTransition } from "../handlers/utils.js";
 import Cropper from "https://unpkg.com/cropperjs@1.6.2/dist/cropper.esm.js";
 
 // Placeholder for image
@@ -22,7 +22,7 @@ uploadZone.addEventListener('dragleave', () => {
   uploadZone.classList.remove('drag-over');
 });
 
-function handleFile(file) {
+async function handleFile(file) {
   // if same image return
   if (file === image) return;
   try {
@@ -38,13 +38,25 @@ function handleFile(file) {
     // save the image
     image = file;
     
-    // Sets the showcase image
+    // Setup the showcase image
     const imageShowcase = document.getElementById('imageShowcase');
     imageShowcase.src = URL.createObjectURL(file);
-    imageShowcase.style.display = "flex";
+    
+    // Enable the container
+    document.getElementById('imageShowcaseContainer').style.display = "flex";
+    // Set file name
+    document.getElementById('imageShowcaseName').textContent = file.name;
+    // Set the info
+    document.getElementById('mimeField').textContent = file.type;
+    document.getElementById('sizeField').textContent = formatFileSize(file.size);
+    const bitmap = await createImageBitmap(file);
+    document.getElementById('resolutionField').textContent = bitmap.width + 'x' + bitmap.height;
+    const fileModifiedDate = new Date(file.lastModified);
+    document.getElementById('lastModifiedField').textContent = `${fileModifiedDate.getDate()}/${fileModifiedDate.getMonth() + 1}/${fileModifiedDate.getFullYear()}`;
+    
     // Revoke the url after the image loads
     imageShowcase.onload = () => URL.revokeObjectURL(imageShowcase.src);
-    
+    console.dir(file)
     // Assign the image to the cropper menu
     const cropperImage = document.getElementById('cropperImage');
     // Assign the url & remove it after it loads
