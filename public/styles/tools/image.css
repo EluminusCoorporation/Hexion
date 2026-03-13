@@ -565,6 +565,29 @@
   transform: scale(.95);
 }
 
+.image-previewer-container {
+  display: none;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1em;
+  background-color: var(--bg);
+  border-top: .5px solid var(--highlight);
+  color: var(--text);
+  padding: 1em;
+  border-radius: .2em;
+}
+
+.image-previewer-container h5 {
+  font-size: .75em;
+}
+
+.image-previewer-container img {
+  display: block;
+  border-radius: .2em;
+  outline: none;
+  max-width: 100%;
+}
+
 .download-button {
   display: none;
   flex-direction: row;

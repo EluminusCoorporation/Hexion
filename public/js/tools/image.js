@@ -235,6 +235,12 @@ resultsBtn.addEventListener("click", async function () {
     downloadButton.style.display = "flex";
     downloadButton.href = downloadUrl;
     downloadButton.download = `${sanitizedFileName}-hexion-${type}-${Math.random()}`;
+    
+    // Assign it to image previwer
+    const imagePreviewer = document.getElementById('imagePreviewer')
+    imagePreviewer.src = URL.createObjectURL(blob);
+    imagePreviewer.onload = () => URL.revokeObjectURL(imagePreviewer.src);
+    document.getElementById('imagePreviewerContainer').style.display = "flex";
   } catch(error) {
     setStatus('error', 'Image Converter Failed', error);
     console.error('Failed to convert image: ' + error);
