@@ -1,6 +1,5 @@
 .page-header {
-  margin: 20px;
-  background: linear-gradient(to right, transparent 5%, lawngreen, transparent 95%);
+  background: linear-gradient(to right, transparent 0%, lawngreen 15%, lawngreen 85%, transparent 100%);
 }
 
 .header-tag {

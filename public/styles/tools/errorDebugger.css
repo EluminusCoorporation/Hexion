@@ -1,6 +1,5 @@
 .page-header {
-  margin: 20px;
-  background: linear-gradient(to right, transparent 5%, indianred, transparent 95%);
+  background: linear-gradient(to right, transparent 0%, indianred 15%, indianred 85%, transparent 100%);
 }
 
 .header-tag {
@@ -57,7 +56,7 @@
   padding: 1em;
   background-color: hsla(208, 100%, 44.12%, 0.4);
   border: 1px solid hsl(208, 100%, 44.12%);
-  color: var(--text);
+  color: white;
   font-size: .8em;
   margin-bottom: 1.5em;
 }

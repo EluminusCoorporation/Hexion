@@ -22,8 +22,9 @@
 .website-header img {
   height: 40px;
   width: 40px;
+  padding: .2em;
   border-radius: 50%;
-  background-color: var(--text);
+  border: 1px solid var(--border);
 }
 
 .website-header h1 {
