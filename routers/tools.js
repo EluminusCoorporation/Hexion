@@ -92,5 +92,15 @@ router.get("/image", (req, res) => {
   res.render('tools/image', pageInfo);
 });
 
+router.get("/ascii", (req, res) => {
+  const pageInfo = {
+    title: "Ascii Art Generator",
+    description: "The Ascii Art Generator tool of hexion, with this tool you can create any kind of ascii art to implement in your project, with many customization options",
+    url: `${config.general.domain}/tools/ascii`,
+    path: "tools/ascii"
+  };
+  res.render('tools/ascii', pageInfo);
+});
+
 //Exports the router
 module.exports = router;

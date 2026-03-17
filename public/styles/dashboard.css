@@ -161,15 +161,23 @@
 }
 
 .tool:nth-child(7) button {
-  background: hotpink
+  background: hotpink;
 }
 
 .tool:nth-child(8) {
-  color: darkgray
+  color: darkgray;
 }
 
 .tool:nth-child(8) button {
-  background: darkgray
+  background: darkgray;
+}
+
+.tool:nth-child(9) {
+  color: deepskyblue;
+}
+
+.tool:nth-child(9) button {
+  background: deepskyblue;
 }
 
 .toolboxes-container .tool button i {
