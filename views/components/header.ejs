@@ -103,6 +103,7 @@
     .page-header {
       color: white;
       text-align: center;
+      font-size: 1.5em;
       padding: 20px;
       display: flex;
       width: 100vw;
@@ -111,7 +112,13 @@
       margin-top: 1em;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: .5em;
+    }
+    
+    .page-header p {
+      min-width: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     
     /* Custom Scrollbar (support for chromium browsers) */
@@ -153,7 +160,7 @@
       }
     }
     
-    /* Custom Scrollbar (Support for FireFox) */
+    /* Custom Scrollbar (Support for other browsers Ex: FireFox) */
     @supports(scrollbar-color: auto) {
       html {
         scrollbar-color: var(--bg-light);
