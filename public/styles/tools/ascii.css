@@ -56,6 +56,7 @@
   box-shadow: 0 2px 2px var(--shadow);
   outline-color: transparent;
   position: relative;
+  margin-bottom: .7em;
 }
 
 .input-container::placeholder {
