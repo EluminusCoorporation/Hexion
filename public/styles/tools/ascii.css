@@ -83,7 +83,7 @@
   border-right: 1px solid var(--border) !important;
 }
 
-.dropdown-container {
+.dropdown-container, .combobox-container {
   color: var(--text-muted);
   background-color: var(--bg);
   position: relative;
@@ -176,6 +176,127 @@
   transform: translateX(2.5px);
   background-color: var(--tertiary);
   color: white;
+}
+
+.combobox-container {
+  position: relative;
+  overflow: visible !important;
+}
+
+.search-header-container {
+  display: flex;
+  min-width: 0;
+  position: relative;
+}
+
+.search-icon {
+  font-size: 1.35em;
+  transform: rotate(180deg);
+  transition: transform 300ms;
+}
+
+.search-container {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.combobox {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  padding-right: 2.2em;
+  outline: none;
+  border: none;
+  color: var(--text);
+  background-color: transparent;
+}
+
+.combobox::-webkit-search-cancel-button {
+  display: none;
+}
+
+.combobox::placeholder {
+  display: flex;
+  user-select: none;
+  align-items: center;
+  font-weight: bold;
+  color: var(--text-muted);
+  font-size: 1em;
+  padding-left: .2em;
+}
+
+.clear-search-button {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  border-radius: 50%;
+  padding: .1em;
+  font-size: 1em;
+  color: var(--text);
+  transition: all 300ms ease-in-out;
+}
+
+.clear-search-button:hover {
+  background-color: var(--bg-light);
+}
+
+.search-items {
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  padding: .2em;
+  margin-top: 1.5em;
+  width: 100%;
+  background-color: var(--bg);
+  border-radius: .5em;
+  overflow: hidden auto;
+  opacity: 0;
+  max-height: 20em;
+  border: 1px solid hsla(0, 0%, 100%, 0.05);
+  transform: scale(.95);
+  z-index: 9;
+  box-shadow: 0 2px 4px var(--shadow);
+  transition: all 300ms ease-in-out;
+}
+
+.search-item {
+  color: var(--text);
+  padding: .8em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline-color: transparent;
+  display: flex;
+  gap: .3em;
+  font-size: .75em;
+  position: relative;
+  display: flex;
+  gap: 5px;
+  border-radius: .5em;
+  transition: all 300ms;
+}
+
+.search-item:hover {
+  background-color: var(--bg-light);
+}
+
+.search-item.selected {
+  transform: translateX(2.5px);
+  background-color: var(--tertiary);
+  color: white;
+}
+
+.combobox-container:focus-within .search-items {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+.combobox-container:focus-within .search-icon {
+  transform: rotate(0deg);
 }
 
 .option-container {

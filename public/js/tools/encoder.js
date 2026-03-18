@@ -7,7 +7,7 @@ const resultsBtn = document.getElementById("results-btn");
 
 //Makes an event listener for results button
 resultsBtn.addEventListener("click", function () {
-  //Getd the text inputted
+  //Gets the text inputted
   const text = document.getElementById("inputContainer").value;
   //Gets the format type
   const name = document.getElementById("dropdownSelected").dataset.selected;
