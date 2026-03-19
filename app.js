@@ -80,24 +80,25 @@ app.use(express.text());
 app.use(express.urlencoded({ extended: false, limit: "1mb" }));
 app.use(favicon(path.join(PUBLIC_DIR, 'assets/icons/favicon.ico')));
 
-//Checks & installs required python packages
+// Checks & installs required python packages
 try {
   // Check if external dependencies are missing
-  execSync("python3 -m flake8 --version", { stdio: "ignore" });
+  execSync("python -m flake8 --version", { stdio: "ignore" });
   } catch {
-    //if not, install
-    console.log(chalk.white(chalk.bold.yellow('[server]') + " Installing dependencies..."));
-    try {
-      // Install silently (suppress all logs)
-      execSync("python3 -m pip install --user flake8 -q", { stdio: "ignore" });
+  //if not, install
+  console.log(chalk.white(chalk.bold.blue('[dependency manager]') + " Installing dependencies..."));
+  try {
+    // Install silently (suppress all logs)
+    execSync("python -m pip install --user flake8 -q", { stdio: "ignore" });
 
-      // Verify installation
-      execSync("python3 -m flake8 --version", { stdio: "ignore" });
-    } catch (err) {
-      console.error(chalk.yellow(chalk.bold.yellow('[server]') + " Could not install a few dependencies\n\n"), chalk.gray(err.message));
-      throw err;
-    }
+    // Verify installation
+    execSync("python -m flake8 --version", { stdio: "ignore" });
+    console.log(chalk.white(chalk.bold.yellow('[dependency manager]') + ' Successfully installed all the required dependencies.'));
+  } catch (err) {
+    console.error(chalk.yellow(chalk.bold.yellow('[dependency manager]') + " Could not install a few dependencies\n\n"), chalk.gray(err.message));
+    throw err;
   }
+}
 
 //Setting up in-app middlewares (before)
 app.use(onMaintenance);
