@@ -45,6 +45,9 @@ function renderFonts(fonts) {
 // Handle clear Search button
 document.getElementById('clearSearchButton').addEventListener("click", function() {
   const searchInput = document.getElementById('fontsSearch');
+  // Ignore if the search is already empty
+  if (searchInput.value === "") return;
+  
   // Clear The search
   searchInput.value = "";
   // Render Old list
@@ -95,6 +98,14 @@ fontItemList.addEventListener("click", function(event) {
   searchInput.value = event.target.textContent;
   searchInput.placeholder = event.target.textContent;
   searchInput.focus();
+});
+
+// Focus on combobox when clicked on the container 
+document.getElementById('comboboxContainer').addEventListener("click", function(event) {
+  // If its not clicking on the container return (this is made to avoid noise when clicking on combobox buttons)
+  if (event.target !== this) return;
+  
+  document.getElementById('fontsSearch').focus();
 });
 
 const resultsBtn = document.getElementById("results-btn");
