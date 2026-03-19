@@ -264,6 +264,8 @@
 }
 
 .search-item {
+  visibility: hidden;
+  opacity: 0;
   color: var(--text);
   padding: .8em;
   cursor: pointer;
@@ -276,7 +278,7 @@
   display: flex;
   gap: 5px;
   border-radius: .5em;
-  transition: all 300ms;
+  transition: transform 300ms, background-color 300ms, color 300ms, opacity 100ms;
 }
 
 .search-item:hover {
@@ -287,6 +289,11 @@
   transform: translateX(2.5px);
   background-color: var(--tertiary);
   color: white;
+}
+
+.search-item.visible {
+  visibility: visible;
+  opacity: 1;
 }
 
 .combobox-container:focus-within .search-items {

@@ -5,9 +5,15 @@ import {} from "../handlers/copy.js";
 import figlet from "https://esm.sh/figlet";
 
 let fontList = null;
+let observer = null;
+const fontItemList = document.getElementById('searchItemList');
 
 function renderFonts(fonts) {
-  const fontItemList = document.getElementById('searchItemList');
+  // Unobserve all the elements
+  fontItemList.querySelectorAll('.search-item').forEach(el => {
+    el.classList.remove('visible');
+    observer.unobserve(el)
+  });
   // Clear the list
   fontItemList.innerHTML = "";
   fonts.forEach((font) => {
@@ -21,6 +27,19 @@ function renderFonts(fonts) {
     // Append the item to the list
     fontItemList.appendChild(fontItem);
   });
+  // Smooth fading animation support
+  // If observer doesnt exist yet create it
+  if (!observer) {
+      observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+        });
+    });
+  }
+  
+  // Observe the items
+  fontItemList.querySelectorAll('.search-item').forEach(el => observer.observe(el));
 }
 
 // Handle clear Search button
@@ -54,14 +73,14 @@ document.getElementById('fontsSearch').addEventListener("input", function() {
   filterTimeout = setTimeout(() => {
     const filteredList = fontList.filter((font) => font.toLowerCase().includes(this.value.toLowerCase()));
     if (filteredList.length === 0) {
-      document.getElementById('searchItemList').innerHTML = `No Items matched with "${this.value}"`
+      fontItemList.innerHTML = `No Items matched with "${this.value}"`
     }
     renderFonts(filteredList);
   }, 150);
 });
 
 // Handle font selection
-document.getElementById('searchItemList').addEventListener("click", function(event) {
+fontItemList.addEventListener("click", function(event) {
   // Check if its an search item
   if (!event.target.matches('.search-item')) return;
   
@@ -76,7 +95,7 @@ document.getElementById('searchItemList').addEventListener("click", function(eve
   searchInput.value = event.target.textContent;
   searchInput.placeholder = event.target.textContent;
   searchInput.focus();
-})
+});
 
 const resultsBtn = document.getElementById("results-btn");
 
