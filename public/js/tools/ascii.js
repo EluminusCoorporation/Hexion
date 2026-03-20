@@ -9,10 +9,27 @@ let observer = null;
 const fontItemList = document.getElementById('searchItemList');
 
 function renderFonts(fonts) {
+  // If the list is empty
+  if (fonts.length === 0) {
+    // Clear the list
+    fontItemList.innerHTML = "";
+    
+    // Create the alert
+    const alert = document.createElement('p');
+    alert.className = "search-alert";
+    alert.textContent = "No fonts found, something went wrong?";
+    // Append the alert
+    fontItemList.appendChild(alert);
+    
+    // Log the alert for context
+    console.warn("No fonts found, something went wrong?");
+    return;
+  }
+  
   // Unobserve all the elements
   fontItemList.querySelectorAll('.search-item').forEach(el => {
     el.classList.remove('visible');
-    observer.unobserve(el)
+    observer.unobserve(el);
   });
   // Clear the list
   fontItemList.innerHTML = "";
@@ -71,7 +88,7 @@ document.getElementById('clearSearchButton').addEventListener("click", function(
   searchInput.focus();
 });
 
-
+// Get all fonts
 figlet.fonts(function(err, fonts) {
   if (err) {
     setStatus('error', 'Font Loader Failed', 'Failed to Load the available fonts: ' + err);
@@ -80,8 +97,8 @@ figlet.fonts(function(err, fonts) {
   };
   // Cache the list
   fontList = fonts;
-  console.dir(fonts);
   
+  console.dir(fonts);
   renderFonts(fonts);
 });
 
@@ -95,7 +112,19 @@ document.getElementById('fontsSearch').addEventListener("input", function() {
     const filteredList = fontList.filter((font) => font.toLowerCase().includes(this.value.toLowerCase()));
     // If no items match
     if (filteredList.length === 0) {
-      fontItemList.innerHTML = `No Items matched with "${this.value}"`
+      // Clear the list
+      fontItemList.innerHTML = "";
+      
+      // Create the alert
+      const alert = document.createElement('p');
+      alert.className = "search-alert";
+      alert.textContent = `No search results for "${this.value}"`;
+      // Append the alert
+      fontItemList.appendChild(alert);
+      
+      // Log the alert for context
+      console.log(`No search results for "${this.value}"`);
+      return;
     }
     
     // Render the searched list

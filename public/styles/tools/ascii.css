@@ -298,6 +298,15 @@
   opacity: 1;
 }
 
+.search-alert {
+  font-size: .75em;
+  padding: .5em;
+  font-style: italic;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  color: var(--text-muted);
+}
+
 .tag {
   position: absolute;
   top: 50%;
