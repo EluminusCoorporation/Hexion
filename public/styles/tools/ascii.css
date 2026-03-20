@@ -260,10 +260,11 @@
   transform: scale(.95);
   z-index: 9;
   box-shadow: 0 2px 4px var(--shadow);
-  transition: all 300ms ease-in-out;
+  transition: opacity 300ms, transform 300ms ease-in-out;
 }
 
 .search-item {
+  position: relative;
   visibility: hidden;
   opacity: 0;
   color: var(--text);
@@ -278,7 +279,7 @@
   display: flex;
   gap: 5px;
   border-radius: .5em;
-  transition: transform 300ms, background-color 300ms, color 300ms, opacity 100ms;
+  transition: transform 300ms, opacity 100ms;
 }
 
 .search-item:hover {
@@ -292,8 +293,24 @@
 }
 
 .search-item.visible {
-  visibility: visible;
+  /* It is made inheritance so it isnt visible when the combobox is closed */
+  visibility: inherit;
   opacity: 1;
+}
+
+.tag {
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  transform: translateY(-50%);
+  height: 15px;
+  padding: 2px 5px;
+  font-size: .6em !important;
+  align-items: center;
+  font-size: .7em;
+  border: .75px dashed var(--text-muted);
+  background-color: transparent;
+  color: var(--text);
 }
 
 .combobox-container:focus-within .search-items {

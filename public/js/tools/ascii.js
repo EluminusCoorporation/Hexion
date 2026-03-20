@@ -21,9 +21,25 @@ function renderFonts(fonts) {
     const fontItem = document.createElement('li');
     fontItem.className = "search-item";
     fontItem.innerHTML = font;
-    // preserve selected font
+    
+    // Preserve selected font
     const fontInput = document.getElementById('fontsSearch');
     if (font === fontInput.dataset.selected) fontItem.classList.add('selected');
+    
+    // Add the exact tag if its an exact match
+    if (
+    // Search Input shouldnt be empty 
+    fontInput.value !== "" && 
+    font.toLowerCase() === fontInput.value.toLowerCase() && 
+    // it shouldnt be the selected one
+    font !== fontInput.dataset.selected
+    ) {
+      const exactTag = document.createElement('span');
+      exactTag.textContent = "exact";
+      exactTag.className = "tag";
+      fontItem.appendChild(exactTag);
+    }
+    
     // Append the item to the list
     fontItemList.appendChild(fontItem);
   });
@@ -69,40 +85,49 @@ figlet.fonts(function(err, fonts) {
   renderFonts(fonts);
 });
 
+// Handle searching
 let filterTimeout = null;
 document.getElementById('fontsSearch').addEventListener("input", function() {
   clearTimeout(filterTimeout);
   
+  // Add timeout to avoid noise on fast typing
   filterTimeout = setTimeout(() => {
     const filteredList = fontList.filter((font) => font.toLowerCase().includes(this.value.toLowerCase()));
+    // If no items match
     if (filteredList.length === 0) {
       fontItemList.innerHTML = `No Items matched with "${this.value}"`
     }
+    
+    // Render the searched list
     renderFonts(filteredList);
   }, 150);
 });
 
 // Handle font selection
 fontItemList.addEventListener("click", function(event) {
-  // Check if its an search item
+  
+  // Check if its an dropdown item
   if (!event.target.matches('.search-item')) return;
   
   // Clear old selections
-  const oldSelected = this.querySelectorAll('.selected');
-  oldSelected.forEach((item) => item.classList.remove('selected'));
+  this.querySelectorAll('.selected').forEach((item) => item.classList.remove('selected'));
+  
+  const exactTag = event.target.querySelector('.tag');
+  if (exactTag) exactTag.remove();
   
   // select the font
   const searchInput = document.getElementById('fontsSearch');
   event.target.classList.add('selected');
-  searchInput.dataset.selected = event.target.textContent;
-  searchInput.value = event.target.textContent;
-  searchInput.placeholder = event.target.textContent;
+  const selectedFont = event.target.textContent.trim();
+  searchInput.dataset.selected = selectedFont;
+  searchInput.value = selectedFont;
+  searchInput.placeholder = selectedFont;
   searchInput.focus();
 });
 
-// Focus on combobox when clicked on the container 
+// Focus on combobox when clicked on the container
 document.getElementById('comboboxContainer').addEventListener("click", function(event) {
-  // If its not clicking on the container return (this is made to avoid noise when clicking on combobox buttons)
+  // If the user is not clicking on the container return (this is made to avoid noise when clicking on combobox buttons)
   if (event.target !== this) return;
   
   document.getElementById('fontsSearch').focus();
