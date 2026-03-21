@@ -132,11 +132,15 @@ document.getElementById('fontsSearch').addEventListener("input", function() {
   }, 150);
 });
 
+// FIX: Don't lose focus when selection happens
+fontItemList.addEventListener("mousedown", event => {
+  if (event.target.closest('.search-item')) event.preventDefault();
+});
+
 // Handle font selection
 fontItemList.addEventListener("click", function(event) {
-  
   // Check if its an dropdown item
-  if (!event.target.matches('.search-item')) return;
+  if (!event.target.closest('.search-item')) return;
   
   // Clear old selections
   this.querySelectorAll('.selected').forEach((item) => item.classList.remove('selected'));

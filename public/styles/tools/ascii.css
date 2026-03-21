@@ -180,7 +180,7 @@
 
 .combobox-container {
   position: relative;
-  overflow: visible !important;
+  overflow: visible;
 }
 
 .search-header-container {
@@ -264,7 +264,6 @@
 }
 
 .search-item {
-  position: relative;
   visibility: hidden;
   opacity: 0;
   color: var(--text);
@@ -272,12 +271,9 @@
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   outline-color: transparent;
-  display: flex;
-  gap: .3em;
   font-size: .75em;
   position: relative;
   display: flex;
-  gap: 5px;
   border-radius: .5em;
   transition: transform 300ms, opacity 100ms;
 }
@@ -293,7 +289,7 @@
 }
 
 .search-item.visible {
-  /* It is made inheritance so it isnt visible when the combobox is closed */
+  /* Inherit the visibility of the parent so it isnt visible when the combobox is closed */
   visibility: inherit;
   opacity: 1;
 }
@@ -314,7 +310,7 @@
   transform: translateY(-50%);
   height: 15px;
   padding: 2px 5px;
-  font-size: .6em !important;
+  font-size: .6em;
   align-items: center;
   font-size: .7em;
   border: .75px dashed var(--text-muted);
@@ -323,9 +319,9 @@
 }
 
 .combobox-container:focus-within .search-items {
-  visibility: visible !important;
-  opacity: 1 !important;
-  transform: scale(1) !important;
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .combobox-container:focus-within .search-icon {
