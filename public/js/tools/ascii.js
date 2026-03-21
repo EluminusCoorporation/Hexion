@@ -49,13 +49,23 @@ function renderFonts(fonts) {
     const fontInput = document.getElementById('fontsSearch');
     if (font === fontInput.dataset.selected) fontItem.classList.add('selected');
     
+    // Add default tag if its the default font
+    if (font === "Standard") {
+      const defaultTag = document.createElement('span');
+      defaultTag.textContent = "default";
+      defaultTag.className = "tag";
+      fontItem.appendChild(defaultTag);
+    };
+    
     // Add the exact tag if its an exact match
     if (
     // Search Input shouldnt be empty 
     fontInput.value !== "" && 
     font.toLowerCase() === fontInput.value.toLowerCase() && 
     // it shouldnt be the selected one
-    font !== fontInput.dataset.selected
+    font !== fontInput.dataset.selected &&
+    // it shouldnt be the default one
+    font !== "Standard"
     ) {
       const exactTag = document.createElement('span');
       exactTag.textContent = "exact";
@@ -64,6 +74,7 @@ function renderFonts(fonts) {
     }
     
     // Append the item to the list
+    if (font === "Standard") return fontItemList.prepend(fontItem);
     fontItemList.appendChild(fontItem);
   });
   // Smooth fading animation support:
