@@ -228,6 +228,7 @@
 }
 
 .clear-search-button {
+  display: none;
   position: absolute;
   top: 50%;
   right: 8px;
@@ -326,6 +327,10 @@
 
 .combobox-container:focus-within .search-icon {
   transform: rotate(0deg);
+}
+
+.combobox-container:focus-within .clear-search-button {
+  display: block;
 }
 
 .option-container {
