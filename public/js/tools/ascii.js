@@ -74,6 +74,7 @@ function renderFonts(fonts) {
     }
     
     // Append the item to the list
+    // If its the default one append it on top
     if (font === "Standard") return fontItemList.prepend(fontItem);
     fontItemList.appendChild(fontItem);
   });
