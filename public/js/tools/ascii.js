@@ -8,6 +8,9 @@ let fontList = null;
 let observer = null;
 const fontItemList = document.getElementById('searchItemList');
 
+// FIX: fonts not being bundled with the cdn
+figlet.defaults({ fontPath: "https://unpkg.com/figlet/fonts" });
+
 function renderFonts(fonts) {
   // If the list is empty
   if (fonts.length === 0) {
@@ -31,13 +34,16 @@ function renderFonts(fonts) {
     el.classList.remove('visible');
     observer.unobserve(el);
   });
+  
   // Clear the list
   fontItemList.innerHTML = "";
+  
+  // create elements one by one
   fonts.forEach((font) => {
     // Setup the item
     const fontItem = document.createElement('li');
     fontItem.className = "search-item";
-    fontItem.innerHTML = font;
+    fontItem.textContent = font;
     
     // Preserve selected font
     const fontInput = document.getElementById('fontsSearch');
@@ -60,7 +66,7 @@ function renderFonts(fonts) {
     // Append the item to the list
     fontItemList.appendChild(fontItem);
   });
-  // Smooth fading animation support
+  // Smooth fading animation support:
   // If observer doesnt exist yet create it
   if (!observer) {
       observer = new IntersectionObserver(entries => {
@@ -71,7 +77,7 @@ function renderFonts(fonts) {
     });
   }
   
-  // Observe the items
+  // Observe all the items
   fontItemList.querySelectorAll('.search-item').forEach(el => observer.observe(el));
 }
 
@@ -166,7 +172,38 @@ document.getElementById('comboboxContainer').addEventListener("click", function(
   document.getElementById('fontsSearch').focus();
 });
 
-const resultsBtn = document.getElementById("results-btn");
-
-//Makes an event listener for results button
-resultsBtn.addEventListener("click", function () {});
+// Handle ascii art creation
+document.getElementById("results-btn").addEventListener("click", async () => {
+  toggleLoader(true);
+  try {
+    const text = document.getElementById('inputContainer').value;
+    const font = document.getElementById('fontsSearch').dataset.selected || "Standard";
+    const width = document.getElementById('asciiWidth').value;
+    const horizontalLayout = document.querySelector('.horizontal-layout').dataset.selected;
+    const verticalLayout = document.querySelector('.vertical-layout').dataset.selected;
+    const whiteSpaceBreak = document.getElementById('whiteSpaceBreak');
+    
+    if (!text) throw new Error('The required fields were not provided');
+    
+    // Generate the ascii art
+    const asciiArt = await figlet.text(text, {
+      font,
+      ...(horizontalLayout && { horizontalLayout }),
+      ...(verticalLayout && { verticalLayout }),
+      ...(width && { width }),
+      whiteSpaceBreak,
+    });
+    
+    // If its empty throw error
+    if (!asciiArt) throw new Error('The ascii art is empty, did you enter the correct info?');
+    
+    // Apply it to results
+    document.getElementById('results').textContent = asciiArt;
+    document.getElementById('resultsContainer').style.display = "flex";
+  } catch (error) {
+    setStatus('error', 'Ascii Art Generator Failed', error);
+    console.error('An error occured while generating ascii art: ', error);
+  } finally {
+    toggleLoader(false);
+  };
+});
