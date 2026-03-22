@@ -157,8 +157,12 @@ fontItemList.addEventListener("mousedown", event => {
 
 // Handle font selection
 fontItemList.addEventListener("click", function(event) {
+  const searchInput = document.getElementById('fontsSearch');
+  
   // Check if its an dropdown item
   if (!event.target.closest('.search-item')) return;
+  // ignore if already selected
+  if (event.target.textContent.trim() === searchInput.dataset.selected) return;
   
   // Clear old selections
   this.querySelectorAll('.selected').forEach((item) => item.classList.remove('selected'));
@@ -167,7 +171,6 @@ fontItemList.addEventListener("click", function(event) {
   if (exactTag) exactTag.remove();
   
   // select the font
-  const searchInput = document.getElementById('fontsSearch');
   event.target.classList.add('selected');
   const selectedFont = event.target.textContent.trim();
   searchInput.dataset.selected = selectedFont;
