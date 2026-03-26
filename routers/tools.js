@@ -102,5 +102,15 @@ router.get("/ascii", (req, res) => {
   res.render('tools/ascii', pageInfo);
 });
 
+router.get("/color", (req, res) => {
+  const pageInfo = {
+    title: "Color Converter",
+    description: "The Color Converter tool of hexion, with this tool you can convert any type of color code into different color formats",
+    url: `${config.general.domain}/tools/color`,
+    path: "tools/color"
+  };
+  res.render('tools/color', pageInfo);
+});
+
 //Exports the router
 module.exports = router;

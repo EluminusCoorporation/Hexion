@@ -180,6 +180,14 @@
   background: deepskyblue;
 }
 
+.tool:nth-child(10) {
+  color: floralwhite
+}
+
+.tool:nth-child(10) button {
+  background: floralwhite;
+}
+
 .toolboxes-container .tool button i {
   font-size: 1em;
   transition: transform .5s ease;
