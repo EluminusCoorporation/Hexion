@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let timeout;
   toggleCopy.addEventListener("click", function () {
     // Get the latest value on click
-    const resultsInput = document.getElementById("results").value;
+    const resultsInput = document.getElementById("results").textContent;
     // Copy text to clipboard with error handling
     navigator.clipboard
       .writeText(resultsInput)
