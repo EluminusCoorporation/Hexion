@@ -1,17 +1,18 @@
 import { setStatus } from './errorLogger.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleCopy = document.getElementById("copy-icon");
+  const toggleCopy = document.querySelectorAll("#copy-icon");
   
   if (!toggleCopy) return;
 
   let timeout;
-  toggleCopy.addEventListener("click", function () {
-    // Get the latest value on click
-    const resultsInput = document.getElementById("results").textContent;
-    // Copy text to clipboard with error handling
+  let toastTimeout;
+  toggleCopy.forEach(copyToggle => copyToggle.addEventListener("click", function () {
+    // Get the latest value of the element
+    const value = document.getElementById(this.dataset.el || "results").textContent;
+    // Copy text to clipboard
     navigator.clipboard
-      .writeText(resultsInput)
+      .writeText(value)
       .then(() => {
         // Toggle the icon
         this.classList.remove("bx-copy");
@@ -23,18 +24,19 @@ document.addEventListener("DOMContentLoaded", () => {
         timeout = setTimeout(() => {
           this.classList.remove("bx-check");
           this.classList.add("bx-copy");
-        }, 3000);
+        }, 2000);
       })
-      .catch(err => {
+      .catch(error => {
         setStatus("error", "Copy failed", "Failed to copy text!");
-        console.log(err); // log the error if copy fails
+        console.log("An error occured while copying text: " + error);
       });
-    //Activates the copy info alert
+    
+    // Activates the copy toast
     const copyAlertContainer = document.getElementById("copyAlertContainer");
     copyAlertContainer.classList.add("active");
-    //Sets a timeout for it
-    setTimeout(() => {
-      copyAlertContainer.classList.remove("active");
-    }, 3000);
-  });
+    
+    clearTimeout(toastTimeout);
+    // Sets a timeout for it
+    toastTimeout = setTimeout(() => copyAlertContainer.classList.remove("active"), 2000);
+  }));
 });
