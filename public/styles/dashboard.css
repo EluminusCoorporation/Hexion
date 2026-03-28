@@ -185,6 +185,7 @@
 }
 
 .tool:nth-child(10) button {
+  color: black;
   background: floralwhite;
 }
 
