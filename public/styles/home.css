@@ -241,7 +241,7 @@ main {
   height: 200%;
   inset: -50%;
   z-index: -2;
-  animation: spin 8s linear infinite;
+  animation: spinMotor 8s linear infinite;
 }
 
 .features .feature::after {
@@ -256,7 +256,7 @@ main {
   animation-play-state: paused;
 }
 
-@keyframes spin {
+@keyframes spinMotor {
   to {
     transform: rotateZ(-360deg);
   }
