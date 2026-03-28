@@ -445,37 +445,6 @@
   padding-left: 5px;
 }
 
-.copy-alert-container {
-  height: 10px;
-  position: fixed;
-  display: flex;
-  justify-self: center;
-  justify-content: center;
-  align-items: center;
-  bottom: -110vh;
-  visibility: hidden;
-  gap: 3px;
-  margin: 15px;
-  padding: 5px;
-  color: var(--text);
-  font-weight: bold;
-  font-size: .7em;
-  z-index: 2;
-  border-radius: 15px;
-  background-color: var(--bg-light);
-  border: 1px solid var(--border);
-  transition: all .5s;
-}
-
-.copy-alert-container i {
-  font-size: 1.2em;
-}
-
-.copy-alert-container.active {
-  bottom: 0;
-  visibility: unset;
-}
-
 .results-btn-div {
   display: flex;
   justify-content: center;

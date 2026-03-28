@@ -99,7 +99,31 @@
       color: var(--text);
       text-align: center;
     }
-
+    
+    .copy-alert-container {
+      position: fixed;
+      display: flex;
+      justify-self: center;
+      justify-content: center;
+      align-items: center;
+      bottom: -110vh;
+      visibility: hidden;
+      margin-bottom: 1em;
+      gap: .3em;
+      padding: .2em .5em;
+      color: var(--bg);
+      font-size: .85em;
+      z-index: 9;
+      border-radius: 2em;
+      background-color: var(--text);
+      transition: all .5s;
+    }
+    
+    .copy-alert-container.active {
+      bottom: 0;
+      visibility: visible;
+    }
+    
     .page-header {
       color: white;
       text-align: center;
