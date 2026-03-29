@@ -151,7 +151,6 @@
   
   .background-sidebar {
     position: fixed;
-    pointer-events: none;
     inset: 0;
     visibility: hidden;
     z-index: 4;

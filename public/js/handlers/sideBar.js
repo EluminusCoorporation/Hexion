@@ -6,7 +6,7 @@ const backgroundFilter = document.getElementById("backgroundSideBar");
 const subMenu = document.querySelectorAll(".sub-menu");
 const links = document.querySelectorAll(".nav-bar .side-bar ul li a");
 
-//Special function for sidebar closing
+// function for sidebar closing
 function sideBarClose() {
   //Closes the sideBar
   sideBar.classList.remove("open");
@@ -39,4 +39,4 @@ sideBarButton.addEventListener("click", () => {
 backgroundFilter.addEventListener("click", sideBarClose);
 
 // Event listener for closing on redirect
-links.forEach((link, i) => link.addEventListener("click", sideBarClose));
+links.forEach(link => link.addEventListener("click", sideBarClose));
