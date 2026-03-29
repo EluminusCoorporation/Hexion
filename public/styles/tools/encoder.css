@@ -48,39 +48,34 @@
 }
 
 .dropdown-container {
-  color: var(--text-muted);
   background-color: var(--bg);
-  position: relative;
   border-top: .5px solid var(--highlight);
   box-shadow: 0 2px 2px var(--shadow);
-  padding: 15px;
+  padding: 1em;
   border-radius: .2em;
   margin: .7em 0;
-  font-weight: bold;
-  transition: all ease .5s;
+  transition: all ease 500ms;
   overflow: hidden;
 }
 
 .dropdown-header-container {
   display: flex;
   position: relative;
+  color: var(--text-muted);
+  align-items: center;
 }
 
 .dropdown-selected {
   display: flex;
-  user-select: none;
   align-items: center;
   font-weight: bold;
-  color: var(--text-muted);
   font-size: .8em;
 }
 
 .dropdown-icon {
-  font-size: 35px;
-  font-weight: none;
-  display: block;
   position: absolute;
-  align-self: center;
+  user-select: none;
+  font-size: 1.35em;
   right: 0;
   transition: all .3s;
 }
@@ -90,44 +85,41 @@
 }
 
 .dropdown-content {
-  display: grid;
   visibility: hidden;
-  grid-template-rows: 0fr;
-  transition: all 300ms;
+  position: absolute;
+  left: 0;
+  padding: .2em;
+  margin-top: 1.5em;
+  width: 100%;
+  background-color: var(--bg);
+  border-radius: .5em;
+  overflow: hidden auto;
+  opacity: 0;
+  max-height: 20em;
+  border: 1px solid hsla(0, 0%, 100%, 0.05);
+  transform: scale(.95);
+  z-index: 9;
+  box-shadow: 0 2px 4px var(--shadow);
+  transition: all 300ms ease-in-out;
 }
 
-.dropdown-content div {
-  display: grid;
-  gap: .3em;
-  overflow: hidden;
+.dropdown-content.show {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
 }
 
-.dropdown-content p {
+.select-item {
   color: var(--text);
   padding: .8em;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   outline-color: transparent;
-  display: flex;
-  gap: .3em;
-  font-size: .8em;
+  font-size: .75em;
   position: relative;
-}
-
-.dropdown-content li:nth-child(1) {
-  margin-top: 1em;
-}
-
-.dropdown-content.show {
-  visibility: visible;
-  grid-template-rows: 1fr;
-}
-
-.select-item {
-  display: flex;
-  gap: 5px;
-  border-radius: 5px;
-  transition: transform .5s;
+  border-radius: .5em;
+  transition: transform 300ms;
+  font-weight: bold;
 }
 
 .select-item:hover {
@@ -141,10 +133,6 @@
   color: white;
 }
 
-.tag-container {
-  position: relative;
-}
-
 .tag {
   position: absolute;
   top: 50%;
@@ -152,7 +140,7 @@
   transform: translateY(-50%);
   height: 15px;
   padding: 2px 5px;
-  font-size: .6em !important;
+  font-size: .6em;
   align-items: center;
   font-size: .7em;
   background-color: var(--primary);
