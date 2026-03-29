@@ -228,7 +228,7 @@
 }
 
 .clear-search-button {
-  display: none;
+  font-size: 0;
   position: absolute;
   top: 50%;
   right: 8px;
@@ -330,7 +330,7 @@
 }
 
 .combobox-container:focus-within .clear-search-button {
-  display: block;
+  font-size: initial;
 }
 
 .option-container {
