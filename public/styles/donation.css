@@ -10,10 +10,10 @@
 .donation-container {
   display: flex;
   background: linear-gradient(0deg, transparent 5%, var(--bg-light));
-  border-top-right-radius: 50%;
+  border-top-right-radius: 6em;
   flex-direction: column;
   margin-top: 1em;
-  padding: 60px 120px 60px 60px;
+  padding: 4em 5em 4em 4em;
   color: var(--text);
   pointer-events: none;
   font-weight: bold;

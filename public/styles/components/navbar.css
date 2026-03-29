@@ -126,7 +126,7 @@
   .nav-bar {
     background: none;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border)
+    border-bottom: 1px solid var(--border);
   }
   .nav-bar .side-bar {
     padding-top: 4.5em;
