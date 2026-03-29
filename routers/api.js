@@ -13,6 +13,9 @@ const chroma = require("chroma-js");
 // Request Sender modules
 const axios = require("axios");
 
+// Color Converter modules
+const culori = require("culori");
+
 const router = express.Router();
 
 // POST /api/debugger - Debugs the given code
@@ -394,5 +397,54 @@ router.post("/request", async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
+
+// Helper functions for Color Convert
+
+// POST /api/color - Converts an color into an another format
+router.post("/color", (req, res) => {
+  try {
+    const {
+      color,
+      format,
+    } = req.body;
+    
+    // If color provided is not an actual color
+    if (!culori.parse(color)) throw new Error('Invalid color provided');
+    
+    // Converter setup for unsupported color formats
+    const converter = culori.converter(format);
+    if (!converter) throw new Error('Unsupported color format');
+    
+    function universalFormatter(color) {
+      // Get color object
+      const c = converter(color);
+      if (!c) throw new Error('Something went wrong?');
+      
+      // Create color string
+      switch (format) {
+        case "oklch": return `oklch(${c.l.toFixed(2)} ${c.c.toFixed(2)} ${c.h.toFixed(2)})`;
+        case "oklab": return `oklab(${c.l.toFixed(2)} ${c.a.toFixed(2)} ${c.b.toFixed(2)})`;
+        case "lch": return `lch(${c.l.toFixed(2)} ${c.c.toFixed(2)} ${c.h.toFixed(2)})`;
+        case "lab": return `lab(${c.l.toFixed(2)} ${c.a.toFixed(2)} ${c.b.toFixed(2)})`;
+        case "hwb": return `hwb(${c.h.toFixed(2)} ${c.w.toFixed(2)} ${c.b.toFixed(2)})`;
+        
+        // Use inbuilt culori formatters which are available
+        case "hex": return culori.formatHex(color);
+        case "rgb": return culori.formatRgb(color);
+        case "hsl": return culori.formatHsl(color);
+        default: throw new Error('Unsupported color format');
+      }
+    }
+    
+    // Convert the color
+    const result = universalFormatter(color);
+    
+    if (!result) throw new Error('Something went horribly wrong!');
+
+    res.json({ output: result });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+})
 
 module.exports = router;
