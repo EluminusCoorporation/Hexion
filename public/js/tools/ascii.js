@@ -167,12 +167,21 @@ fontItemList.addEventListener("click", function(event) {
   // Clear old selections
   this.querySelectorAll('.selected').forEach((item) => item.classList.remove('selected'));
   
-  const exactTag = event.target.querySelector('.tag');
-  if (exactTag) exactTag.remove();
+  let selectedFont = event.target.textContent.trim();
+  
+  // If even a single tag is applied, remove it
+  const tags = event.target.querySelector('.tag');
+  if (tags) {
+    // Clone it to avoid removing actual tags
+    const itemClone = event.target.cloneNode(true);
+    // Remove all tags
+    itemClone.querySelectorAll('.tag').forEach(tag => tag.remove());
+    // Apply the sanitized name
+    selectedFont = itemClone.textContent;
+  };
   
   // select the font
   event.target.classList.add('selected');
-  const selectedFont = event.target.textContent.trim();
   searchInput.dataset.selected = selectedFont;
   searchInput.value = selectedFont;
   searchInput.placeholder = selectedFont;
