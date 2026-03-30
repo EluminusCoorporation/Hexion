@@ -1,10 +1,8 @@
-<%- include('components/header') -%>
-    <%- include('components/navbar') -%>
-    <main>
-      <div class="ad-container">
-        <p>Ad space here</p>
-      </div>
-      <h1 class="page-header"><i class='bx bxs-gift'></i><p>Donations</p></h1>
+<%- include('components/header', {
+  color: 'springgreen',
+  icon: 'bx bxs-gift',
+  backButton: false
+}) -%>
       <div class="donation-container">
         <p>Donation is another way for us to make money apart from the ads, these two are the main reasons on how this website runs so to contribute to run this website full of developer tools forever ,donate now.</p>
         <span>Payment Methods: Paypal</span>

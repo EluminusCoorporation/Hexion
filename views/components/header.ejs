@@ -218,3 +218,23 @@
       <i class="bx bx-clipboard-check"></i>
       <p>Copied to clipboard!</p>
     </div>
+    
+    <main>
+      <% if (typeof header === "undefined" || false) { %>
+      <%- include('navbar') -%>
+      <div class="ad-container">
+        <p>Ad space here</p>
+      </div>
+      <% if (typeof backButton !== "undefined" && backButton) { %>
+      <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
+        <p>Back to dashboard</p>
+      </a>
+      <% } %>
+      <h1 class="page-header" style="background: linear-gradient(to right, transparent 0%, <%= color %> 15%, <%= color %> 85%, transparent 100%);">
+        <i class="<%= icon %>"></i>
+        <p><%= title %></p>
+        <% if (typeof tag !== "undefined") { %>
+        <span class="header-tag"><%= tag %></span>
+        <% } %>
+      </h1>
+      <% } %>

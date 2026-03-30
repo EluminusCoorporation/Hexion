@@ -1,13 +1,10 @@
-<%- include('../components/header') -%>
-    <%- include('../components/navbar') -%>
-    <main>
-      <div class="ad-container">
-        <p>Ad space here</p>
-      </div>
-      <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
-        <p>Back to dashboard</p>
-      </a>
-      <h1 class="page-header"><i class='bx bx-code'></i><p>Encoder</p><span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h1>
+<%- include('../components/header', {
+  color: 'springgreen',
+  icon: 'bx bx-code',
+  backButton: true,
+  tag: 'TOOL'
+}) -%>
+
       <div class="dropdown-container" id="dropDownMenu">
         <div class="dropdown-header-container">
           <h3 class="dropdown-selected" id="dropdownSelected" data-selected="">Format Selector</h3>
@@ -34,5 +31,4 @@
       <div class="results-btn-div">
         <button class="results-button" id="results-btn">Encode!</button>
       </div>
-      <script src="https://cdn.jsdelivr.net/npm/eruda"></script><script>eruda.init();</script>
       <%- include('../components/footer') -%>

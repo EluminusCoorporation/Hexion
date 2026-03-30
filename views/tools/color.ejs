@@ -1,13 +1,10 @@
-<%- include('../components/header') -%>
-    <%- include('../components/navbar') -%>
-    <main>
-      <div class="ad-container">
-        <p>Ad space here</p>
-      </div>
-      <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
-        <p>Back to dashboard</p>
-      </a>
-      <h1 class="page-header"><i class="bx bx-water-drop-alt"></i><p>Color Converter</p><span class="header-tag"><i class="bx bx-spanner"></i>TOOL</span></h1>
+<%- include('../components/header', {
+  color: 'floralwhite',
+  icon: 'bx bx-water-drop-alt',
+  backButton: true,
+  tag: 'TOOL'
+}) -%>
+
       <input type="text" name="textToConvert" id="inputContainer" placeholder="Color Code" class="input-container" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <div class="dropdown-container" id="dropDownMenu">
         <div class="dropdown-header-container">
