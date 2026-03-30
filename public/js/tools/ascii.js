@@ -5,7 +5,16 @@ import {} from "../handlers/copy.js";
 import figlet from "https://esm.sh/figlet";
 
 let fontList = null;
-let observer = null;
+
+// Smooth fading animation support:
+// If observer doesnt exist yet create it
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+  });
+});
+
 const fontItemList = document.getElementById('searchItemList');
 
 // FIX: fonts not being bundled with the cdn
@@ -78,20 +87,11 @@ function renderFonts(fonts) {
     if (font === "Standard") return fontItemList.prepend(fontItem);
     fontItemList.appendChild(fontItem);
   });
-  // Smooth fading animation support:
-  // If observer doesnt exist yet create it
-  if (!observer) {
-      observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('visible');
-        });
-    });
-  }
   
   // Observe all the items
   fontItemList.querySelectorAll('.combobox-container .select-item').forEach(el => observer.observe(el));
 }
+  
 
 // Handle clear Search button
 document.getElementById('clearSearchButton').addEventListener("click", function() {
