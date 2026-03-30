@@ -36,7 +36,7 @@ resultsBtn.addEventListener("click", function () {
         codePoint & 0xff
       );
     }
-    results = new Uint8Array(text);
+    results = new Uint8Array(utf32Array);
   } else if (name === "Base 64") {
     results = btoa(text);
   } else if (name === "ASCII") {
