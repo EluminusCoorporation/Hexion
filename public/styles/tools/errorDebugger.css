@@ -56,10 +56,16 @@
   justify-content: center;
   background-color: transparent;
   margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  outline-color: transparent;
   color: var(--text);
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   transition: all 300ms;
+}
+
+.dualbtn:not(.selected):hover {
+  background-color: var(--bg-light);
 }
 
 .dualbtn.selected {
