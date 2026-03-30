@@ -1,3 +1,7 @@
+.page-header, .header-tag {
+  color: black !important;
+}
+
 .tools {
   background-color: var(--bg-light);
   color: var(--secondary) !important;

@@ -98,7 +98,7 @@
 }
 
 .clear-search-button:hover {
-  background-color: var(--bg-light);
+  background-color: var(--hover);
 }
 
 .combobox-container .select-item {
@@ -222,7 +222,7 @@
 }
 
 .flexbox-results i:hover {
-  background: var(--bg-light);
+  background: var(--hover);
 }
 
 .results {

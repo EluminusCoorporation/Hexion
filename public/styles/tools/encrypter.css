@@ -41,7 +41,7 @@
 }
 
 .flexbox-results i:hover {
-  background: var(--bg-light);
+  background: var(--hover);
 }
 
 .results {

@@ -17,7 +17,7 @@
   --warning: oklch(0.5 0.05 100);
   --success: oklch(0.5 0.05 160);
   --info: oklch(0.5 0.05 260);
-  --hover: hsla(0, 100%, 0%, 0.3);
+  --hover: hsla(0, 100%, 0%, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,6 +34,6 @@
     --warning: oklch(0.7 0.2 100);
     --success: oklch(0.7 0.2 160);
     --info: oklch(0.7 0.2 260);
-    --hover: hsla(0, 100%, 100%, 0.3);
+    --hover: hsla(0, 100%, 100%, .05);
   }
 }

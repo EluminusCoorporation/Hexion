@@ -75,7 +75,7 @@
 
 .nav-bar .side-bar ul li a:hover, .nav-bar .side-bar ul li span:hover {
   color: var(--text);
-  background-color: var(--bg-light);
+  background-color: var(--hover);
 }
 
 .nav-bar .side-bar ul li a i, .nav-bar .side-bar ul li span i {
@@ -179,7 +179,7 @@
   }
   
   .header-name i:hover {
-    background-color: var(--bg-light);
+    background-color: var(--hover);
   }
   
   .nav-bar .side-bar ul {

@@ -65,7 +65,7 @@
 }
 
 .dualbtn:not(.selected):hover {
-  background-color: var(--bg-light);
+  background-color: var(--hover);
 }
 
 .dualbtn.selected {
@@ -190,7 +190,7 @@
 }
 
 .results-div i:hover {
-  background: var(--bg-light);
+  background: var(--hover);
 }
 
 
