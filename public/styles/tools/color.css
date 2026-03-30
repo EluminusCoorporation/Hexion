@@ -62,6 +62,13 @@
   border-radius: 50%;
 }
 
+.copy-button {
+  position: static !important;
+  right: initial !important;
+  color: inherit !important;
+  margin: 0 !important;
+}
+
 .results-btn-div {
   display: flex;
   justify-content: center;

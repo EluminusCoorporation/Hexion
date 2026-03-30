@@ -198,24 +198,6 @@
   position: relative;
 }
 
-.flexbox-results i {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: var(--text);
-  font-size: 1em;
-  z-index: 2;
-  cursor: pointer;
-  padding: 5px;
-  border-radius: 50%;
-  transition: all .5s;
-  margin: 1em .5em;
-}
-
-.flexbox-results i:hover {
-  background: var(--hover);
-}
-
 .results {
   position: relative;
   resize: none;

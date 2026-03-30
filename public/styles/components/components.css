@@ -1,3 +1,5 @@
+/* Dropdown CSS */
+
 .dropdown-container {
   background-color: var(--bg);
   border-top: .5px solid var(--highlight);
@@ -100,4 +102,25 @@
   border: .75px dashed var(--text-muted);
   background-color: var(--bg-dark);
   color: var(--text);
+}
+
+/* Copy button CSS */
+.copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--text);
+  font-size: 1em;
+  z-index: 2;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all .5s;
+  margin: .3em;
+  -webkit-tap-highlight-color: transparent;
+  outline-color: transparent;
+}
+
+.copy-button:hover {
+  background: var(--hover);
 }

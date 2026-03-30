@@ -174,26 +174,6 @@
   border-bottom: none;
 }
 
-.results-div i {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: var(--text);
-  font-size: 1em;
-  z-index: 2;
-  cursor: pointer;
-  padding: 5px;
-  border-radius: 50%;
-  user-select: none;
-  margin: .3em;
-  transition: all .5s;
-}
-
-.results-div i:hover {
-  background: var(--hover);
-}
-
-
 .ball-container {
   position: absolute;
   top: 0;
