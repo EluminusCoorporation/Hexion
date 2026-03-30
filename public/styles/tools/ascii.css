@@ -128,7 +128,7 @@
 }
 
 .clear-search-button {
-  font-size: 0;
+  display: block;
   position: absolute;
   top: 50%;
   right: 8px;
@@ -175,8 +175,8 @@
   transform: rotate(180deg);
 }
 
-.combobox-container:focus-within .clear-search-button {
-  font-size: initial;
+.combobox-container:not(:focus-within) .clear-search-button {
+  display: none !important;
 }
 
 .option-container {
