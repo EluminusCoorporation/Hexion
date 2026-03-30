@@ -74,66 +74,6 @@
   gap: .5em;
 }
 
-/* From Uiverse.io by andrew-demchenk0 */ 
-.switch {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  width: 35px;
-  height: 20px;
-}
-
-.toggle {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  box-sizing: border-box;
-  border-radius: 5px;
-  border: 2px solid var(--bg);
-  box-shadow: 4px 4px var(--bg);
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--bg-light);
-  transition: 0.3s;
-}
-
-.slider:before {
-  box-sizing: border-box;
-  position: absolute;
-  content: "";
-  height: 100%;
-  width: 50%;
-  border: 2px solid var(--bg);
-  border-radius: 5px;
-  left: -2px;
-  bottom: 2px;
-  background-color: var(--secondary);
-  box-shadow: 0 3px 0 var(--bg);
-  transition: 0.3s;
-}
-
-.toggle:checked + .slider {
-  background-color: var(--primary);
-}
-
-.toggle:checked + .slider:before {
-  transform: translateX(20px);
-}
-
-.option-name {
-  color: var(--text);
-}
-
 .toggler-el {
   display: none;
   flex: 1;
