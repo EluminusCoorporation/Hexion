@@ -30,7 +30,7 @@ function renderFonts(fonts) {
   }
   
   // Unobserve all the elements
-  fontItemList.querySelectorAll('.search-item').forEach(el => {
+  fontItemList.querySelectorAll('.combobox-container .select-item').forEach(el => {
     el.classList.remove('visible');
     observer.unobserve(el);
   });
@@ -42,7 +42,7 @@ function renderFonts(fonts) {
   fonts.forEach((font) => {
     // Setup the item
     const fontItem = document.createElement('li');
-    fontItem.className = "search-item";
+    fontItem.className = "select-item";
     fontItem.textContent = font;
     
     // Preserve selected font
@@ -90,7 +90,7 @@ function renderFonts(fonts) {
   }
   
   // Observe all the items
-  fontItemList.querySelectorAll('.search-item').forEach(el => observer.observe(el));
+  fontItemList.querySelectorAll('.combobox-container .select-item').forEach(el => observer.observe(el));
 }
 
 // Handle clear Search button
@@ -152,7 +152,7 @@ document.getElementById('fontsSearch').addEventListener("input", function() {
 
 // FIX: Don't lose focus when selection happens
 fontItemList.addEventListener("mousedown", event => {
-  if (event.target.closest('.search-item')) event.preventDefault();
+  if (event.target.closest('.select-item')) event.preventDefault();
 });
 
 // Handle font selection
@@ -160,7 +160,7 @@ fontItemList.addEventListener("click", function(event) {
   const searchInput = document.getElementById('fontsSearch');
   
   // Check if its an dropdown item
-  if (!event.target.closest('.search-item')) return;
+  if (!event.target.closest('.select-item')) return;
   // ignore if already selected
   if (event.target.textContent.trim() === searchInput.dataset.selected) return;
   
