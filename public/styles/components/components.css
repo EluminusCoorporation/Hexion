@@ -63,7 +63,7 @@
   transform: scale(1);
 }
 
-.select-item {
+.dropdown-item {
   display: flex;
   gap: .3em;
   align-items: center;
@@ -78,12 +78,12 @@
   transition: transform 300ms;
 }
 
-.select-item:hover {
+.dropdown-item:hover {
   background-color: var(--bg-light);
   transform: translateX(2.5px);
 }
 
-.select-item.selected {
+.dropdown-item.selected {
   transform: translateX(2.5px);
   background-color: var(--tertiary);
   color: white;

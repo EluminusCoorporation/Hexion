@@ -30,7 +30,7 @@ if (dropDownMenu) {
     
     // Makes a event listener for all Items
     dropDownContent.addEventListener("click", event => {
-      if (!event.target.classList.contains("select-item")) return;
+      if (!event.target.classList.contains("dropdown-item")) return;
       let name = event.target.innerHTML;
       
       // If even a single tag is applied, remove it

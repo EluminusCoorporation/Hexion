@@ -87,12 +87,12 @@
   background-color: var(--hover);
 }
 
-.combobox-container .select-item {
+.combobox-container .dropdown-item {
   visibility: hidden;
   opacity: 0;
 }
 
-.combobox-container .select-item.visible {
+.combobox-container .dropdown-item.visible {
   /* Inherit the visibility of the parent so it isnt visible when the combobox is closed */
   visibility: inherit;
   opacity: 1;
