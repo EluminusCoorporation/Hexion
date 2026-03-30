@@ -6,12 +6,22 @@ export function setFunction(func) {
   actionRegistry[func.name] = func;
 }
 
+function closeAllOpenedDropdown() {
+  document.querySelectorAll("#dropDownContent.show").forEach(dropdown => {
+    // Toggle the dropdown
+    dropdown.classList.remove("show");
+    // Toggle the icon
+    dropdown.parentNode.querySelector("#dropdownIcon").classList.remove("active");
+  });
+}
+
 if (dropDownMenu) {
   // make an listener for each dropdown
   dropDownMenu.forEach(el => {
     const dropDownContent = el.querySelector("#dropDownContent");
     
     el.addEventListener("click", function () {
+      if (!dropDownContent.classList.contains("show")) closeAllOpenedDropdown();
       // Toggle the dropdown
       dropDownContent.classList.toggle("show");
       // Toggle the icon
@@ -54,4 +64,12 @@ if (dropDownMenu) {
       if (typeof action === "function") action();
     });
   });
+  
+  // Make an event listener to close dropdowns on outside click
+  document.addEventListener("click", event => {
+    // Handle dropdown closing in the dropdown event listener
+    if (event.target.closest('#dropDownMenu')) return;
+    
+    closeAllOpenedDropdown();
+  })
 }
