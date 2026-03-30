@@ -3,10 +3,6 @@
   color: var(--secondary) !important;
 }
 
-.page-header {
-  background: linear-gradient(to right, transparent 0%, springgreen 15%, springgreen 85%, transparent 100%);
-}
-
 .donation-container {
   display: flex;
   background: linear-gradient(0deg, transparent 5%, var(--bg-light));

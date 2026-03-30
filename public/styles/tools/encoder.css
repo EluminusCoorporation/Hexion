@@ -1,50 +1,6 @@
-.page-header {
-  background: linear-gradient(to right, transparent 0%, springgreen 15%, springgreen 85%, transparent 100%);
-}
-
-.header-tag {
-  display: flex;
-  gap: 3px;
-  align-items: center;
-  padding: 2px;
-  background-color: white;
-  font-size: .6em;
-  color: springgreen;
-  border-radius: 3px;
-}
-
 .tools {
   background-color: var(--bg-light);
   color: var(--secondary) !important;
-}
-
-.back-container {
-  display: flex;
-  padding: .3em 1em .3em 1em;
-  width: max-content;
-  margin-left: calc(50% - 50vw);
-  flex-direction: row;
-  color: var(--text);
-  background-color: var(--bg);
-  border: 1px solid var(--border);
-  border-left: none;
-  border-top-right-radius: 2em;
-  border-bottom-right-radius: 2em;
-  font-size: .65em;
-  font-weight: bold;
-  cursor: pointer;
-  align-items: center;
-  user-select: none;
-  text-decoration: none;
-  transition: all .3s;
-}
-
-.back-container i {
-  font-size: 1.8em;
-}
-
-.back-container:hover {
-  transform: translateX(-6px);
 }
 
 .input-container {
