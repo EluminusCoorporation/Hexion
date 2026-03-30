@@ -124,3 +124,21 @@
 .copy-button:hover {
   background: var(--hover);
 }
+
+/* Input box Css */
+.input-container {
+  border-radius: 2em;
+  padding: 15px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background-color: var(--bg);
+  box-shadow: 0 2px 2px var(--shadow);
+  outline-color: transparent;
+  position: relative;
+}
+
+.input-container::placeholder {
+  color: var(--text-muted);
+  font-weight: bold;
+  padding-left: 5px;
+}

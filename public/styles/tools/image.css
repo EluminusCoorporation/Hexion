@@ -3,6 +3,11 @@
   color: var(--secondary) !important;
 }
 
+.input-container {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
 .uploader-container {
   display: flex;
   flex-direction: column;

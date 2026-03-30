@@ -46,25 +46,6 @@
   margin: 0 !important;
 }
 
-.input-container {
-  border-radius: 15px;
-  padding: 15px;
-  border: 1px solid var(--border);
-  border-top: 1px solid var(--highlight);
-  color: var(--text);
-  background-color: var(--bg);
-  box-shadow: 0 2px 2px var(--shadow);
-  margin: .7em 0;
-  outline-color: transparent;
-  position: relative;
-}
-
-.input-container::placeholder {
-  color: var(--text-muted);
-  font-weight: bold;
-  padding-left: 5px;
-}
-
 .input-selectors {
   border: 1px dashed var(--border);
   border-radius: .4em;
