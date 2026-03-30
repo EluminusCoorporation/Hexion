@@ -34,14 +34,15 @@ if (dropDownMenu) {
       let name = event.target.innerHTML;
       
       // If even a single tag is applied, remove it
+      let sanitizedItem = event.target;
       const tags = event.target.querySelector('.tag');
       if (tags) {
         // Clone it to avoid removing actual tags
-        const itemClone = event.target.cloneNode(true);
+        sanitizedItem = event.target.cloneNode(true);
         // Remove all tags
-        itemClone.querySelectorAll('.tag').forEach(tag => tag.remove());
+        sanitizedItem.querySelectorAll('.tag').forEach(tag => tag.remove());
         // Apply the sanitized name
-        name = itemClone.innerHTML;
+        name = sanitizedItem.innerHTML;
       };
       
       // Ignores if name is Same as the selected one
@@ -49,7 +50,7 @@ if (dropDownMenu) {
       if (event.target.textContent !== selectorItem.dataset.selected) {
         selectorItem.style.color = "var(--text)";
         selectorItem.innerHTML = name;
-        selectorItem.dataset.selected = event.target.textContent;
+        selectorItem.dataset.selected = sanitizedItem.textContent;
       };
       
       // Unselects the previously selected item(s)
