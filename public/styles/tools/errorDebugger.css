@@ -155,7 +155,7 @@
   padding-left: 5px;
 }
 
-.flexbox-results {
+.results-container {
   display: none;
   flex: 1;
   margin-top: 2em;

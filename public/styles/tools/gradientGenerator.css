@@ -179,6 +179,7 @@
   flex-direction: row;
   gap: .5em;
   justify-content: center;
+  margin-bottom: 1em;
 }
 
 .styler-label {
@@ -215,24 +216,6 @@
 }
 .stylers:checked ~ .icon {
   color: var(--primary);
-}
-
-.input-container {
-  border-radius: 2em;
-  padding: 15px;
-  border: 1px solid var(--border);
-  color: var(--text);
-  background-color: var(--bg);
-  box-shadow: 0 2px 2px var(--shadow);
-  margin-top: .7em;
-  outline-color: transparent;
-  position: relative;
-}
-
-.input-container::placeholder {
-  color: var(--text-muted);
-  font-weight: bold;
-  padding-left: 5px;
 }
 
 .options-container {
@@ -322,32 +305,8 @@
   display: unset;
 }
 
-.flexbox-results {
-  display: flex;
+.results-container {
+  display: flex !important;
+  margin-top: .5em !important;
   margin-bottom: 1em;
-  position: relative;
-}
-
-.results {
-  position: relative;
-  resize: none;
-  min-height: 200px;
-  padding: 15px;
-  box-shadow: 0px 4px 6px var(--shadow);
-  color: var(--text);
-  background: linear-gradient(0deg, var(--bg), var(--bg-light));
-  border: none;
-  border-radius: 15px;
-}
-
-.results::placeholder {
-  color: var(--text-muted);
-  font-weight: bold;
-  padding-left: 5px;
-}
-
-.results-div {
-  position: relative;
-  display: inline-block;
-  justify-content: center;
 }

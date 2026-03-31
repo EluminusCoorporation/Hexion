@@ -53,5 +53,6 @@
 }
 
 .results-button {
+  color: black !important;
   background-color: floralwhite;
 }
