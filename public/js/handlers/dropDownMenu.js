@@ -31,19 +31,19 @@ if (dropDownMenu) {
     // Makes a event listener for all Items
     dropDownContent.addEventListener("click", event => {
       if (!event.target.classList.contains("dropdown-item")) return;
-      let name = event.target.innerHTML;
       
-      // If even a single tag is applied, remove it
+      // Even if a single tag is applied, remove it
       let sanitizedItem = event.target;
       const tags = event.target.querySelector('.tag');
       if (tags) {
         // Clone it to avoid removing actual tags
+        // Apply it as the sanitizedItem
         sanitizedItem = event.target.cloneNode(true);
         // Remove all tags
         sanitizedItem.querySelectorAll('.tag').forEach(tag => tag.remove());
-        // Apply the sanitized name
-        name = sanitizedItem.innerHTML;
       };
+      // Selected item name
+      const name = sanitizedItem.innerHTML;
       
       // Ignores if name is Same as the selected one
       const selectorItem = el.querySelector("#dropdownSelected");
