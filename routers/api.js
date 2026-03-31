@@ -20,10 +20,10 @@ const router = express.Router();
 
 // POST /api/debugger - Debugs the given code
 router.post("/debugger", async (req, res) => {
-  //Gets the json data sent from the frontend
+  // Gets the json data sent from the frontend
   const { type, code } = req.body;
 
-  //Creates an report var to store debugger results
+  // Creates an report var to store debugger results
   let report;
 
   try {
@@ -100,7 +100,7 @@ router.post("/debugger", async (req, res) => {
     res.json({ report: report });
   } catch (error) {
     //If any unexpected errors found report them
-    res.status(400).json({ message: error });
+    res.status(400).json({ message: error.message });
   }
 });
 
