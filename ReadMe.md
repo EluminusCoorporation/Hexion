@@ -7,13 +7,15 @@
 Hexion, an multi purpose website it provides tools used to help you create you're project faster. Getting tons of syntax error? just use our error debugger it will help you find the line thats causing the error, if you want to encode/decode any text or encrypt/decrypt any code you can do that in our website, image conversion, request sender and Much Much More!
 
 # Features
-- **Error debugger**
-- **Gradient generator**
+- **Error Debugger**
+- **Gradient Generator**
 - **Decoder and Encoder**
 - **Encrypter and Decrypter**
-- **Image Compressor**
-- **Html to app converter**
+- **Image Converter**
+- **Html to App Converter**
 - **Request Sender**
+- **Ascii Art Generator**
+- **Color Converter**
 
 ## Usage
 ### Requirements:
