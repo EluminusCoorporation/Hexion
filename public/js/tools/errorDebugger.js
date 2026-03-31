@@ -245,7 +245,7 @@ function setDebuggerContext(report, error, type) {
   if (type === "Html") {
     context = `${report[error].evidence}\n\n\nError: ${report[error].message} | ${report[error].line}:${report[error].col}`;
   } else if (type === "Css") {
-    context = `${report.results[error].warnings[0].rule}\n\n\nError: ${report.results[error].warnings[0].text} | ${report.results[error].warnings[0].line}:${report.results[error].warnings[0].column}`
+    context = `${report[error].warnings[0].rule}\n\n\nError: ${report[error].warnings[0].text} | ${report[error].warnings[0].line}:${report[error].warnings[0].column}`
   } else if (type === "Java Script") {
     context = `Error: ${report[0].messages[error].message} | ${report[0].messages[error].line}:${report[0].messages[error].column}`
   } else if (type === "Python") {
@@ -261,13 +261,13 @@ resultsBtn.addEventListener('click', async () => {
     
     const resultsDiv = document.getElementById('resultsContainer');
     const type = document.getElementById('dropdownSelected').dataset.selected.trim();
-    //runs error handler
+    // runs error handler
     if (!errorLoggerBEFORE(type, code)) {
       resultsDiv.style.display = "none";
       return;
     };
   
-    //sends the api request to the end point
+    // sends the api request to the end point
     const res = await fetch('/api/debugger', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -289,22 +289,23 @@ resultsBtn.addEventListener('click', async () => {
       const errorMessage = ((await res.json()).message) || "An unknown error occured.";
       throw new Error(errorMessage);
     };
-    //Gets the data
+    
+    // Gets the data
     const data = await res.json();
     
     if (!data) throw new Error('The response from our server was empty, retry debugging.')
   
-    //Get the error report & log it
+    // Get the error report & log it
     const fileReport = data.report;
     console.dir(data);
   
-    //Let the default count be 0
+    // Let the default count be 0
     let errorCount = 0;
   
     if (type === "Html") {
       errorCount = fileReport.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length
     } else if (type === "Css") {
-      errorCount = fileReport.results.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
+      errorCount = fileReport.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
     } else if (type === "Java Script") {
       errorCount = fileReport[0].errorCount
     } else if (type === "Python") {

@@ -58,17 +58,32 @@ router.post("/debugger", async (req, res) => {
         "tagname-lowercase": true,
         "title-require": false
       };
-      //Stores the results in the provided var
+      // Stores the results in the provided var
       report = HTMLHint.HTMLHint.verify(code, config);
     } else if (type === "Css") {
-      report = await stylelint.lint({
-        code: code,
-        //Extended ruleset support
+      const rawReport = await stylelint.lint({
+        code,
+        // Extended ruleset support
         config: { extends: "stylelint-config-standard" }
       });
+      // FIX: sanitize it to avoid circulation errors
+      function sanitizeReport(results) {
+        return results.map(r => ({
+          source: r.source,
+          warnings: r.warnings.map(w => ({
+            line: w.line,
+            column: w.column,
+            text: w.text,
+            rule: w.rule
+          })),
+          errored: r.errored
+        }));
+      }
+      
+      report = sanitizeReport(rawReport.results);
     } else if (type === "Java Script") {
       const eslint = new ESLint({
-        //Sets this as the config
+        // Sets this as the config
         overrideConfigFile: true,
         overrideConfig: {
           //Some custon rules
@@ -97,7 +112,7 @@ router.post("/debugger", async (req, res) => {
     if (!report) throw new Error('The server responded with nothing, something went wrong.');
     
     // send the report to the frontend
-    res.json({ report: report });
+    res.json({ report });
   } catch (error) {
     //If any unexpected errors found report them
     res.status(400).json({ message: error.message });
