@@ -32,9 +32,9 @@ router.post("/debugger", async (req, res) => {
     
     if (typeof code !== "string") throw new Error("Invalid code parameter, expected string.")
     
-    //Searches for the type of debugger
-    if (type === "Html") {
-      //Config for the rule set being used by the module (refer to the module docs for the list)
+    // Searches for the type of debugger
+    if (type === "html") {
+      // Config for the rule set being used by the module (refer to the module docs for the list)
       const config = {
         "alt-require": true,
         "attr-lowercase": true,
@@ -60,7 +60,7 @@ router.post("/debugger", async (req, res) => {
       };
       // Stores the results in the provided var
       report = HTMLHint.HTMLHint.verify(code, config);
-    } else if (type === "Css") {
+    } else if (type === "css") {
       const rawReport = await stylelint.lint({
         code,
         // Extended ruleset support
@@ -81,7 +81,7 @@ router.post("/debugger", async (req, res) => {
       }
       
       report = sanitizeReport(rawReport.results);
-    } else if (type === "Java Script") {
+    } else if (type === "js") {
       const eslint = new ESLint({
         // Sets this as the config
         overrideConfigFile: true,
@@ -96,7 +96,7 @@ router.post("/debugger", async (req, res) => {
         }
       });
       report = await eslint.lintText(code);
-    } else if (type === "Python") {
+    } else if (type === "py") {
       //Sets up ruff for debugging
       const process = spawnSync("python3", ["-m", "flake8", "-"], {
         input: code,

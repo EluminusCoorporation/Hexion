@@ -97,13 +97,12 @@
 }
 
 .file-upload-button {
-  max-width: 70vw;
   display: flex;
   flex-direction: row;
   gap: .5em;
   justify-content: center;
   align-items: center;
-  padding: 1em 2em;
+  padding: 1em 1.5em;
   border-radius: 1em;
   background-color: var(--bg);
   border: 2px dashed var(--text-muted);

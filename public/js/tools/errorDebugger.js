@@ -4,11 +4,30 @@ import {} from '../handlers/copy.js'
 import { formatFileSize } from '../handlers/utils.js'
 import { setFunction } from '../handlers/dropDownMenu.js'
 
+// Supported Extension list.
+const supportedExtensions = ["py", "js", "html", "css"]
+
 // Placeholders
 let code = null;
 let report = null;
 
-let selectedExt = "auto";
+let selectedExtension = "auto";
+let fileExtension = null;
+
+function clearFile() {
+  document.getElementById('fileUploader').value = null;
+  
+  const fileNameLabel = document.getElementById('fileName');
+  const fileIcon = document.getElementById('fileIcon');
+  
+  // clear file data
+  fileNameLabel.textContent = 'Upload File';
+  fileIcon.classList.remove('bx', 'bx-file-code');
+  fileIcon.classList.add('fa-solid', 'fa-upload');
+  
+  fileExtension = null;
+  code = null;
+}
 
 function selectExtension() {
   const type = document.getElementById('dropdownSelected').dataset.selected.toLowerCase().trim();
@@ -17,16 +36,27 @@ function selectExtension() {
     case 'auto':
     case 'html':
     case 'css':
-      selectedExt = type;
+      selectedExtension = type;
+      break;
     case 'java script':
-      selectedExt = 'js';
+      selectedExtension = 'js';
+      break;
     case 'python':
-      selectedExt = 'py';
+      selectedExtension = 'py';
+      break;
     default:
-      selectedExt = type;
+      selectedExtension = type;
+      break;
   };
+  
+  if (!fileExtension) return clearFile();
+  
+  // Check if currently uploaded file is compliant
+  if (selectedExtension === "auto") {
+    // Check if Extension is supported
+    if (!supportedExtensions.includes(fileExtension)) clearFile();
+  } else if (selectedExtension !== fileExtension) clearFile();
 }
-
 setFunction(selectExtension);
 
 //import required elements
@@ -61,8 +91,8 @@ textMode.addEventListener("click", function() {
   const html = document.getElementById('html');
   
   //disable auto as an option
-  if (selectedExt === "auto") {
-    selectedExt = "html";
+  if (selectedExtension === "auto") {
+    selectedExtension = "html";
     
     auto.classList.remove('selected');
     html.classList.add('selected');
@@ -70,23 +100,16 @@ textMode.addEventListener("click", function() {
     const htmlName = html.innerHTML;
     const dropdownText = document.getElementById('dropdownSelected');
     
-    dropdownText.dataset.selected = "HTML";
+    dropdownText.dataset.selected = "html";
     dropdownText.innerHTML = htmlName;
     
     // shows an informatory alert
     document.getElementById('infoContainer').style.display = "block";
   };
-  const fileNameLabel = document.getElementById('fileName');
-  const fileIcon = document.getElementById('fileIcon');
-  
   //deselect auto
   auto.classList.add('disable');
   
-  fileNameLabel.textContent = 'Upload File';
-  fileIcon.classList.remove('bx', 'bx-file-code');
-  fileIcon.classList.add('fa-solid', 'fa-upload');
-  
-  code = null;
+  clearFile();
 });
 
 //Makes an event listener for the switchers
@@ -121,31 +144,35 @@ buttons.forEach((btn, index) => {
 //special errorhandler for File Mode
 uploadbtn.addEventListener('click', () => {
   //if not selected an language
-  if (!selectedExt) {
+  if (!selectedExtension) {
     setStatus('error', 'Debugging failed', 'Select a language before uploading.')
     return false;
   };
   //clear errors
   setStatus();
 })
-// Supported Extension list.
-const supportedExtensions = ["py", "js", "html", "css"]
+
 
 async function handleFile(file) {
   try {
+    const selectedType = document.getElementById('dropdownSelected').dataset.selected.toLowerCase().trim();
+    
     // Run file error handler
     if (!fileLogger(file)) return false;
     
     // File's Extension
-    const fileExtension = file.name.split('.').pop().toLowerCase();
+    const rawFileExtension = file.name.split('.').pop().toLowerCase();
     
-      // checks if selectedExt is auto
-    if (selectedExt === "auto") {
+    // checks if selectedExtension is auto
+    if (selectedType === "auto") {
       // Checks if Extension is supported
-      if (!supportedExtensions.includes(fileExtension)) throw new Error('File Extension not supported by our service')
+      if (!supportedExtensions.includes(rawFileExtension)) throw new Error('File Extension not supported by our service');
+      selectedExtension = rawFileExtension;
     }
     // Else checks if not supported
-    else if (fileExtension !== selectedExt) throw new Error(`File Extension not supported by the language you have selected (.${selectedExt})`);
+    else if (fileExtension !== selectedExtension) throw new Error(`File Extension not supported by the language you have selected (.${selectedExtension})`);
+    
+    fileExtension = rawFileExtension;
     
     // Get file data
     const fileNameLabel = document.getElementById('fileName');
@@ -162,7 +189,7 @@ async function handleFile(file) {
     
     // stores it in the browser
     code = fileText;
-  } catch(error) {
+  } catch (error) {
     setStatus('error', 'File Uploader Failed', error);
     console.error('An error occured while uploading file: ' + error);
   }
@@ -237,18 +264,18 @@ for (let i = 0; i < textareasHere.length; i++) {
   }
 }
 
-//sets the results function
+// sets the results function
 function setDebuggerContext(report, error, type) {
-  //context used
+  // context used
   let context;
   
-  if (type === "Html") {
+  if (type === "html") {
     context = `${report[error].evidence}\n\n\nError: ${report[error].message} | ${report[error].line}:${report[error].col}`;
-  } else if (type === "Css") {
+  } else if (type === "css") {
     context = `${report[error].warnings[0].rule}\n\n\nError: ${report[error].warnings[0].text} | ${report[error].warnings[0].line}:${report[error].warnings[0].column}`
-  } else if (type === "Java Script") {
+  } else if (type === "js") {
     context = `Error: ${report[0].messages[error].message} | ${report[0].messages[error].line}:${report[0].messages[error].column}`
-  } else if (type === "Python") {
+  } else if (type === "py") {
     context = `Error: ${report}`;
   }
   //returns it to the sender
@@ -260,12 +287,15 @@ resultsBtn.addEventListener('click', async () => {
     toggleLoader(true);
     
     const resultsDiv = document.getElementById('resultsContainer');
-    const type = document.getElementById('dropdownSelected').dataset.selected.trim();
+    const type = selectedExtension.toLowerCase();
     // runs error handler
     if (!errorLoggerBEFORE(type, code)) {
       resultsDiv.style.display = "none";
       return;
     };
+    
+    // auto checker
+    if (type === "auto") throw new Error("No extension resolved, upload an file.");
   
     // sends the api request to the end point
     const res = await fetch('/api/debugger', {
@@ -302,13 +332,13 @@ resultsBtn.addEventListener('click', async () => {
     // Let the default count be 0
     let errorCount = 0;
   
-    if (type === "Html") {
+    if (type === "html") {
       errorCount = fileReport.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length
-    } else if (type === "Css") {
+    } else if (type === "css") {
       errorCount = fileReport.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
-    } else if (type === "Java Script") {
+    } else if (type === "js") {
       errorCount = fileReport[0].errorCount
-    } else if (type === "Python") {
+    } else if (type === "py") {
       if (fileReport) errorCount = 1;
     }
   
@@ -369,8 +399,6 @@ const errorGoBack = document.getElementById('errorGoBack');
 
 //Next error button
 errorGoForward.addEventListener("click", () => {
-  const type = document.getElementById('dropdownSelected').dataset.selected.trim();
-  
   const currentError = document.getElementById('currentError');
   const totalErrors = document.getElementById('totalErrors');
   
@@ -390,15 +418,13 @@ errorGoForward.addEventListener("click", () => {
   const resultsInput = document.getElementById('results');
   
   //sets the new report
-  const errorContext = setDebuggerContext(report, currentValue - 1, type);
+  const errorContext = setDebuggerContext(report, currentValue - 1, selectedExtension);
   
   resultsInput.value = errorContext;
 });
 
 //previous error button
 errorGoBack.addEventListener("click", () => {
-  const type = document.getElementById('dropdownSelected').dataset.selected.trim();
-  
   const currentError = document.getElementById('currentError');
   const totalErrors = document.getElementById('totalErrors');
   
@@ -418,7 +444,7 @@ errorGoBack.addEventListener("click", () => {
   const resultsInput = document.getElementById('results');
   
   //sets the new report
-  const errorContext = setDebuggerContext(report, currentValue - 1, type);
+  const errorContext = setDebuggerContext(report, currentValue - 1, selectedExtension);
   
   resultsInput.value = errorContext;
 });
