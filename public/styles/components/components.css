@@ -253,5 +253,5 @@
 .results::placeholder {
   color: var(--text-muted);
   font-weight: bold;
-  padding-left: 5px;
+  padding-left: .5em;
 }
