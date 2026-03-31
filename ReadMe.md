@@ -4,7 +4,7 @@
 <H1 align="center">Hexion</H1>
 <img src="https://i.ibb.co/RksHmpP7/logo.webp" width="150" height="150" align="center" alt="Hexion Logo">
 
-Hexion an multi perpose website it provides tools used to help you create you're project faster. Getting tons of syntax error ? just use our errordebugging it will provide you with the an solution that will fix you're code, if you want to encode/decode any text or encrypt/decrypt any code you can do that in our website.
+Hexion, an multi purpose website it provides tools used to help you create you're project faster. Getting tons of syntax error? just use our error debugger it will help you find the line thats causing the error, if you want to encode/decode any text or encrypt/decrypt any code you can do that in our website, image conversion, request sender and Much Much More!
 
 # Features
 - **Error debugger**
@@ -16,7 +16,6 @@ Hexion an multi perpose website it provides tools used to help you create you're
 - **Request Sender**
 
 ## Usage
-
 ### Requirements:
   - NodeJS ^25
 
