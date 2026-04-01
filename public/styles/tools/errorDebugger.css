@@ -3,16 +3,6 @@
   color: var(--secondary) !important;
 }
 
-.info-container {
-  display: none;
-  padding: 1em;
-  background-color: hsla(208, 100%, 44.12%, 0.4);
-  border: 1px solid hsl(208, 100%, 44.12%);
-  color: white;
-  font-size: .8em;
-  margin-bottom: 1.5em;
-}
-
 #auto.disable {
   opacity: .5;
   pointer-events: none;
@@ -102,7 +92,7 @@
   gap: .5em;
   justify-content: center;
   align-items: center;
-  padding: 1em 1.5em;
+  padding: 1em 2em;
   border-radius: 1em;
   background-color: var(--bg);
   border: 2px dashed var(--text-muted);

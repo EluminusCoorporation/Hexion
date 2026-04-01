@@ -2,6 +2,7 @@
 const express = require("express");
 
 // Debugger modules
+const { parse } = require("node-html-parser");
 const HTMLHint = require("htmlhint");
 const stylelint = require("stylelint");
 const { ESLint } = require("eslint");
@@ -18,8 +19,51 @@ const culori = require("culori");
 
 const router = express.Router();
 
+// Helper functions for debugger
+async function debugCss(code) {
+  const rawReport = await stylelint.lint({
+    code,
+    // Extended ruleset support
+    config: { extends: "stylelint-config-standard" }
+  });
+  // FIX: sanitize it to avoid circulation errors
+  function sanitizeReport(results) {
+    return results.map(r => ({
+      source: r.source,
+      warnings: r.warnings.map(w => ({
+        line: w.line,
+        column: w.column,
+        text: w.text,
+        rule: w.rule
+      })),
+      errored: r.errored
+    }));
+  }
+  
+  return sanitizeReport(rawReport.results);
+}
+
+async function debugJs(code) {
+  const eslint = new ESLint({
+    // Sets this as the config
+    overrideConfigFile: true,
+    overrideConfig: {
+      //Some custon rules
+      rules: {
+        //If no semi colon error
+        semi: ["error", "always"],
+        //If wrong usage of quotes warn
+        quotes: ["warn", "single"]
+      }
+    }
+  });
+  const result = await eslint.lintText(code);
+  return result;
+}
+
 // POST /api/debugger - Debugs the given code
 router.post("/debugger", async (req, res) => {
+  
   // Gets the json data sent from the frontend
   const { type, code } = req.body;
 
@@ -59,44 +103,51 @@ router.post("/debugger", async (req, res) => {
         "title-require": false
       };
       // Stores the results in the provided var
-      report = HTMLHint.HTMLHint.verify(code, config);
-    } else if (type === "css") {
-      const rawReport = await stylelint.lint({
-        code,
-        // Extended ruleset support
-        config: { extends: "stylelint-config-standard" }
-      });
-      // FIX: sanitize it to avoid circulation errors
-      function sanitizeReport(results) {
-        return results.map(r => ({
-          source: r.source,
-          warnings: r.warnings.map(w => ({
-            line: w.line,
-            column: w.column,
-            text: w.text,
-            rule: w.rule
-          })),
-          errored: r.errored
-        }));
-      }
+      const htmlReport = HTMLHint.HTMLHint.verify(code, config);
       
-      report = sanitizeReport(rawReport.results);
-    } else if (type === "js") {
-      const eslint = new ESLint({
-        // Sets this as the config
-        overrideConfigFile: true,
-        overrideConfig: {
-          //Some custon rules
-          rules: {
-            //If no semi colon error
-            semi: ["error", "always"],
-            //If wrong usage of quotes warn
-            quotes: ["warn", "single"]
-          }
+      // Debug the style & script tags
+      const doc = parse(code);
+      
+      // Get all styles
+      const styles = [...doc.querySelectorAll('style')]
+      // Filter empty ones
+      .filter(style => style.textContent)
+      // Get the textContent and join them
+      .map(style => style.textContent)
+      .join('\n');
+      // Get all scripts
+      const scripts = [...doc.querySelectorAll('script')]
+      // Filter empty ones
+      .filter(script => script.textContent && !script.hasAttribute('src'))
+      // Get the textContent and join them
+      .map(script => script.textContent)
+      .join('\n');
+      
+      if (styles || scripts) {
+        // if style tags exists debug them
+        let cssReport = [];
+        if (styles) cssReport = await debugCss(styles);
+        // if script tags exists debug them
+        let jsReport = [];
+        if (scripts) jsReport = await debugJs(scripts);
+        
+        // Prepare a mixed report
+        const mixedReport = {
+          mixedHtml: true,
+          html: htmlReport,
+          css: cssReport,
+          js: jsReport
         }
-      });
-      report = await eslint.lintText(code);
-    } else if (type === "py") {
+        
+        report = mixedReport;
+      // if no style or script tags exist just send raw html report
+      } else {
+        report = htmlReport;
+      }
+    }
+    else if (type === "css") report = await debugCss(code);
+    else if (type === "js") report = await debugJs(code);
+    else if (type === "py") {
       //Sets up ruff for debugging
       const process = spawnSync("python3", ["-m", "flake8", "-"], {
         input: code,
@@ -115,7 +166,7 @@ router.post("/debugger", async (req, res) => {
     res.json({ report });
   } catch (error) {
     //If any unexpected errors found report them
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 

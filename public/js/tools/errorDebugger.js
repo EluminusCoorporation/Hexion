@@ -102,9 +102,6 @@ textMode.addEventListener("click", function() {
     
     dropdownText.dataset.selected = "html";
     dropdownText.innerHTML = htmlName;
-    
-    // shows an informatory alert
-    document.getElementById('infoContainer').style.display = "block";
   };
   //deselect auto
   auto.classList.add('disable');
@@ -232,16 +229,23 @@ textInput.addEventListener("change", function() {
   code = textInputed;
 });
 
-//Sends an alert on usage of html
-document.getElementById('dropDownContent').addEventListener("click", (event) => {
-  // shows an informatory alert
-  if (event.target === document.getElementById('html')) document.getElementById('infoContainer').style.display = "block";
-  // else hide it
-  else document.getElementById('infoContainer').style.display = "none";
-});
-
-//Custom editor like textarea lines
 let textareasHere = Array.from(document.querySelectorAll(".textarea-div > textarea"));
+
+function refreshLineNumbers() {
+  // refreshes line numbers
+  for (let i = 0; i < textareasHere.length; i++) {
+    if (i != 0 && i % 2 == 1) {
+      textareasHere[i - 1].textContent = "1\n";
+      const numberOfLinesHereZ = Math.max(textareasHere[i].value.split("\n").length, 1);
+      for (let h = 1; h < numberOfLinesHereZ; h++) {
+        textareasHere[i - 1].textContent += (h + 1).toString() + "\n";
+      }
+      textareasHere[i - 1].setAttribute("cols", numberOfLinesHereZ.toString().length.toString());
+    }
+  }
+}
+
+//C ustom editor like textarea lines
 for (let i = 0; i < textareasHere.length; i++) {
   if (i != 0 && i % 2 == 1) {
     textareasHere[i].addEventListener("scroll", function(e) {
@@ -267,18 +271,21 @@ for (let i = 0; i < textareasHere.length; i++) {
 // sets the results function
 function setDebuggerContext(report, error, type) {
   // context used
-  let context;
-  
-  if (type === "html") {
-    context = `${report[error].evidence}\n\n\nError: ${report[error].message} | ${report[error].line}:${report[error].col}`;
+  let context = "";
+  if (report.mixedHtml) {
+    if (report.html && report?.html[error]) context += `• HTML: ${report.html[error].evidence}\nError: ${report.html[error].message} | ${report.html[error].line}:${report.html[error].col}\n\n`;
+    if (report.css && report?.css[0]?.warnings[error]) context += `• CSS: ${report.css[0].warnings[error].rule}\nError: ${report.css[0].warnings[error].text} | ${report.css[0].warnings[error].line}:${report.css[0].warnings[error].column}\n\n`;
+    if (report.js && report?.js[0]?.messages[error]) context += `• JS: Error occured: \nError: ${report.js[0].messages[error].message} | ${report.js[0].messages[error].line}:${report.js[0].messages[error].column}\n`;
+  } else if (type === "html") {
+    context = `${report[error].evidence}\n\n\nError: ${report[error].message} | ${report[error].line}:${report[error].col}\n`;
   } else if (type === "css") {
-    context = `${report[error].warnings[0].rule}\n\n\nError: ${report[error].warnings[0].text} | ${report[error].warnings[0].line}:${report[error].warnings[0].column}`
+    context = `${report[0].warnings[error].rule}\n\n\nError: ${report[0].warnings[error].text} | ${report[0].warnings[error].line}:${report[0].warnings[error].column}\n`;
   } else if (type === "js") {
-    context = `Error: ${report[0].messages[error].message} | ${report[0].messages[error].line}:${report[0].messages[error].column}`
+    context = `Error: ${report[0].messages[error].message} | ${report[0].messages[error].line}:${report[0].messages[error].column}\n`;
   } else if (type === "py") {
-    context = `Error: ${report}`;
+    context = `Error: ${report}\n`;
   }
-  //returns it to the sender
+  // returns it to the sender
   return context;
 }
 
@@ -326,65 +333,69 @@ resultsBtn.addEventListener('click', async () => {
     if (!data) throw new Error('The response from our server was empty, retry debugging.')
   
     // Get the error report & log it
-    const fileReport = data.report;
-    console.dir(data);
+    let fileReport = data.report;
+    console.dir(data.report);
   
     // Let the default count be 0
     let errorCount = 0;
-  
-    if (type === "html") {
-      errorCount = fileReport.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length
+    
+    if (fileReport.mixedHtml) {
+      const htmlErrorCount = fileReport.html?.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length ?? 0;
+      const cssErrorCount = fileReport.css?.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length ?? 0;
+      const jsErrorCount = fileReport.js[0]?.errorCount ?? 0;
+      
+      errorCount = Math.max(htmlErrorCount, cssErrorCount, jsErrorCount);
+      
+      // If no errors in css and js just make it a simple html debug report
+      if (htmlErrorCount && !cssErrorCount && !jsErrorCount) {
+        delete fileReport.css;
+        delete fileReport.js;
+        delete fileReport.mixedHtml;
+        fileReport = fileReport.html;
+      }
+    } else if (type === "html") {
+      errorCount = fileReport.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
     } else if (type === "css") {
       errorCount = fileReport.filter(item => typeof item === "object" && !Array.isArray(item) && item !== null).length;
     } else if (type === "js") {
-      errorCount = fileReport[0].errorCount
+      errorCount = fileReport[0].errorCount;
     } else if (type === "py") {
       if (fileReport) errorCount = 1;
     }
   
-    //if no errors found end
+    // if no errors found end
     if (errorCount === 0) {
       setStatus('success', 'No errors found', "No errors were detected in you're given code.");
       resultsDiv.style.display = "none";
       return;
     };
   
-    //stores the report for future in the broswer
+    // stores the report for future in the broswer
     report = fileReport;
   
-    //Sets the arrows
+    // Sets the arrows
     const arrows = document.querySelectorAll('.arrows');
   
-    //removes the disabled
+    // removes the disabled
     arrows.forEach((arrow) => arrow.classList.remove('disabled'));
-    //if one error disable both
+    // if one error disable both
     if (errorCount === 1) arrows.forEach((arrow) => arrow.classList.add('disabled'));
   
     const errorGoBack = document.getElementById('errorGoBack');
     errorGoBack.classList.add('disabled');
   
-    //set the total error count
+    // set the total error count
     const totalErrors = document.getElementById('totalErrors');
     totalErrors.textContent = `${errorCount}`;
   
     const resultsInput = document.getElementById('results');
     const errorContext = setDebuggerContext(fileReport, 0, type);
-    //sets the error
+    // sets the error
     resultsInput.value = errorContext;
+    
+    refreshLineNumbers();
   
-    //refreshes line numbers
-    for (let i = 0; i < textareasHere.length; i++) {
-      if (i != 0 && i % 2 == 1) {
-        textareasHere[i - 1].textContent = "1\n";
-        const numberOfLinesHereZ = Math.max(textareasHere[i].value.split("\n").length, 1);
-        for (let h = 1; h < numberOfLinesHereZ; h++) {
-          textareasHere[i - 1].textContent += (h + 1).toString() + "\n";
-        }
-        textareasHere[i - 1].setAttribute("cols", numberOfLinesHereZ.toString().length.toString());
-      }
-    }
-  
-    //Enables the output display
+    // Enables the output display
     resultsDiv.style.display = "flex";
   } catch (error) {
     console.error('An error occurred while debugging your code: ' + error);
@@ -421,6 +432,8 @@ errorGoForward.addEventListener("click", () => {
   const errorContext = setDebuggerContext(report, currentValue - 1, selectedExtension);
   
   resultsInput.value = errorContext;
+  
+  refreshLineNumbers();
 });
 
 //previous error button
@@ -447,4 +460,6 @@ errorGoBack.addEventListener("click", () => {
   const errorContext = setDebuggerContext(report, currentValue - 1, selectedExtension);
   
   resultsInput.value = errorContext;
+  
+  refreshLineNumbers();
 });
