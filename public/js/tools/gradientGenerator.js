@@ -156,8 +156,8 @@ function updateGradient() {
 
 //Creates an pickr
 function createPickr(el, color) {
-  const colorNameContainer = el.nextElementSibling
-  const colorName = colorNameContainer.querySelector('.color-name')
+  const colorNameContainer = el.nextElementSibling;
+  const colorName = colorNameContainer.querySelector('.color-name');
   
   //sets the pickr
   const pickr = Pickr.create({
@@ -186,7 +186,7 @@ function createPickr(el, color) {
   });
   //on save
   pickr.on('save', (color, instance) => {
-    const colorHex = color.toHEXA().toString()
+    const colorHex = color.toHEXA().toString();
     //Adds the colors on the viewer interface
     colorName.textContent = colorHex
     colorName.style.color = colorHex
@@ -195,10 +195,10 @@ function createPickr(el, color) {
   updateGradient();
 }
 
-//For each container create an pickr
+// For each container create an pickr
 document.querySelectorAll('.color-preview').forEach((el, i) => {
-  createPickr(el, "#00FF7F")
-})
+  createPickr(el, i === 0 ? "#00FF7F" : "#92ffd6");
+});
 
 function moveAnimation(list, map) {
   list.forEach(el => {
