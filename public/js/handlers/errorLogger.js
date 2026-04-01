@@ -11,40 +11,48 @@ export function setAlert(type, title, message) {
   const alertTitle = document.getElementById('alertTitle');
   const alertMessage = document.getElementById('alertMessage');
   
-  //If message is nothing it'll just close the status screen
+  // If message is empty it'll just close the status screen
   if (!message) {
     alertContainer.classList.remove('active');
+    alertTitle.textContent = null;
     alertMessage.textContent = null;
     return;
   }
   
   //Enables the Status screen
   alertContainer.classList.add('active');
-  //Adds status message to the status screen
+  //Adds status title & message to the status screen
   alertTitle.textContent = title;
   alertMessage.textContent = message;
   
-  //Sets the type of status code being used
-  if (type === "success") {
-    alertContainer.style.backgroundColor = "var(--success)";
-    alertIcon.className = "bx bx-check-circle";
+  // Sets the type of status code being used
+  switch (type.toLowerCase()) {
+    case "success":
+      alertContainer.style.backgroundColor = "var(--success)";
+      alertIcon.className = "bx bx-check-circle";
+      break;
+    case "info":
+      alertContainer.style.backgroundColor = "var(--info)";
+      alertIcon.className = "bx bx-info-square";
+      break;
+    case "warn":
+      alertContainer.style.backgroundColor = "var(--warning)";
+      alertIcon.className = "bx bx-alert-circle";
+      break;
+    case "danger":
+      alertContainer.style.backgroundColor = "var(--danger)";
+      alertIcon.className = "bx bx-alert-triangle";
+      break;
+    default:
+      alertContainer.style.backgroundColor = "var(--success)";
+      alertIcon.className = "bx bx-check-circle";
+      break;
   }
-  else if (type === "info") {
-    alertContainer.style.backgroundColor = "var(--info)"
-    alertIcon.className = "bx bx-info-square"
-  }
-  else if (type === "warn") {
-    alertContainer.style.backgroundColor = "var(--warning)";
-    alertIcon.className = "bx bx-alert-circle";
-  }
-  else if (type === "error") {
-    alertContainer.style.backgroundColor = "var(--danger)";
-    alertIcon.className = "bx bx-alert-triangle";
-  };
   
   // Start a new timeout
   alertTimeout = setTimeout(() => {
     alertContainer.classList.remove('active');
+    alertTitle.textContent = null;
     alertMessage.textContent = null;
   }, 7000);
 };
