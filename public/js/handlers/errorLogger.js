@@ -1,7 +1,7 @@
 //Sets an status timeout temp var
 let statusTimeout;
-//Global setStatus func
-export function setStatus(type, title, message) {
+//Global setAlert func
+export function setAlert(type, title, message) {
   //Clears old timeouts before execution
   clearTimeout(statusTimeout);
   
@@ -53,17 +53,17 @@ export function setStatus(type, title, message) {
 export function errorLoggerBEFORE(name, text) {
   //Checks if name is not provided
   if (name === "") {
-    setStatus('error', 'Process failed', 'Please fill in all the fields.')
+    setAlert('error', 'Process failed', 'Please fill in all the fields.')
     return false;
   };
   
   //Checks if text is not provided
   if (text === "") {
-    setStatus('error', 'Process failed', '. fieldsm');
+    setAlert('error', 'Process failed', '. fieldsm');
     return false;
   };
   //Else clears the timeout and goes forward
-  setStatus()
+  setAlert()
   return true;
 };
 
@@ -72,7 +72,7 @@ export function errorLoggerAFTER(text) {
   //Checks if text has characters that are not valid
   if (text.includes("�")) {
     resultsDiv.style.display = "none";
-    setStatus('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
+    setAlert('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
     return false;
   }
   //var used to check if there are invalid characters in a text
@@ -80,16 +80,16 @@ export function errorLoggerAFTER(text) {
   //Checks if text has invalid characters(Advance way)
   if (hasInvalidChars) {
     resultsDiv.style.display = "none";
-    setStatus('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
+    setAlert('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
     return false;
   }
   //Checks if text is empty
   if (text === "") {
     resultsDiv.style.display = "none";
-    setStatus('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
+    setAlert('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
     return false;
   }
-  setStatus()
+  setAlert()
   //Else goes forward
   return true;
 };
@@ -106,15 +106,15 @@ export function fileLogger(file) {
   const fileExtension = fileName.split('.').pop().toLowerCase();
   //Checks if file exists (2nd way)
   if (file.length === 0) {
-    setStatus('error', 'File Upload failed', 'Something went wrong did you select a file?');
+    setAlert('error', 'File Upload failed', 'Something went wrong did you select a file?');
     return false;
   };
   //Checks if file size exceeds the file size, limit
   if (file.size > 15728670) {
-    setStatus('error', 'File Verification failed', 'File is too large');
+    setAlert('error', 'File Verification failed', 'File is too large');
     return false;
   }
-  setStatus();
+  setAlert();
   //Else goes forward
   return true;
 }

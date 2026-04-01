@@ -1,5 +1,5 @@
 //Imports the required functions
-import { setStatus, fileLogger } from "../handlers/errorLogger.js";
+import { setAlert, fileLogger } from "../handlers/errorLogger.js";
 import {} from "../handlers/dropDownMenu.js";
 import { formatFileSize, afterTransition } from "../handlers/utils.js";
 import Cropper from "https://unpkg.com/cropperjs@1.6.2/dist/cropper.esm.js";
@@ -84,7 +84,7 @@ async function handleFile(file) {
       }
     }
   } catch(error) {
-    setStatus('error', 'Image Uploader Failed', error);
+    setAlert('error', 'Image Uploader Failed', error);
     console.error('An error occured while uploading the image: ' + error);
   }
 }
@@ -134,7 +134,7 @@ document.getElementById('cropMenuButton').addEventListener("click", () => {
     cropperContainer.classList.add('active');
     cropperMenu.classList.add('active');
   } catch(error) {
-    setStatus('error', 'Image Converter Failed', error);
+    setAlert('error', 'Image Converter Failed', error);
     console.log('Failed to convert image: ' + error)
   } finally {
     loader.style.display = "none";
@@ -242,7 +242,7 @@ resultsBtn.addEventListener("click", async function () {
     imagePreviewer.onload = () => URL.revokeObjectURL(imagePreviewer.src);
     document.getElementById('imagePreviewerContainer').style.display = "flex";
   } catch(error) {
-    setStatus('error', 'Image Converter Failed', error);
+    setAlert('error', 'Image Converter Failed', error);
     console.error('Failed to convert image: ' + error);
     downloadButton.style.display = "none";
   } finally {

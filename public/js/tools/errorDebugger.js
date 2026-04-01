@@ -1,5 +1,5 @@
 //Import required functions
-import { setStatus, errorLoggerBEFORE, fileLogger } from '../handlers/errorLogger.js';
+import { setAlert, errorLoggerBEFORE, fileLogger } from '../handlers/errorLogger.js';
 import {} from '../handlers/copy.js'
 import { formatFileSize } from '../handlers/utils.js'
 import { setFunction } from '../handlers/dropDownMenu.js'
@@ -142,11 +142,11 @@ buttons.forEach((btn, index) => {
 uploadbtn.addEventListener('click', () => {
   //if not selected an language
   if (!selectedExtension) {
-    setStatus('error', 'Debugging failed', 'Select a language before uploading.')
+    setAlert('error', 'Debugging failed', 'Select a language before uploading.')
     return false;
   };
   //clear errors
-  setStatus();
+  setAlert();
 })
 
 
@@ -187,7 +187,7 @@ async function handleFile(file) {
     // stores it in the browser
     code = fileText;
   } catch (error) {
-    setStatus('error', 'File Uploader Failed', error);
+    setAlert('error', 'File Uploader Failed', error);
     console.error('An error occured while uploading file: ' + error);
   }
 }
@@ -365,7 +365,7 @@ resultsBtn.addEventListener('click', async () => {
   
     // if no errors found end
     if (errorCount === 0) {
-      setStatus('success', 'No errors found', "No errors were detected in you're given code.");
+      setAlert('success', 'No errors found', "No errors were detected in you're given code.");
       resultsDiv.style.display = "none";
       return;
     };
@@ -399,7 +399,7 @@ resultsBtn.addEventListener('click', async () => {
     resultsDiv.style.display = "flex";
   } catch (error) {
     console.error('An error occurred while debugging your code: ' + error);
-    setStatus('error', 'Debugger Failed', error);
+    setAlert('error', 'Debugger Failed', error);
   } finally {
     toggleLoader(false);
   };

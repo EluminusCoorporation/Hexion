@@ -1,5 +1,5 @@
 //Imports the required functions
-import { setStatus, errorLoggerBEFORE } from "../handlers/errorLogger.js";
+import { setAlert, errorLoggerBEFORE } from "../handlers/errorLogger.js";
 import { setFunction } from "../handlers/dropDownMenu.js";
 import {} from "../handlers/copy.js";
 
@@ -175,7 +175,7 @@ resultsBtn.addEventListener("click", async () => {
     resultsDiv.style.display = "flex";
   } catch (error) {
     // catch every error and display
-    setStatus("error", "Request Sender Failed", error);
+    setAlert("error", "Request Sender Failed", error);
     console.error("An error occured while requesting url " + error)
   } finally {
     // disable the loader at the end no matter whats the result

@@ -1,5 +1,5 @@
 //Imports the required functions
-import { setStatus, errorLoggerBEFORE } from "../handlers/errorLogger.js";
+import { setAlert, errorLoggerBEFORE } from "../handlers/errorLogger.js";
 import {} from "../handlers/dropDownMenu.js";
 import {} from "../handlers/copy.js";
 import figlet from "https://esm.sh/figlet";
@@ -109,7 +109,7 @@ document.getElementById('clearSearchButton').addEventListener("click", function(
 // Get all fonts
 figlet.fonts(function(err, fonts) {
   if (err) {
-    setStatus('error', 'Font Loader Failed', 'Failed to Load the available fonts: ' + err);
+    setAlert('error', 'Font Loader Failed', 'Failed to Load the available fonts: ' + err);
     console.error('Error loading fonts:\n' + err);
     return;
   };
@@ -225,7 +225,7 @@ document.getElementById("results-btn").addEventListener("click", async () => {
     document.getElementById('results').textContent = asciiArt;
     document.getElementById('resultsContainer').style.display = "flex";
   } catch (error) {
-    setStatus('error', 'Ascii Art Generator Failed', error);
+    setAlert('error', 'Ascii Art Generator Failed', error);
     console.error('An error occured while generating ascii art: ', error);
   } finally {
     toggleLoader(false);

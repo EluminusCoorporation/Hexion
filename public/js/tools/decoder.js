@@ -1,6 +1,6 @@
 //Gets the required functions from other files
 import {
-  setStatus,
+  setAlert,
   errorLoggerBEFORE,
   errorLoggerAFTER
 } from "../handlers/errorLogger.js";
@@ -44,7 +44,7 @@ resultsBtn.addEventListener("click", function () {
     const resultedText = atob(text);
     const hasInvalidChars2 = /\d/.test(resultedText);
     if (hasInvalidChars2) {
-      setStatus(
+      setAlert(
         "error",
         "Proces failed",
         "Something went wrong, did you enter a valid encoded text?"

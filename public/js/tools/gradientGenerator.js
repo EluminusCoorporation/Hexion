@@ -1,5 +1,5 @@
 //Imports the required functions
-import { setStatus, errorLoggerBEFORE } from '../handlers/errorLogger.js';
+import { setAlert, errorLoggerBEFORE } from '../handlers/errorLogger.js';
 import { setFunction } from '../handlers/dropDownMenu.js'
 import {} from '../handlers/copy.js'
 import "https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js";
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.target.classList.add('bx-copy');
           }, 3000);
         }).catch(err => {
-          setStatus('error', 'Copy failed', "Failed to copy text!");
+          setAlert('error', 'Copy failed', "Failed to copy text!");
           console.log(err) // log the error if copy fails
         });
         //triggers the copy info alert
@@ -134,7 +134,7 @@ async function refreshOutput() {
 
     results.textContent = data.output;
   } catch (error) {
-    setStatus("error", "Gradient Generator Failed", error)
+    setAlert("error", "Gradient Generator Failed", error)
     console.error('An error occured while generating gradient: \n' + error)
   }
 }

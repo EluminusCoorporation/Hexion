@@ -1,5 +1,5 @@
 //Imports the required functions
-import { setStatus, errorLoggerBEFORE } from "../handlers/errorLogger.js";
+import { setAlert, errorLoggerBEFORE } from "../handlers/errorLogger.js";
 import {} from "../handlers/dropDownMenu.js";
 import {} from "../handlers/copy.js";
 

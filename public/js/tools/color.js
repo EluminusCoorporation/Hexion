@@ -1,5 +1,5 @@
 // Imports the required functions
-import { setStatus } from "../handlers/errorLogger.js";
+import { setAlert } from "../handlers/errorLogger.js";
 import {} from "../handlers/dropDownMenu.js";
 import {} from "../handlers/copy.js";
 
@@ -37,6 +37,6 @@ resultsBtn.addEventListener("click", async function () {
     document.getElementById('colorShowcaseContainer').style.display = "flex";
   } catch (error) {
     console.error('An error occured while converting color: \n' + error);
-    setStatus('error', 'Color Converter Failed', error);
+    setAlert('error', 'Color Converter Failed', error);
   }
 });

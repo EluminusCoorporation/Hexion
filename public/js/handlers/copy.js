@@ -1,4 +1,4 @@
-import { setStatus } from './errorLogger.js';
+import { setAlert } from './errorLogger.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const toggleCopy = document.querySelectorAll("#copy-icon");
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2000);
       })
       .catch(error => {
-        setStatus("error", "Copy failed", "Failed to copy text!");
+        setAlert("error", "Copy failed", "Failed to copy text!");
         console.log("An error occured while copying text: " + error);
       });
     

@@ -1,6 +1,6 @@
 //Imports required functions
 import {
-  setStatus,
+  setAlert,
   errorLoggerBEFORE,
   errorLoggerAFTER
 } from "../handlers/errorLogger.js";
