@@ -69,7 +69,7 @@
 }
 
 .nav-bar .side-bar ul li .active {
-  background-color: var(--bg-light) !important;
+  background-color: var(--bg-light);
   color: var(--secondary) !important;
 }
 
@@ -97,6 +97,10 @@
   border-bottom-right-radius: 1em;
   border-bottom-left-radius: 1em;
   background-color: var(--bg);
+}
+
+.nav-bar .side-bar ul li .sub-menu .active {
+  border-left: .2em solid var(--secondary);
 }
 
 .nav-bar .side-bar ul li .toggle-button {
