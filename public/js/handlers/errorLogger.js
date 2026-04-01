@@ -1,3 +1,5 @@
+import { afterTransition } from './utils.js';
+
 //Sets an status timeout temp var
 let alertTimeout;
 //Global setAlert func
@@ -19,9 +21,7 @@ export function setAlert(type, title, message) {
     return;
   }
   
-  //Enables the Status screen
-  alertContainer.classList.add('active');
-  //Adds status title & message to the status screen
+  // Set status title & message to the status screen
   alertTitle.textContent = title;
   alertMessage.textContent = message;
   
@@ -39,7 +39,7 @@ export function setAlert(type, title, message) {
       alertContainer.style.backgroundColor = "var(--warning)";
       alertIcon.className = "bx bx-alert-circle";
       break;
-    case "danger":
+    case "error":
       alertContainer.style.backgroundColor = "var(--danger)";
       alertIcon.className = "bx bx-alert-triangle";
       break;
@@ -49,13 +49,30 @@ export function setAlert(type, title, message) {
       break;
   }
   
+  // Enables the Status screen
+  alertContainer.classList.add('active');
+  
   // Start a new timeout
   alertTimeout = setTimeout(() => {
     alertContainer.classList.remove('active');
-    alertTitle.textContent = null;
-    alertMessage.textContent = null;
+    afterTransition(alertContainer, () => {
+      alertTitle.textContent = null;
+      alertMessage.textContent = null;
+    })
   }, 7000);
 };
+
+// Close button for alert
+document.getElementById("closeButton").addEventListener("click", () => {
+  const alertContainer = document.getElementById("alertContainer")
+  alertContainer.classList.remove("active");
+  
+  // Clears the old status after the transition
+  afterTransition(alertContainer, () => {
+    document.getElementById("alertMessage").textContent = null;
+    document.getElementById('alertTitle').textContent = null;
+  });
+});
 
 // Global error logger func used before the Execution of a FUNC
 export function errorLoggerBEFORE(name, text) {
