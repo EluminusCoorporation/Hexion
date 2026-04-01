@@ -222,53 +222,62 @@ function moveAnimation(list, map) {
 }
 
 function setUpMoverUp(el) {
-  //Gets the parent node of the parentNode of this button
-    const node = el.parentNode.parentNode.parentNode;
-    const list = document.querySelectorAll('.color-container');
-    const previousSibling = node.previousElementSibling;
-    const parent = node.parentNode;
-    if (node === parent.firstElementChild) return;
-    
-    node.style.animation = "none";
-    // Set correct positions of each element
-    const mapper = new Map();
-    list.forEach(item => {
-      mapper.set(item, item.getBoundingClientRect());
-    });
-    
-    //Changes the position
-    parent.insertBefore(node, previousSibling);
-    
-    moveAnimation(list, mapper);
-    
-    //Reloads the gradient
-    updateGradient();
+  // Gets the color
+  const node = el.parentNode.parentNode.parentNode;
+  const parent = node.parentNode;
+  
+  // Return if its the first color
+  if (node === parent.firstElementChild) return;
+  // Clear old animations
+  node.style.animation = "none";
+  
+  // Gets the next color
+  const previousSibling = node.previousElementSibling;
+  
+  const list = document.querySelectorAll('.color-container');
+  // Set correct positions of each element
+  const mapper = new Map();
+  list.forEach(item => {
+    mapper.set(item, item.getBoundingClientRect());
+  });
+  
+  // Changes the position
+  parent.insertBefore(node, previousSibling);
+  
+  // Apply the animation
+  moveAnimation(list, mapper);
+  
+  // Reloads the gradient
+  updateGradient();
 }
 
 function setUpMoverDown(el) {
-  // Gets the parent node of the parentNode of this button
-    const node = el.parentNode.parentNode.parentNode;
-    const list = document.querySelectorAll('.color-container');
-    const nextSibling = node.nextElementSibling;
-    
-    if (nextSibling === null) return;
-     
-    const parent = node.parentNode;
-    
-    node.style.animation = "none";
-    // Set correct positions of each element
-    const mapper = new Map();
-    list.forEach(item => {
-      mapper.set(item, item.getBoundingClientRect());
-    });
-    
-    //Changes the position
-    parent.insertBefore(node, nextSibling.nextElementSibling);
-    
-    moveAnimation(list, mapper);
-    
-    //Reloads the gradient
-    updateGradient();
+  // Gets the color
+  const node = el.parentNode.parentNode.parentNode;
+  const parent = node.parentNode;
+  
+  // Clear old animations
+  node.style.animation = "none";
+  
+  const nextSibling = node.nextElementSibling;
+  // Ignore if this is the last sibling
+  if (!nextSibling) return;
+   
+  const list = document.querySelectorAll('.color-container');
+  // Set correct positions of each element
+  const mapper = new Map();
+  list.forEach(item => {
+    mapper.set(item, item.getBoundingClientRect());
+  });
+  
+  // Changes the position
+  parent.insertBefore(node, nextSibling.nextElementSibling);
+  
+  // Apply the animation
+  moveAnimation(list, mapper);
+  
+  // Reloads the gradient
+  updateGradient();
 }
 
 const moveUp = document.querySelectorAll("#moveUp");
