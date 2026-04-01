@@ -13,10 +13,10 @@
   --secondary: oklch(94% 0.3007 165);
   --tertiary: oklch(31.5% 0.0865 253);
   --accent: oklch(92.1% 0.1151 130);
-  --danger: oklch(0.5 0.05 30);
-  --warning: oklch(0.5 0.05 100);
-  --success: oklch(0.5 0.05 160);
-  --info: oklch(0.5 0.05 260);
+  --danger: oklch(63.7% 0.237 25.331);
+  --warning: oklch(66.6% 0.179 58.318);
+  --success: oklch(59.6% 0.145 163.225);
+  --info: oklch(68.5% 0.169 237.323);
   --hover: hsla(0, 100%, 0%, 0.05);
 }
 
@@ -30,10 +30,6 @@
     --highlight: oklch(0.5 0 0);
     --border: oklch(0.4 0 0);
     --border-muted: oklch(0.3 0 0);
-    --danger: oklch(0.7 0.2 30);
-    --warning: oklch(0.7 0.2 100);
-    --success: oklch(0.7 0.2 160);
-    --info: oklch(0.7 0.2 260);
     --hover: hsla(0, 100%, 100%, .05);
   }
 }

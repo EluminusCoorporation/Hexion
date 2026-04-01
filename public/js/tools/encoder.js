@@ -5,6 +5,8 @@ import {} from "../handlers/copy.js";
 
 const resultsBtn = document.getElementById("results-btn");
 
+setAlert('error', 'ggs', 'gsssuftcutexufv7vf');
+
 //Makes an event listener for results button
 resultsBtn.addEventListener("click", function () {
   //Gets the text inputted
