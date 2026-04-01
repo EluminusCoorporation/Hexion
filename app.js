@@ -14,7 +14,7 @@ Hexion • Developer tools
 
 "use strict";
 
-//Import Required modules
+// Import Required modules
 const express = require('express');
 const favicon = require('serve-favicon');
 const chalk = require('chalk');
@@ -22,28 +22,30 @@ const path = require('path');
 const fs = require('fs');
 const { execSync } = require('child_process');
 const rateLimit = require('express-rate-limit');
-//Import the config
+
+// Import the config
 const loadConfig = require('./utils/loadConfig');
 const config = loadConfig('./config.toml');
 
-//Import routers
+// Import routers
 const api = require('./routers/api');
 const tools = require('./routers/tools');
 const documents = require('./routers/documents');
 
-//Internal path
+// Internal path
 const PUBLIC_DIR = path.join(__dirname, 'public');
 
-//Import in-app middlewares
+// Import in-app middlewares
+const locals = require('./middleware/locals');
 const onMaintenance = require('./middleware/onMaintenance');
 const setHeaders = require('./middleware/setHeaders');
 const consoleStartUp = require('./utils/consoleStartUp');
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
-//Initialize the express app
+// Initialize the express app
 const app = express();
 
-//Sends the ascii art & info
+// Sends the ascii art & info
 consoleStartUp();
 
 //The server starting process starts from here
@@ -102,6 +104,7 @@ try {
 
 //Setting up in-app middlewares (before)
 app.use(onMaintenance);
+app.use(locals);
 app.use(setHeaders);
 
 //Setting up rate limiters

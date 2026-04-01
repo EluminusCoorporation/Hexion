@@ -1,8 +1,3 @@
-.tools {
-  background-color: var(--bg-light);
-  color: var(--secondary) !important;
-}
-
 #auto.disable {
   opacity: .5;
   pointer-events: none;

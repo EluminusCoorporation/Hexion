@@ -68,9 +68,9 @@
   transition: all .3s;
 }
 
-.nav-bar .side-bar ul li .current {
-  background-color: var(--bg-light);
-  border-bottom: 4px solid var(--text);
+.nav-bar .side-bar ul li .active {
+  background-color: var(--bg-light) !important;
+  color: var(--secondary) !important;
 }
 
 .nav-bar .side-bar ul li a:hover, .nav-bar .side-bar ul li span:hover {

@@ -15,13 +15,13 @@
     <aside class="side-bar" id="sideBar">
       <ul>
         <li>
-          <a href="/dashboard" class="dashboard">
+          <a href="/dashboard" class="<%= isCurrentPage('/dashboard') ? 'active' : '' %>">
             <i class="bx bx-dashboard-alt"></i>
             Dashboard
           </a>
         </li>
         <li class="sub-menu-button">
-          <span class="tools">
+          <span class="<%= isCurrentPage('/tools') ? 'active' : '' %>">
             <i class="bx bx-spanner"></i>
             Tools
             <i class="bx bx-chevron-up toggle-button"></i>
@@ -82,7 +82,7 @@
           </ul>
         </li>
         <li>
-          <a href="/donation" class="donation">
+          <a href="/donation" class="<%= isCurrentPage('/donation') ? 'active' : '' %>">
             <i class='bx bxs-gift'></i>
             Donation
           </a>

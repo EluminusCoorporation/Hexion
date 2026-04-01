@@ -2,11 +2,6 @@
   color: black !important;
 }
 
-.tools {
-  background-color: var(--bg-light);
-  color: var(--secondary) !important;
-}
-
 .color-showcase {
   display: none;
   align-items: center;
