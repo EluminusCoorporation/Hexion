@@ -13,27 +13,30 @@
         <div class="colors-grid-container show" id="colorsGridContainer">
           <div>
             <ul class="colors-container" id="colorsContainer">
-              
-              <li class="color-container use-as-clone" id="colorContainer">
-                <div class="color-preview"></div>
-                <div class="color-name-container">
-                  <i class='bx bx-copy' id="copyIcon"></i>
-                  <p class="color-name">#00FF7F</p>
-                </div>
-                <div class="movers-container">
-                  <i class='bx bx-chevron-up mover' id="moveUp"></i>
-                  <i class='bx bx-chevron-down mover' id="moveDown"></i>
+              <li class="color-container use-as-clone" id="colorContainer" style="animation: expandIn 150ms ease-out forwards;">
+                <div>
+                  <div class="color-preview"></div>
+                  <div class="color-name-container">
+                    <i class='bx bx-copy' id="copyIcon"></i>
+                    <p class="color-name">#00FF7F</p>
+                  </div>
+                  <div class="movers-container">
+                    <i class='bx bx-chevron-up mover' id="moveUp"></i>
+                    <i class='bx bx-chevron-down mover' id="moveDown"></i>
+                  </div>
                 </div>
               </li>
-              <li class="color-container">
-                <div class="color-preview"></div>
-                <div class="color-name-container">
-                  <i class='bx bx-copy' id="copyIcon"></i>
-                  <p class="color-name">#00FF7F</p>
-                </div>
-                <div class="movers-container">
-                  <i class='bx bx-chevron-up mover' id="moveUp"></i>
-                  <i class='bx bx-chevron-down mover' id="moveDown"></i>
+              <li class="color-container" style="animation: expandIn 150ms ease-out forwards;">
+                <div>
+                  <div class="color-preview"></div>
+                  <div class="color-name-container">
+                    <i class='bx bx-copy' id="copyIcon"></i>
+                    <p class="color-name">#00FF7F</p>
+                  </div>
+                  <div class="movers-container">
+                    <i class='bx bx-chevron-up mover' id="moveUp"></i>
+                    <i class='bx bx-chevron-down mover' id="moveDown"></i>
+                  </div>
                 </div>
                 <i class='bx bx-trash delete-icon'></i>
               </li>
@@ -95,4 +98,5 @@
         <textarea name="results" id="results" class="results" rows="12" cols="80" placeholder="Results"></textarea>
         <i class='bx bx-copy copy-button' id="copy-icon"></i>
       </div>
+      <script src="https://cdn.jsdelivr.net/npm/eruda"></script><script>eruda.init();</script>
       <%- include('../components/footer') -%>

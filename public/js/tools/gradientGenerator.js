@@ -200,28 +200,73 @@ document.querySelectorAll('.color-preview').forEach((el, i) => {
   createPickr(el, "#00FF7F")
 })
 
+function moveAnimation(list, map) {
+  list.forEach(el => {
+    el.style.transition = "none";
+    
+    // Get correct movement coordinates
+    const first = map.get(el);
+    const last = el.getBoundingClientRect();
+    
+    const dx = first.left - last.left;
+    const dy = first.top - last.top;
+    
+    // Apply those coordinates
+    el.style.transform = `translate(${dx}px, ${dy}px)`;
+    
+    el.offsetHeight;
+    
+    el.style.transition = "transform 150ms linear";
+    el.style.transform = "translate(0, 0)";
+  });
+}
+
 function setUpMoverUp(el) {
   //Gets the parent node of the parentNode of this button
-    const node = el.parentNode.parentNode;
+    const node = el.parentNode.parentNode.parentNode;
+    const list = document.querySelectorAll('.color-container');
     const previousSibling = node.previousElementSibling;
     const parent = node.parentNode;
     if (node === parent.firstElementChild) return;
-      
+    
+    node.style.animation = "none";
+    // Set correct positions of each element
+    const mapper = new Map();
+    list.forEach(item => {
+      mapper.set(item, item.getBoundingClientRect());
+    });
+    
     //Changes the position
     parent.insertBefore(node, previousSibling);
+    
+    moveAnimation(list, mapper);
+    
     //Reloads the gradient
     updateGradient();
 }
 
 function setUpMoverDown(el) {
-  //Gets the parent node of the parentNode of this button
-    const node = el.parentNode.parentNode;
+  // Gets the parent node of the parentNode of this button
+    const node = el.parentNode.parentNode.parentNode;
+    const list = document.querySelectorAll('.color-container');
     const nextSibling = node.nextElementSibling;
+    
     if (nextSibling === null) return;
-      
+     
     const parent = node.parentNode;
+    
+    node.style.animation = "none";
+    // Set correct positions of each element
+    const mapper = new Map();
+    list.forEach(item => {
+      mapper.set(item, item.getBoundingClientRect());
+    });
+    
     //Changes the position
     parent.insertBefore(node, nextSibling.nextElementSibling);
+    
+    moveAnimation(list, mapper);
+    
     //Reloads the gradient
     updateGradient();
 }
@@ -267,7 +312,7 @@ addColorButton.addEventListener('click', () => {
     return;
   }
   
-  //does some adjustments in the copy
+  // does some adjustments in the copy
   errorMessage.style.display = "none";
   addColorButton.classList.remove('deselect');
   
@@ -286,7 +331,7 @@ addColorButton.addEventListener('click', () => {
   clonedContainer.appendChild(childIcon);
   
   //creates the pickr
-  createPickr(el, "#000000")
+  createPickr(el, "#000000");
   
   //Reloads the movers
   const moveUp = clonedContainer.querySelector("#moveUp");
@@ -314,10 +359,15 @@ colorsContainer.addEventListener('click', (event) => {
   if (event.target.classList.contains('delete-icon')) {
     //deletes the color
     const container = event.target.parentNode;
-    container.remove();
-    updateGradient()
-  }
-})
+    
+    container.style.animation = "contractOut 150ms ease-out forwards";
+    container.addEventListener("animationend", event => {
+      if (event.animationName !== "contractOut") return;
+      container.remove();
+      updateGradient();
+    }, { once: true });
+  };
+});
 
 const resultsBtn = document.getElementById('results-btn');
 

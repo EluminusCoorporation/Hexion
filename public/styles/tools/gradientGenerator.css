@@ -57,18 +57,39 @@
   gap: 1em;
 }
 
+@keyframes expandIn {
+  from {
+    grid-template-rows: 0fr;
+  }
+  to {
+    grid-template-rows: 1fr;
+  }
+}
+@keyframes contractOut {
+  from {
+    grid-template-rows: 1fr;
+  }
+  to {
+    grid-template-rows: 0fr;
+  }
+}
+
 .color-container {
   position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 25px;
+  display: grid;
   border-radius: 15px 15px 0 15px;
   padding: .7em;
   overflow: hidden;
   border: 1px solid var(--border);
   background: linear-gradient(0deg, var(--bg), var(--bg-light));
   box-shadow: 0 2px 2px var(--shadow);
+}
+
+.color-container div {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 
 .pcr-button {
@@ -84,6 +105,7 @@
   display: flex;
   align-items: center;
   gap: 3px;
+  margin-left: 25px;
   flex-direction: row;
 }
 
@@ -98,7 +120,7 @@
 }
 
 .color-name-container i:hover {
-  background: var(--bg-light);
+  background: var(--hover);
 }
 
 .color-name {
@@ -125,7 +147,7 @@
   border-bottom-left-radius: .5em;
   background-color: var(--bg-light);
   display: flex;
-  flex-direction: column;
+  flex-direction: column !important;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -309,4 +331,11 @@
   display: flex !important;
   margin-top: .5em !important;
   margin-bottom: 1em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .color-container {
+    transition: none !important;
+    animation: none !important;
+  }
 }
