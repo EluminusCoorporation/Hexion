@@ -1,11 +1,11 @@
-//Gets the required elements
+// Gets the required elements
 const closeButton = document.getElementById("closeButton");
-const statusContainer = document.getElementById("statusContainer");
-const statusMessage = document.getElementById("statusMessage");
+const alertContainer = document.getElementById("alertContainer");
+const alertMessage = document.getElementById("alertMessage");
 
-//Closes the status bar
+// Closes the status bar
 closeButton.addEventListener("click", () => {
-  statusContainer.classList.remove("active");
-  //Clears the old status
-  statusMessage.textContent = null;
+  alertContainer.classList.remove("active");
+  // Clears the old status
+  alertMessage.textContent = null;
 });

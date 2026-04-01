@@ -1,55 +1,55 @@
 //Sets an status timeout temp var
-let statusTimeout;
+let alertTimeout;
 //Global setAlert func
 export function setAlert(type, title, message) {
-  //Clears old timeouts before execution
-  clearTimeout(statusTimeout);
+  // Clears old timeouts before execution
+  clearTimeout(alertTimeout);
   
-  //Gets required imports
-  const statusContainer = document.getElementById('statusContainer');
-  const statusIcon = document.getElementById('statusIcon');
-  const statusTitle = document.getElementById('statusTitle');
-  const statusMessage = document.getElementById('statusMessage');
+  // Gets required imports
+  const alertContainer = document.getElementById('alertContainer');
+  const alertIcon = document.getElementById('alertIcon');
+  const alertTitle = document.getElementById('alertTitle');
+  const alertMessage = document.getElementById('alertMessage');
   
   //If message is nothing it'll just close the status screen
   if (!message) {
-    statusContainer.classList.remove('active');
-    statusMessage.textContent = null;
+    alertContainer.classList.remove('active');
+    alertMessage.textContent = null;
     return;
   }
   
   //Enables the Status screen
-  statusContainer.classList.add('active');
+  alertContainer.classList.add('active');
   //Adds status message to the status screen
-  statusTitle.textContent = title;
-  statusMessage.textContent = message;
+  alertTitle.textContent = title;
+  alertMessage.textContent = message;
   
   //Sets the type of status code being used
   if (type === "success") {
-    statusContainer.style.backgroundColor = "var(--success)";
-    statusIcon.className = "bx bx-check-circle";
+    alertContainer.style.backgroundColor = "var(--success)";
+    alertIcon.className = "bx bx-check-circle";
   }
   else if (type === "info") {
-    statusContainer.style.backgroundColor = "var(--info)"
-    statusIcon.className = "bx bx-info-square"
+    alertContainer.style.backgroundColor = "var(--info)"
+    alertIcon.className = "bx bx-info-square"
   }
   else if (type === "warn") {
-    statusContainer.style.backgroundColor = "var(--warning)";
-    statusIcon.className = "bx bx-alert-circle";
+    alertContainer.style.backgroundColor = "var(--warning)";
+    alertIcon.className = "bx bx-alert-circle";
   }
   else if (type === "error") {
-    statusContainer.style.backgroundColor = "var(--danger)";
-    statusIcon.className = "bx bx-alert-triangle";
+    alertContainer.style.backgroundColor = "var(--danger)";
+    alertIcon.className = "bx bx-alert-triangle";
   };
   
   // Start a new timeout
-  statusTimeout = setTimeout(() => {
-    statusContainer.classList.remove('active');
-    statusMessage.textContent = null;
+  alertTimeout = setTimeout(() => {
+    alertContainer.classList.remove('active');
+    alertMessage.textContent = null;
   }, 7000);
 };
 
-//Global error logger func used before the Execution of a FUNC
+// Global error logger func used before the Execution of a FUNC
 export function errorLoggerBEFORE(name, text) {
   //Checks if name is not provided
   if (name === "") {
