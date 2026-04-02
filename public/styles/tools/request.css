@@ -48,22 +48,6 @@
   color: var(--text) !important;
 }
 
-.options-container {
-  margin: 1.3em 0;
-  display: flex;
-  justify-content: center;
-  padding: .5em;
-  text-align: center;
-  gap: .5em;
-  flex-direction: column;
-}
-
-.option-container {
-  display: flex;
-  flex-direction: column;
-  gap: .5em;
-}
-
 .option-content {
   display: flex;
   gap: .5em;

@@ -235,21 +235,6 @@
   color: var(--primary);
 }
 
-.options-container {
-  display: flex;
-  margin: 1.3em 0;
-  flex: 1;
-  padding: .5em;
-  text-align: center;
-  gap: .5em;
-  flex-direction: column;
-}
-
-.option-container {
-  display: flex;
-  gap: .5em;
-}
-
 .preview-screen-container {
   display: flex;
   flex-direction: column;

@@ -30,16 +30,25 @@ function clearFile() {
 }
 
 function selectExtension() {
+  // hide all options
+  document.querySelectorAll('.option-container').forEach(option => option.style.display = "none");
+  
   const type = document.getElementById('dropdownSelected').dataset.selected.toLowerCase().trim();
   
   switch (type) {
     case 'auto':
+      // show all options
+      document.querySelectorAll('.option-container').forEach(option => option.style.display = "flex");
+      selectedExtension = type;
+      break;
     case 'html':
     case 'css':
       selectedExtension = type;
       break;
     case 'java script':
       selectedExtension = 'js';
+      // Enable js options
+      document.querySelectorAll('.js-option').forEach(option => option.style.display = "flex");
       break;
     case 'python':
       selectedExtension = 'py';
@@ -53,6 +62,7 @@ function selectExtension() {
   
   // Check if currently uploaded file is compliant
   if (selectedExtension === "auto") {
+    
     // Check if Extension is supported
     if (!supportedExtensions.includes(fileExtension)) clearFile();
   } else if (selectedExtension !== fileExtension) clearFile();
@@ -78,6 +88,10 @@ fileMode.addEventListener("click", function() {
   if (this.classList.contains('selected')) return;
   
   auto.classList.remove('disable');
+  
+  // hide all options
+  document.querySelectorAll('.option-container').forEach(option => option.style.display = "none");
+  
   textInput.value = null;
   code = null;
 });
@@ -290,11 +304,26 @@ function setDebuggerContext(report, error, type) {
 }
 
 resultsBtn.addEventListener('click', async () => {
+  toggleLoader(true);
+  
   try {
-    toggleLoader(true);
-    
     const resultsDiv = document.getElementById('resultsContainer');
     const type = selectedExtension.toLowerCase();
+    // default options object(empty)
+    const options = {
+      isNodejs: false,
+    };
+    
+    const optionCheckboxes = document.querySelectorAll('.toggle');
+    
+    
+    optionCheckboxes.forEach((checkbox) => {
+      if (!checkbox.checked || checkbox.dataset.format !== type) return;
+    
+      const optionType = checkbox.dataset.type;
+      options[optionType] = true;
+    });
+    
     // runs error handler
     if (!errorLoggerBEFORE(type, code)) {
       resultsDiv.style.display = "none";
@@ -308,7 +337,7 @@ resultsBtn.addEventListener('click', async () => {
     const res = await fetch('/api/debugger', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type, code }),
+      body: JSON.stringify({ type, code, options }),
     });
     
     if (!res) throw new Error('Server is unreachable please try later.');

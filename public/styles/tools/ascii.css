@@ -116,12 +116,6 @@
   display: none !important;
 }
 
-.option-container {
-  display: flex;
-  margin-top: 1.7em;
-  gap: .5em;
-}
-
 .results-button {
   background-color: deepskyblue;
 }

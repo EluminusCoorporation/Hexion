@@ -43,7 +43,7 @@ async function debugCss(code) {
   return sanitizeReport(rawReport.results);
 }
 
-async function debugJs(code) {
+async function debugJs(code, options) {
   const eslint = new ESLint({
     // Sets this as the config
     overrideConfigFile: true,
@@ -54,6 +54,9 @@ async function debugJs(code) {
         semi: ["error", "always"],
         //If wrong usage of quotes warn
         quotes: ["warn", "single"]
+      },
+      languageOptions: {
+        ...(options.isNodejs && { sourceType: 'commonjs' })
       }
     }
   });
@@ -65,7 +68,13 @@ async function debugJs(code) {
 router.post("/debugger", async (req, res) => {
   
   // Gets the json data sent from the frontend
-  const { type, code } = req.body;
+  const { 
+    type,
+    code, 
+    options = {
+      isNodejs: false
+    }
+  } = req.body;
 
   // Creates an report var to store debugger results
   let report;
@@ -129,7 +138,7 @@ router.post("/debugger", async (req, res) => {
         if (styles) cssReport = await debugCss(styles);
         // if script tags exists debug them
         let jsReport = [];
-        if (scripts) jsReport = await debugJs(scripts);
+        if (scripts) jsReport = await debugJs(scripts, options);
         
         // Prepare a mixed report
         const mixedReport = {
@@ -146,7 +155,7 @@ router.post("/debugger", async (req, res) => {
       }
     }
     else if (type === "css") report = await debugCss(code);
-    else if (type === "js") report = await debugJs(code);
+    else if (type === "js") report = await debugJs(code, options);
     else if (type === "py") {
       //Sets up ruff for debugging
       const process = spawnSync("python3", ["-m", "flake8", "-"], {

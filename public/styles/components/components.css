@@ -218,6 +218,20 @@
 
 /* Switch button CSS */
 /* | From Uiverse.io by andrew-demchenk0 | */
+.options-container {
+  display: flex;
+  margin: 1.3em 0;
+  flex: 1;
+  padding: .5em;
+  text-align: center;
+  gap: .5em;
+  flex-direction: column;
+}
+
+.option-container {
+  display: flex;
+  gap: .5em;
+}
 
 .switch {
   position: relative;
