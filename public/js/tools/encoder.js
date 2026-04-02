@@ -1,11 +1,9 @@
 //Imports the required functions
-import { setAlert, errorLoggerBEFORE } from "../handlers/errorLogger.js";
+import { setAlert } from "../handlers/errorLogger.js";
 import {} from "../handlers/dropDownMenu.js";
 import {} from "../handlers/copy.js";
 
 const resultsBtn = document.getElementById("results-btn");
-
-setAlert('error', 'ggs', 'gsssuftcutexufv7vf');
 
 //Makes an event listener for results button
 resultsBtn.addEventListener("click", function () {
@@ -14,10 +12,11 @@ resultsBtn.addEventListener("click", function () {
   //Gets the format type
   const name = document.getElementById("dropdownSelected").dataset.selected;
 
-  //Runs the error handler
-  if (!errorLoggerBEFORE(name, text)) {
+  // Runs the error handler
+  if (!name || !text) {
+    setAlert('error', 'Encoder failed', 'Please fill in all the fields.')
     return;
-  }
+  };
   let results;
 
   if (name === "UTF-8") {

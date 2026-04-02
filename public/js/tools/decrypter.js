@@ -1,8 +1,7 @@
 //Imports required functions
 import {
   setAlert,
-  errorLoggerBEFORE,
-  errorLoggerAFTER
+  errorLogger
 } from "../handlers/errorLogger.js";
 import {} from "../handlers/dropDownMenu.js";
 import {} from "../handlers/copy.js";
@@ -15,10 +14,11 @@ resultsBtn.addEventListener("click", function () {
   //Gets the format type
   const name = document.getElementById("dropdownSelected").dataset.selected;
 
-  //Runs the error handler
-  if (!errorLoggerBEFORE(name, text)) {
+  // Runs the error handler
+  if (!name || !text) {
+    setAlert('error', 'Decrypter failed', 'Please fill in all the fields.')
     return;
-  }
+  };
 
   let results;
 
@@ -207,9 +207,11 @@ resultsBtn.addEventListener("click", function () {
   resultsInput.textContent = results;
 
   //Run the error handler
-  if (!errorLoggerAFTER(resultsInput.value)) {
+  if (!errorLogger(resultsInput.value)) {
+    resultsDiv.style.display = "none";
     return false;
-  }
+  };
+  
   //Displays the results output
   resultsDiv.style.display = "flex";
 });

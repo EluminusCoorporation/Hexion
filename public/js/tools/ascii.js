@@ -1,5 +1,5 @@
 //Imports the required functions
-import { setAlert, errorLoggerBEFORE } from "../handlers/errorLogger.js";
+import { setAlert } from "../handlers/errorLogger.js";
 import {} from "../handlers/dropDownMenu.js";
 import {} from "../handlers/copy.js";
 import figlet from "https://esm.sh/figlet";

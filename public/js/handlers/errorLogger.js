@@ -74,48 +74,26 @@ document.getElementById("closeButton").addEventListener("click", () => {
   });
 });
 
-// Global error logger func used before the Execution of a FUNC
-export function errorLoggerBEFORE(name, text) {
-  //Checks if name is not provided
-  if (name === "") {
-    setAlert('error', 'Process failed', 'Please fill in all the fields.')
-    return false;
-  };
-  
-  //Checks if text is not provided
-  if (text === "") {
-    setAlert('error', 'Process failed', '. fieldsm');
-    return false;
-  };
-  //Else clears the timeout and goes forward
-  setAlert()
-  return true;
-};
-
-//Global error logger func used after the execution of a FUNC
-export function errorLoggerAFTER(text) {
+// Global error logger function (after)
+export function errorLogger(text) {
   //Checks if text has characters that are not valid
   if (text.includes("�")) {
-    resultsDiv.style.display = "none";
     setAlert('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
     return false;
   }
-  //var used to check if there are invalid characters in a text
-  const hasInvalidChars = /[\x00-\x1F]/.test(text);
-  //Checks if text has invalid characters(Advance way)
-  if (hasInvalidChars) {
-    resultsDiv.style.display = "none";
+  // Checks if text has invalid characters(Advance way)
+  else if (/[\x00-\x1F]/.test(text)) {
     setAlert('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
     return false;
   }
-  //Checks if text is empty
-  if (text === "") {
-    resultsDiv.style.display = "none";
+  // Checks if text is empty
+  else if (text === "") {
     setAlert('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
     return false;
   }
-  setAlert()
-  //Else goes forward
+  
+  setAlert();
+  // Else goes forward
   return true;
 };
 

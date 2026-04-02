@@ -1,5 +1,5 @@
 //Import required functions
-import { setAlert, errorLoggerBEFORE, fileLogger } from '../handlers/errorLogger.js';
+import { setAlert, fileLogger } from '../handlers/errorLogger.js';
 import {} from '../handlers/copy.js'
 import { formatFileSize } from '../handlers/utils.js'
 import { setFunction } from '../handlers/dropDownMenu.js'
@@ -8,7 +8,7 @@ import { setFunction } from '../handlers/dropDownMenu.js'
 const supportedExtensions = ["py", "js", "html", "css"]
 
 // Placeholders
-let code = null;
+let code;
 let report = null;
 
 let selectedExtension = "auto";
@@ -325,8 +325,10 @@ resultsBtn.addEventListener('click', async () => {
     });
     
     // runs error handler
-    if (!errorLoggerBEFORE(type, code)) {
+    if (!type || !code) {
       resultsDiv.style.display = "none";
+      
+      setAlert('error', 'Debugger failed', 'Please fill in all the fields.');
       return;
     };
     

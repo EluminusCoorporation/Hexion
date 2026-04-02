@@ -1,5 +1,5 @@
 //Imports the required functions
-import { setAlert, errorLoggerBEFORE } from '../handlers/errorLogger.js';
+import { setAlert } from '../handlers/errorLogger.js';
 import { setFunction } from '../handlers/dropDownMenu.js'
 import {} from '../handlers/copy.js'
 import "https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js";

@@ -1,8 +1,7 @@
 //Gets the required functions from other files
 import {
   setAlert,
-  errorLoggerBEFORE,
-  errorLoggerAFTER
+  errorLogger
 } from "../handlers/errorLogger.js";
 import {} from "../handlers/copy.js";
 import {} from "../handlers/dropDownMenu.js";
@@ -15,10 +14,11 @@ resultsBtn.addEventListener("click", function () {
   const text = document.getElementById("inputContainer").value;
   //Gets the type selected
   const name = document.getElementById("dropdownSelected").dataset.selected;
-  //Rund errorhandler
-  if (!errorLoggerBEFORE(name, text)) {
-    return false;
-  }
+  // Run errorhandler
+  if (!name || !text) {
+    setAlert('error', 'Decoder failed', 'Please fill in all the fields.')
+    return;
+  };
 
   let results;
   //Circulates through the types
@@ -124,7 +124,10 @@ resultsBtn.addEventListener("click", function () {
   resultsInput.textContent = results;
   
   //runs the error handler
-  if (!errorLoggerAFTER(resultsInput.value)) return;
+  if (!errorLogger(resultsInput.value)) {
+    resultsDiv.style.display = "none";
+    return;
+  };
 
   //Enables the result output display
   resultsDiv.style.display = "flex";
