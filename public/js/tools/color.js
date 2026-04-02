@@ -3,6 +3,19 @@ import { setAlert } from "../handlers/errorLogger.js";
 import {} from "../handlers/dropDownMenu.js";
 import {} from "../handlers/copy.js";
 
+let fallbackColor = null;
+
+document.getElementById('fallbackButton').addEventListener("click", () => {
+  if (!fallbackColor) return;
+  
+  // Close error screen
+  document.getElementById('colorErrorScreen').style.display = "none";
+  // Display the fallback color
+  document.getElementById('colorNameValue').textContent = fallbackColor;
+  document.getElementById('colorShowcaseContainer').style.backgroundColor = fallbackColor;
+  document.getElementById('colorShowcaseContainer').style.display = "flex";
+});
+
 const resultsBtn = document.getElementById("results-btn");
 // Makes an event listener for results button
 resultsBtn.addEventListener("click", async function () {
@@ -20,9 +33,28 @@ resultsBtn.addEventListener("click", async function () {
     
     // check if response is ok
     if (!response.ok) {
-      const errorMessage = ((await response.json()).message) || "An unknown error occured.";
+      const errorResponse = await response.json();
+      const errorMessage = errorResponse.message || "An unknown error occured.";
+      
+      // Enable fallback color
+      if (errorMessage === "NOVALIDCOLORFOUND") {
+        if (errorResponse.fallback) {
+          const colorErrorScreen = document.getElementById('colorErrorScreen');
+          colorErrorScreen.querySelector('.error-message').textContent = "No suitable color found in this format.";
+          fallbackColor = errorResponse.fallback;
+          colorErrorScreen.querySelector('#fallbackButton').style.borderBottom = `.2em solid ${fallbackColor}`;
+          // Close color showcase screen
+          document.getElementById('colorShowcaseContainer').style.display = "none";
+          colorErrorScreen.style.display = "flex";
+          
+          return;
+        }
+      }
+      
       throw new Error(errorMessage);
     };
+    
+    document.getElementById('colorErrorScreen').style.display = "none";
     
     // Get data
     const data = await response.json();

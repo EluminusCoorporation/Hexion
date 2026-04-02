@@ -465,9 +465,22 @@ router.post("/request", async (req, res) => {
 });
 
 // Helper functions for Color Convert
+function findFallback(format, color) {
+  const converter = culori.converter('hwb');
+  
+  switch (format) {
+    case "hex": return culori.formatHex(culori.clampRgb(color));
+    case "rgb": return culori.formatRgb(culori.clampRgb(color));
+    case "hsl": return culori.formatHsl(culori.clampRgb(color));
+    case "hwb":
+      const rawColor = converter(culori.clampRgb(color));
+      return `hwb(${rawColor.h.toFixed(2)} ${rawColor.w.toFixed(2)} ${rawColor.b.toFixed(2)})`;
+  }
+}
 
 // POST /api/color - Converts an color into an another format
 router.post("/color", (req, res) => {
+  let fallbackColor = null;
   try {
     const {
       color,
@@ -477,9 +490,38 @@ router.post("/color", (req, res) => {
     // If color provided is not an actual color
     if (!culori.parse(color)) throw new Error('Invalid color provided');
     
+    
     // Converter setup for unsupported color formats
     const converter = culori.converter(format);
     if (!converter) throw new Error('Unsupported color format');
+    
+    // Check if color conversion is possible (only rgb based formats)
+    if (['rgb', 'hex', 'hsl', 'hwb'].includes(format)) {
+      // Get the final result (after conversion)
+      let finalResult = null;
+      
+      // Assumes if the converter fails this is an out of gamut error
+      try {
+        finalResult = converter(color);
+      } catch (error) {
+        fallbackColor = findFallback(format, color);
+        throw new Error('NOVALIDCOLORFOUND');
+      };
+      
+      // Assumes if the converter fails silently this is an out of gamut error
+      if (!finalResult) {
+        fallbackColor = findFallback(format, color);
+        throw new Error('NOVALIDCOLORFOUND');
+      }
+      
+      // if it cannot be displayed it is an out of gamut error
+      if (!culori.displayable(finalResult)) {
+        // Provide a fallback color
+        fallbackColor = findFallback(format, color);
+        
+        throw new Error('NOVALIDCOLORFOUND');
+      };
+    };
     
     function universalFormatter(color) {
       // Get color object
@@ -509,7 +551,10 @@ router.post("/color", (req, res) => {
 
     res.json({ output: result });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 
+      message: error.message, 
+      ...(fallbackColor && { fallback: fallbackColor }),
+    });
   }
 })
 

@@ -22,6 +22,11 @@
           <li class="dropdown-item">Hwb</li>
         </ul>
       </div>
+      <div class="color-error-screen" id="colorErrorScreen">
+        <i class="bx bx-x"></i>
+        <h4 class="error-message"></h4>
+        <button class="fallback-button" id="fallbackButton">Use Fallback Color</button>
+      </div>
       <div class="color-showcase" id="colorShowcaseContainer">
         <div class="color-name-container">
           <p class="color-name" id="colorNameValue"></p>
@@ -31,4 +36,5 @@
       <div class="results-button-container">
         <button class="results-button" id="results-btn">Convert!</button>
       </div>
+      <script src="https://cdn.jsdelivr.net/npm/eruda"></script><script>eruda.init();</script>
       <%- include('../components/footer') -%>

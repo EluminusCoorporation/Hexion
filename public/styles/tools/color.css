@@ -2,6 +2,47 @@
   color: black !important;
 }
 
+.color-error-screen {
+  display: none;
+  position: relative;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  border-radius: 1em;
+  border: 2px dashed var(--border-muted);
+  margin: 1em 0;
+  color: var(--text-muted);
+}
+
+.color-error-screen i {
+  font-size: 2.5em;
+  padding: .2em;
+  background-color: hsla(0, 0%, 0%, 0.30);
+  border-radius: 50%;
+}
+
+.color-error-screen .error-message {
+  font-size: .9em;
+}
+
+.fallback-button {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: .75em;
+  color: var(--bg);
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--text);
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
 .color-showcase {
   display: none;
   align-items: center;
