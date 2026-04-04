@@ -201,15 +201,18 @@ function getStylers(options) {
   return stylers;
 }
 
-function generateGradient(text, colors, styles) {
+function generateGradient(text, colors, styles, charLimit) {
   const chars = text.split("");
   const n = chars.length;
+  
+  const totalGroups = Math.ceil(n / charLimit);
   
   const segments = colors.length - 1;
   const result = [];
 
   chars.forEach((char, i) => {
-    const t = n === 1 ? 0 : i / (n - 1);
+    const groupIndex = Math.floor(i / charLimit);
+    const t = groupIndex / (totalGroups - 1);
 
     // Determine which segment this char belongs to
     const segmentIndex = Math.min(
@@ -253,8 +256,8 @@ function prepareHex(stylers, hex, prefix, hexType, char) {
   }
 }
 
-function buildGradient(text, colors, options, styles, prefix, hexType) {
-  const data = generateGradient(text, colors, styles);
+function buildGradient(charLimit, text, colors, options, styles, prefix, hexType) {
+  const data = generateGradient(text, colors, styles, charLimit);
   
   // If its asking for json just give it the whols thing
   if (hexType === "json") return JSON.stringify(data, null, 2)
@@ -272,7 +275,7 @@ function buildGradient(text, colors, options, styles, prefix, hexType) {
   }).join("");
 }
 
-function applyGradientWithReset(input, colors, options, styles, prefix, hexType = "none") {
+function applyGradientWithReset(charLimit, input, colors, options, styles, prefix, hexType = "none") {
   // Get the reset stylers
   const parts = input.split(/(&r|§r)/);
 
@@ -282,7 +285,7 @@ function applyGradientWithReset(input, colors, options, styles, prefix, hexType 
     // reset if reset stylers are present
     if ((part === "&r" || part === "§r")) return result += "§r";
     // Else continue
-    result += buildGradient(part, colors, options, styles, prefix, hexType);
+    result += buildGradient(charLimit, part, colors, options, styles, prefix, hexType);
   });
 
   return result;
@@ -305,7 +308,8 @@ router.post("/gradient", (req, res) => {
     options = {
       trim: false,
       lowercaseHex: false
-    }
+    },
+    charLimit
   } = req.body;
   
   let output;
@@ -315,17 +319,15 @@ router.post("/gradient", (req, res) => {
     // checks if all parameters exists
     if (!type || !input || !colors) throw new Error('The required parameters were not passed.');
     
-    if (options.trim) {
-      userInput = userInput.trim().replace(/\s+/g, ' ');
-    }
+    if (options.trim) userInput = userInput.trim().replace(/\s+/g, ' ');
     
     // find the type
-    if (type === "&#rrggbb") output = applyGradientWithReset(userInput, colors, options, styles, '&#', 'simple');
-    else if (type === "<#rrggbb>") output = applyGradientWithReset(userInput, colors, options, styles, '#', '<#rrggbb>');
-    else if (type === "&x&r&r&g&g&b&b") output = applyGradientWithReset(userInput, colors, options, styles, '&');
-    else if (type === "§x§r§r§g§g§b§b") output = applyGradientWithReset(userInput, colors, options, styles, '§');
-    else if (type === "[COLOR=#rrggbb][/COLOR]") output = applyGradientWithReset(userInput, colors, options, styles, '#', '[COLOR]');
-    else if (type === "JSON") output = applyGradientWithReset(userInput, colors, options, styles, 'json', 'json');
+    if (type === "&#rrggbb") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, '&#', 'simple');
+    else if (type === "<#rrggbb>") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, '#', '<#rrggbb>');
+    else if (type === "&x&r&r&g&g&b&b") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, '&');
+    else if (type === "§x§r§r§g§g§b§b") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, '§');
+    else if (type === "[COLOR=#rrggbb][/COLOR]") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, '#', '[COLOR]');
+    else if (type === "JSON") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, 'json', 'json');
     else throw new Error("No options matched.")
     
     if (!output) throw new Error('Output is empty, did you enter the correct info?');

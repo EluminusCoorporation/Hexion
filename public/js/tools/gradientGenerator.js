@@ -4,8 +4,22 @@ import { setFunction } from '../handlers/dropDownMenu.js'
 import { copyText } from '../handlers/copy.js'
 import "https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js";
 
-let timeout;
+let maxChars = 3;
+let colors = 2;
 
+// refresh maxChars
+function refreshChars() {
+  const text = document.getElementById('inputText').value;
+  maxChars = Math.floor(text.length / colors);
+}
+
+// updateColor function
+function updateColors(number) {
+  colors = number;
+  refreshChars();
+}
+
+let timeout;
 document.addEventListener('DOMContentLoaded', () => {
   //event listener for each color
   const colorsContainer = document.getElementById('colorsContainer')
@@ -19,8 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
 setFunction(refreshOutput);
+
+// Number validation
+document.getElementById('inputChars').addEventListener("change", function() {
+  if (!this.value) this.value = 1;
+  if (this.value > maxChars) this.value = maxChars;
+  
+  updateGradient();
+});
 
 const colorDropdownmenu = document.getElementById('colorDropdownmenu');
 
@@ -44,6 +65,7 @@ async function refreshOutput() {
     // get important parameters
     const colors = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
     const input = document.getElementById('inputText').value;
+    const charLimit = document.getElementById('inputChars').value;
     const type = document.getElementById("dropdownSelected").dataset.selected;
     
     // If input is empty return
@@ -85,7 +107,7 @@ async function refreshOutput() {
     const res = await fetch('/api/gradient', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type, input, colors, styles, options })
+      body: JSON.stringify({ type, input, colors, styles, options, charLimit })
     });
   
     // checks if response exists
@@ -332,6 +354,9 @@ addColorButton.addEventListener('click', () => {
     setUpMoverDown(this);
   });
   
+  // Increment colors
+  updateColors(colors + 1);
+  
   //adds the color
   colorsContainer.appendChild(clonedContainer);
   
@@ -351,6 +376,10 @@ colorsContainer.addEventListener('click', (event) => {
     container.addEventListener("animationend", event => {
       if (event.animationName !== "contractOut") return;
       container.remove();
+      
+      // Decrement Colors
+      updateColors(colors - 1);
+      
       updateGradient();
     }, { once: true });
   };
@@ -367,6 +396,9 @@ inputText.addEventListener('input', (event) => {
   
   previewText.dataset.text = text;
   previewText.textContent = text;
+  
+  // Refresh maxChars
+  refreshChars();
   
   refreshOutput();
 });
