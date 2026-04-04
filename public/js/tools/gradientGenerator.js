@@ -1,7 +1,7 @@
 //Imports the required functions
 import { setAlert } from '../handlers/errorLogger.js';
 import { setFunction } from '../handlers/dropDownMenu.js'
-import {} from '../handlers/copy.js'
+import { copyText } from '../handlers/copy.js'
 import "https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js";
 
 let timeout;
@@ -13,31 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //if its a copy button
     if (event.target.id === "copyIcon") {
       //copy texts
-        const text = event.target.nextElementSibling.textContent;
-        // Copy text to clipboard with error handling
-        navigator.clipboard.writeText(text).then(() => {
-          
-          // Toggle the icon
-          event.target.classList.remove('bx-copy');
-          event.target.classList.add('bx-check');
-          
-          clearTimeout(timeout);
-          
-          // Setting up timeout
-          timeout = setTimeout(() => {
-            event.target.classList.remove('bx-check');
-            event.target.classList.add('bx-copy');
-          }, 3000);
-        }).catch(err => {
-          setAlert('error', 'Copy failed', "Failed to copy text!");
-          console.log(err) // log the error if copy fails
-        });
-        //triggers the copy info alert
-        const copyAlertContainer = document.getElementById('copyAlertContainer')
-        copyAlertContainer.classList.add("active")
-        setTimeout(() => {
-          copyAlertContainer.classList.remove("active")
-        }, 3000);
+      const text = event.target.nextElementSibling.textContent;
+      
+      copyText(text, event.target);
     }
   });
 });
@@ -453,4 +431,10 @@ stylers.forEach((styler) => {
     }
     refreshOutput();
   });
+});
+
+// Copy on click for the results
+document.getElementById('results').addEventListener("click", function() {
+  const text = this.value;
+  copyText(text);
 });
