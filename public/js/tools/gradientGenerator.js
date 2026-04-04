@@ -4,6 +4,7 @@ import { setFunction } from '../handlers/dropDownMenu.js'
 import { copyText } from '../handlers/copy.js'
 import "https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js";
 
+let maxColors = 6;
 let maxChars = 3;
 let colors = 2;
 
@@ -18,6 +19,38 @@ function updateColors(number) {
   colors = number;
   refreshChars();
 }
+
+function refreshColors() {
+  const currentColors = document.querySelectorAll('.color-container');
+  const totalColors = currentColors.length;
+  
+  // Enable all colors
+  currentColors.forEach(color => color.classList.remove('disabled'));
+  document.getElementById('errorMessage').style.display = "none";
+  document.getElementById('addColorButton').classList.remove('deselect');
+  
+  // If colors are more than expected
+  if (totalColors >= maxColors) {
+    // how many more?
+    const iterations = totalColors - maxColors;
+    // if at the edge limit
+    if (iterations >= 0) {
+      const errorMessage = document.getElementById('errorMessage');
+      
+      errorMessage.style.display = "block";
+      errorMessage.querySelector('span').textContent = `(${maxColors})`;
+      document.getElementById('addColorButton').classList.add('deselect');
+    }
+    
+    // Disable those extra ones
+    for(let i = 0; i < iterations; i++) {
+      const siblings = document.querySelectorAll('.color-container:not(.disabled)');
+      const last = siblings[siblings.length - 1];
+      
+      last.classList.add('disabled');
+    };
+  };
+};
 
 let timeout;
 document.addEventListener('DOMContentLoaded', () => {
@@ -63,13 +96,16 @@ async function refreshOutput() {
     const results = document.getElementById('results');
   
     // get important parameters
-    const colors = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
+    const colors = [...document.querySelectorAll(".color-container:not(.disabled) .color-name")].map(el => el.textContent);
     const input = document.getElementById('inputText').value;
     const charLimit = document.getElementById('inputChars').value;
     const type = document.getElementById("dropdownSelected").dataset.selected;
     
     // If input is empty return
-    if (!input) return;
+    if (!input) {
+      results.textContent = "";
+      return;
+    }
     
     // default styles(none)
     const styles = {
@@ -313,14 +349,6 @@ addColorButton.addEventListener('click', () => {
   const colorContainerLength = colorsContainer.querySelectorAll('.color-container').length;
   const errorMessage = document.getElementById('errorMessage');
   
-  //if reached the max limit return
-  if (colorContainerLength === 15) {
-    clearTimeout(errorTimeout);
-    errorMessage.style.display = "block";
-    addColorButton.classList.add('deselect');
-    return;
-  }
-  
   // does some adjustments in the copy
   errorMessage.style.display = "none";
   addColorButton.classList.remove('deselect');
@@ -360,6 +388,15 @@ addColorButton.addEventListener('click', () => {
   //adds the color
   colorsContainer.appendChild(clonedContainer);
   
+  // if reached the max limit return
+  if (colorContainerLength  >= maxColors) {
+    clearTimeout(errorTimeout);
+    errorMessage.style.display = "block";
+    errorMessage.querySelector('span').textContent = `(${maxColors})`;
+    addColorButton.classList.add('deselect');
+    return;
+  }
+  
   //Update the required factors
   updateGradient();
 });
@@ -380,6 +417,12 @@ colorsContainer.addEventListener('click', (event) => {
       // Decrement Colors
       updateColors(colors - 1);
       
+      const currentColors = document.querySelectorAll('.color-container').length;
+      if (currentColors !== maxColors) {
+        document.getElementById('errorMessage').style.display = "none";
+        document.getElementById('addColorButton').classList.remove('deselect');
+      }
+      
       updateGradient();
     }, { once: true });
   };
@@ -396,10 +439,16 @@ inputText.addEventListener('input', (event) => {
   
   previewText.dataset.text = text;
   previewText.textContent = text;
+  // Set maxColors
+  maxColors = text.length;
   
   // Refresh maxChars
   refreshChars();
   
+  // Refresh Colors
+  refreshColors();
+  
+  // Refresh the gradient output
   refreshOutput();
 });
 

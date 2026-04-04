@@ -80,6 +80,34 @@
   box-shadow: 0 2px 2px var(--shadow);
 }
 
+.color-container.disabled {
+  pointer-events: none;
+  border: 1px dashed var(--border);
+  opacity: .5;
+}
+
+.color-container.disabled .color-error-message {
+  display: block;
+}
+
+.color-container.disabled .delete-icon {
+  pointer-events: auto;
+}
+
+.color-error-message {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50% );
+  font-size: 1em;
+  text-align: center;
+  color: var(--text-muted);
+  padding: .3em;
+  border-radius: 2em;
+  background-color: var(--bg-light);
+}
+
 .color-container div {
   overflow: hidden;
   display: flex;

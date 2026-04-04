@@ -276,6 +276,12 @@ function buildGradient(charLimit, text, colors, options, styles, prefix, hexType
 }
 
 function applyGradientWithReset(charLimit, input, colors, options, styles, prefix, hexType = "none") {
+  // if its an single string
+  if (input.length === 1) {
+    const stylers = getStylers(styles);
+    return input + stylers + colors[0];
+  }
+  
   // Get the reset stylers
   const parts = input.split(/(&r|§r)/);
 
