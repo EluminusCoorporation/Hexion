@@ -8,13 +8,11 @@ const stylelint = require("stylelint");
 const { ESLint } = require("eslint");
 const { spawnSync } = require("child_process");
 
-// Gradient modules
-const chroma = require("chroma-js");
-
 // Request Sender modules
 const axios = require("axios");
 
 // Color Converter modules
+// NOTE: This is used in Color Converter as well as Gradient Generator
 const culori = require("culori");
 
 const router = express.Router();
@@ -179,6 +177,7 @@ router.post("/debugger", async (req, res) => {
   }
 });
 
+// Helper functions for Gradient Generator
 function getStylers(options) {
   // Styler formats
   const stylerFormats = {
@@ -202,115 +201,84 @@ function getStylers(options) {
   return stylers;
 }
 
-// helper function to convert hex to rgb
-function hexToRgb(hex) {
-  // remove #
-  hex = hex.replace("#", "");
-  // convert to hex
-  return [
-    parseInt(hex.substring(0, 2), 16),
-    parseInt(hex.substring(2, 4), 16),
-    parseInt(hex.substring(4, 6), 16),
-  ];
-}
+function generateGradient(text, colors, styles) {
+  const chars = text.split("");
+  const n = chars.length;
 
-// helper function to distribute letters evenly
-function splitText(length, segments) {
-  const base = Math.floor(length / segments);
-  const remainder = length % segments;
+  if (colors.length < 2) {
+    throw new Error("At least 2 colors required");
+  }
 
-  return Array.from({ length: segments }, (_, i) =>
-    base + (i < remainder ? 1 : 0)
-  );
-}
+  const segments = colors.length - 1;
+  const result = [];
 
-// helper function to distribute colors evenly
-function interpolate(start, end, steps) {
-  return Array.from({ length: steps }, (_, i) => {
-    const t = i / (steps - 1);
-    return [
-      Math.round(start[0] + (end[0] - start[0]) * t),
-      Math.round(start[1] + (end[1] - start[1]) * t),
-      Math.round(start[2] + (end[2] - start[2]) * t),
-    ];
+  chars.forEach((char, i) => {
+    const t = n === 1 ? 0 : i / (n - 1);
+
+    // Determine which segment this char belongs to
+    const segmentIndex = Math.min(
+      Math.floor(t * segments),
+      segments - 1
+    );
+
+    // Local t within the segment
+    const segmentStart = segmentIndex / segments;
+    const segmentEnd = (segmentIndex + 1) / segments;
+
+    const localT = (t - segmentStart) / (segmentEnd - segmentStart);
+
+    const interpolate = culori.interpolate([
+      colors[segmentIndex],
+      colors[segmentIndex + 1]
+    ]);
+
+    const color = culori.formatHex(interpolate(localT));
+    const stylers = getStylers(styles);
+
+    result.push({ char, color, stylers });
   });
+
+  return result;
 }
 
-// helper function to fix light levels in colors
-function colorDistance([r, g, b], [cr, cg, cb]) {
-  return (
-    0.3 * (r - cr) ** 2 +
-    0.59 * (g - cg) ** 2 +
-    0.11 * (b - cb) ** 2
-  );
-}
-
-// helper function to get the closest mc variants
-function closestKMcColors(colorPallete, rgb, k = 3) {
-  return Object.entries(colorPallete)
-    .map(([code, mcRgb]) => ({
-      code,
-      distance: colorDistance(rgb, mcRgb),
-    }))
-    .sort((a, b) => a.distance - b.distance)
-    .slice(0, k);
-}
-
-// helper function to fix color weights
-function normalizeWeights(colors) {
-  const total = colors.reduce(
-    (sum, c) => sum + 1 / (c.distance + 1),
-    0
-  );
-
-  return colors.map(c => ({
-    code: c.code,
-    weight: (1 / (c.distance + 1)) / total,
-  }));
-}
-
-// helper function to distribute the correct color weight
-function selectWeightedColor(weights, index) {
-  let acc = 0;
-  const t = (index % 100) / 100;
-
-  for (const w of weights) {
-    acc += w.weight;
-    if (t <= acc) return w.code;
+function prepareHex(stylers, hex, prefix, hexType) {
+  switch (hexType) {
+    case "simple": return prefix + hex.slice(1) + stylers;
+    case "<#rrggbb>": return `<${prefix}${hex.slice(1)}${stylers}>`;
+    
+    default: return `${prefix}x` + hex
+      .slice(1)
+      .split("")
+      .map(c => `${prefix}${c}`)
+      .join("")
+    + stylers;
   }
-
-  return weights[0].code;
 }
 
-// helper function to create the gradient
-function multiStopGradient(
-  colorPallete,
-  text,
-  hexStops,
-  k = 3
-) {
-  const segments = hexStops.length - 1;
-  const distribution = splitText(text.length, segments);
+function buildGradient(text, colors, options, styles, prefix, hexType) {
+  const data = generateGradient(text, colors, styles);
 
-  let index = 0;
-  let output = "";
+  return data.map(({ char, color, stylers }) => {
+    if (char === " ") return " ";
+    
+    let colorInputed = color;
+    if (!options.lowercaseHex) colorInputed = color.toUpperCase();
+    
+    return prepareHex(stylers, colorInputed, prefix, hexType) + char;
+  }).join("");
+}
 
-  for (let s = 0; s < segments; s++) {
-    const startRgb = hexToRgb(hexStops[s]);
-    const endRgb = hexToRgb(hexStops[s + 1]);
-    const chars = distribution[s];
+function applyGradientWithReset(input, colors, options, styles, prefix, hexType = "none") {
+  const parts = input.split(/(&r|§r)/);
 
-    const gradient = interpolate(startRgb, endRgb, chars);
+  let result = "";
 
-    gradient.forEach(rgb => {
-      const nearest = closestKMcColors(colorPallete, rgb, k);
-      const weighted = normalizeWeights(nearest);
-      const color = selectWeightedColor(weighted, index);
-      output += color + text[index++];
-    });
-  }
+  parts.forEach(part => {
+    if ((part === "&r" || part === "§r")) return result += "§r";
+    result += buildGradient(part, colors, options, styles, prefix, hexType);
+  });
 
-  return output;
+  return result;
 }
 
 // POST /api/gradient - Generates an gradient output for usage
@@ -345,105 +313,11 @@ router.post("/gradient", (req, res) => {
     }
     
     // find the type
-    if (type === "&#rrggbb") {
-      // Make the color pallete
-      const scale = chroma.scale(colors).mode("lab");
-
-      // add it one by one
-      output = [...userInput]
-        .map((char, i) => {
-          // apply one color pallete on one word
-          const t = userInput.length === 1 ? 0 : i / (userInput.length - 1);
-          const color = "&" + scale(t).hex();
-          let filteredColor = color;
-          
-          if (options.lowercaseHex) {
-            filteredColor = color.toLowerCase();
-          };
-
-          const styler = getStylers(styles);
-
-          // return the value
-          return `${filteredColor}${styler}${char}`;
-        })
-        .join("");
-    } else if (type === "<#rrggbb>") {
-      // Make the color pallete
-      const scale = chroma.scale(colors).mode("lab");
-
-      // add it one by one
-      output = [...userInput]
-        .map((char, i) => {
-          // apply one color pallete on one word
-          const t = userInput.length === 1 ? 0 : i / (userInput.length - 1);
-          const color = "<" + scale(t).hex() + ">";
-          let filteredColor = color;
-          
-          if (options.lowercaseHex) {
-            filteredColor = color.toLowerCase();
-          };
-          
-          const styler = getStylers(styles);
-
-          // return the value
-          return `${filteredColor}${styler}${char}`;
-        })
-        .join("");
-    } else if (type === "&x&r&r&g&g&b&b") {
-      //list of mc colors
-      const mcColors = {
-        "&0": [0, 0, 0], // Black
-        "&1": [0, 0, 170], // Dark Blue
-        "&2": [0, 170, 0], // Dark Green
-        "&3": [0, 170, 170], // Dark Aqua
-        "&4": [170, 0, 0], // Dark Red
-        "&5": [170, 0, 170], // Dark Purple
-        "&6": [255, 170, 0], // Gold
-        "&7": [170, 170, 170], // Gray
-        "&8": [85, 85, 85], // Dark Gray
-        "&9": [85, 85, 255], // Blue
-        "&a": [85, 255, 85], // Green
-        "&b": [85, 255, 255], // Aqua
-        "&c": [255, 85, 85], // Red
-        "&d": [255, 85, 255], // Light Purple
-        "&e": [255, 255, 85], // Yellow
-        "&f": [255, 255, 255] // White
-      };
-      
-      // create the gradient
-      const color = multiStopGradient(mcColors, userInput, colors);
-      const styler = getStylers(styles);
-
-      // return the value
-      output = `${styler}${color}`;
-    } else if (type === "§x§r§r§g§g§b§b") {
-      //list of mc colors(legacy)
-      const mcLegacyColors = {
-        "§0": [0, 0, 0], // Black
-        "§1": [0, 0, 170], // Dark Blue
-        "§2": [0, 170, 0], // Dark Green
-        "§3": [0, 170, 170], // Dark Aqua
-        "§4": [170, 0, 0], // Dark Red
-        "§5": [170, 0, 170], // Dark Purple
-        "§6": [255, 170, 0], // Gold
-        "§7": [170, 170, 170], // Gray
-        "§8": [85, 85, 85], // Dark Gray
-        "§9": [85, 85, 255], // Blue
-        "§a": [85, 255, 85], // Green
-        "§b": [85, 255, 255], // Aqua
-        "§c": [255, 85, 85], // Red
-        "§d": [255, 85, 255], // Light Purple
-        "§e": [255, 255, 85], // Yellow
-        "§f": [255, 255, 255] // White
-      };
-      
-      // create the gradient
-      const color = multiStopGradient(mcLegacyColors, userInput, colors);
-      const styler = getStylers(styles);
-
-      // return the value
-      output = `${styler}${color}`;
-    } else throw new Error("No options matched.")
+    if (type === "&#rrggbb") output = applyGradientWithReset(userInput, colors, options, styles, '#', 'simple');
+    else if (type === "<#rrggbb>") output = applyGradientWithReset(userInput, colors, options, styles, '#', '<#rrggbb>');
+    else if (type === "&x&r&r&g&g&b&b") output = applyGradientWithReset(userInput, colors, options, styles, '&');
+    else if (type === "§x§r§r§g§g§b§b") output = applyGradientWithReset(userInput, colors, options, styles, '§');
+    else throw new Error("No options matched.")
     
     if (!output) throw new Error('Output is empty, did you enter the correct info?');
     
