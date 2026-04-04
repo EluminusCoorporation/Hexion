@@ -313,7 +313,7 @@ router.post("/gradient", (req, res) => {
     }
     
     // find the type
-    if (type === "&#rrggbb") output = applyGradientWithReset(userInput, colors, options, styles, '#', 'simple');
+    if (type === "&#rrggbb") output = applyGradientWithReset(userInput, colors, options, styles, '&#', 'simple');
     else if (type === "<#rrggbb>") output = applyGradientWithReset(userInput, colors, options, styles, '#', '<#rrggbb>');
     else if (type === "&x&r&r&g&g&b&b") output = applyGradientWithReset(userInput, colors, options, styles, '&');
     else if (type === "§x§r§r§g§g§b§b") output = applyGradientWithReset(userInput, colors, options, styles, '§');
