@@ -204,11 +204,7 @@ function getStylers(options) {
 function generateGradient(text, colors, styles) {
   const chars = text.split("");
   const n = chars.length;
-
-  if (colors.length < 2) {
-    throw new Error("At least 2 colors required");
-  }
-
+  
   const segments = colors.length - 1;
   const result = [];
 
@@ -232,6 +228,7 @@ function generateGradient(text, colors, styles) {
       colors[segmentIndex + 1]
     ]);
 
+    // Generate interpolate
     const color = culori.formatHex(interpolate(localT));
     const stylers = getStylers(styles);
 
@@ -242,6 +239,7 @@ function generateGradient(text, colors, styles) {
 }
 
 function prepareHex(stylers, hex, prefix, hexType) {
+  // Convert hex into humanly readable format
   switch (hexType) {
     case "simple": return prefix + hex.slice(1) + stylers;
     case "<#rrggbb>": return `<${prefix}${hex.slice(1)}${stylers}>`;
@@ -257,24 +255,33 @@ function prepareHex(stylers, hex, prefix, hexType) {
 
 function buildGradient(text, colors, options, styles, prefix, hexType) {
   const data = generateGradient(text, colors, styles);
+  
+  // If its asking for json just give it the whols thing
+  if (hexType === "json") return JSON.stringify(data, null, 2)
 
   return data.map(({ char, color, stylers }) => {
+    // Ignore if its an space
     if (char === " ") return " ";
     
+    // Apply options
     let colorInputed = color;
     if (!options.lowercaseHex) colorInputed = color.toUpperCase();
     
+    // Prepare the hex
     return prepareHex(stylers, colorInputed, prefix, hexType) + char;
   }).join("");
 }
 
 function applyGradientWithReset(input, colors, options, styles, prefix, hexType = "none") {
+  // Get the reset stylers
   const parts = input.split(/(&r|§r)/);
 
   let result = "";
 
   parts.forEach(part => {
+    // reset if reset stylers are present
     if ((part === "&r" || part === "§r")) return result += "§r";
+    // Else continue
     result += buildGradient(part, colors, options, styles, prefix, hexType);
   });
 
@@ -317,6 +324,7 @@ router.post("/gradient", (req, res) => {
     else if (type === "<#rrggbb>") output = applyGradientWithReset(userInput, colors, options, styles, '#', '<#rrggbb>');
     else if (type === "&x&r&r&g&g&b&b") output = applyGradientWithReset(userInput, colors, options, styles, '&');
     else if (type === "§x§r§r§g§g§b§b") output = applyGradientWithReset(userInput, colors, options, styles, '§');
+    else if (type === "json") output = applyGradientWithReset(userInput, colors, options, styles, 'json', 'json');
     else throw new Error("No options matched.")
     
     if (!output) throw new Error('Output is empty, did you enter the correct info?');
