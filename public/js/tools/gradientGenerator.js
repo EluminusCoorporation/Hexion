@@ -66,7 +66,7 @@ async function refreshOutput() {
     // get important parameters
     const colors = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
     const input = document.getElementById('inputText').value;
-    const type = document.getElementById("dropdownSelected").dataset.selected.toLowerCase();
+    const type = document.getElementById("dropdownSelected").dataset.selected;
     
     // If input is empty return
     if (!input) return;
@@ -102,7 +102,7 @@ async function refreshOutput() {
       const styleType = checkbox.dataset.style;
       styles[styleType] = true;
     });
-  
+    
     //Send the request to the backend
     const res = await fetch('/api/gradient', {
       method: 'POST',

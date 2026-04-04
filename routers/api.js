@@ -238,18 +238,18 @@ function generateGradient(text, colors, styles) {
   return result;
 }
 
-function prepareHex(stylers, hex, prefix, hexType) {
+function prepareHex(stylers, hex, prefix, hexType, char) {
   // Convert hex into humanly readable format
   switch (hexType) {
-    case "simple": return prefix + hex.slice(1) + stylers;
-    case "<#rrggbb>": return `<${prefix}${hex.slice(1)}${stylers}>`;
-    
+    case "simple": return prefix + hex.slice(1) + stylers + char;
+    case "<#rrggbb>": return `<${prefix}${hex.slice(1)}${stylers}>${char}`;
+    case "[COLOR]": return `[COLOR=${prefix}${hex.slice(1)}]${char}[/COLOR]`
     default: return `${prefix}x` + hex
       .slice(1)
       .split("")
       .map(c => `${prefix}${c}`)
       .join("")
-    + stylers;
+    + stylers + char;
   }
 }
 
@@ -268,7 +268,7 @@ function buildGradient(text, colors, options, styles, prefix, hexType) {
     if (!options.lowercaseHex) colorInputed = color.toUpperCase();
     
     // Prepare the hex
-    return prepareHex(stylers, colorInputed, prefix, hexType) + char;
+    return prepareHex(stylers, colorInputed, prefix, hexType, char);
   }).join("");
 }
 
@@ -324,7 +324,8 @@ router.post("/gradient", (req, res) => {
     else if (type === "<#rrggbb>") output = applyGradientWithReset(userInput, colors, options, styles, '#', '<#rrggbb>');
     else if (type === "&x&r&r&g&g&b&b") output = applyGradientWithReset(userInput, colors, options, styles, '&');
     else if (type === "§x§r§r§g§g§b§b") output = applyGradientWithReset(userInput, colors, options, styles, '§');
-    else if (type === "json") output = applyGradientWithReset(userInput, colors, options, styles, 'json', 'json');
+    else if (type === "[COLOR=#rrggbb][/COLOR]") output = applyGradientWithReset(userInput, colors, options, styles, '#', '[COLOR]');
+    else if (type === "JSON") output = applyGradientWithReset(userInput, colors, options, styles, 'json', 'json');
     else throw new Error("No options matched.")
     
     if (!output) throw new Error('Output is empty, did you enter the correct info?');
