@@ -1,5 +1,5 @@
 > [!WARNING]
-> This project is currently in early beta stages and there is no release date confirmed yet, we are actively working for it to be completed as soon as possible.
+> This project is NOT meant for public use only the codebase is made public for user transparency you're not allowed to use this codebase!
 
 <H1 align="center">Hexion</H1>
 <img src="https://i.ibb.co/RksHmpP7/logo.webp" width="150" height="150" align="center" alt="Hexion Logo">
