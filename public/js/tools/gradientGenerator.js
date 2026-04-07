@@ -4,6 +4,8 @@ import { setFunction } from '../handlers/dropDownMenu.js'
 import { copyText } from '../handlers/copy.js'
 import "https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js";
 
+let charList = null;
+
 let maxColors = 6;
 let maxChars = 3;
 let colors = 2;
@@ -73,7 +75,7 @@ document.getElementById('inputChars').addEventListener("change", function() {
   if (!this.value) this.value = 1;
   if (this.value > maxChars) this.value = maxChars;
   
-  updateGradient();
+  refreshOutput();
 });
 
 const colorDropdownmenu = document.getElementById('colorDropdownmenu');
@@ -168,7 +170,10 @@ async function refreshOutput() {
     
     if (!data) throw new Error("Our server's response was empty?")
 
-    results.textContent = data.output;
+    results.textContent = data.output.text;
+    
+    // Update Gradient
+    updateGradient(data.output.data);
   } catch (error) {
     setAlert("error", "Gradient Generator Failed", error)
     console.error('An error occured while generating gradient: \n' + error)
@@ -179,18 +184,58 @@ optionsCheckbox.forEach((checkbox) => {
   checkbox.addEventListener("change", () => refreshOutput())
 });
 
-//Updates the gradient
-function updateGradient() {
-  //Refreshes the colors
-  const colorNames = [...document.querySelectorAll(".color-name")].map(el => el.textContent);
-  
-  //Updates the gradient accordingly
-  document.documentElement.style.setProperty("--gradientXXX", `linear-gradient(to right, ${colorNames.join(", ")}`)
-  // Get the updated output
-  refreshOutput();
+// Get formatted stylers
+function getStylers(options) {
+  // Styler formats
+  const stylerFormats = {
+    bold: "bold",
+    underline: "underline",
+    italic: "italic",
+    strikethrough: "strike-through",
+    obfuscation: "obfuscated"
+  };
+
+  //stylers will be set here
+  let stylers = "";
+
+  // get the stylers that are selected
+  const trueOptions = Object.keys(options).filter(key => options[key] === true);
+
+  // apply the stylers
+  trueOptions.forEach(option => (stylers += stylerFormats[option] + " "));
+
+  // return the stylers
+  return stylers;
 }
 
-//Creates an pickr
+// Updates the gradient
+function updateGradient(data) {
+  if (!data) return;
+  
+  const previewText = document.getElementById('previewText');
+  
+  // Clear old gradient
+  previewText.innerHTML = "";
+  
+  data.forEach(item => {
+    const textElement = document.createElement('span');
+    const stylers = getStylers(item.styles);
+    
+    // Apply content
+    textElement.style.display;
+    textElement.style.color = item.color;
+    textElement.textContent = item.char;
+    textElement.className = stylers;
+    
+    // Append it
+    previewText.appendChild(textElement);
+  });
+  
+  // Cache the list
+  charList = previewText.querySelectorAll('span');
+};
+
+// Creates an pickr
 function createPickr(el, color) {
   const colorNameContainer = el.nextElementSibling;
   const colorName = colorNameContainer.querySelector('.color-name');
@@ -226,9 +271,9 @@ function createPickr(el, color) {
     //Adds the colors on the viewer interface
     colorName.textContent = colorHex
     colorName.style.color = colorHex
-    updateGradient();
+    refreshOutput();
   })
-  updateGradient();
+  refreshOutput();
 }
 
 // For each container create an pickr
@@ -284,7 +329,7 @@ function setUpMoverUp(el) {
   moveAnimation(list, mapper);
   
   // Reloads the gradient
-  updateGradient();
+  refreshOutput();
 }
 
 function setUpMoverDown(el) {
@@ -313,7 +358,7 @@ function setUpMoverDown(el) {
   moveAnimation(list, mapper);
   
   // Reloads the gradient
-  updateGradient();
+  refreshOutput();
 }
 
 const moveUp = document.querySelectorAll("#moveUp");
@@ -398,7 +443,7 @@ addColorButton.addEventListener('click', () => {
   }
   
   //Update the required factors
-  updateGradient();
+  refreshOutput();
 });
 
 const colorsContainer = document.getElementById('colorsContainer');
@@ -423,7 +468,7 @@ colorsContainer.addEventListener('click', (event) => {
         document.getElementById('addColorButton').classList.remove('deselect');
       }
       
-      updateGradient();
+      refreshOutput();
     }, { once: true });
   };
 });
@@ -452,66 +497,36 @@ inputText.addEventListener('input', (event) => {
   refreshOutput();
 });
 
-function startObfuscation(element) {
-  //Stores the text
-  const original = element.dataset.text
-  
-  //Random letters
+function randomChar() {
+  // Random letters
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-  
-  //Time to update on
-  let interval = setInterval(() => {
-    let scrambled = "";
-    for (let i = 0; i < original.length; i++) {
-      //Random letters being replaced
-      scrambled += chars[Math.floor(Math.random() * chars.length)];
-    }
-    //Changes the content
-    element.textContent = scrambled;
-  }, 50);
-  
-  element._obfInterval = interval;
-}
+  return chars[Math.floor(Math.random() * chars.length)];
+};
 
-function stopObfuscation(element) {
-  //Stops the obfuscation
-  if (element._obfInterval) {
-    clearInterval(element._obfInterval);
-    element.textContent = element.dataset.text;
+function updateObfuscation() {
+  if (!charList) return;
+  
+  // Update obfuscation
+  charList.forEach(char => {
+    if (char.classList.contains("obfuscated")) char.textContent = randomChar();
+  });
+};
+
+let lastUpdated = 0;
+function animateObfuscation(time) {
+  if (time - lastUpdated > 50) {
+    updateObfuscation();
+    lastUpdated = time;
   }
-}
+  
+  requestAnimationFrame(animateObfuscation);
+};
+
+requestAnimationFrame(animateObfuscation);
 
 const stylers = document.querySelectorAll('.stylers');
 stylers.forEach((styler) => {
-  styler.addEventListener("change", function(event) {
-    const stylerType = this.dataset.style;
-    if (this.checked) {
-      if (stylerType === "bold") {
-        previewText.style.fontWeight = "bold";
-      } else if (stylerType === "underline") {
-        previewText.classList.add("underlined");
-      } else if (stylerType === "italic") {
-        previewText.style.fontStyle = "italic";
-      } else if (stylerType === "strikethrough") {
-        previewText.classList.add("strike");
-      } else if (stylerType === "obfuscation") {
-        startObfuscation(previewText);
-      }
-    } else {
-      if (stylerType === "bold") {
-        previewText.style.fontWeight = "unset";
-      } else if (stylerType === "underline") {
-        previewText.classList.remove("underlined");
-      } else if (stylerType === "italic") {
-        previewText.style.fontStyle = "unset";
-      } else if (stylerType === "strikethrough") {
-        previewText.classList.remove("strike");
-      } else if (stylerType === "obfuscation") {
-        stopObfuscation(previewText);
-      }
-    }
-    refreshOutput();
-  });
+  styler.addEventListener("change", () => refreshOutput());
 });
 
 // Copy on click for the results

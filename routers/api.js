@@ -233,15 +233,17 @@ function generateGradient(text, colors, styles, charLimit) {
 
     // Generate interpolate
     const color = culori.formatHex(interpolate(localT));
-    const stylers = getStylers(styles);
 
-    result.push({ char, color, stylers });
+    result.push({ char, color, styles });
   });
 
   return result;
 }
 
-function prepareHex(stylers, hex, prefix, hexType, char) {
+function prepareHex(styles, hex, prefix, hexType, char) {
+  // Get formatted styles
+  const stylers = getStylers(styles);
+  
   // Convert hex into humanly readable format
   switch (hexType) {
     case "simple": return prefix + hex.slice(1) + stylers + char;
@@ -259,21 +261,24 @@ function prepareHex(stylers, hex, prefix, hexType, char) {
 function buildGradient(charLimit, text, colors, options, styles, prefix, hexType) {
   const data = generateGradient(text, colors, styles, charLimit);
   
-  // If its asking for json just give it the whols thing
-  if (hexType === "json") return JSON.stringify(data, null, 2)
+  // If its asking for json just give it the whole thing
+  if (hexType === "json") return { text: JSON.stringify(data, null, 2), data };
 
-  return data.map(({ char, color, stylers }) => {
-    // Ignore if its an space
-    if (char === " ") return " ";
-    
-    // Apply options
-    let colorInputed = color;
-    if (!options.lowercaseHex) colorInputed = color.toUpperCase();
-    
-    // Prepare the hex
-    return prepareHex(stylers, colorInputed, prefix, hexType, char);
-  }).join("");
-}
+  return {
+    text: data.map(({ char, color, styles }) => {
+      // Ignore if its an space
+      if (char === " ") return " ";
+      
+      // Apply options
+      let colorInputed = color;
+      if (!options.lowercaseHex) colorInputed = color.toUpperCase();
+      
+      // Prepare the hex
+      return prepareHex(styles, colorInputed, prefix, hexType, char);
+    }).join(""),
+    data
+  };
+};
 
 function applyGradientWithReset(charLimit, input, colors, options, styles, prefix, hexType = "none") {
   // if its an single string
@@ -282,16 +287,22 @@ function applyGradientWithReset(charLimit, input, colors, options, styles, prefi
     return input + stylers + colors[0];
   }
   
+  let result = {};
+  
   // Get the reset stylers
   const parts = input.split(/(&r|§r)/);
 
-  let result = "";
-
-  parts.forEach(part => {
+  parts.forEach((part, i) => {
     // reset if reset stylers are present
-    if ((part === "&r" || part === "§r")) return result += "§r";
+    if ((part === "&r" || part === "§r")) return result.text += part === "&r" ? "&r" : "§r";
     // Else continue
-    result += buildGradient(charLimit, part, colors, options, styles, prefix, hexType);
+    const rawResult = buildGradient(charLimit, part, colors, options, styles, prefix, hexType);
+    // If its the first one apply it
+    if (i === 0) return result = rawResult;
+    
+    // Append it on top of it
+    result.text += rawResult.text;
+    result.data.push(...rawResult.data);
   });
 
   return result;
