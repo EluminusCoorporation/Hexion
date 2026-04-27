@@ -44,7 +44,7 @@
     "ejs": "^5.0.2",
     "eslint": "^10.2.1",
     "express": "^5.1.0",
-    "express-rate-limit": "^8.3.2",
+    "express-rate-limit": "^8.4.1",
     "htmlhint": "^1.9.2",
     "node-html-parser": "^7.1.0",
     "serve-favicon": "^2.5.1",
