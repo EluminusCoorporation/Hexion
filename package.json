@@ -48,7 +48,7 @@
     "htmlhint": "^1.9.2",
     "node-html-parser": "^7.1.0",
     "serve-favicon": "^2.5.1",
-    "stylelint": "^17.8.0",
+    "stylelint": "^17.9.1",
     "stylelint-config-standard": "^40.0.0"
   }
 }
