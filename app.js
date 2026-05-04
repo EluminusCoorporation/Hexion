@@ -83,7 +83,7 @@ app.use(express.urlencoded({ extended: false, limit: "1mb" }));
 app.use(favicon(path.join(PUBLIC_DIR, 'assets/icons/favicon.ico')));
 
 // Checks & installs required python packages
-try {
+/* try {
   // Check if external dependencies are missing
   execSync("python -m flake8 --version", { stdio: "ignore" });
   } catch {
@@ -100,7 +100,7 @@ try {
     console.error(chalk.yellow(chalk.bold.yellow('[dependency manager]') + " Could not install a few dependencies\n\n"), chalk.gray(err.message));
     throw err;
   }
-}
+}*/
 
 //Setting up in-app middlewares (before)
 app.use(onMaintenance);
@@ -159,6 +159,7 @@ app.use(notFoundHandler);
 
 //Starts the server
 const PORT = config.general.port || 8000;
+
 app.listen(PORT, () => {
   console.log(chalk.gray(`Hexion v${config.general.version} - webserver online on Port:${PORT}`));
 }).on('error', (error) => {
