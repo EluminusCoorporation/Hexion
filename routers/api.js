@@ -178,45 +178,78 @@ router.post("/debugger", async (req, res) => {
 });
 
 // Helper functions for Gradient Generator
-function getStylers(options) {
-  // Styler formats
-  const stylerFormats = {
+function getStylers(options, type = "default") {
+  const stylerFormat = {
     bold: "&l",
     underline: "&n",
     italic: "&o",
     strikethrough: "&m",
     obfuscation: "&k"
-  };
-
-  //stylers will be set here
+  }
+  
+  // stylers will be stored here
   let stylers = "";
 
   // get the stylers that are selected
   const trueOptions = Object.keys(options).filter(key => options[key] === true);
-
+  
   // apply the stylers
-  trueOptions.forEach(option => (stylers += stylerFormats[option]));
-
-  //return the stylers
+  switch (type) {
+    case "default":
+      trueOptions.forEach(option => (stylers += stylerFormat[option]));
+      break;
+    case "[COLOR]":
+      // Define custom styles
+      const customStylerFormat = {
+        bold: "BOLD",
+        underline: "UNDERLINE",
+        italic: "ITALIC",
+        strikethrough: "STRIKETHROUGH",
+        obfuscation: ""
+      }
+      
+      // Set stylers field to be an Object
+      stylers = { start: "", end: "" };
+      
+      // Apply stylere one by one
+      trueOptions.forEach(option => {
+        // Get the current styler
+        const currentStyler = customStylerFormat[option];
+        
+        // Ignore unsupported stylers
+        if (!currentStyler) return;
+        
+        // Set the start and end style elements
+        const start = `[${currentStyler}]`;
+        const end = `[/${currentStyler}]`;
+        
+        // Set them onto the stylers Object
+        stylers.start += start;
+        stylers.end += end;
+      });
+      break;
+  }
+  
+  // return the stylers
   return stylers;
 }
 
 function generateGradient(text, colors, styles, charLimit) {
   const chars = text.split("");
-  const n = chars.length;
+  const number = chars.length;
   
-  const totalGroups = Math.ceil(n / charLimit);
+  const totalGroups = Math.ceil(number / charLimit);
   
   const segments = colors.length - 1;
   const result = [];
 
   chars.forEach((char, i) => {
     const groupIndex = Math.floor(i / charLimit);
-    const t = groupIndex / (totalGroups - 1);
+    const target = groupIndex / (totalGroups - 1);
 
     // Determine which segment this char belongs to
     const segmentIndex = Math.min(
-      Math.floor(t * segments),
+      Math.floor(target * segments),
       segments - 1
     );
 
@@ -224,7 +257,7 @@ function generateGradient(text, colors, styles, charLimit) {
     const segmentStart = segmentIndex / segments;
     const segmentEnd = (segmentIndex + 1) / segments;
 
-    const localT = (t - segmentStart) / (segmentEnd - segmentStart);
+    const localTarget = (target - segmentStart) / (segmentEnd - segmentStart);
 
     const interpolate = culori.interpolate([
       colors[segmentIndex],
@@ -232,7 +265,7 @@ function generateGradient(text, colors, styles, charLimit) {
     ]);
 
     // Generate interpolate
-    const color = culori.formatHex(interpolate(localT));
+    const color = culori.formatHex(interpolate(localTarget));
 
     result.push({ char, color, styles });
   });
@@ -263,7 +296,7 @@ function buildGradient(charLimit, text, colors, options, styles, prefix, hexType
   
   // If its asking for json just give it the whole thing
   if (hexType === "json") return { text: JSON.stringify(data, null, 2), data };
-
+  
   return {
     text: data.map(({ char, color, styles }) => {
       // Ignore if its an space
@@ -343,8 +376,20 @@ router.post("/gradient", (req, res) => {
     else if (type === "<#rrggbb>") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, '#', '<#rrggbb>');
     else if (type === "&x&r&r&g&g&b&b") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, '&');
     else if (type === "§x§r§r§g§g§b§b") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, '§');
-    else if (type === "[COLOR=#rrggbb][/COLOR]") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, '#', '[COLOR]');
+    else if (type === "[COLOR=#rrggbb][/COLOR]") {
+      // Store generated content
+      const generatedOutput = applyGradientWithReset(charLimit, userInput, colors, options, styles, '#', '[COLOR]');
+      
+      // Get the stylers
+      const stylers = getStylers(styles, '[COLOR]');
+      
+      // Set the content
+      // Only apply stylers if they exist
+      generatedOutput.text = stylers.start ? `${stylers.start}\n${generatedOutput.text}\n${stylers.end}` : generatedOutput.text;
+      output = generatedOutput;
+    }
     else if (type === "JSON") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, 'json', 'json');
+    
     else throw new Error("No options matched.")
     
     if (!output) throw new Error('Output is empty, did you enter the correct info?');
