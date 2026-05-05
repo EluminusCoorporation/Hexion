@@ -478,23 +478,30 @@ const resultsBtn = document.getElementById('results-btn');
 const inputText = document.getElementById('inputText');
 const previewText = document.getElementById('previewText');
 
-//realtime input changer
+// realtime input updater
+let filterTimeout;
+
 inputText.addEventListener('input', (event) => {
-  const text = event.target.value;
+  // Filter for noise
+  clearTimeout(filterTimeout);
   
-  previewText.dataset.text = text;
-  previewText.textContent = text;
-  // Set maxColors
-  maxColors = text.length;
-  
-  // Refresh maxChars
-  refreshChars();
-  
-  // Refresh Colors
-  refreshColors();
-  
-  // Refresh the gradient output
-  refreshOutput();
+  filterTimeout = setTimeout(() => {
+    const text = event.target.value;
+    
+    previewText.dataset.text = text;
+    previewText.textContent = text;
+    // Set maxColors
+    maxColors = text.length;
+    
+    // Refresh maxChars
+    refreshChars();
+    
+    // Refresh Colors
+    refreshColors();
+    
+    // Refresh the gradient output
+    refreshOutput();
+  }, 150);
 });
 
 function randomChar() {
