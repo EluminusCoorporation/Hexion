@@ -224,7 +224,8 @@ function updateGradient(data) {
     // Apply content
     textElement.style.display;
     textElement.style.color = item.color;
-    textElement.textContent = item.char;
+    // Replace spaces with html-correct spaces
+    textElement.textContent = item.char === " " ? "\u00A0" : item.char;
     textElement.className = stylers;
     
     // Append it

@@ -316,6 +316,7 @@
 
 .preview-text span {
   display: inline-block;
+  white-space: pre;
   position: relative;
 }
 
