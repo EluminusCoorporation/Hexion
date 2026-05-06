@@ -94,7 +94,9 @@ function renderFonts(fonts) {
   
 
 // Handle clear Search button
-document.getElementById('clearSearchButton').addEventListener("click", function() {
+const clearSearchButton = document.getElementById('clearSearchButton');
+
+clearSearchButton.addEventListener("click", function() {
   const searchInput = document.getElementById('fontsSearch');
   // Ignore if the search is already empty
   if (searchInput.value === "") return;
@@ -150,9 +152,12 @@ document.getElementById('fontsSearch').addEventListener("input", function() {
   }, 150);
 });
 
-// FIX: Don't lose focus when selection happens
+// FIX: Don't lose focus when certain elements are clicked
 fontItemList.addEventListener("mousedown", event => {
   if (event.target.closest('.dropdown-item')) event.preventDefault();
+});
+clearSearchButton.addEventListener("mousedown", event => {
+  if (event.target.closest('.clear-search-button')) event.preventDefault();
 });
 
 // Handle font selection
