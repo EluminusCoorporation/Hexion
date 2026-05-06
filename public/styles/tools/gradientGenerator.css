@@ -274,6 +274,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow-y: hidden;
   margin: .7em 0;
 }
 
@@ -292,28 +293,25 @@
 .preview-screen {
   display: flex;
   padding: 15px;
-  padding-bottom: 24px;
-  overflow-y: scroll;
-  align-items: center;
   background-color: var(--bg);
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  font-size: 3em;
   box-shadow: 0 2px 2px var(--shadow);
 }
 
 .preview-text {
   position: relative;
+  
   font-family: "Minecraftia", monospace;
-  font-size: .35em;
-  word-wrap: break-word;
+  font-size: 2em;
+  overflow-wrap: break-word;
+  
   image-rendering: pixelated;
   font-smooth: never;
   -webkit-font-smoothing: none;
+  
   text-shadow: 2px 2px 0 #000000;
   letter-spacing: 1px;
-  transform: scale(2);
-  transform-origin: left;
 }
 
 .preview-text span {
