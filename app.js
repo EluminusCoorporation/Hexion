@@ -28,6 +28,7 @@ const loadConfig = require('./utils/loadConfig');
 const config = loadConfig('./config.toml');
 
 // Import routers
+const base = require('./routers/base');
 const api = require('./routers/api');
 const tools = require('./routers/tools');
 const documents = require('./routers/documents');
@@ -107,7 +108,7 @@ app.use(onMaintenance);
 app.use(locals);
 app.use(setHeaders);
 
-//Setting up rate limiters
+// Setting up rate limiters
 const limiter = rateLimit({
   windowMs: 60 * 1000,
   max: 60,
@@ -115,40 +116,8 @@ const limiter = rateLimit({
 });
 app.use("/utils/", limiter);
 
-// Route setup
-// Returns / to /home
-app.get("/", (req, res) => {
-  res.redirect('/home');
-});
-app.get("/home", (req, res) => {
-  const pageInfo = {
-    title: "Home",
-    description: "The official home page of hexion, here you will find all the information related to hexion once you get ready you can start you're journey on hexion.",
-    url: `${config.general.domain}/home`,
-    path: "home"
-  };
-  res.render('home', pageInfo);
-});
-app.get("/dashboard", (req, res) => {
-  const pageInfo = {
-    title: "Dashboard",
-    description: "The dashboard of hexion, here you can access all our powerful tools to enpower you're projects.",
-    url: `${config.general.domain}/dashboard`,
-    path: "dashboard"
-  };
-  res.render('dashboard', pageInfo);
-});
-app.get("/donation", (req, res) => {
-  const pageInfo = {
-    title: "Donation",
-    description: "The donation page of hexion, here you can donate us some of you're precious money to help us run this website longer for you developers.",
-    url: `${config.general.url}/donation`,
-    path: "donation"
-  };
-  res.render('donation', pageInfo);
-});
-
 //Load routers
+app.use("/", base);
 app.use("/tools", tools);
 app.use("/documents", documents);
 app.use("/api", api);

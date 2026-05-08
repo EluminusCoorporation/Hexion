@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-//Imports the config
+// Imports the config
 const loadConfig = require('../utils/loadConfig');
 const config = loadConfig("./config.toml");
 
