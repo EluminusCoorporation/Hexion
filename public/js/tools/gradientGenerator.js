@@ -141,7 +141,7 @@ async function refreshOutput() {
       styles[styleType] = true;
     });
     
-    //Send the request to the backend
+    // Send the request to the backend
     const res = await fetch('/api/gradient', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -223,6 +223,7 @@ function updateGradient(data) {
     
     // Apply content
     textElement.style.display;
+    textElement.style.textShadow = `6px 6px 0 ${item.color}1A`;
     textElement.style.color = item.color;
     // Replace spaces with html-correct spaces
     textElement.textContent = item.char === " " ? "\u00A0" : item.char;
@@ -279,7 +280,7 @@ function createPickr(el, color) {
 
 // For each container create an pickr
 document.querySelectorAll('.color-preview').forEach((el, i) => {
-  createPickr(el, i === 0 ? "#00FF7F" : "#92ffd6");
+  createPickr(el, i === 0 ? "#00FF7F" : "#92FFD6");
 });
 
 function moveAnimation(list, map) {
