@@ -82,29 +82,26 @@ const textInput = document.getElementById('textmodetxt');
 const btnindicator = document.getElementById('btnIndicator')
 const uploadWrapper = document.getElementById('uploadWrapper')
 
-//When file mode deactivates remove data
+// When file mode deactivates remove data
 fileMode.addEventListener("click", function() {
-  //if current selected ignore
+  // if current selected ignore
   if (this.classList.contains('selected')) return;
   
   auto.classList.remove('disable');
-  
-  // hide all options
-  document.querySelectorAll('.option-container').forEach(option => option.style.display = "none");
   
   textInput.value = null;
   code = null;
 });
 
-//When text mode deactivates remove data
+// When text mode deactivates remove data
 textMode.addEventListener("click", function() {
-  //if current selected ignore
+  // if current selected ignore
   if (this.classList.contains('selected')) return;
   
   const auto = document.getElementById('auto');
   const html = document.getElementById('html');
   
-  //disable auto as an option
+  // Select html (if auto is currently selected)
   if (selectedExtension === "auto") {
     selectedExtension = "html";
     
@@ -116,8 +113,11 @@ textMode.addEventListener("click", function() {
     
     dropdownText.dataset.selected = "html";
     dropdownText.innerHTML = htmlName;
+    
+    // Disable All options that dont suppirt html
+    document.querySelectorAll('.option-container:not(.html-option)').forEach(option => option.style.display = "none");
   };
-  //deselect auto
+  // Disable auto
   auto.classList.add('disable');
   
   clearFile();

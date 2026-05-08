@@ -68,7 +68,6 @@
 
 .switcherContainer {
   display: flex;
-  margin-bottom: .5em;
   justify-content: center;
   flex-direction: row;
 }
@@ -148,11 +147,16 @@
   font-weight: bold;
   padding-left: 5px;
 }
+.options-container {
+  margin: 0 !important;
+}
+.option-container:last-child {
+  margin: 0 0 1em 0 !important;
+}
 
 .results-container {
   display: none;
   flex: 1;
-  margin-top: 2em;
   flex-direction: column;
 }
 
