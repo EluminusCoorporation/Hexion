@@ -127,14 +127,12 @@ app.use(errorHandler);
 app.use(notFoundHandler);
 
 //Starts the server
-const PORT = config.general.port || 8000;
+const PORT = config.general.port || 3000;
 
 app.listen(PORT, () => {
   console.log(chalk.gray(`Hexion v${config.general.version} - webserver online on Port:${PORT}`));
 }).on('error', (error) => {
-  //if error is an port in use error, log
-  if (error.code === "EADDRINUSE") console.error(chalk.red(chalk.bold.yellow('[server]') + ` Port: ${config.general.port} is already in use`)) 
-  else console.error(chalk.red(chalk.bold.yellow('[server]') + ` Could not start server\n\n${error}`));
+  console.error(chalk.red(chalk.bold.yellow('[server]') + ` Could not start server\n\n${error}`));
 });
 
 //If any other exceptions catch instead of crashing
