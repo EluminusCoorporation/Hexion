@@ -4,39 +4,29 @@
   backButton: false
 }) -%>
       <div class="donation-container">
-        <p>Donation is another way for us to make money apart from the ads, these two are the main reasons on how this website runs so to contribute to run this website full of developer tools forever ,donate now.</p>
-        <span>Payment Methods: Paypal</span>
+        <p>Donation is another way for us to make money apart from the ads, these two are the main reasons on how this website runs so to contribute to run this website full of developer tools forever, donate now.</p>
         
         <button class="donation-btn" id="donationBtn">Donate now!</button>
         
         <div class="donation-menu-container" id="donationMenuContainer">
           <div id="donationMenu" class="donation-menu">
-            <i class="bx bx-x payment-close-btn" id="paymentCloseBtn" role="button"></i>
-            <h3>Payment</h3>
-            <div class="inputs">
-              <input type="number" name="amount" id="amount" placeholder="Amount">
+            <div class="donation-main-menu">
+              <h3>Payment</h3>
+              <i class="bx bx-x payment-close-btn" id="paymentCloseBtn" role="button"></i>
+            </div>
+            <div class="tabs-container">
+              <div class="tab-container selected" data-section="manualSection">UPI</div>
+              <div class="tab-container" data-section="qrSection">QR Code</div>
+            </div>
+            <div class="section visible" id="manualSection">
+              <div class="inputs">
+                <input type="number" name="amount" id="amount" placeholder="Amount">
+              </div>
+            </div>
+            <div class="section" id="qrSection">
+              <p>Work in Progress (WIP)</p>
             </div>
           </div>
         </div>
       </div>
       <%- include('components/footer') -%>
-<script defer>
-// Necessary element imports
-const donationBtn = document.getElementById("donationBtn");
-const donationMenuContainer = document.getElementById("donationMenuContainer");
-const donationMenu = document.getElementById("donationMenu");
-const closeBtn = document.getElementById("paymentCloseBtn");
-
-donationBtn.addEventListener("click", () => {
-  // Activates the donation menu
-  donationMenuContainer.classList.add("active");
-  donationMenu.classList.add("active");
-});
-
-// Close button used to close the donation menu
-closeBtn.addEventListener("click", () => {
-  // Deactivates the donation menu
-  donationMenuContainer.classList.remove("active");
-  donationMenu.classList.remove("active");
-});
-</script>

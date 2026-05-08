@@ -115,7 +115,7 @@ const limiter = rateLimit({
 });
 app.use("/utils/", limiter);
 
-//Route setup
+// Route setup
 // Returns / to /home
 app.get("/", (req, res) => {
   res.redirect('/home');
