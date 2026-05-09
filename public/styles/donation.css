@@ -154,6 +154,15 @@
   display: block;
 }
 
+.info-container {
+  padding: 1em;
+  background-color: hsla(208, 100%, 44.12%, 0.4);
+  border: 1px solid hsl(208, 100%, 44.12%);
+  color: white;
+  font-size: .8em;
+  margin-bottom: 1.5em;
+}
+
 .donation-menu .inputs {
   position: relative;
   margin-top: .5em;
@@ -184,6 +193,30 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
+}
+
+.donation-redirect-button {
+  display: flex;
+  gap: .3em;
+  flex-direction: row;
+  width: 100%;
+  font-size: 1em;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  padding: .75em 1em;
+  border-radius: 1em;
+  cursor: pointer;
+  color: var(--bg-dark);
+  background-color: var(--text);
+  margin-top: 1.5em;
+  transition: all 150ms ease-in-out;
+}
+
+.donation-redirect-button:hover {
+  transform: scale(.95);
 }
 
 .donation-btn {

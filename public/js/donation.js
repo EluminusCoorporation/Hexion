@@ -42,4 +42,14 @@ tabSwitchers.forEach((switcher, index) => {
     // Enable our section
     section.classList.add('visible');
   });
-})
+});
+
+// Handle donate
+const donationRedirectButton = document.getElementById('donationRedirectButton');
+donationRedirectButton.addEventListener("click", () => {
+  // Get amount
+  const amount = document.getElementById('amount').value;
+  
+  // Redirect to UPI Link
+  window.location.href = `upi://pay?pa=your@ybl&pn=Hexion Donation&am=${amount}&cu=INR&tn=Donation To Hexion of ₹${amount}`;
+});
