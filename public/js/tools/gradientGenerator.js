@@ -1,4 +1,4 @@
-//Imports the required functions
+// Imports the required functions
 import { setAlert } from '../handlers/errorLogger.js';
 import { setFunction } from '../handlers/dropDownMenu.js'
 import { copyText } from '../handlers/copy.js'
@@ -181,7 +181,7 @@ async function refreshOutput() {
 }
 
 optionsCheckbox.forEach((checkbox) => {
-  checkbox.addEventListener("change", () => refreshOutput())
+  checkbox.addEventListener("change", () => refreshOutput());
 });
 
 // Get formatted stylers

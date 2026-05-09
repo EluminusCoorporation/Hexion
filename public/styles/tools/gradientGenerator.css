@@ -319,6 +319,19 @@
   z-index: 1;
 }
 
+.preview-text span::selection {
+  color: white;
+  background: rgba(51, 144, 255, 0.4);
+}
+
+.preview-text .bold::selection {
+  text-shadow: 
+  /* Bold effect */
+  2px 0 0 white,
+  3.5px 0 0 white,
+  9.5px 6px 0 color-mix(in srgb, currentColor 10%, transparent) !important;
+}
+
 .preview-text .bold {
   letter-spacing: 3px;
   text-shadow: 
