@@ -430,7 +430,7 @@ function findFallback(format, color) {
     case "hsl": return culori.formatHsl(culori.clampRgb(color));
     case "hwb":
       const rawColor = converter(culori.clampRgb(color));
-      return `hwb(${rawColor.h.toFixed(2)} ${rawColor.w.toFixed(2)} ${rawColor.b.toFixed(2)})`;
+      return `hwb(${rawColor.h?.toFixed(2) ?? 0} ${(rawColor.w * 100).toFixed(2)} ${(rawColor.b * 100).toFixed(2)})`;
   }
 }
 
@@ -486,11 +486,11 @@ router.post("/color", (req, res) => {
       
       // Create color string
       switch (format) {
-        case "oklch": return `oklch(${c.l.toFixed(2)} ${c.c.toFixed(2)} ${c.h.toFixed(2)})`;
+        case "oklch": return `oklch(${c.l.toFixed(2)} ${c.c.toFixed(2)} ${c.h?.toFixed(2) ?? 0})`;
         case "oklab": return `oklab(${c.l.toFixed(2)} ${c.a.toFixed(2)} ${c.b.toFixed(2)})`;
-        case "lch": return `lch(${c.l.toFixed(2)} ${c.c.toFixed(2)} ${c.h.toFixed(2)})`;
+        case "lch": return `lch(${c.l.toFixed(2)} ${c.c.toFixed(2)} ${c.h?.toFixed(2) ?? 0})`;
         case "lab": return `lab(${c.l.toFixed(2)} ${c.a.toFixed(2)} ${c.b.toFixed(2)})`;
-        case "hwb": return `hwb(${c.h.toFixed(2)} ${c.w.toFixed(2)} ${c.b.toFixed(2)})`;
+        case "hwb": return `hwb(${c.h?.toFixed(2) ?? 0} ${(c.w * 100).toFixed(2)} ${(c.b * 100).toFixed(2)})`;
         
         // Use inbuilt culori formatters which are available
         case "hex": return culori.formatHex(color);
