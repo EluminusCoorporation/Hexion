@@ -425,17 +425,18 @@ router.post("/request", async (req, res) => {
 const fixed = (value, digits = 2) => (value ?? 0).toFixed(digits);
 // Multiplication is needed for HWB format as it returns normalized values
 const multiply = (value) => (value ?? 0) * 100;
+// Percentages for few fields of colors
 const percentage = (value, digits = 2) => (value ?? 0).toFixed(digits) + '%';
 
 // Helper functions for Color Convert
 function findFallback(format, color) {
-  const converter = culori.converter('hwb');
-  
   switch (format) {
     case "hex": return culori.formatHex(culori.clampRgb(color));
     case "rgb": return culori.formatRgb(culori.clampRgb(color));
     case "hsl": return culori.formatHsl(culori.clampRgb(color));
     case "hwb":
+      const converter = culori.converter('hwb');
+      
       const rawColor = converter(culori.clampRgb(color));
       return `hwb(${fixed(rawColor.h)} ${percentage(multiply(rawColor.w))} ${percentage(multiply(rawColor.b))})`;
   }
@@ -465,7 +466,8 @@ router.post("/color", (req, res) => {
       
       // Assumes if the converter fails this is an out of gamut error
       try {
-        finalResult = converter(color);
+        // Use the inGamut function for hex validation as it is not supported in converter
+        finalResult = format === "hex" ? culori.formatHex(color) : converter(color);
       } catch (error) {
         fallbackColor = findFallback(format, color);
         throw new Error('NOVALIDCOLORFOUND');
@@ -477,8 +479,8 @@ router.post("/color", (req, res) => {
         throw new Error('NOVALIDCOLORFOUND');
       }
       
-      // if it cannot be displayed it is an out of gamut error
-      if (!culori.displayable(finalResult)) {
+      // Ignore hex format if it cannot be displayed it is an out of gamut error
+      if (format !== "hex" && !culori.displayable(finalResult)) {
         // Provide a fallback color
         fallbackColor = findFallback(format, color);
         
@@ -487,10 +489,11 @@ router.post("/color", (req, res) => {
     };
     
     function universalFormatter(color) {
-      // Get color object
-      const c = converter(color);
-      
-      if (!c) throw new Error('Something went wrong?');
+      // Get color object (ignore if hex)
+      if (format !== "hex") {
+        const c = converter(color);
+        if (!c) throw new Error('Something went wrong?');
+      };
       
       // Create color string
       switch (format) {
