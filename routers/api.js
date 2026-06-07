@@ -402,14 +402,14 @@ router.post("/gradient", (req, res) => {
 
 // POST /api/request - Requests an external api
 router.post("/request", async (req, res) => {
-  const { url, header } = req.body;
+  const { header } = req.body;
   
   try {
     // check if its trying to ping internal api
-    if (!url.startsWith('https')) throw new Error("Cannot request internal api.");
+    if (!header.url.startsWith('https')) throw new Error("Cannot request internal api.");
     
     // check if its trying to ping localhosts
-    if (url.startsWith("http://localhost")) throw new Error("Cannot request Localhosts.");
+    if (header.url.startsWith("http://localhost")) throw new Error("Cannot request Localhosts.");
   
     const response = await axios(header);
   

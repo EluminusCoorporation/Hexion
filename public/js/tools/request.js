@@ -142,7 +142,7 @@ resultsBtn.addEventListener("click", async () => {
     const responseInternal = await fetch("/api/request", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url, header })
+      body: JSON.stringify({ header })
     })
     
     if (!responseInternal) throw new Error('No response from our internal server, try again later.')
