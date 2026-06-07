@@ -498,8 +498,8 @@ router.post("/color", (req, res) => {
       
       // Create color string
       switch (format) {
-        case "oklch": return `oklch(${percentage(c.l)} ${fixed(c.c)} ${fixed(c.h)})`;
-        case "oklab": return `oklab(${percentage(c.l)} ${fixed(c.a)} ${fixed(c.b)})`;
+        case "oklch": return `oklch(${percentage(multiply(c.l))} ${fixed(multiply(c.c))} ${fixed(multiply(c.h))})`;
+        case "oklab": return `oklab(${percentage(multiply(c.l))} ${fixed(multiply(c.a))} ${fixed(multiply(c.b))})`;
         case "lch": return `lch(${percentage(c.l)} ${fixed(c.c)} ${fixed(c.h)})`;
         case "lab": return `lab(${percentage(c.l)} ${fixed(c.a)} ${fixed(c.b)})`;
         // HWB returns normalized values so they need to be multiplied
