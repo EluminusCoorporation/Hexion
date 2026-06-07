@@ -489,9 +489,10 @@ router.post("/color", (req, res) => {
     };
     
     function universalFormatter(color) {
+      let c = null;
       // Get color object (ignore if hex)
       if (format !== "hex") {
-        const c = converter(color);
+        c = converter(color);
         if (!c) throw new Error('Something went wrong?');
       };
       
