@@ -49,6 +49,11 @@ resultsBtn.addEventListener("click", async function () {
           
           return;
         }
+      } else {
+        // hide the output elements
+        document.getElementById('colorNameValue').textContent = "";
+        document.getElementById('colorShowcaseContainer').style.backgroundColor = "black";
+        document.getElementById('colorShowcaseContainer').style.display = "none";
       }
       
       throw new Error(errorMessage);
