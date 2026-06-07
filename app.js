@@ -110,11 +110,11 @@ app.use(setHeaders);
 
 // Setting up rate limiters
 const limiter = rateLimit({
-  windowMs: 60 * 1000,
+  windowMs: 30 * 1000,
   max: 60,
   message: { error: "Too many requests, slow down." }
 });
-app.use("/utils/", limiter);
+app.use("/api/", limiter);
 
 //Load routers
 app.use("/", base);
