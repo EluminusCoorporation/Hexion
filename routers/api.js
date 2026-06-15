@@ -64,11 +64,11 @@ async function debugJs(code, options) {
 
 // POST /api/debugger - Debugs the given code
 router.post("/debugger", async (req, res) => {
-  
+
   // Gets the json data sent from the frontend
-  const { 
+  const {
     type,
-    code, 
+    code,
     options = {
       isNodejs: false
     }
@@ -450,20 +450,19 @@ router.post("/color", (req, res) => {
       color,
       format,
     } = req.body;
-    
+
     // If color provided is not an actual color
     if (!culori.parse(color)) throw new Error('Invalid color provided');
-    
-    
+
     // Converter setup for unsupported color formats
     const converter = culori.converter(format);
     if (!converter) throw new Error('Unsupported color format');
-    
+
     // Check if color conversion is possible (only rgb based formats)
     if (['rgb', 'hex', 'hsl', 'hwb'].includes(format)) {
       // Get the final result (after conversion)
       let finalResult = null;
-      
+
       // Assumes if the converter fails this is an out of gamut error
       try {
         // Use the inGamut function for hex validation as it is not supported in converter
@@ -472,22 +471,22 @@ router.post("/color", (req, res) => {
         fallbackColor = findFallback(format, color);
         throw new Error('NOVALIDCOLORFOUND');
       };
-      
+
       // Assumes if the converter fails silently this is an out of gamut error
       if (!finalResult) {
         fallbackColor = findFallback(format, color);
         throw new Error('NOVALIDCOLORFOUND');
       }
-      
+
       // Ignore hex format if it cannot be displayed it is an out of gamut error
       if (format !== "hex" && !culori.displayable(finalResult)) {
         // Provide a fallback color
         fallbackColor = findFallback(format, color);
-        
+
         throw new Error('NOVALIDCOLORFOUND');
       };
     };
-    
+
     function universalFormatter(color) {
       let c = null;
       // Get color object (ignore if hex)
@@ -495,16 +494,16 @@ router.post("/color", (req, res) => {
         c = converter(color);
         if (!c) throw new Error('Something went wrong?');
       };
-      
+
       // Create color string
       switch (format) {
-        case "oklch": return `oklch(${percentage(multiply(c.l))} ${fixed(multiply(c.c))} ${fixed(multiply(c.h))})`;
-        case "oklab": return `oklab(${percentage(multiply(c.l))} ${fixed(multiply(c.a))} ${fixed(multiply(c.b))})`;
+        case "oklch": return `oklch(${percentage(multiply(c.l))} ${fixed(c.c)} ${fixed(c.h)})`;
+        case "oklab": return `oklab(${percentage(multiply(c.l))} ${fixed(c.a)} ${fixed(c.b)})`;
         case "lch": return `lch(${percentage(c.l)} ${fixed(c.c)} ${fixed(c.h)})`;
         case "lab": return `lab(${percentage(c.l)} ${fixed(c.a)} ${fixed(c.b)})`;
         // HWB returns normalized values so they need to be multiplied
         case "hwb": return `hwb(${fixed(c.h)} ${percentage(multiply(c.w))} ${percentage(multiply(c.b))})`;
-        
+
         // Use inbuilt culori formatters which are available
         case "hex": return culori.formatHex(color);
         case "rgb": return culori.formatRgb(color);
@@ -512,10 +511,10 @@ router.post("/color", (req, res) => {
         default: throw new Error('Unsupported color format');
       }
     }
-    
+
     // Convert the color
     const result = universalFormatter(color);
-    
+
     if (!result) throw new Error('Something went horribly wrong!');
 
     res.json({ output: result });
