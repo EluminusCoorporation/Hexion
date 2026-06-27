@@ -128,10 +128,10 @@ main {
 .starting-btn {
   background-color: transparent;
   border: none;
-  height: 35px;
+  height: 2.5em;
   color: white;
   background-color: var(--primary);
-  width: 160px;
+  width: 11em;
   border-radius: 3px;
   cursor: pointer;
   font-weight: bold;
@@ -406,4 +406,11 @@ main {
 .faq-box-answer.active {
   visibility: visible;
   grid-template-rows: 1fr;
+}
+
+@media(min-width: 900px) {
+  .starting-btn {
+    font-size: 1.2em;
+    width: 13.5em;
+  }
 }

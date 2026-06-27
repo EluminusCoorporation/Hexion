@@ -66,7 +66,7 @@ export function setAlert(type, title, message) {
 document.getElementById("closeButton").addEventListener("click", () => {
   const alertContainer = document.getElementById("alertContainer")
   alertContainer.classList.remove("active");
-  
+
   // Clears the old status after the transition
   afterTransition(alertContainer, () => {
     document.getElementById("alertMessage").textContent = null;
@@ -91,33 +91,33 @@ export function errorLogger(text) {
     setAlert('error', 'Process failed', 'Something went wrong, did you enter a valid text ?');
     return false;
   }
-  
+
   setAlert();
   // Else goes forward
   return true;
 };
 
-//Global file logger func
+// Global file logger func
 export function fileLogger(file) {
   //Checks if file exists
   if (!file) return false;
-  //File name
+  // File name
   const fileName = file.name;
-  //File size
+  // File size
   const fileSize = file.size;
-  //File extension
+  // File extension
   const fileExtension = fileName.split('.').pop().toLowerCase();
   //Checks if file exists (2nd way)
   if (file.length === 0) {
     setAlert('error', 'File Upload failed', 'Something went wrong did you select a file?');
     return false;
   };
-  //Checks if file size exceeds the file size, limit
+  // Checks if file size exceeds the file size, limit
   if (file.size > 15728670) {
     setAlert('error', 'File Verification failed', 'File is too large');
     return false;
   }
   setAlert();
-  //Else goes forward
+  // Else goes forward
   return true;
 }
