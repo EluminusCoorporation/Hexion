@@ -59,14 +59,14 @@
       height: 100%;
       width: 100%;
       overflow-x: hidden;
-      overflow-y: scroll;
+      overflow-y: auto;
+      scrollbar-gutter: stable;
       font-family: 'Inter', Sans-Serif;
       box-sizing: border-box;
       background-color: var(--bg-dark);
     }
-    
+
     body {
-      padding: 0 1em;
     }
 
     .container {
@@ -77,6 +77,7 @@
     }
     
     main {
+      padding: 0 1em;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -131,8 +132,7 @@
       font-size: 1.5em;
       padding: 20px;
       display: flex;
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
+      width: 100%;
       margin-bottom: 1em;
       margin-top: 1em;
       align-items: center;
@@ -163,7 +163,6 @@
       display: flex;
       padding: .3em 1em .3em 1em;
       width: max-content;
-      margin-left: calc(50% - 50vw);
       flex-direction: row;
       color: var(--text);
       background-color: var(--bg);
@@ -187,54 +186,6 @@
     .back-container:hover {
       transform: translateX(-6px);
     }
-
-    
-    /* Custom Scrollbar (support for chromium browsers) */
-    @supports selector(::-webkit-scrollbar) {
-      *:not(body)::-webkit-scrollbar {
-        background: none;
-        width: 2vw;
-        height: 2vw;
-      }
-      
-      *:not(body)::-webkit-scrollbar-thumb {
-        -webkit-border-radius: 2em;
-        border-right-width: .2em;
-        border-left-width: .2em;
-        -webkit-box-shadow: inset 0 0 0 1px var(--bg), inset 0 0 0 4px var(--bg-light);
-        border: solid 0 rgb(0 0 0 / 0%);
-      }
-      
-      *:not(body)::-webkit-scrollbar-thumb:horizontal {
-        -webkit-border-radius: 2em;
-        border-right-width: 0;
-        border-left-width: 0;
-        border-top-width: .2em;
-        border-bottom-width: .2em;
-        -webkit-box-shadow: inset 0 0 0 1px var(--bg), inset 0 0 0 4px var(--bg-light);
-        border: solid 0 rgb(0 0 0 / 0%);
-      }
-      
-      *:not(body)::-webkit-scrollbar-track {
-        background: none;
-      }
-      
-      *:not(body)::-webkit-scrollbar-track-piece {
-        margin: .2em 0;
-      }
-      
-      *:not(body)::-webkit-scrollbar-corner {
-        background: transparent;
-      }
-    }
-    
-    /* Custom Scrollbar (Support for other browsers Ex: FireFox) */
-    @supports(scrollbar-color: auto) {
-      html {
-        scrollbar-color: var(--bg-light);
-        scrollbar-width: 2vw;
-      }
-    }
   </style>
   <!-- Ad Scripts -->
 </head>
@@ -246,7 +197,7 @@
         <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3.5" stroke-miterlimit="10"></circle>
       </svg>
     </div>
-      
+
     <script>
       // Loads the Loading screen when the user loads the page
       function toggleLoader(value) {
@@ -263,19 +214,19 @@
       <p>Copied to clipboard!</p>
     </div>
     
+    <% if (typeof header === "undefined" || false) { %>
+    <%- include('navbar') -%>
+    <% if (typeof backButton !== "undefined" && backButton) { %>
+    <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
+      <p>Back to dashboard</p>
+    </a>
+    <% } %>
+    <h1 class="page-header" style="background: linear-gradient(to right, transparent 0%, <%= color %> 15%, <%= color %> 85%, transparent 100%);">
+      <i class="<%= icon %>"></i>
+      <p><%= title %></p>
+      <% if (typeof tag !== "undefined") { %>
+      <span class="header-tag"><%= tag %></span>
+      <% } %>
+    </h1>
+    <% } %>
     <main>
-      <% if (typeof header === "undefined" || false) { %>
-      <%- include('navbar') -%>
-      <% if (typeof backButton !== "undefined" && backButton) { %>
-      <a href="/dashboard" class="back-container"><i class="bx bx-arrow-left-stroke"></i>
-        <p>Back to dashboard</p>
-      </a>
-      <% } %>
-      <h1 class="page-header" style="background: linear-gradient(to right, transparent 0%, <%= color %> 15%, <%= color %> 85%, transparent 100%);">
-        <i class="<%= icon %>"></i>
-        <p><%= title %></p>
-        <% if (typeof tag !== "undefined") { %>
-        <span class="header-tag"><%= tag %></span>
-        <% } %>
-      </h1>
-      <% } %>

@@ -11,15 +11,11 @@ html {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   font-family: 'Inter', Sans-Serif;
   /* Prevents any scrolling issues */
   box-sizing: border-box;
   background-color: var(--bg-dark);
-}
-
-body {
-  padding: 0 1em;
 }
 
 .container {
@@ -31,6 +27,7 @@ body {
 }
 
 main {
+  padding: 0 1em;
   display: flex;
   flex-direction: column;
   flex: 1;
