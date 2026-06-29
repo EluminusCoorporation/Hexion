@@ -46,7 +46,7 @@
     "express": "^5.1.0",
     "express-rate-limit": "^8.5.2",
     "htmlhint": "^1.9.2",
-    "node-html-parser": "^8.0.2",
+    "node-html-parser": "^8.0.4",
     "serve-favicon": "^2.5.1",
     "stylelint": "^17.13.0",
     "stylelint-config-standard": "^40.0.0"
