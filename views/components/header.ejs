@@ -161,6 +161,7 @@
     
     .back-container {
       display: flex;
+      margin-top: 1em;
       padding: .3em 1em .3em 1em;
       width: max-content;
       margin-left: calc(50% - 50vw);
@@ -188,7 +189,14 @@
       transform: translateX(-6px);
     }
 
-    
+    @media(min-width: 64rem) {
+      /* Adjust stuff for larger devices */
+      .back-container {
+        font-size: 1em;
+        padding: .75em 2em .75em 2em;
+      }
+    }
+
     /* Custom Scrollbar (support for chromium browsers) */
     @supports selector(::-webkit-scrollbar) {
       *:not(body)::-webkit-scrollbar {
