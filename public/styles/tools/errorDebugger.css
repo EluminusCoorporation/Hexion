@@ -74,7 +74,7 @@
 
 .uploadWrapper {
   position: absolute;
-  left: -100vw;
+  left: -100%;
   visibility: hidden;
   transition: all ease .3s;
 }
@@ -122,7 +122,7 @@
 .code-input-container {
   visibility: hidden;
   flex: 1;
-  right: -100vw;
+  right: -100%;
   resize: none;
   height: 150px;
   border-radius: 15px;
