@@ -196,53 +196,6 @@
         padding: .75em 2em .75em 2em;
       }
     }
-
-    /* Custom Scrollbar (support for chromium browsers) */
-    @supports selector(::-webkit-scrollbar) {
-      *:not(body)::-webkit-scrollbar {
-        background: none;
-        width: 2vw;
-        height: 2vw;
-      }
-      
-      *:not(body)::-webkit-scrollbar-thumb {
-        -webkit-border-radius: 2em;
-        border-right-width: .2em;
-        border-left-width: .2em;
-        -webkit-box-shadow: inset 0 0 0 1px var(--bg), inset 0 0 0 4px var(--bg-light);
-        border: solid 0 rgb(0 0 0 / 0%);
-      }
-      
-      *:not(body)::-webkit-scrollbar-thumb:horizontal {
-        -webkit-border-radius: 2em;
-        border-right-width: 0;
-        border-left-width: 0;
-        border-top-width: .2em;
-        border-bottom-width: .2em;
-        -webkit-box-shadow: inset 0 0 0 1px var(--bg), inset 0 0 0 4px var(--bg-light);
-        border: solid 0 rgb(0 0 0 / 0%);
-      }
-      
-      *:not(body)::-webkit-scrollbar-track {
-        background: none;
-      }
-      
-      *:not(body)::-webkit-scrollbar-track-piece {
-        margin: .2em 0;
-      }
-      
-      *:not(body)::-webkit-scrollbar-corner {
-        background: transparent;
-      }
-    }
-    
-    /* Custom Scrollbar (Support for other browsers Ex: FireFox) */
-    @supports(scrollbar-color: auto) {
-      html {
-        scrollbar-color: var(--bg-light);
-        scrollbar-width: 2vw;
-      }
-    }
   </style>
   <!-- Ad Scripts -->
 </head>
