@@ -128,8 +128,8 @@ resultsBtn.addEventListener("click", function () {
     results = rails.flat().join("");
   } else if (name === "Vigenère Cipher") {
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    newText = text.toUpperCase();
-    key = "KEY";
+    const newText = text.toUpperCase();
+    let key = "KEY";
     key = key
       .toUpperCase()
       .repeat(Math.ceil(newText.length / key.length))
