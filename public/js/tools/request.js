@@ -111,6 +111,8 @@ resultsBtn.addEventListener("click", async () => {
       if (authType === "Bearer Token") authValue = `bearer ${authField}`;
       else if (authType === "Basic Auth") authValue = 'basic ' + btoa(authField);
       else authValue = authField;
+    } else if (auth.checked && (!authField || !authType)) {
+      throw new Error("Authentication is enabled, but no fields are provided.")
     }
     
     const header = {
@@ -148,11 +150,11 @@ resultsBtn.addEventListener("click", async () => {
     if (!responseInternal) throw new Error('No response from our internal server, try again later.')
     
     // checks if response is an valid json
-    const contentType = res.headers.get('content-type');
+    const contentType = responseInternal.headers.get('content-type');
     if (contentType && !contentType.includes('application/json')) {
       throw new Error('Unexpected server response.');
       
-      const text = res.text();
+      const text = responseInternal.text();
       console.error('An unexpected response from the server.\n\nRESPONSE: ' + text);
     };
     
