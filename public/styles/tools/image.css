@@ -28,7 +28,7 @@
   font-weight: bold;
   color: var(--text-muted);
   cursor: pointer;
-  transition: all ease .3s;
+  transition: transform ease .3s, border ease .3s, color ease .3s;
 }
 
 .file-upload-button.drag-over {
@@ -222,7 +222,7 @@
   border-radius: .5em;
   box-shadow: 0 2px 2px var(--shadow);
   background-color: var(--bg);
-  transition: all 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
 }
 
 .crop-menu-button:hover {
@@ -238,7 +238,7 @@
   z-index: 11;
   background-color: hsla(0, 0%, 0%, 0);
   align-content: center;
-  transition: all 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out, visibility 300ms ease-in-out;
 }
 
 .cropper-menu-container.active {
@@ -262,7 +262,7 @@
   background-color: var(--bg-light);
   color: white;
   box-shadow: 0 6px 6px var(--shadow);
-  transition: all 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, visibility 300ms ease-in-out;
 }
 
 .cropper-menu.active {
@@ -402,7 +402,7 @@
   outline: none;
   border: none;
   cursor: pointer;
-  transition: all 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
 }
 
 .clear-button:hover {
@@ -450,7 +450,7 @@
   background-color: deepskyblue;
   width: fit-content;
   max-width: 75%;
-  transition: all .3s ease-in-out
+  transition: transform .3s ease-in-out
 }
 
 .download-button:hover {

@@ -38,7 +38,7 @@
   z-index: 11;
   background-color: hsla(0, 0%, 0%, 0);
   align-content: center;
-  transition: all 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out, visibility 300ms ease-in-out;
 }
 
 /* When popup is active */
@@ -62,7 +62,7 @@
   width: min(32rem, 85%);
   color: var(--text);
   box-shadow: 0 6px 6px var(--shadow);
-  transition: all 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, visibility 300ms ease-in-out;
 }
 
 .donation-menu.active {
@@ -91,7 +91,7 @@
   font-size: 1em;
   color: var(--text);
   padding: .2em;
-  transition: all 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out;
 }
 
 .payment-close-btn:hover {
@@ -123,7 +123,7 @@
   border-bottom: none;
   background: linear-gradient(to bottom, var(--bg) 65%, var(--bg-light));
   z-index: 1;
-  transition: all 300ms;
+  transition: color 300ms, transform 300ms, border 300ms, background-color 300ms;
 }
 
 .tab-container:not(.selected):hover {
@@ -134,7 +134,7 @@
   color: var(--text);
   border: none;
   transform: scaleY(1) translateY(0);
-  background: var(--bg-light);
+  background-color: var(--bg-light);
 }
 
 .tab-container.selected:hover {
@@ -147,7 +147,6 @@
   z-index: 2;
   display: none;
   border-radius: 0 0 .5em .5em;
-  transition: all 300ms;
 }
 
 .section.visible {
@@ -212,7 +211,7 @@
   color: var(--bg-dark);
   background-color: var(--text);
   margin-top: 1.5em;
-  transition: all 150ms ease-in-out;
+  transition: transform 150ms ease-in-out;
 }
 
 .donation-redirect-button:hover {
@@ -229,7 +228,7 @@
   border: 2px solid var(--primary);
   font-weight: 500;
   margin-top: 30px;
-  transition: all .3s;
+  transition: color .3s, background-color .3s, transform .3s;
 }
 
 .donation-btn:hover {

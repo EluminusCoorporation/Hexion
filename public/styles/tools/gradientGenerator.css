@@ -25,7 +25,7 @@
 .color-dropdownmenu i {
   align-self: center;
   font-size: 1.8em;
-  transition: all .3s;
+  transition: transform .3s;
 }
 
 .color-dropdownmenu .active {
@@ -40,7 +40,7 @@
   display: grid;
   visibility: hidden;
   grid-template-rows: 0fr;
-  transition: all 300ms;
+  transition: grid-template-rows 300ms, visibility 300ms;
 }
 
 .colors-grid-container div {
@@ -146,11 +146,11 @@
   padding: 5px;
   border-radius: 50%;
   user-select: none;
-  transition: all .5s;
+  transition: background-color .5s;
 }
 
 .color-name-container i:hover {
-  background: var(--hover);
+  background-color: var(--hover);
 }
 
 .color-name {
@@ -167,7 +167,7 @@
   border-top-left-radius: 5px;
   padding: 5px;
   cursor: pointer;
-  transition: all .1s;
+  transition: background-color 300ms;
 }
 
 .movers-container {
@@ -187,7 +187,7 @@
   padding: .3em;
   color: var(--text-muted);
   cursor: pointer;
-  transition: all ease .5s;
+  transition: transform ease .5s;
 }
 
 .mover:hover {
