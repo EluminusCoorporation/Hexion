@@ -161,12 +161,11 @@
 }
 
 .tool:nth-child(10) {
-  color: floralwhite
+  color: navajowhite;
 }
 
 .tool:nth-child(10) button {
-  color: black;
-  background: floralwhite;
+  background: navajowhite;
 }
 
 .toolboxes-container .tool button i {

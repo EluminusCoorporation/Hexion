@@ -1,7 +1,3 @@
-.page-header, .header-tag {
-  color: black !important;
-}
-
 .color-error-screen {
   display: none;
   position: relative;
@@ -89,6 +85,5 @@
 }
 
 .results-button {
-  color: black !important;
-  background-color: floralwhite;
+  background-color: navajowhite;
 }
