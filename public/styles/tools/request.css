@@ -11,19 +11,19 @@
   display: flex;
   border-top: .5px solid var(--highlight);
   margin-bottom: 1.3em;
-  border-radius: 2em;
+  border-top-right-radius: 2em;
+  border-bottom-right-radius: 2em;
   flex-direction: row;
-  overflow: hidden;
 }
 
 .request-type {
   padding: .35em .6em !important;
-  width: fit-content !important;
   height: 100%;
   border: none !important;
   margin: 0 !important;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
 }
 
 .request-type .dropdown-icon {
