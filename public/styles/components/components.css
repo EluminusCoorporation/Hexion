@@ -71,13 +71,13 @@
 /* Dropdown CSS */
 
 .dropdown-container {
+  position: relative;
   background-color: var(--bg);
   border-top: .5px solid var(--highlight);
   box-shadow: 0 2px 2px var(--shadow);
   padding: 1em;
   border-radius: .2em;
   margin: .7em 0;
-  overflow: hidden;
 }
 
 .dropdown-header-container {
