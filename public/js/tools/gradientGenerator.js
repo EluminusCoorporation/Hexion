@@ -221,7 +221,6 @@ function updateGradient(data) {
     const stylers = getStylers(item.styles);
     
     // Apply content
-    textElement.style.display;
     textElement.style.textShadow = `6px 6px 0 ${item.color}1A`;
     textElement.style.color = item.color;
     // Replace spaces with html-correct spaces
