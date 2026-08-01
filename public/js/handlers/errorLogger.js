@@ -103,11 +103,8 @@ export function fileLogger(file) {
   if (!file) return false;
   // File name
   const fileName = file.name;
-  // File size
-  const fileSize = file.size;
-  // File extension
-  const fileExtension = fileName.split('.').pop().toLowerCase();
-  //Checks if file exists (2nd way)
+
+  // Checks if file exists (2nd way)
   if (file.length === 0) {
     setAlert('error', 'File Upload failed', 'Something went wrong did you select a file?');
     return false;

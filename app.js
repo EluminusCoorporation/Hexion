@@ -20,7 +20,7 @@ const favicon = require('serve-favicon');
 const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs');
-const { execSync } = require('child_process');
+//const { execSync } = require('child_process');
 const rateLimit = require('express-rate-limit');
 
 // Import the config

@@ -62,7 +62,6 @@ resultsBtn.addEventListener("click", function () {
         .map(bin => String.fromCharCode(parseInt(bin, 2)))
         .join("");
   } else if (name === "Shift Jis") {
-    const decoder = new TextDecoder("shift-jis");
     results = text.split(/[\s,]+/).map(Number).decode(new Uint8Array(byteArray));
   } else if (name === "ISO 8859-1") {
     const encodedTextiso = new Uint8Array(text.split(/[\s,]+/).map(Number));

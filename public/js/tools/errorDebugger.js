@@ -470,14 +470,13 @@ errorGoForward.addEventListener("click", () => {
 //previous error button
 errorGoBack.addEventListener("click", () => {
   const currentError = document.getElementById('currentError');
-  const totalErrors = document.getElementById('totalErrors');
-  
+
   //if meets a 1 error count return
   if (currentError.textContent === "1") return;
-  
+
   //enables next error button
   errorGoForward.classList.remove('disabled');
-  
+
   //decreases & sets the error count
   let currentValue = parseInt(currentError.textContent) - 1;
   currentError.textContent = `${currentValue}`;

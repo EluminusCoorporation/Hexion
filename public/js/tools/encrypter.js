@@ -145,7 +145,6 @@ resultsBtn.addEventListener("click", function () {
   } else if (name === "Affine Cipher") {
     let a = 5,
       b = 8;
-    let modInverse = 21;
     results = text
       .split("")
       .map(c =>

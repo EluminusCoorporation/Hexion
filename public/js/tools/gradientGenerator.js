@@ -54,7 +54,6 @@ function refreshColors() {
   };
 };
 
-let timeout;
 document.addEventListener('DOMContentLoaded', () => {
   //event listener for each color
   const colorsContainer = document.getElementById('colorsContainer')
@@ -475,8 +474,6 @@ colorsContainer.addEventListener('click', (event) => {
     }, { once: true });
   };
 });
-
-const resultsBtn = document.getElementById('results-btn');
 
 const inputText = document.getElementById('inputText');
 const previewText = document.getElementById('previewText');

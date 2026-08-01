@@ -183,8 +183,7 @@ resultsBtn.addEventListener("click", function () {
 
     results = decryptedText;
   } else if (name === "Affine Cipher") {
-    let a = 5,
-      b = 8;
+    let b = 8;
     let modInverse = 21;
     results = text
       .split("")
