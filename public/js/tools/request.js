@@ -152,10 +152,10 @@ resultsBtn.addEventListener("click", async () => {
     // checks if response is an valid json
     const contentType = responseInternal.headers.get('content-type');
     if (contentType && !contentType.includes('application/json')) {
-      throw new Error('Unexpected server response.');
-      
       const text = responseInternal.text();
+
       console.error('An unexpected response from the server.\n\nRESPONSE: ' + text);
+      throw new Error('Unexpected server response.');
     };
     
     if (!responseInternal.ok) {
