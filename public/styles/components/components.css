@@ -14,8 +14,8 @@
   width: max(300px, 35%);
   border-radius: .5em;
   flex-direction: column;
-  align-self: center;
-  color: var(--text);
+  justify-self: center;
+  color: oklch(0.96 0 0);
   overflow: hidden;
   transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, top 300ms ease-in-out, visibility ease-in-out 300ms;
 }
@@ -24,7 +24,6 @@
   padding: 1em;
   font-size: .85em;
   position: absolute;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +53,6 @@
   flex-direction: row;
   align-items: center;
   gap: .3em;
-  color: var(--text);
   font-size: 1em;
   font-weight: bold;
 }
@@ -66,7 +64,6 @@
   white-space: wrap;
   word-break: break-word;
   overflow-wrap: break-word;
-  color: white;
   overflow-y: auto;
   overflow-x: hidden;
 }
