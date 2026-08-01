@@ -56,7 +56,10 @@ async function handleFile(file) {
     
     // Revoke the url after the image loads
     imageShowcase.onload = () => URL.revokeObjectURL(imageShowcase.src);
-    console.dir(file)
+
+    console.log("Uploaded file:");
+    console.dir(file);
+
     // Assign the image to the cropper menu
     const cropperImage = document.getElementById('cropperImage');
     // Assign the url & remove it after it loads
@@ -81,7 +84,7 @@ async function handleFile(file) {
         });
         // Ensure url is revoked after cropper loads
         cropperImage.addEventListener('ready', () => URL.revokeObjectURL(cropperImage.src));
-      }
+      };
     }
   } catch(error) {
     setAlert('error', 'Image Uploader Failed', error);
@@ -135,7 +138,7 @@ document.getElementById('cropMenuButton').addEventListener("click", () => {
     cropperMenu.classList.add('active');
   } catch(error) {
     setAlert('error', 'Image Converter Failed', error);
-    console.log('Failed to convert image: ' + error)
+    console.log('Failed to convert image: ' + error);
   } finally {
     loader.style.display = "none";
   }
@@ -170,7 +173,7 @@ document.getElementById('cropperImage').addEventListener("crop", event => {
   document.getElementById('yField').textContent = data.y.toFixed(2);
   document.getElementById('widthField').textContent = data.width.toFixed(2);
   document.getElementById('heightField').textContent = data.height.toFixed(2);
-})
+});
 
 const resultsBtn = document.getElementById("results-btn");
 // Create an temporary downloadUrl variable
@@ -237,7 +240,7 @@ resultsBtn.addEventListener("click", async function () {
     downloadButton.download = `${sanitizedFileName}-hexion-${type}-${Math.random()}`;
     
     // Assign it to image previwer
-    const imagePreviewer = document.getElementById('imagePreviewer')
+    const imagePreviewer = document.getElementById('imagePreviewer');
     imagePreviewer.src = URL.createObjectURL(blob);
     imagePreviewer.onload = () => URL.revokeObjectURL(imagePreviewer.src);
     document.getElementById('imagePreviewerContainer').style.display = "flex";

@@ -88,7 +88,7 @@ colorDropdownmenu.addEventListener('click', () => {
   //Enables the menu
   colorDropdownmenuIcon.classList.toggle('active');
   colorsGridContainer.classList.toggle('show');
-})
+});
 
 const optionsCheckbox = document.querySelectorAll(".toggle");
 
@@ -388,7 +388,7 @@ addColorButton.addEventListener('click', () => {
   
   //copies the original container
   const clonedContainer = colorContainer.cloneNode(true);
-  const clonedColorName = clonedContainer.querySelector('.color-name')
+  const clonedColorName = clonedContainer.querySelector('.color-name');
   
   const el = clonedContainer.querySelector('.pickr');
   const childIcon = document.createElement('i');
@@ -406,8 +406,9 @@ addColorButton.addEventListener('click', () => {
   //clears the color name
   if (clonedColorName.style.color != "#000000") {
     clonedColorName.textContent = "#000000";
-    clonedColorName.style.color = "#000000"
+    clonedColorName.style.color = "#000000";
   }
+
   //sets the icon
   childIcon.classList.add('bx', 'bx-trash', 'delete-icon');
   

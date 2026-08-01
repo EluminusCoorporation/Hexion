@@ -361,7 +361,7 @@ resultsBtn.addEventListener('click', async () => {
     // Gets the data
     const data = await res.json();
     
-    if (!data) throw new Error('The response from our server was empty, retry debugging.')
+    if (!data) throw new Error('The response from our server was empty, retry debugging.');
   
     // Get the error report & log it
     let fileReport = data.report;

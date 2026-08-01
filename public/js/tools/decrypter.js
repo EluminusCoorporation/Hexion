@@ -16,7 +16,7 @@ resultsBtn.addEventListener("click", function () {
 
   // Runs the error handler
   if (!name || !text) {
-    setAlert('error', 'Decrypter failed', 'Please fill in all the fields.')
+    setAlert('error', 'Decrypter failed', 'Please fill in all the fields.');
     return;
   };
 

@@ -16,7 +16,7 @@ resultsBtn.addEventListener("click", function () {
   const name = document.getElementById("dropdownSelected").dataset.selected;
   // Run errorhandler
   if (!name || !text) {
-    setAlert('error', 'Decoder failed', 'Please fill in all the fields.')
+    setAlert('error', 'Decoder failed', 'Please fill in all the fields.');
     return;
   };
 

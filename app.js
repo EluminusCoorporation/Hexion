@@ -54,7 +54,7 @@ console.log(chalk.white(chalk.bold.yellow('[server]') + ' Starting Server...'));
 
 //if on maintenance mode
 if (config.general.onMaintenance === true) {
-  console.log(chalk.white(chalk.bold.yellow('[server]') + ' Starting under Maintenance Mode.'))
+  console.log(chalk.white(chalk.bold.yellow('[server]') + ' Starting under Maintenance Mode.'));
 }
 
 //Set up view engine for express

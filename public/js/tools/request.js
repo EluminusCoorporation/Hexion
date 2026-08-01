@@ -113,7 +113,7 @@ resultsBtn.addEventListener("click", async () => {
       else authValue = authField;
     } else if (auth.checked && (!authField || !authType)) {
       throw new Error("Authentication is enabled, but no fields are provided.")
-    }
+    };
     
     const header = {
       method: type,
@@ -145,9 +145,9 @@ resultsBtn.addEventListener("click", async () => {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ header })
-    })
+    });
     
-    if (!responseInternal) throw new Error('No response from our internal server, try again later.')
+    if (!responseInternal) throw new Error('No response from our internal server, try again later.');
     
     // checks if response is an valid json
     const contentType = responseInternal.headers.get('content-type');
@@ -178,7 +178,7 @@ resultsBtn.addEventListener("click", async () => {
   } catch (error) {
     // catch every error and display
     setAlert("error", "Request Sender Failed", error);
-    console.error("An error occured while requesting url " + error)
+    console.error("An error occured while requesting url " + error);
   } finally {
     // disable the loader at the end no matter whats the result
     toggleLoader(false);

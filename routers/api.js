@@ -390,7 +390,7 @@ router.post("/gradient", (req, res) => {
     }
     else if (type === "JSON") output = applyGradientWithReset(charLimit, userInput, colors, options, styles, 'json', 'json');
     
-    else throw new Error("No options matched.")
+    else throw new Error("No options matched.");
     
     if (!output) throw new Error('Output is empty, did you enter the correct info?');
     
@@ -524,6 +524,6 @@ router.post("/color", (req, res) => {
       ...(fallbackColor && { fallback: fallbackColor }),
     });
   }
-})
+});
 
 module.exports = router;
