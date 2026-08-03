@@ -173,7 +173,12 @@ async function handleFile(file) {
     
     // File's Extension
     const rawFileExtension = file.name.split('.').pop().toLowerCase();
-    
+    if (
+      file.type.startsWith("image/") ||
+      file.type.startsWith("video/") ||
+      file.type.startsWith("audio/")
+    ) throw new Error("Media files are not allowed.");
+
     // checks if selectedExtension is auto
     if (selectedType === "auto") {
       // Checks if Extension is supported
