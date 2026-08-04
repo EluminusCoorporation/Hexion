@@ -31,6 +31,16 @@ npm ci
 npm run start
 ```
 
+## Roadmap
+- [ ] Implement a module loading system
+- [ ] Add a Automatic route loading system
+- [ ] Fix ascii art wrong output on larger screens
+- [ ] Add field names to existing fields
+- [ ] Font Selector for Gradiant Generator
+- [ ] Color preview of input color in color Converter
+- [ ] Maybe shift to pnpm?
+- [ ] More...
+
 ## Licence
 (c) 2026 EluminusCo. All rights reserved.
 
