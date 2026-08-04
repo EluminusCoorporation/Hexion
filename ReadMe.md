@@ -12,7 +12,6 @@ Hexion, an multi purpose website it provides tools used to help you create you'r
 - **Decoder and Encoder**
 - **Encrypter and Decrypter**
 - **Image Converter**
-- **Html to App Converter**
 - **Request Sender**
 - **Ascii Art Generator**
 - **Color Converter**
