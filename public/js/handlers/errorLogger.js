@@ -101,8 +101,6 @@ export function errorLogger(text) {
 export function fileLogger(file) {
   //Checks if file exists
   if (!file) return false;
-  // File name
-  const fileName = file.name;
 
   // Checks if file exists (2nd way)
   if (file.length === 0) {

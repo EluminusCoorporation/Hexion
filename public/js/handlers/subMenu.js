@@ -1,7 +1,7 @@
 const subMenuButton = document.querySelectorAll('.sub-menu-button');
 
 // Event listener sub menus
-subMenuButton.forEach((subMenuButtons, i) => {
+subMenuButton.forEach((subMenuButtons) => {
   subMenuButtons.addEventListener('click', function() {
     //Activates the submenu
     const subMenu = this.querySelector('.sub-menu');

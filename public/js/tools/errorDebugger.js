@@ -267,11 +267,11 @@ function refreshLineNumbers() {
 //C ustom editor like textarea lines
 for (let i = 0; i < textareasHere.length; i++) {
   if (i != 0 && i % 2 == 1) {
-    textareasHere[i].addEventListener("scroll", function(e) {
+    textareasHere[i].addEventListener("scroll", function() {
       textareasHere[i - 1].scrollTop = textareasHere[i].scrollTop;
       textareasHere[i - 1].scrollLeft = textareasHere[i].scrollLeft;
     });
-    textareasHere[i].addEventListener("input", function(e) {
+    textareasHere[i].addEventListener("input", function() {
       textareasHere[i - 1].textContent = "";
       const numberOfLinesHere = Math.max(textareasHere[i].value.split("\n").length, 1);
       for (let h = 0; h < numberOfLinesHere; h++) {

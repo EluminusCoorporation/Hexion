@@ -3,7 +3,7 @@ const faq = document.querySelectorAll(".faq-box-question");
 
 // Makes it usable
 if (faq) {
-  faq.forEach((faqs, i) => {
+  faq.forEach((faqs) => {
     faqs.addEventListener('click', function() {
       // Activates the faq
       this.classList.toggle("active");

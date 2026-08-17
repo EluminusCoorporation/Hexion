@@ -19,7 +19,7 @@ closeBtn.addEventListener("click", () => {
 
 // Makes an event listener for each tab switcher
 const tabSwitchers = document.querySelectorAll('.tab-container');
-tabSwitchers.forEach((switcher, index) => {
+tabSwitchers.forEach((switcher) => {
   switcher.addEventListener("click", function() {
     // Ignore if already selected
     if (this.classList.contains('selected')) return;

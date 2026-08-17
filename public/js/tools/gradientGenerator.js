@@ -266,7 +266,7 @@ function createPickr(el, color) {
     }
   });
   //on save
-  pickr.on('save', (color, instance) => {
+  pickr.on('save', (color) => {
     const colorHex = color.toHEXA().toString();
     //Adds the colors on the viewer interface
     colorName.textContent = colorHex
