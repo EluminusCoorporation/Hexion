@@ -118,6 +118,10 @@
   display: none !important;
 }
 
+.results {
+  white-space: pre;
+}
+
 .results-button {
   background-color: deepskyblue;
 }
