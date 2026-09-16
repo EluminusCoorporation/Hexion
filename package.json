@@ -30,7 +30,7 @@
   },
   "author": "EluminusCo",
   "License": "Proprietary",
-  "type": "CommonJS",
+  "type": "commonjs",
   "main": "app.js",
   "scripts": {
     "test": "echo \"All Tests Completed!\" && exit 0",
