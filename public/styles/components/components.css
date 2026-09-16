@@ -220,15 +220,15 @@
   margin: 1.3em 0;
   flex: 1;
   padding: .5em;
-  text-align: center;
   gap: .5em;
   flex-direction: column;
 }
 
 .option-container {
   display: flex;
-  flex-direction: column;
-  gap: .5em;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
 }
 
 .switch {
