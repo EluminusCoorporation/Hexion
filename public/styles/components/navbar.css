@@ -30,10 +30,11 @@
 }
 
 .header-name img {
-  height: 35px;
-  width: 35px;
-  background-color: var(--text);
+  height: 40px;
+  width: 40px;
+  padding: .2em;
   border-radius: 50%;
+  border: 1px solid var(--border);
 }
 
 .header-name h1 {
