@@ -230,6 +230,11 @@
   gap: 1em;
 }
 
+.option-content {
+  display: flex;
+  gap: .5em;
+}
+
 .switch {
   position: relative;
   display: flex;

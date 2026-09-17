@@ -48,11 +48,6 @@
   color: var(--text) !important;
 }
 
-.option-content {
-  display: flex;
-  gap: .5em;
-}
-
 .toggler-el {
   display: none;
   flex: 1;
