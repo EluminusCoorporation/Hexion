@@ -7,7 +7,6 @@
   flex-direction: row;
   border-radius: .2em;
   border-top: .5px solid var(--highlight);
-  overflow: hidden;
   margin-bottom: 1.3em;
 }
 
