@@ -68,24 +68,6 @@
   position: relative;
 }
 
-.content-body {
-  position: relative;
-  resize: none;
-  min-height: 200px;
-  padding: 15px;
-  box-shadow: 0px 4px 6px var(--shadow);
-  color: var(--text);
-  background: var(--bg);
-  border: none;
-  border-radius: 15px;
-}
-
-.content-body::placeholder {
-  color: var(--text-muted);
-  font-weight: bold;
-  padding-left: 5px;
-}
-
 .flexbox-header {
   display: none;
   margin-top: 2em;
