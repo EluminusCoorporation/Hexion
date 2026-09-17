@@ -18,7 +18,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0) 80%, var(--bg-dark) 100%)
+  background: linear-gradient(to left, rgba(255, 255, 255, 0) 95%, var(--bg-dark) 100%)
 }
 
 .donation-container * {
@@ -235,4 +235,10 @@
   color: white;
   background-color: var(--primary);
   transform: scale(.95);
+}
+
+@media(max-width: 700px) {
+  .donation-container:after {
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 80%, var(--bg-dark) 100%);
+  }
 }
