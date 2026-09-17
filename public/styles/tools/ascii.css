@@ -23,6 +23,7 @@
 }
 
 .combobox-container {
+  position: relative;
   background-color: var(--bg);
   border-top: .5px solid var(--highlight);
   box-shadow: 0 2px 2px var(--shadow);
@@ -30,7 +31,6 @@
   border-radius: .2em;
   margin: .7em 0;
   transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
-  overflow: hidden;
 }
 
 .search-container {
