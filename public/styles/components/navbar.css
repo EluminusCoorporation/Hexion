@@ -12,6 +12,7 @@
   align-items: center;
   flex-direction: row;
   background-color: var(--bg);
+  border-bottom: .5px solid var(--border)
 }
 
 .header-name {
@@ -150,7 +151,6 @@
   .nav-bar {
     background: none;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
   }
   .nav-bar .side-bar {
     padding-top: 4.5em;
