@@ -34,7 +34,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"All Tests Completed!\" && exit 0",
-    "start": "node ."
+    "start": "node .",
+    "dev": "nodemon"
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
@@ -47,6 +48,7 @@
     "express-rate-limit": "^8.7.0",
     "htmlhint": "^1.9.2",
     "node-html-parser": "^9.0.3",
+    "nodemon": "^3.1.14",
     "serve-favicon": "^2.5.1",
     "stylelint": "^17.15.0",
     "stylelint-config-standard": "^40.0.0"
