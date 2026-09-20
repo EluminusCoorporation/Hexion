@@ -72,6 +72,7 @@
 
 .dropdown-container {
   position: relative;
+  cursor: pointer;
   background-color: var(--bg);
   border-top: .5px solid var(--highlight);
   box-shadow: 0 2px 2px var(--shadow);
