@@ -13,7 +13,7 @@ function sideBarClose() {
   backgroundFilter.classList.remove("open");
 
   // Closes the opened sub Menus
-  subMenu.forEach(subMenus => {
+  subMenu.forEach((subMenus) => {
     const subMenuButton = subMenus.parentNode;
     const subMenuToggler = subMenuButton.querySelector(".toggle-button");
     subMenuToggler.classList.remove("open");
@@ -27,7 +27,7 @@ sideBarButton.addEventListener("click", () => {
   sideBar.classList.toggle("open");
 
   // Closes the opened sub Menus on sidebar close
-  subMenu.forEach(subMenus => {
+  subMenu.forEach((subMenus) => {
     const subMenuButton = subMenus.parentNode;
     const subMenuToggler = subMenuButton.querySelector(".toggle-button");
     subMenuToggler.classList.remove("open");
@@ -39,7 +39,7 @@ sideBarButton.addEventListener("click", () => {
 backgroundFilter.addEventListener("click", sideBarClose);
 
 // Event listener for closing on redirect
-links.forEach(link => link.addEventListener("click", sideBarClose));
+links.forEach((link) => link.addEventListener("click", sideBarClose));
 
 // Desktop Section
 const isLargeScreen = window.innerWidth <= 768;
@@ -48,10 +48,23 @@ const isLargeScreen = window.innerWidth <= 768;
 document.addEventListener("click", (event) => {
   if (event.target.closest(".sub-menu-button")) return;
 
-  document.querySelectorAll(".sub-menu.open").forEach(subMenus => {
+  document.querySelectorAll(".sub-menu.open").forEach((subMenus) => {
     const subMenuButton = subMenus.parentNode;
     const subMenuToggler = subMenuButton.querySelector(".toggle-button");
     subMenuToggler.classList.remove("open");
     subMenus.classList.remove("open");
   });
-})
+});
+
+// Assign variable for the navbar height
+const navbar = document.querySelector(".nav-bar");
+function updateNavbarHeight() {
+  document.documentElement.style.setProperty(
+    "--navbar-height",
+    `${navbar.clientHeight}px`,
+  );
+}
+
+updateNavbarHeight();
+
+new ResizeObserver(updateNavbarHeight).observe(navbar);
