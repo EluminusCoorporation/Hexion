@@ -1,12 +1,11 @@
-const subMenuButton = document.querySelectorAll('.sub-menu-button');
+const subMenuButton = document.querySelectorAll('.sub-menu-toggler');
 
 // Event listener sub menus
 subMenuButton.forEach((subMenuButtons) => {
   subMenuButtons.addEventListener('click', function() {
     //Activates the submenu
-    const subMenu = this.querySelector('.sub-menu');
-    const subMenuToggler = this.querySelector('.toggle-button');
-    subMenuToggler.classList.toggle('open')
+    const subMenu = this.parentNode.querySelector('.sub-menu');
+    this.classList.toggle('open')
     subMenu.classList.toggle('open');
   });
 });

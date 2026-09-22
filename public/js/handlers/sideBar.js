@@ -4,7 +4,7 @@ const sideBar = document.getElementById("sideBar");
 const backgroundFilter = document.getElementById("backgroundSideBar");
 
 const subMenu = document.querySelectorAll(".sub-menu");
-const links = document.querySelectorAll(".nav-bar .side-bar ul li a");
+const links = document.querySelectorAll(".nav-bar-link");
 
 // function for sidebar closing
 function sideBarClose() {
@@ -40,3 +40,18 @@ backgroundFilter.addEventListener("click", sideBarClose);
 
 // Event listener for closing on redirect
 links.forEach(link => link.addEventListener("click", sideBarClose));
+
+// Desktop Section
+const isLargeScreen = window.innerWidth <= 768;
+
+// Handle outside clicks to close sub menu
+document.addEventListener("click", (event) => {
+  if (event.target.closest(".sub-menu-button")) return;
+
+  document.querySelectorAll(".sub-menu.open").forEach(subMenus => {
+    const subMenuButton = subMenus.parentNode;
+    const subMenuToggler = subMenuButton.querySelector(".toggle-button");
+    subMenuToggler.classList.remove("open");
+    subMenus.classList.remove("open");
+  });
+})
