@@ -4,7 +4,7 @@ const sideBar = document.getElementById("sideBar");
 const backgroundFilter = document.getElementById("backgroundSideBar");
 
 const subMenu = document.querySelectorAll(".sub-menu");
-const links = document.querySelectorAll(".nav-bar-link");
+const links = document.querySelectorAll(".navbar-link");
 
 // function for sidebar closing
 function sideBarClose() {
