@@ -1,27 +1,35 @@
 <script src="/js/handlers/subMenu.js" defer></script>
 <script src="/js/handlers/sideBar.js" defer></script>
 
-<link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles/components/navbar.css">
+<link
+  href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/styles/components/navbar.css" />
 
 <div class="background-sidebar" id="backgroundSideBar"></div>
 <header class="header-container">
   <nav class="nav-bar">
     <div class="header-name">
       <i class="bx bx-menu-wider" id="sideBarButton"></i>
-      <img src="/assets/icons/logo.webp" draggable="false"/>
+      <img src="/assets/icons/logo.webp" draggable="false" />
       <h1>Hexion</h1>
     </div>
     <aside class="side-bar" id="sideBar">
       <ul>
         <li>
-          <a href="/dashboard" class="<%= isCurrentPage('/dashboard') ? 'active' : '' %> navbar-link>
+          <a
+            href="/dashboard"
+            class="<%= isCurrentPage('/dashboard') ? 'active' : '' %> navbar-link"
+          >
             <i class="bx bx-dashboard-alt"></i>
             Dashboard
           </a>
         </li>
         <li class="sub-menu-button">
-          <span class="<%= isCurrentPage('/tools') ? 'active' : '' %> sub-menu-toggler">
+          <span
+            class="<%= isCurrentPage('/tools') ? 'active' : '' %> sub-menu-toggler"
+          >
             <i class="bx bx-spanner"></i>
             Tools
             <i class="bx bx-chevron-up toggle-button"></i>
@@ -29,52 +37,82 @@
           <ul class="sub-menu">
             <div>
               <li>
-                <a href="/tools/encoder" class="<%= isCurrentPage('/tools/encoder') ? 'active' : '' %> navbar-link">
+                <a
+                  href="/tools/encoder"
+                  class="<%= isCurrentPage('/tools/encoder') ? 'active' : '' %> navbar-link"
+                >
                   Encoder
                 </a>
               </li>
               <li>
-                <a href="/tools/decoder" class="<%= isCurrentPage('/tools/decoder') ? 'active' : '' %> navbar-link">
+                <a
+                  href="/tools/decoder"
+                  class="<%= isCurrentPage('/tools/decoder') ? 'active' : '' %> navbar-link"
+                >
                   Decoder
                 </a>
               </li>
               <li>
-                <a href="/tools/encrypter" class="<%= isCurrentPage('/tools/encrypter') ? 'active' : '' %> navbar-link">
+                <a
+                  href="/tools/encrypter"
+                  class="<%= isCurrentPage('/tools/encrypter') ? 'active' : '' %> navbar-link"
+                >
                   Encrypter
                 </a>
               </li>
               <li>
-                <a href="/tools/decrypter" class="<%= isCurrentPage('/tools/decrypter') ? 'active' : '' %> navbar-link">
+                <a
+                  href="/tools/decrypter"
+                  class="<%= isCurrentPage('/tools/decrypter') ? 'active' : '' %> navbar-link"
+                >
                   Decrypter
                 </a>
               </li>
               <li>
-                <a href="/tools/errorDebugger" class="<%= isCurrentPage('/tools/errorDebugger') ? 'active' : '' %> navbar-link">
+                <a
+                  href="/tools/errorDebugger"
+                  class="<%= isCurrentPage('/tools/errorDebugger') ? 'active' : '' %> navbar-link"
+                >
                   Error Debugger
                 </a>
               </li>
               <li>
-                <a href="/tools/gradientGenerator" class="<%= isCurrentPage('/tools/gradientGenerator') ? 'active' : '' %> navbar-link">
+                <a
+                  href="/tools/gradientGenerator"
+                  class="<%= isCurrentPage('/tools/gradientGenerator') ? 'active' : '' %> navbar-link"
+                >
                   Gradient Generator
                 </a>
               </li>
               <li>
-                <a href="/tools/request" class="<%= isCurrentPage('/tools/request') ? 'active' : '' %> navbar-link">
+                <a
+                  href="/tools/request"
+                  class="<%= isCurrentPage('/tools/request') ? 'active' : '' %> navbar-link"
+                >
                   Request Sender
                 </a>
               </li>
               <li>
-                <a href="/tools/image" class="<%= isCurrentPage('/tools/image') ? 'active' : '' %> navbar-link">
+                <a
+                  href="/tools/image"
+                  class="<%= isCurrentPage('/tools/image') ? 'active' : '' %> navbar-link"
+                >
                   Image Converter
                 </a>
               </li>
               <li>
-                <a href="/tools/ascii" class="<%= isCurrentPage('/tools/ascii') ? 'active' : '' %> navbar-link">
+                <a
+                  href="/tools/ascii"
+                  class="<%= isCurrentPage('/tools/ascii') ? 'active' : '' %> navbar-link"
+                >
                   Ascii Art Generator
                 </a>
               </li>
               <li>
-                <a href="/tools/color" class="<%= isCurrentPage('/tools/color') ? 'active' : '' %> navbar-link">
+                <a
+                  href="/tools/color"
+                  class="<%= isCurrentPage('/tools/color') ? 'active' : '' %> navbar-link"
+                >
                   Color Converter
                 </a>
               </li>
@@ -82,14 +120,19 @@
           </ul>
         </li>
         <li>
-          <a href="/donation" class="<%= isCurrentPage('/donation') ? 'active' : '' %> navbar-link">
-            <i class='bx bxs-gift'></i>
+          <a
+            href="/donation"
+            class="<%= isCurrentPage('/donation') ? 'active' : '' %> navbar-link"
+          >
+            <i class="bx bxs-gift"></i>
             Donation
           </a>
         </li>
       </ul>
     </aside>
-    <button id="themeSwitcher" class="theme-switcher"><i class="bx bx-refresh-ccw"></i></button>
+    <button id="themeSwitcher" class="theme-switcher">
+      <i class="bx bx-refresh-ccw"></i>
+    </button>
   </nav>
 </header>
 

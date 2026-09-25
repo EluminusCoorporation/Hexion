@@ -11,7 +11,8 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  background-color: var(--bg);
+  background: oklch(from var(--bg) l c h / 90%);
+  backdrop-filter: blur(0.5em);
   border-bottom: 0.5px solid var(--border);
 }
 
@@ -57,14 +58,16 @@
 .nav-bar .side-bar ul li a,
 .nav-bar .side-bar ul li span {
   display: flex;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   position: relative;
   flex-direction: row;
   text-decoration: none;
   color: var(--text-muted);
   gap: 0.5em;
   cursor: pointer;
-  padding: 1em 1.5em;
+  padding: 1em 2em;
   width: 100%;
   transition:
     background-color 0.3s,
@@ -72,7 +75,7 @@
 }
 
 .nav-bar .side-bar ul li .active {
-  background-color: var(--bg-light);
+  background: oklch(from var(--bg-light) l c h / 50%);
   color: var(--secondary) !important;
 }
 
@@ -92,19 +95,22 @@
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(0.9);
   display: grid;
   visibility: hidden;
   grid-template-rows: 0fr;
   place-content: center;
+  opacity: 0;
+  margin-top: 1em;
   transition:
     grid-template-rows ease 0.2s,
-    visibility ease 0.2s;
+    visibility ease 0.2s,
+    transform 300ms ease-in-out,
+    opacity 300ms ease-in-out;
   list-style: none;
-  border-bottom-right-radius: 1em;
-  border-bottom-left-radius: 1em;
+  border-radius: 1em;
   background-color: var(--bg);
-  max-height: calc(100dvh - var(--navbar-height) - 1em);
+  max-height: calc(100dvh - 1em - var(--navbar-height) - 1em);
 }
 
 .nav-bar .side-bar ul li .sub-menu .active {
@@ -127,6 +133,8 @@
 }
 
 .nav-bar .side-bar ul li .sub-menu.open {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
   visibility: visible;
   grid-template-rows: 1fr;
 }
@@ -158,10 +166,6 @@
 }
 
 @media (max-width: 1000px) {
-  .nav-bar {
-    background: none;
-    backdrop-filter: blur(10px);
-  }
   .nav-bar .side-bar {
     padding-top: 4.5em;
     position: absolute;
@@ -235,6 +239,8 @@
     box-sizing: border-box;
     padding: 1em 1em 1em min(3em, 7%);
     width: 100%;
+    justify-content: unset;
+    text-align: left;
   }
 
   .nav-bar .side-bar ul li .sub-menu {
@@ -242,10 +248,19 @@
     top: none;
     left: none;
     transform: none;
+    max-height: unset;
+    margin: 0;
+    opacity: unset;
   }
 
   .nav-bar .side-bar ul li .sub-menu div {
     padding: unset;
+    overflow-y: unset;
+  }
+
+  .nav-bar .side-bar ul li .sub-menu.open {
+    opacity: unset;
+    transform: unset;
   }
 
   .nav-bar .side-bar ul li .sub-menu a {
