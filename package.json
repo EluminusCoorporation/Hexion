@@ -41,7 +41,7 @@
     "axios": "^1.20.0",
     "chalk": "^4.1.2",
     "culori": "^4.0.2",
-    "ejs": "^7.0.1",
+    "ejs": "^7.0.2",
     "eslint": "^10.13.0",
     "express": "^5.3.0",
     "express-rate-limit": "^8.7.1",
