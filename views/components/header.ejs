@@ -37,6 +37,10 @@
   <script src="/js/<%= path %>.js" type="module" defer></script>
   <script src="/js/handlers/themeManager.js" defer></script>
 
+  <% if (typeof google !== "undefined" || true) { %>
+    <meta name="google-site-verification" content="UBb2t02803pS4i9sVMq_FPKI0rkKjHCmwLeO5dNOKMg" />
+  <% } %>
+
   <meta property="description" content="<%= description %>">
   <meta property="keywords" content="Hexion, programming, coding, tools, free">
   <meta property="author" content="EluminusCo">
