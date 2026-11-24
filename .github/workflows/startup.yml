@@ -1,4 +1,4 @@
-name: Continue Integration
+name: Startup Check
 
 on:
   push:
